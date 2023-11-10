@@ -1,0 +1,976 @@
+<div class="px-10 py-10">
+  <div class="text-xl font-semibold text-black">Resturant Registration Form</div>
+
+  <div class="step-indicator">
+    <div class="step">
+      <div class="step-circle" [class.active]="currentStep === 1">1</div>
+    </div>
+    <div class="step-line w-[20px]"></div>
+    <div class="step">
+      <div class="step-circle" [class.active]="currentStep === 2">2</div>
+    </div>
+    <div class="step-line w-[20px]"></div>
+    <div class="step">
+      <div class="step-circle" [class.active]="currentStep === 3">3</div>
+    </div>
+    <div class="step-line w-[20px]"></div>
+    <div class="step">
+      <div class="step-circle" [class.active]="currentStep === 4">4</div>
+    </div>
+    <div class="step-line w-[20px]"></div>
+
+    <div class="step">
+      <div class="step-circle" [class.active]="currentStep === 5">5</div>
+    </div>
+    <div class="step-line w-[20px]"></div>
+
+    <div class="step">
+      <div class="step-circle" [class.active]="currentStep === 6">6</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <form *ngIf="currentStep === 1" [formGroup]="myForm1">
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Name of the Resturant:</h2>
+        <div class="form-group grid-col-12 grid px-5">
+          <div class="col-span-12">
+            <label class="text-base" for="name">Name:</label>
+            <input type="text" id="name" formControlName="name" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('name')?.hasError('required') && myForm1.get('name')?.touched">
+              Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Year of Establishment</h2>
+        <div class="form-group grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-6">
+            <div class="form-group">
+              <label for="year">Year:</label>
+              <select id="year" formControlName="year">
+                <option value="" disabled>Select a year</option>
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+              </select>
+              <div
+                class="text-sm text-red-600"
+                *ngIf="myForm1.get('year')?.hasError('required') && myForm1.get('year')?.touched">
+                Year is required.
+              </div>
+            </div>
+          </div>
+          <div class="col-span-6">
+            <label for="name">
+              Exact date of commission in respect of new resturant commission or after 1st January, 1997</label
+            >
+            <input type="text" id="name" formControlName="name" />
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Address</h2>
+        <div class="form-group grid grid-cols-12 gap-5 px-5">
+          <div class="form-group col-span-4">
+            <label for="telegraphicAddress">Telegraphic Address</label>
+            <input type="text" id="telegraphicAddress" formControlName="telegraphicAddress" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('telegraphicAddress')?.hasError('required') && myForm1.get('telegraphicAddress')?.touched
+              ">
+              Telegraphic Address is required.
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="telexNumber">Telex Number</label>
+            <input type="text" id="telexNumber" formControlName="telexNumber" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('telexNumber')?.hasError('required') && myForm1.get('telexNumber')?.touched">
+              Telex Number is required.
+            </div>
+          </div>
+
+          <div class="form-group col-span-4">
+            <label for="telephoneNumber">Telephone Number(if any)</label>
+            <input type="text" id="telephoneNumber" formControlName="telephoneNumber" />
+            <!-- <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('telephoneNumber')?.hasError('required') && myForm1.get('telephoneNumber')?.touched">
+              Name is required.
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Location</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="form-group col-span-4">
+            <label for="Street">Province:</label>
+            <input type="text" id="province" formControlName="province" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('province')?.hasError('required') && myForm1.get('province')?.touched">
+              Province is required.
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="town">Town:</label>
+            <input type="text" id="town" formControlName="town" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('town')?.hasError('required') && myForm1.get('town')?.touched">
+              Town is required.
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="street">Street:</label>
+            <input type="text" id="street" formControlName="street" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('street')?.hasError('required') && myForm1.get('street')?.touched">
+              Street is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+        <button
+          (click)="nextStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Next
+        </button>
+      </div>
+    </form>
+    <form *ngIf="currentStep === 2" [formGroup]="myForm2">
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Ownership Details</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <div class="form-group">
+              <div class="form-group">
+                <label for="year">Nature of Ownership:</label>
+                <select id="year" formControlName="natue_of_ownership">
+                  <option value="" disabled>Select a Ownership</option>
+                  <option *ngFor="let natue_of_ownership of Nature_of_Ownership" [value]="natue_of_ownership">
+                    {{ natue_of_ownership }}
+                  </option>
+                  <div
+                    class="text-sm text-red-600"
+                    *ngIf="
+                      myForm1.get('natue_of_ownership')?.hasError('required') &&
+                      myForm1.get('natue_of_ownership')?.touched
+                    ">
+                    Nature of Ownership is required.
+                  </div>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="NameofOwner">Name of Owner</label>
+            <input type="text" id="NameofOwner" formControlName="NameofOwner" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('NameofOwner')?.hasError('required') && myForm1.get('NameofOwner')?.touched">
+              Nature of Ownership is required.
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="FatherofOwner">Father Name of Owner</label>
+            <input type="text" id="FatherofOwner" formControlName="FatherofOwner" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('FatherofOwner')?.hasError('required') && myForm1.get('FatherofOwner')?.touched">
+              Father name of Owner is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Owner Address Details</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="owner_address">Address:</label>
+            <input type="text" id="owner_address" formControlName="owner_address" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('owner_address')?.hasError('required') && myForm1.get('owner_address')?.touched">
+              Address of Owner is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="owner_telephonic_address">Telephonic Address</label>
+            <input type="text" id="owner_telephonic_address" formControlName="owner_telephonic_address" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('owner_telephonic_address')?.hasError('required') &&
+                myForm1.get('owner_telephonic_address')?.touched
+              ">
+              Telephonic Address of Owner is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="owner_telephonic_number">Telephone Number if any</label>
+            <input type="text" id="owner_telephonic_number" formControlName="owner_telephonic_number" />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Manager Details</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="manager_name">Name of Manager:</label>
+            <input type="text" id="manager_name" formControlName="manager_name" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('manager_name')?.hasError('required') && myForm1.get('manager_name')?.touched">
+              Address of Owner is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="manager_address">Manager Address</label>
+            <input type="text" id="manager_address" formControlName="manager_address" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('manager_address')?.hasError('required') && myForm1.get('manager_address')?.touched">
+              Manager Address is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="manager_telephonic_number"> Manager Telephone Number if any</label>
+            <input type="text" id="manager_telephonic_number" formControlName="manager_telephonic_number" />
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+        <button
+          (click)="prevStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Back
+        </button>
+        <button
+          (click)="nextStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Next
+        </button>
+      </div>
+    </form>
+
+    <form *ngIf="currentStep === 3" [formGroup]="myForm3">
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Size of the Resturant</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="totalAreaofResturant">Total Area</label>
+            <input type="text" id="totalAreaofResturant" formControlName="totalAreaofResturant" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('totalAreaofResturant')?.hasError('required') &&
+                myForm1.get('totalAreaofResturant')?.touched
+              ">
+              Total Area is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Areaofthekitchen">Area of the kitchen:</label>
+            <input type="text" id="Areaofthekitchen" formControlName="Areaofthekitchen" />
+
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Areaofthekitchen')?.hasError('required') && myForm1.get('Areaofthekitchen')?.touched">
+              Area of the kitchen is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Areaofthepantry">Area of the pantry</label>
+            <input type="text" id="Areaofthepantry" formControlName="Areaofthepantry" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Areaofthepantry')?.hasError('required') && myForm1.get('Areaofthepantry')?.touched">
+              Area of the kitchen is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="AreaandSeatingCapacityofthedinninghall">Area and seating capacity of the dinning hall</label>
+            <input
+              type="text"
+              id="AreaandSeatingCapacityofthedinninghall"
+              formControlName="AreaandSeatingCapacityofthedinninghall" />
+
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('AreaandSeatingCapacityofthedinninghall')?.hasError('required') &&
+                myForm1.get('AreaandSeatingCapacityofthedinninghall')?.touched
+              ">
+              Area and seating capacity of the dinning hall is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Costs</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="Costoffurnitureandfixture">Cost of furniture and fixture:</label>
+            <input type="text" id="Costoffurnitureandfixture" formControlName="Costoffurnitureandfixture" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('Costoffurnitureandfixture')?.hasError('required') &&
+                myForm1.get('Costoffurnitureandfixture')?.touched
+              ">
+              Cost of furniture and fixture is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Costofequipment">Cost of equipment:</label>
+            <input type="text" id="Costofequipment" formControlName="Costofequipment" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Costofequipment')?.hasError('required') && myForm1.get('Costofequipment')?.touched">
+              Cost of equipment is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Annualrent">Annual rent</label>
+            <input type="text" id="Annualrent" formControlName="Annualrent" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Annualrent')?.hasError('required') && myForm1.get('Annualrent')?.touched">
+              Annual rent is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Workingcapital">Working capital</label>
+            <input type="text" id="Workingcapital" formControlName="Workingcapital" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Workingcapital')?.hasError('required') && myForm1.get('Workingcapital')?.touched">
+              Working capital is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Totalinvestment">Total investment</label>
+            <input type="text" id="Totalinvestment" formControlName="Totalinvestment" />
+
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Totalinvestment')?.hasError('required') && myForm1.get('Totalinvestment')?.touched">
+              Total investment is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="mt-4 text-lg font-medium">
+          Furniture and fixture
+          <span class="text-sm">(Please give details separately for the dinning hall and the kitchen)</span>
+        </h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-12">
+            <!-- <label for="hotel_area"> Area of Hotel</label> -->
+            <textarea type="text" cols="4" id="Furnitureandfixture" formControlName="Furnitureandfixture"></textarea>
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('Furnitureandfixture')?.hasError('required') && myForm1.get('Furnitureandfixture')?.touched
+              ">
+              Furniture and fixture details is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+        <button
+          (click)="prevStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Back
+        </button>
+        <button
+          (click)="nextStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Next
+        </button>
+      </div>
+    </form>
+
+    <form *ngIf="currentStep === 4" [formGroup]="myForm4">
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Facilities available on the premises</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="ReceptionBillcounter"> Reception/bill counter</label>
+            <input type="text" id="ReceptionBillcounter" formControlName="ReceptionBillcounter" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('ReceptionBillcounter')?.hasError('required') &&
+                myForm1.get('ReceptionBillcounter')?.touched
+              ">
+              Reception/bill counter details is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="TelephoneNumberofHotel">Telephone</label>
+            <input type="text" id="TelephoneNumberofHotel" formControlName="TelephoneNumberofHotel" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('TelephoneNumberofHotel')?.hasError('required') &&
+                myForm1.get('TelephoneNumberofHotel')?.touched
+              ">
+              Telephone number is required.
+            </div>
+          </div>
+
+          <div class="col-span-4">
+            <label for="coolingheating"
+              >Air conditioning or cooling and heating according to the local conditions and weather</label
+            >
+            <input type="text" id="coolingheating" formControlName="coolingheating" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('coolingheating')?.hasError('required') && myForm1.get('coolingheating')?.touched">
+              Air conditioning or cooling and heating according to the local conditions and weather detail is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Cloakroom">Cloak room</label>
+            <input type="text" id="Cloakroom" formControlName="Cloakroom" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Cloakroom')?.hasError('required') && myForm1.get('Cloakroom')?.touched">
+              Cloak room detail is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Toilet">Toilet</label>
+            <input type="text" id="Toilet" formControlName="Toilet" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Toilet')?.hasError('required') && myForm1.get('Toilet')?.touched">
+              Toilet details are required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Carpark">Car park <span>Please indicate capacity</span></label>
+            <input type="text" id="Carpark" formControlName="Carpark" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Carpark')?.hasError('required') && myForm1.get('Carpark')?.touched">
+              Car parking details are required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="Entertainments">Entertainments</label>
+            <input type="text" id="Entertainments" formControlName="Entertainments" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="myForm1.get('Entertainments')?.hasError('required') && myForm1.get('Entertainments')?.touched">
+              Entertainments are required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Types of cusisine offered</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-12">
+            <!-- <label for="hotel_area"> Area of Hotel</label> -->
+            <textarea type="text" cols="4" id="hotel_area" formControlName="Typesofcusisineoffered"></textarea>textarea
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                myForm1.get('Typesofcusisineoffered')?.hasError('required') &&
+                myForm1.get('Typesofcusisineoffered')?.touched
+              ">
+              Types of cusisine offered details are required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">
+          Class of majority of guests
+          <span class="text-sm">Please indicate whrther mostly foreigners or Pakistanis</span>
+        </h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-12">
+            <!-- <label for="hotel_area"> Area of Hotel</label> -->
+            <textarea type="text" cols="4" id="classOfguests" formControlName="classOfguests"></textarea>textarea
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+        <button
+          (click)="prevStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Back
+        </button>
+        <button
+          (click)="nextStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Next
+        </button>
+      </div>
+    </form>
+    <form *ngIf="currentStep === 5" [formGroup]="myForm5">
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Employees</h2>
+
+        <div class="mt-2 px-5">
+          <div class="grid grid-cols-12">
+            <div class="col-span-2 flex justify-center font-medium">Category</div>
+            <div class="col-span-2 flex justify-center font-medium">Totalnumber</div>
+            <div class="col-span-2 flex justify-center font-medium">Professionallytrained</div>
+            <div class="col-span-2 flex justify-center font-medium">NotProfessionallytrained</div>
+            <div class="col-span-2 flex justify-center font-medium">Apprentices</div>
+            <div class="col-span-2 flex justify-center font-medium">EnglishKnowledge</div>
+          </div>
+          <div class="my-2 grid grid-cols-12 gap-5">
+            <div class="col-span-2 flex items-center justify-center">Manager</div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="ManagerTotalnumber" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="ManagerProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="ManagerNotProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="ManagerApprentices" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="ManagerEnglishKnowledge" />
+            </div>
+          </div>
+          <div class="my-2 grid grid-cols-12 gap-5">
+            <div class="col-span-2 flex items-center justify-center">Front Office Staff/Reception</div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="FrontOfficeStaffReceptionTotalnumber" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="FrontOfficeStaffReceptionProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="FrontOfficeStaffReceptionNotProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="FrontOfficeStaffReceptionApprentices" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="FrontOfficeStaffReceptionEnglishKnowledge" />
+            </div>
+          </div>
+
+          <div class="my-2 grid grid-cols-12 gap-5">
+            <div class="col-span-2 flex items-center justify-center">Billing desk staff</div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BillingdeskstaffTotalnumber" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BillingdeskstaffProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BillingdeskstaffNotProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BillingdeskstaffApprentices" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BillingdeskstaffEnglishKnowledge" />
+            </div>
+          </div>
+
+          <div class="my-2 grid grid-cols-12 gap-5">
+            <div class="col-span-2 flex items-center justify-center">Cooks</div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="CookTotalnumber" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="CooksProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="CooksNotProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="CooksApprentices" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="CooksEnglishKnowledge" />
+            </div>
+          </div>
+          <div class="my-2 grid grid-cols-12 gap-5">
+            <div class="col-span-2 flex items-center justify-center">Bearers</div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BearersTotalnumber" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BearersProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BearersNotProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BearersApprentices" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="BearersEnglishKnowledge" />
+            </div>
+          </div>
+          <div class="my-2 grid grid-cols-12 gap-5">
+            <div class="col-span-2 flex items-center justify-center">others</div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="othersTotalnumber" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="othersProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="othersNotProfessionallytrained" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="othersApprentices" />
+            </div>
+            <div class="col-span-2">
+              <input type="text" id="hotel_area" formControlName="othersEnglishKnowledge" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Rates Charged</h2>
+        <label class="text-sm"
+          >Please give full details of room rents, service chargesm taxes and rates for breakfast, meals, etc.</label
+        >
+        <div class="form-group grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-6">
+            <div class="form-group">
+              <textarea [cols]="4" for="year">Immediate before the 1st January, 1997</textarea>
+              <input type="text" id="name" formControlName="RatesChargedbeforethe1stJanuary1997" />
+            </div>
+          </div>
+          <div class="col-span-6">
+            <textarea [cols]="4" for="name">Present with the date from which prescribed</textarea>
+            <input type="text" id="name" formControlName="RatesChargedpresent" />
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+        <button
+          (click)="prevStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Back
+        </button>
+        <button
+          (click)="nextStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Next
+        </button>
+      </div>
+    </form>
+
+    <form *ngIf="currentStep === 6" [formGroup]="myForm6">
+      <div class="form-group my-8">
+        <label for="medicalCertificate"
+          >Medical Fitness Certificate of each employee on the prescribed Form-I from a Registered Medical
+          Practitioner</label
+        >
+        <input
+          type="file"
+          id="medicalCertificate"
+          (change)="onFileChange($event, 'medicalCertificate')"
+          accept=".pdf, .jpg, .png"
+          required />
+        <div
+          class="'text-sm text-red-600"
+          *ngIf="myForm6.get('medicalCertificate')?.hasError('required')"
+          class="text-danger">
+          Medical Certificate is required
+        </div>
+        <a
+          class="rounded border border-red-500 px-3 py-2 text-red-500"
+          class="rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm6.get('medicalCertificate')?.value"
+          (click)="cancelUpload('medicalCertificate')"
+          >Cancel Image</a
+        >
+        <a
+          class="rounded border border-green-500 px-3 py-2 text-green-500"
+          class="rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm6.get('medicalCertificate')?.value"
+          (click)="reupload('medicalCertificate')"
+          >Reupload Impage</a
+        >
+        <img
+          class="h-[200px] w-[200px]"
+          *ngIf="myForm6.get('medicalCertificate')?.value"
+          [src]="myForm6?.get('medicalCertificate')?.value"
+          alt="Uploaded Image" />
+      </div>
+
+      <div class="form-group my-8">
+        <label for="buildingPlan">Building Plan of Hotel or Restaurant.</label>
+        <input
+          type="file"
+          id="buildingPlan"
+          (change)="onFileChange($event, 'buildingPlan')"
+          accept=".pdf, .jpg, .png"
+          required />
+        <div
+          class="'text-sm text-red-600"
+          *ngIf="myForm6.get('buildingPlan')?.hasError('required')"
+          class="text-danger">
+          Building Plan is required
+        </div>
+        <a
+          class="rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm6.get('buildingPlan')?.value"
+          (click)="cancelUpload('buildingPlan')"
+          >Cancel</a
+        >
+        <a
+          class="rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm6.get('buildingPlan')?.value"
+          (click)="reupload('buildingPlan')"
+          >Reupload</a
+        >
+        <img
+          class="h-[200px] w-[200px]"
+          *ngIf="myForm6.get('buildingPlan')?.value"
+          [src]="myForm6?.get('buildingPlan')?.value"
+          alt="Uploaded Image" />
+      </div>
+
+      <div class="form-group my-8">
+        <label for="roomRates">Room rates /copy of Menu Card or rate list.</label>
+        <input
+          type="file"
+          id="roomRates"
+          (change)="onFileChange($event, 'roomRates')"
+          accept=".pdf, .jpg, .png"
+          required />
+        <div class="'text-sm text-red-600" *ngIf="myForm6.get('roomRates')?.hasError('required')" class="text-danger">
+          Room Rates is required
+        </div>
+        <a
+          class="rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm6.get('roomRates')?.value"
+          (click)="cancelUpload('roomRates')"
+          >Cancel</a
+        >
+        <a
+          class="rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm6.get('roomRates')?.value"
+          (click)="reupload('roomRates')"
+          >Reupload</a
+        >
+        <img
+          class="h-[200px] w-[200px]"
+          *ngIf="myForm6.get('roomRates')?.value"
+          [src]="myForm6?.get('roomRates')?.value"
+          alt="Uploaded Image" />
+      </div>
+
+      <div class="form-group my-8">
+        <label for="nicCopy">Copy of NIC of the Proprietor/Partners//Directors/Chief Executive/General Manager.</label>
+        <input type="file" id="nicCopy" (change)="onFileChange($event, 'nicCopy')" accept=".pdf, .jpg, .png" required />
+        <div class="'text-sm text-red-600" *ngIf="myForm6.get('nicCopy')?.hasError('required')" class="text-danger">
+          CNIC is required
+        </div>
+        <a
+          class="rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm6.get('nicCopy')?.value"
+          (click)="cancelUpload('nicCopy')"
+          >Cancel</a
+        >
+        <a
+          class="rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm6.get('nicCopy')?.value"
+          (click)="reupload('nicCopy')"
+          >Reupload</a
+        >
+        <img
+          class="h-[200px] w-[200px]"
+          *ngIf="myForm6.get('nicCopy')?.value"
+          [src]="myForm6?.get('nicCopy')?.value"
+          alt="Uploaded Image" />
+      </div>
+
+      <div class="form-group my-8">
+        <label for="leaseAgreement"
+          >Attested copies of Lease Agreement /Proof of Ownership of Hotel/Restaurant premises</label
+        >
+        <input
+          type="file"
+          id="leaseAgreement"
+          (change)="onFileChange($event, 'leaseAgreement')"
+          accept=".pdf, .jpg, .png"
+          required />
+        <div
+          class="'text-sm text-red-600"
+          *ngIf="myForm6.get('leaseAgreement')?.hasError('required')"
+          class="text-danger">
+          Lease Agreement is required
+        </div>
+        <a
+          class="rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm6.get('leaseAgreement')?.value"
+          (click)="cancelUpload('leaseAgreement')"
+          >Cancel</a
+        >
+        <a
+          class="rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm6.get('leaseAgreement')?.value"
+          (click)="reupload('leaseAgreement')"
+          >Reupload</a
+        >
+        <img
+          class="h-[200px] w-[200px]"
+          *ngIf="myForm6.get('leaseAgreement')?.value"
+          [src]="myForm6?.get('leaseAgreement')?.value"
+          alt="Uploaded Image" />
+      </div>
+
+      <div class="form-group my-8">
+        <label for="partnershipDocuments"
+          >In case of a Partnership Firm attested copies of Registration Certificate and Partnership Deed duly certified
+          by the Registrar of Firms</label
+        >
+        <input
+          type="file"
+          id="partnershipDocuments"
+          (change)="onFileChange($event, 'partnershipDocuments')"
+          accept=".pdf, .jpg, .png"
+          required />
+        <div
+          class="'text-sm text-red-600"
+          *ngIf="myForm6.get('partnershipDocuments')?.hasError('required')"
+          class="text-danger">
+          Partnership Document is required
+        </div>
+        <a
+          class="rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm6.get('partnershipDocuments')?.value"
+          (click)="cancelUpload('partnershipDocuments')"
+          >Cancel</a
+        >
+        <a
+          class="rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm6.get('partnershipDocuments')?.value"
+          (click)="reupload('partnershipDocuments')"
+          >Reupload</a
+        >
+        <img
+          class="h-[200px] w-[200px]"
+          *ngIf="myForm6.get('partnershipDocuments')?.value"
+          [src]="myForm6?.get('partnershipDocuments')?.value"
+          alt="Uploaded Image" />
+      </div>
+
+      <div class="form-group my-8">
+        <label for="companyDocuments"
+          >In case of a Limited Company, attested copies of Incorporation Certificate, Memorandum and Articles of
+          Association, Form-A and Form –29 duly certified by the Registrar of Companies.</label
+        >
+        <input
+          type="file"
+          id="companyDocuments"
+          (change)="onFileChange($event, 'companyDocuments')"
+          accept=".pdf, .jpg, .png"
+          required />
+        <div
+          class="'text-sm text-red-600"
+          *ngIf="myForm6.get('companyDocuments')?.hasError('required')"
+          class="text-danger">
+          Company Document is required
+        </div>
+        <a
+          class="rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm6.get('companyDocuments')?.value"
+          (click)="cancelUpload('companyDocuments')"
+          >Cancel</a
+        >
+        <a
+          class="rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm6.get('companyDocuments')?.value"
+          (click)="reupload('companyDocuments')"
+          >Reupload</a
+        >
+        <img
+          class="h-[200px] w-[200px]"
+          *ngIf="myForm6.get('companyDocuments')?.value"
+          [src]="myForm6?.get('companyDocuments')?.value"
+          alt="Uploaded Image" />
+      </div>
+
+      <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+        <button
+          (click)="prevStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Back
+        </button>
+        <button
+          (click)="nextStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Submit
+        </button>
+      </div>
+    </form>
+
+    <!-- <div class="form-group mt-5">
+          <l class="px-3 py-2 border border-red-500 rounded text-red-500 "abel for="cnicFront">Image of CNIC (Front):</label>
+          <i class="px-3 py-2 border border-green-500 rounded text-green-500 "nput type="file" id="cnicFront" (change)="onCNICFrontChange($event)" accept="image/*" />
+          <img [src]="cnicFrontImage" *ngIf="cnicFrontImage" alt="CNIC Front" width="100" />
+        </div>
+        <div class="form-group">
+          <label for="cnicFront">Image of CNIC (Front):</label>
+          <input type="file" id="cnicFront" (change)="onCNICFrontChange($event)" accept="image/*" style="display: none" />
+          <label class="custom-file-upload"> <i class="fas fa-cloud-upload-alt"></i> Choose File </label>
+          <p *ngIf="cnicFrontImage" class="file-name">{{ cnicFrontImage.name }}</p>
+          <img [src]="cnicFrontImagePreview" *ngIf="cnicFrontImagePreview" alt="CNIC Front" width="100" />
+        </div>
+  
+        <div class="form-group">
+          <label for="cnicBack">Image of CNIC (Back):</label>
+          <input type="file" id="cnicBack" (change)="onCNICBackChange($event)" accept="image/*" />
+          <img [src]="cnicBackImage" *ngIf="cnicBackImage" alt="CNIC Back" width="100" />
+        </div> -->
+    <!-- <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+      <button
+        class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+        type="submit">
+        Submit
+      </button>
+    </div> -->
+  </div>
+</div>

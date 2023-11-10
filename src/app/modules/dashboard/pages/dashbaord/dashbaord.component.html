@@ -1,0 +1,271 @@
+<div class="mx-auto px-4 py-4 sm:px-8 lg:container">
+  <div class="mb-5 grid grid-cols-12 gap-5">
+    <div class="col-span-4 xl:col-span-4">
+      <div
+        class="notification_container items-start rounded-lg border border-gray-200 bg-white shadow dark:border-none dark:bg-night-700 dark:shadow-none">
+        <div class="xs2:pl-[49px] xs2:py-[33px] h-[365px] items-center justify-between py-[20px] px-[20px]">
+          <div class="">
+            <p class="Headingtext2 dark:text-white">Notifications</p>
+          </div>
+          <div class="pt-2">
+            <div class="my_scroll_div border-green-50">
+              <div class="mb-6 flex">
+                <div class="settinsfd flex flex-row justify-center p-3">
+                  <img
+                    class="mr-2 h-6 w-6 rounded-full"
+                    src="../../../../../assets/avatars/avt-01.jpg"
+                    alt="user photo" />
+                  <span class="text12 ml-[4px] dark:text-night-200 dark:hover:bg-night-500"
+                    >You have requested to please change the
+                    <span class="text2 text-orange-400"> Police Verfication Certificate </span>for your Hotel
+                    Registration Application.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-4 xl:col-span-4">
+      <div
+        class="notification_container items-start rounded-lg border border-gray-200 bg-white py-[20px] pl-[20px] shadow dark:border-none dark:bg-night-700 dark:shadow-none">
+        <p class="Headingtext2 dark:text-white">Number of Applications</p>
+        <p-chart type="doughnut" [data]="data" width="200" height="300" [options]="options2"></p-chart>
+      </div>
+    </div>
+    <div class="col-span-4 xl:col-span-4">
+      <div
+        class="notification_container h-[365px] items-start rounded-lg border border-gray-200 bg-white py-[20px] px-[20px] shadow dark:border-none dark:bg-night-600 dark:hover:bg-night-500">
+        <p class="Headingtext2 dark:text-white">Progress of Current Application</p>
+        <div class="mt-5 flex flex-row justify-between px-5">
+          <div class="text-sm font-bold dark:text-gray-500">Application Type</div>
+          <div class="text-sm dark:text-gray-500">Hotel Registration Form</div>
+        </div>
+        <div class="card mt-7 flex flex-col gap-5 px-5">
+          <div class="">
+            <div class="flex flex-row justify-between">
+              <div class="text-sm dark:text-gray-500">Application Submission</div>
+              <div class="text-sm dark:text-gray-500">100%</div>
+            </div>
+            <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="100"></p-progressBar>
+          </div>
+          <div>
+            <div class="flex flex-row justify-between">
+              <div class="text-sm dark:text-gray-500">Document Verification</div>
+              <div class="text-sm dark:text-gray-500">70%</div>
+            </div>
+            <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="70"></p-progressBar>
+          </div>
+          <div>
+            <div class="flex flex-row justify-between">
+              <div class="text-sm dark:text-gray-500">On-Site Verification</div>
+              <div class="text-sm dark:text-gray-500">20%</div>
+            </div>
+            <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="20"></p-progressBar>
+          </div>
+          <div>
+            <div class="flex flex-row justify-between">
+              <div class="text-sm dark:text-gray-500">Overall Progress</div>
+              <div class="text-sm dark:text-gray-500">0%</div>
+            </div>
+            <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="0"></p-progressBar>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+    <!-- Dual Card -->
+    <!-- Card -->
+    <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
+      <!-- Image -->
+      <div
+        class="flex h-[200px] cursor-pointer flex-row items-center justify-center rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+        <img class="h-[120px] w-[120px]" src="../../../../../assets/images/icons8-4-star-hotel-100.png" alt="" />
+      </div>
+      <!-- Description  -->
+      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Hotel</h2>
+
+      <!-- Buttons -->
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          (click)="gotoPage('dashboard/hotel/register')"
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
+          Apply
+        </button>
+        <button
+          (click)="showHotelDialog()"
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          View Requirements
+        </button>
+      </div>
+    </div>
+    <!-- end Card -->
+    <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
+      <!-- Image -->
+      <div
+        class="flex h-[200px] cursor-pointer flex-row items-center justify-center rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+        <img class="h-[100px] w-[100px]" src="../../../../../assets/images/icons8-tourist-guide-80.png" alt="" />
+      </div>
+      <!-- Description  -->
+      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Tourist Guide</h2>
+
+      <!-- Buttons -->
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          (click)="gotoPage('dashboard/tourist-guide/register')"
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
+          Apply
+        </button>
+        <button
+          (click)="showvisibleTravelGuide()"
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          View Requirements
+        </button>
+      </div>
+    </div>
+
+    <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
+      <!-- Image -->
+      <div
+        class="flex h-[200px] cursor-pointer flex-row items-center justify-center rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+        <img class="h-[80px] w-[80px]" src="../../../../../assets/images/icons8-travel-agency-64.png" alt="" />
+      </div>
+      <!-- Description  -->
+      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Travel Agency</h2>
+      <!-- Buttons -->
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
+          Apply
+        </button>
+        <button
+          (click)="showvisibleTravelAgency()"
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          View Requirements
+        </button>
+      </div>
+    </div>
+
+    <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
+      <!-- Image -->
+      <div
+        class="flex h-[200px] cursor-pointer flex-row items-center justify-center rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+        <img class="h-[80px] w-[80px]" src="../../../../../assets/images/icons8-resturant-66.png" alt="" />
+      </div>
+      <!-- Description  -->
+      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Resturant</h2>
+      <!-- Buttons -->
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          (click)="gotoPage('dashboard/resturant/register')"
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
+          Apply
+        </button>
+        <button
+          (click)="showvisibleResturant()"
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          View Requirements
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card justify-content-center flex">
+  <p-dialog
+    class="your-overlay-class"
+    header="Documents required to be submitted alongwith the application for registration and licence of a hotel or a restaurant. 
+"
+    [(visible)]="visibleResturant"
+    [style]="{ width: '45vw' }">
+    <ul class="list-decimal px-10">
+      <li>
+        Medical Fitness Certificate of each employee on the prescribed Form-1 from a Registered Medical Practitioner.
+      </li>
+      <li>Building Plan of Hotel or Restaurant.</li>
+      <li>Room rates /copy of Menu Card or rate list.</li>
+      <li>Copy of NIC of the Proprietor/Partners/Directors/Chief Executive/General Manager.</li>
+      <li>Attested copies of Lease Agreement /Proof of Ownership of Hotel/Restaurant premises.</li>
+      <li>
+        In case of a Partnership Firm attested copies of Registration Certificate and Partnership Deed duly certified by
+        the Registrar of Firrns
+      </li>
+      <li>
+        In case of a Limited Cornpany, attested copies of Incorporation Certificate, Memorandum and Articles of
+        Association. Form-A and Form —29 duly certified by the Registrar of Companies.
+      </li>
+    </ul>
+  </p-dialog>
+</div>
+
+<div class="card justify-content-center flex">
+  <p-dialog
+    header="Documents required to be submitted alongwith the application for registration and licence of a hotel or a restaurant. 
+  "
+    [(visible)]="visibleHotel"
+    [style]="{ width: '45vw' }">
+    <ul class="list-decimal px-10">
+      <li>
+        Medical Fitness Certificate of each employee on the prescribed Form-1 from a Registered Medical Practitioner.
+      </li>
+      <li>Building Plan of Hotel or Restaurant.</li>
+      <li>Room rates /copy of Menu Card or rate list.</li>
+      <li>Copy of NIC of the Proprietor/Partners/Directors/Chief Executive/General Manager.</li>
+      <li>Attested copies of Lease Agreement /Proof of Ownership of Hotel/Restaurant premises.</li>
+      <li>
+        In case of a Partnership Firm attested copies of Registration Certificate and Partnership Deed duly certified by
+        the Registrar of Firrns
+      </li>
+      <li>
+        In case of a Limited Cornpany, attested copies of Incorporation Certificate, Memorandum and Articles of
+        Association. Form-A and Form —29 duly certified by the Registrar of Companies.
+      </li>
+    </ul>
+  </p-dialog>
+</div>
+
+<div class="card justify-content-center flex">
+  <p-dialog
+    header="Documents required to be submitted alongwith the application for grant of tourist guide"
+    [(visible)]="visibleTravelGuide"
+    [style]="{ width: '45vw' }">
+    <ul class="list-decimal px-10">
+      <li>Attested Copy of CNIC</li>
+      <li>Attested copies of metric & F.A/FSC</li>
+      <li>Attested copy of Experience Certificate from Tour Operator</li>
+      <li>Fresh Lisence Fee <span class="text-bold"> Rs.5,000/- </span></li>
+      <li>Renewal Fee <span class="text-bold"> Rs.3,000/- </span></li>
+    </ul>
+  </p-dialog>
+</div>
+
+<div class="card justify-content-center flex">
+  <p-dialog
+    header="Documents are reuired to be submitted alongwith the application for grant of travel  agency/tour operator licence"
+    [(visible)]="visibleTravelAgency"
+    [style]="{ width: '45vw' }">
+    <ul class="list-decimal px-10">
+      <li>A Bank certificate Showing capital for not less than Rs.400,000/-.</li>
+      <li>A balance sheet showing assets and liabilities duly verified by a Chartered Accountant.</li>
+      <li>A copy of National Tax Registration No 4. A copy of lease/rent agreement of office premises.</li>
+      <li>
+        In case of partnership, a copy of partnership deed and a certificate of registration duly verified by the
+        registrar of firm.
+      </li>
+      <li>
+        In case of private limited company , a copy of memorandum and Article of Association. Incorporation Certificate
+        . Form -29.
+      </li>
+      <li>
+        A Sketch map showing various counters, windows, etc. with measurements. e business also submit the attested
+        copies of the Form-A, Form-21, etc. duly certified by the registrar of companies.
+      </li>
+      <li>A list of staff showing their qualification, training and experience of travel trade certificates.</li>
+      <li>Attested photo-copies of National Identity Card of the owners and staff.</li>
+      <li>Photo copy of registration of a car of 800cc or above.</li>
+    </ul>
+  </p-dialog>
+</div>

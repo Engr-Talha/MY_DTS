@@ -1,0 +1,54 @@
+<div class="px-10 py-10">
+  <div class="mb-10 text-xl font-semibold text-black">Applications</div>
+
+  <div class="grid grid-cols-12 gap-5">
+    <div class="col-span-4">
+      <div class="flex flex-col gap-5">
+        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+          <div class="flex flex-col">
+            <img
+              class="h-[100px] w-[100px]"
+              src="https://flowbite.com/application-ui/demo/images/users/jese-leos-2x.png"
+              alt="" />
+            <h2 class="mt-4 font-bold">Talha</h2>
+            <p><i class="pi-map-marker pi" style="color: slateblue"></i> Islamabad Pakistan</p>
+            <p class="mt-2 text-[#6b7280]">Email address</p>
+            <p class="text-sm">'user"&#64;".com'</p>
+            <p class="mt-2 text-[#6b7280]">Home address</p>
+            <p class="text-sm">Street 2 I9 Islamabad</p>
+            <p class="mt-2 text-[#6b7280]">Phone number</p>
+            <p class="text-sm">+00 123 456 789 / +12 345 678</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-7">
+      <div class="flex flex-col gap-5">
+        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+          <div class="font-bold">Hotel Registration</div>
+          <div class="my-3">
+            <p class="mt-2 text-[#6b7280]">Hotel Name</p>
+            <p class="text-sm">Red Palace</p>
+            <p class="mt-2 text-[#6b7280]">Address</p>
+            <p class="text-sm">Street 2 I9 Islamabad</p>
+            <p class="mt-2 text-[#6b7280]">Owner Name</p>
+            <p class="text-sm">Talha</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="my-5 text-xl font-semibold text-black">Upload Files Here</div>
+    <input type="file" (change)="onFileChange($event)" multiple />
+    <div *ngFor="let image of uploadedImages; let i = index">
+      <span
+        class="inline-block h-[50px] w-[50px] rounded-full border bg-green-500 hover:bg-green-700"
+        (click)="removeImage(i)"
+        >x</span
+      >
+
+      <img class="w-[500px]" [src]="image.url" alt="Uploaded Image" />
+    </div>
+  </div>
+</div>

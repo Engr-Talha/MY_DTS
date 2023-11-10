@@ -1,0 +1,291 @@
+<div class="px-10 py-10">
+  <div class="text-xl font-semibold text-black">Tourist Guide Registration Form</div>
+
+  <!-- Add this step indicator section to your template -->
+  <div class="step-indicator">
+    <div class="step">
+      <div class="step-circle" [class.active]="currentStep === 1">1</div>
+    </div>
+    <div class="step-line w-[20px]"></div>
+    <div class="step">
+      <div class="step-circle" [class.active]="currentStep === 2">2</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <form *ngIf="currentStep === 1" [formGroup]="step1Form">
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Name:</h2>
+        <div class="form-group grid-col-12 grid px-5">
+          <div class="col-span-12">
+            <label class="text-base" for="name">Name:</label>
+            <input type="text" id="name" formControlName="name" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="step1Form.get('name')?.hasError('required') && step1Form.get('name')?.touched">
+              Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Address</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="form-group col-span-6">
+            <label for="province">Businees address <span class="text-sm">(If any registered address)</span></label>
+            <input type="text" id="province" formControlName="BusinessAddress" />
+          </div>
+          <div class="form-group col-span-6">
+            <label for="town">Residential Address:</label>
+            <input type="text" id="town" formControlName="ResidentialAddress" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                step1Form.get('ResidentialAddress')?.hasError('required') &&
+                step1Form.get('ResidentialAddress')?.touched
+              ">
+              Residential Address is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Telephone number</h2>
+        <div class="form-group grid grid-cols-12 gap-5 px-5">
+          <div class="form-group col-span-4">
+            <label for="TelegraphicNumber">Telegraphic Address</label>
+            <input type="text" id="TelegraphicNumber" formControlName="TelegraphicNumber" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                step1Form.get('TelegraphicNumber')?.hasError('required') && step1Form.get('TelegraphicNumber')?.touched
+              ">
+              Telegraphic Address is required.
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="TelephoneNumberLines">Telephone Number Lines</label>
+            <input type="text" id="TelephoneNumberLines" formControlName="TelephoneNumberLines" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                step1Form.get('TelephoneNumberLines')?.hasError('required') &&
+                step1Form.get('TelephoneNumberLines')?.touched
+              ">
+              Telephone number lines is required.
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="TelephoneNumber">Telephone Number(if any)</label>
+            <input type="text" id="TelephoneNumber" formControlName="TelephoneNumber" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                step1Form.get('TelephoneNumber')?.hasError('required') && step1Form.get('TelephoneNumber')?.touched
+              ">
+              Telephone number is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Qualification</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <div class="form-group">
+              <label for="EducationalQualifications">Educational Qualification Highest</label>
+              <input type="text" id="EducationalQualifications" formControlName="EducationalQualifications" />
+              <div
+                class="text-sm text-red-600"
+                *ngIf="
+                  step1Form.get('EducationalQualifications')?.hasError('required') &&
+                  step1Form.get('EducationalQualifications')?.touched
+                ">
+                Educational qualifications is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="ExpAsTouristGuide">Experience of Tourist Guide in Years</label>
+            <input type="text" id="ExpAsTouristGuide" formControlName="ExpAsTouristGuide" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                step1Form.get('ExpAsTouristGuide')?.hasError('required') && step1Form.get('ExpAsTouristGuide')?.touched
+              ">
+              Experience as tourist guide is required.
+            </div>
+          </div>
+          <div class="form-group col-span-4">
+            <label for="ForiegnLanguage">Knowledge of foriegn languages</label>
+            <input
+              type="text"
+              id="ForiegnLanguage"
+              placeholder="Urdu English German French"
+              formControlName="ForiegnLanguage" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="
+                step1Form.get('ForiegnLanguage')?.hasError('required') && step1Form.get('ForiegnLanguage')?.touched
+              ">
+              Knowledge of foriegn languages is required.
+            </div>
+          </div>
+
+          <div class="form-group col-span-4">
+            <label for="Trainings">Training if any</label>
+            <input type="text" id="Trainings" formControlName="Trainings" />
+          </div>
+        </div>
+
+        <div class="place-item-end grid grid-cols-12 justify-items-end gap-5 px-5">
+          <button
+            (click)="nextStep()"
+            class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+            type="submit">
+            Next
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <form *ngIf="currentStep === 2" [formGroup]="step2Form" (ngSubmit)="onSubmit()">
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Bank Details</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="BankerName"
+              >Name of Banker <span class="text-sm">(Please attach refrence from Bank)</span>:</label
+            >
+            <input type="text" id="BankerName" formControlName="BankerName" />
+            <div
+              class="text-sm text-red-600"
+              *ngIf="step2Form.get('BankerName')?.hasError('required') && step2Form.get('BankerName')?.touched">
+              Name of Banker is required.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="BankerImage">Upload Image:</label><br />
+            <input type="file" id="BankerImage" formControlName="BankerImage" (change)="onImageChange($event)" />
+            <!-- <div *ngIf="step2Form.get('BankerImage')?.hasError('required')" class="text-danger">Image is required.</div> -->
+            <div *ngIf="step2Form.get('BankerImage')?.hasError('validImage')" class="text-danger">
+              Invalid image format. Supported formats: jpg, jpeg, png, gif.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Auditors details (if any)</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-6">
+            <label for="AuditorsAddress"> Name of Auditor</label>
+            <input type="text" id="AuditorsAddress" formControlName="AuditorsAddress" />
+          </div>
+          <div class="col-span-6">
+            <label for="AuditorsName"> Address of Auditor</label>
+            <input type="text" id="AuditorsName" formControlName="AuditorsName" />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Number of Staff with their roles</h2>
+        <div class="col-span-12 px-5">
+          <textarea formControlName="NumberofStaff" cols="4"></textarea>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">
+          Capital Invested
+          <span class="text-sm"
+            >(Please indicate clearly the paid up capital and enclose certificate of appropriate authority in support of
+            your statment.)</span
+          >
+        </h2>
+        <div class="col-span-12 px-5">
+          <textarea formControlName="CapitalInvested" cols="4"></textarea>
+          <div
+            class="text-sm text-red-600"
+            *ngIf="step2Form.get('CapitalInvested')?.hasError('required') && step2Form.get('CapitalInvested')?.touched">
+            Capital Invested is required.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">
+          Whether any other is activities are proposed to be undertaken if so, in what fields.
+        </h2>
+        <div class="col-span-12 px-5">
+          <textarea formControlName="OtherActivitiesunderTaken" cols="4"></textarea>
+        </div>
+      </div>
+      <div>
+        <h2 class="mt-4 text-lg font-medium">
+          Please state if you or your partner, if anyone has been convicted of an offence, if so please give details.
+        </h2>
+        <div class="col-span-12 px-5">
+          <textarea formControlName="PartnerDetails" cols="4"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-4 flex flex-col">
+        <div class="flex flex-row gap-5">
+          <label class="custom-checkbox">
+            <input type="checkbox" formControlName="isCheckeddetialsCorrect" />
+            <span class="checkmark"></span>
+          </label>
+
+          <h2 class="ml-[13px] text-lg font-medium">
+            I/we hereby solemnly declare that all the particulars give above are correct.
+          </h2>
+        </div>
+        <div
+          class="text-sm text-red-600"
+          *ngIf="
+            step2Form.get('isCheckeddetialsCorrect')?.hasError('required') &&
+            step2Form.get('isCheckeddetialsCorrect')?.touched
+          ">
+          Check is required.
+        </div>
+      </div>
+
+      <div class="mt-4 flex flex-col">
+        <div class="mt-4 flex flex-row gap-5">
+          <label class="custom-checkbox">
+            <input type="checkbox" formControlName="isCheckedAccpet" />
+            <span class="checkmark"></span>
+          </label>
+
+          <h2 class="ml-[13px] text-lg font-medium">
+            I/we hereby solemnly declare that if a licence is granted to me.us, I.we will abide by the Pakistan Tourist
+            Guides, Act 1976 and Rules made the re-under.
+          </h2>
+        </div>
+        <div
+          class="text-sm text-red-600"
+          *ngIf="step2Form.get('isCheckedAccpet')?.hasError('required') && step2Form.get('isCheckedAccpet')?.touched">
+          Declaration is required.
+        </div>
+      </div>
+      <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+        <button
+          (click)="prevStep()"
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Back
+        </button>
+        <button
+          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          type="submit">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

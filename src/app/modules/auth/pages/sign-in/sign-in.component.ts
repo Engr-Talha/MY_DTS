@@ -1,0 +1,58 @@
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { NgClass, NgIf } from '@angular/common';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.scss'],
+  standalone: true,
+  imports: [FormsModule, ReactiveFormsModule, RouterLink, AngularSvgIconModule, NgClass, NgIf],
+})
+export class SignInComponent implements OnInit {
+  form!: FormGroup;
+  submitted = false;
+  passwordTextType!: boolean;
+
+  constructor(private readonly _formBuilder: FormBuilder, private readonly _router: Router) {}
+
+  ngOnInit(): void {
+    this.form = this._formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
+
+  get f() {
+    return this.form.controls;
+  }
+
+  togglePasswordTextType() {
+    this.passwordTextType = !this.passwordTextType;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    const { email, password } = this.form.value;
+    console.log('form values', email, password);
+
+    // stop here if form is invalid
+    if (this.form.valid) {
+      if (email == 'user@gmail.com') {
+        this._router.navigate(['/']);
+        localStorage.setItem('user', '1');
+      } else if (email == 'inspector@gmail.com') {
+        this._router.navigate(['/inspector-dashboard']);
+        localStorage.setItem('user', '2');
+      } else if (email == 'controller@gmail.com') {
+        this._router.navigate(['/controller-dashboard']);
+        localStorage.setItem('user', '3');
+      } else if (email == 'dptcontroller@gmail.com') {
+        this._router.navigate(['/dptcontroller-dashboard']);
+        localStorage.setItem('user', '4');
+      }
+    }
+  }
+}

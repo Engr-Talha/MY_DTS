@@ -1,0 +1,137 @@
+<div class="mx-auto px-4 py-4 sm:px-8 lg:container">
+  <!-- Header -->
+  <!-- <app-nft-header></app-nft-header> -->
+  <!-- end Header -->
+
+  <div class="mb-5 grid grid-cols-12 lg:grid-cols-2">
+    <div class="col-span-6 xl:col-span-7">
+      <div class="notification_container items-start rounded-lg border border-gray-200 bg-white shadow">
+        <div class="xs2:pl-[49px] xs2:py-[33px] items-center justify-between py-[20px] pl-[20px]">
+          <div class="">
+            <p class="Headingtext2">Notifications</p>
+            <!-- <p class="text mt-[2.5px]">Today</p> -->
+          </div>
+          <div class="pt-2">
+            <div class="my_scroll_div border-green-50">
+              <div class="mb-6 flex">
+                <div class="settinsfd flex flex-row justify-center p-3">
+                  <img
+                    class="mr-2 h-6 w-6 rounded-full"
+                    src="../../../../../assets/avatars/avt-01.jpg"
+                    alt="user photo" />
+                  <span class="text12 ml-[4px]"
+                    >Inspector Abid has <span class="text2 text-orange-400"> rejected</span> your Hotel
+                    Application.</span
+                  >
+
+                  <!-- <i
+              (click)="hearaudio(item.data)"
+              class="pi pi-volume-up hover:text-[#20c0a0]"
+            ></i> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <app-learner-stats></app-learner-stats> -->
+    </div>
+    <div class="col-span-6 mt-3 xl:col-span-5">
+      <div class="card justify-content-center flex">hello</div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+    <!-- Dual Card -->
+    <!-- Card -->
+    <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
+      <!-- Image -->
+      <div
+        class="flex h-[200px] cursor-pointer flex-row items-center justify-center rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+        <img class="h-[120px] w-[120px]" src="../../../../../assets/images/icons8-4-star-hotel-100.png" alt="" />
+      </div>
+      <!-- Description  -->
+      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Hotel</h2>
+
+      <!-- Buttons -->
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          (click)="gotoPage('dashboard/hotel/register')"
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
+          Apply
+        </button>
+        <button
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          View Requirements
+        </button>
+      </div>
+    </div>
+    <!-- end Card -->
+    <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
+      <!-- Image -->
+      <div
+        class="flex h-[200px] cursor-pointer flex-row items-center justify-center rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+        <img class="h-[100px] w-[100px]" src="../../../../../assets/images/icons8-tourist-guide-80.png" alt="" />
+      </div>
+      <!-- Description  -->
+      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Tourist Guide</h2>
+
+      <!-- Buttons -->
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          (click)="gotoPage('dashboard/tourist-guide/register')"
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
+          Apply
+        </button>
+        <button
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          View Requirements
+        </button>
+      </div>
+    </div>
+
+    <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
+      <!-- Image -->
+      <div
+        class="flex h-[200px] cursor-pointer flex-row items-center justify-center rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+        <img class="h-[80px] w-[80px]" src="../../../../../assets/images/icons8-travel-agency-64.png" alt="" />
+      </div>
+      <!-- Description  -->
+      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Travel Agency</h2>
+      <!-- Buttons -->
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
+          Apply
+        </button>
+        <button
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          View Requirements
+        </button>
+      </div>
+    </div>
+
+    <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
+      <!-- Image -->
+      <div
+        class="flex h-[200px] cursor-pointer flex-row items-center justify-center rounded-md bg-cover transition duration-150 ease-in-out hover:opacity-75">
+        <img class="h-[80px] w-[80px]" src="../../../../../assets/images/icons8-resturant-66.png" alt="" />
+      </div>
+      <!-- Description  -->
+      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Resturant</h2>
+      <!-- Buttons -->
+      <div class="mt-6 flex items-center justify-between">
+        <button
+          (click)="gotoPage('dashboard/resturant/register')"
+          class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
+          Apply
+        </button>
+        <button
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          View Requirements
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

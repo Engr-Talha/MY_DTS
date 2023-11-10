@@ -1,0 +1,33 @@
+<div class="px-10 py-10">
+  <div class="mb-10 text-xl font-semibold text-black">Applications</div>
+
+  <div
+    class="rounded-lg border border-gray-200 bg-white py-5 shadow dark:border-none dark:bg-night-700 dark:shadow-none">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th *ngFor="let header of tableHeaders">{{ header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data2">
+          <td>{{ item.code }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.Category }}</td>
+          <td>{{ item.status }}</td>
+          <td>{{ item.date }}</td>
+          <td>
+            <button
+              (click)="NavigateTo('/inspector-dashboard/user-applications/1')"
+              class="cursor-pointer rounded-lg bg-green-500 py-2 px-4 text-white hover:bg-green-800">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mt-2 mr-16 flex cursor-pointer flex-row justify-end">
+      <p class="text-gray-500 hover:underline"></p>
+    </div>
+  </div>
+</div>
