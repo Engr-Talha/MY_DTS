@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ChartModule } from 'primeng/chart';
 import { DashbaordComponent } from './pages/dashbaord/dashbaord.component';
@@ -19,6 +19,7 @@ import { ButtonModule } from 'primeng/button';
     ChartModule,
     CommonModule,
     ButtonModule,
+    HttpClientModule,
   ],
   declarations: [DashbaordComponent],
 })

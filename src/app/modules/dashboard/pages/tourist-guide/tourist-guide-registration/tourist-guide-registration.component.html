@@ -169,7 +169,11 @@
           </div>
           <div class="col-span-4">
             <label for="BankerImage">Upload Image:</label><br />
-            <input type="file" id="BankerImage" formControlName="BankerImage" (change)="onImageChange($event)" />
+            <input
+              type="file"
+              id="BankerImage"
+              formControlName="BankerImage"
+              (change)="onImageChange($event, 'BankerImage')" />
             <!-- <div *ngIf="step2Form.get('BankerImage')?.hasError('required')" class="text-danger">Image is required.</div> -->
             <div *ngIf="step2Form.get('BankerImage')?.hasError('validImage')" class="text-danger">
               Invalid image format. Supported formats: jpg, jpeg, png, gif.
@@ -183,20 +187,61 @@
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-6">
             <label for="AuditorsAddress"> Name of Auditor</label>
-            <input type="text" id="AuditorsAddress" formControlName="AuditorsAddress" />
+            <input type="text" id="AuditorsAddress" formControlName="AuditorsName" />
           </div>
           <div class="col-span-6">
             <label for="AuditorsName"> Address of Auditor</label>
-            <input type="text" id="AuditorsName" formControlName="AuditorsName" />
+            <input type="text" id="AuditorsName" formControlName="AuditorsAddress" />
           </div>
         </div>
       </div>
 
+      <!-- Form Group name -->
       <div>
         <h2 class="mt-4 text-lg font-medium">Number of Staff with their roles</h2>
         <div class="col-span-12 px-5">
           <textarea formControlName="NumberofStaff" cols="4"></textarea>
         </div>
+      </div>
+
+      <div formArrayName="employees">
+        <div *ngFor="let employee of employees.controls; let i = index">
+          <div [formGroupName]="i" class="grid grid-cols-12 gap-5">
+            <div class="col-span-4">
+              <label for="name">Name</label>
+              <input type="text" formControlName="name" />
+            </div>
+            <div class="col-span-4">
+              <label for="name">employmentStatus</label>
+              <input type="text" formControlName="employmentStatus" />
+            </div>
+            <div class="col-span-4">
+              <label for="name">experience</label>
+              <input type="text" formControlName="experience" />
+            </div>
+            <div class="col-span-4">
+              <label for="name">qualification</label>
+              <input type="text" formControlName="qualification" />
+              <!-- Add other fields: employmentStatus, qualification, experience -->
+            </div>
+            <div>
+              <button
+                class="rounded-sm border bg-green-400 px-5 py-3 hover:bg-white"
+                type="button"
+                (click)="removeEmployee(i)">
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-3 flex flex-row items-end justify-end">
+        <button
+          class="rounded-sm border bg-green-400 px-5 py-3 text-sm hover:bg-white"
+          type="button"
+          (click)="addEmployee()">
+          Click here to add Staff/Employee Details.
+        </button>
       </div>
 
       <div>
@@ -230,7 +275,77 @@
           Please state if you or your partner, if anyone has been convicted of an offence, if so please give details.
         </h2>
         <div class="col-span-12 px-5">
-          <textarea formControlName="PartnerDetails" cols="4"></textarea>
+          <textarea formControlName="convicted_offence" cols="4"></textarea>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mt-4 text-lg font-medium">Documents</h2>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="cnicFrontAttachment">Upload CNIC Front Image:</label><br />
+            <input
+              type="file"
+              id="cnicFrontAttachment"
+              formControlName="cnicFrontAttachment"
+              (change)="onImageChange($event, 'cnicFrontAttachment')" />
+            <!-- <div *ngIf="step2Form.get('cnicFrontAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
+            <div *ngIf="step2Form.get('cnicFrontAttachment')?.hasError('validImage')" class="text-danger">
+              Invalid image format. Supported formats: jpg, jpeg, png, gif.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="cnicBackAttachment">Upload CNIC Back Image:</label><br />
+            <input
+              type="file"
+              id="cnicBackAttachment"
+              formControlName="cnicBackAttachment"
+              (change)="onImageChange($event, 'cnicBackAttachment')" />
+            <!-- <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
+            <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('validImage')" class="text-danger">
+              Invalid image format. Supported formats: jpg, jpeg, png, gif.
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="metricAttachment">Upload Matric Degree Image:</label><br />
+            <input
+              type="file"
+              id="metricAttachment"
+              formControlName="metricAttachment"
+              (change)="onImageChange($event, 'metricAttachment')" />
+            <!-- <div *ngIf="step2Form.get('metricAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
+            <div *ngIf="step2Form.get('metricAttachment')?.hasError('validImage')" class="text-danger">
+              Invalid image format. Supported formats: jpg, jpeg, png, gif.
+            </div>
+          </div>
+          <div class="col-span-4">
+            <label for="fscAttachment">Upload FSC Degree Image:</label><br />
+            <input
+              type="file"
+              id="fscAttachment"
+              formControlName="fscAttachment"
+              (change)="onImageChange($event, 'fscAttachment')" />
+            <!-- <div *ngIf="step2Form.get('fscAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
+            <div *ngIf="step2Form.get('fscAttachment')?.hasError('validImage')" class="text-danger">
+              Invalid image format. Supported formats: jpg, jpeg, png, gif.
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-5 px-5">
+          <div class="col-span-4">
+            <label for="experienceAttachment">Upload Experience Image:</label><br />
+            <input
+              type="file"
+              id="experienceAttachment"
+              formControlName="experienceAttachment"
+              (change)="onImageChange($event, 'ExperienceImage')" />
+            <!-- <div *ngIf="step2Form.get('experienceAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
+            <div *ngIf="step2Form.get('experienceAttachment')?.hasError('validImage')" class="text-danger">
+              Invalid image format. Supported formats: jpg, jpeg, png, gif.
+            </div>
+          </div>
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ChartModule } from 'primeng/chart';
@@ -50,6 +50,6 @@ import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
       lazy: false,
     }),
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [HttpClientModule],
 })
 export class LayoutModule {}

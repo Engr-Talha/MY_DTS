@@ -6,14 +6,9 @@
     "type": "git"
   },
   "keywords": [
-    "angular",
-    "tailwind",
-    "starter-kit",
-    "tailwind-template",
-    "dark mode",
-    "open source"
+    "angular"
   ],
-  "author": "Luciano Oliveira <me@lanno.dev>",
+  "author": "NITB",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
