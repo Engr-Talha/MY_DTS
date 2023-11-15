@@ -1,0 +1,46 @@
+:host ::ng-deep {
+  .p-progressbar.p-component.p-progressbar-determinate {
+    height: 10px;
+  }
+}
+::ng-deep .ui-widget-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000; /* Adjust the z-index value as needed */
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+th,
+td {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  table {
+    border-collapse: collapse;
+    display: block;
+    width: 100%;
+  }
+  th,
+  td {
+    display: block;
+    text-align: right;
+  }
+  th {
+    background: #f2f2f2;
+  }
+  td {
+    border-top: 1px solid #e7e7e7;
+  }
+}

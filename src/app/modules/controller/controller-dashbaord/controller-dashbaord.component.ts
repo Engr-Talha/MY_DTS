@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 interface Column {
   field: string;
   header: string;
 }
 
 @Component({
-  selector: 'app-inspector-dashboard',
-  templateUrl: './inspector-dashboard.component.html',
-  styleUrls: ['./inspector-dashboard.component.scss'],
+  selector: 'app-controller-dashbaord',
+  templateUrl: './controller-dashbaord.component.html',
+  styleUrls: ['./controller-dashbaord.component.scss'],
 })
-export class InspectorDashboardComponent {
+export class ControllerDashbaordComponent {
   datatable: any;
   cols!: Column[];
 

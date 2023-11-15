@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ChartModule } from 'primeng/chart';
@@ -10,11 +10,15 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { TableModule } from 'primeng/table';
-
+import { CalendarModule } from 'primeng/calendar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
 @NgModule({
   imports: [
     LayoutRoutingModule,
+    ReactiveFormsModule,
     ProgressBarModule,
+    FormsModule,
     ToastModule,
     DropdownModule,
     ChartModule,
@@ -22,6 +26,7 @@ import { TableModule } from 'primeng/table';
     AngularSvgIconModule.forRoot(),
     ButtonModule,
     TableModule,
+    CalendarModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 20,
@@ -45,5 +50,6 @@ import { TableModule } from 'primeng/table';
       lazy: false,
     }),
   ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 })
 export class LayoutModule {}

@@ -22,15 +22,15 @@ export class MenuService implements OnDestroy {
     console.log('====================================');
     console.log(Usertype, this.accounttype);
     console.log('====================================');
-    // if (this.accounttype == 1) {
-    //   this._pagesMenu.set(Menu.pages);
-    // } else if (this.accounttype == 2) {
-    //   this._pagesMenu.set(Menu.InspectorControllerpages);
-    // } else if (this.accounttype == 3) {
-    //   this._pagesMenu.set(Menu.DptControllerpages);
-    // }
+    if (this.accounttype == 1) {
+      this._pagesMenu.set(Menu.pages);
+    } else if (this.accounttype == 2) {
+      this._pagesMenu.set(Menu.InspectorControllerpages);
+    } else if (this.accounttype == 3) {
+      this._pagesMenu.set(Menu.Controllerpages);
+    }
 
-    this._pagesMenu.set(Menu.pages);
+    // this._pagesMenu.set(Menu.pages);
 
     let sub = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {

@@ -1,6 +1,6 @@
 <div class="mx-auto px-4 py-4 sm:px-8 lg:container">
   <div class="mb-5 grid grid-cols-12 gap-5">
-    <div class="col-span-4 xl:col-span-4">
+    <div class="col-span-12 md:col-span-6 xl:col-span-4">
       <div
         class="notification_container items-start rounded-lg border border-gray-200 bg-white shadow dark:border-none dark:bg-night-700 dark:shadow-none">
         <div class="xs2:pl-[49px] xs2:py-[33px] h-[365px] items-center justify-between py-[20px] px-[20px]">
@@ -27,14 +27,14 @@
         </div>
       </div>
     </div>
-    <div class="col-span-4 xl:col-span-4">
+    <div class="col-span-12 md:col-span-6 xl:col-span-4">
       <div
         class="notification_container items-start rounded-lg border border-gray-200 bg-white py-[20px] pl-[20px] shadow dark:border-none dark:bg-night-700 dark:shadow-none">
         <p class="Headingtext2 dark:text-white">Number of Applications</p>
         <p-chart type="doughnut" [data]="data" width="200" height="300" [options]="options2"></p-chart>
       </div>
     </div>
-    <div class="col-span-4 xl:col-span-4">
+    <div class="col-span-12 md:col-span-6 xl:col-span-4">
       <div
         class="notification_container h-[365px] items-start rounded-lg border border-gray-200 bg-white py-[20px] px-[20px] shadow dark:border-none dark:bg-night-600 dark:hover:bg-night-500">
         <p class="Headingtext2 dark:text-white">Progress of Current Application</p>
@@ -76,7 +76,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4">
     <!-- Dual Card -->
     <!-- Card -->
     <div class="flex h-[320px] flex-col rounded-lg bg-white p-8 dark:bg-night-700">
@@ -86,7 +86,7 @@
         <img class="h-[120px] w-[120px]" src="../../../../../assets/images/icons8-4-star-hotel-100.png" alt="" />
       </div>
       <!-- Description  -->
-      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Hotel</h2>
+      <h2 class="text-md mt-6 text-center font-semibold text-gray-900 dark:text-night-50">Apply for Hotel</h2>
 
       <!-- Buttons -->
       <div class="mt-6 flex items-center justify-between">
@@ -110,7 +110,7 @@
         <img class="h-[100px] w-[100px]" src="../../../../../assets/images/icons8-tourist-guide-80.png" alt="" />
       </div>
       <!-- Description  -->
-      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Tourist Guide</h2>
+      <h2 class="text-md mt-6 text-center font-semibold text-gray-900 dark:text-night-50">Apply for Tourist Guide</h2>
 
       <!-- Buttons -->
       <div class="mt-6 flex items-center justify-between">
@@ -143,7 +143,7 @@
         </button>
         <button
           (click)="showvisibleTravelAgency()"
-          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
+          class="flex-none rounded-md bg-gray-100 px-4 py-2.5 text-center text-xs font-semibold text-gray-500 hover:bg-gray-200 dark:bg-night-600 dark:text-night-200 dark:hover:bg-night-500">
           View Requirements
         </button>
       </div>
@@ -156,7 +156,7 @@
         <img class="h-[80px] w-[80px]" src="../../../../../assets/images/icons8-resturant-66.png" alt="" />
       </div>
       <!-- Description  -->
-      <h2 class="text-md mt-6 font-semibold text-gray-900 dark:text-night-50">Apply for Resturant</h2>
+      <h2 class="text-md mt-6 text-center font-semibold text-gray-900 dark:text-night-50">Apply for Resturant</h2>
       <!-- Buttons -->
       <div class="mt-6 flex items-center justify-between">
         <button

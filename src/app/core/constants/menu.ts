@@ -94,6 +94,36 @@ export class Menu {
       ],
     },
   ];
+
+  public static Controllerpages: MenuItem[] = [
+    {
+      group: 'Dashboard',
+      separator: false,
+      items: [
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Dashboard',
+          route: '/controller-dashboard',
+          children: [
+            { label: 'Dashboard', route: '/controller-dashboard' },
+
+            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
+          ],
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Applications',
+          route: '',
+          children: [
+            { label: 'New Application', route: '/controller-dashboard/application-listing' },
+            { label: 'Pending Applications', route: '/controller-dashboard/application-listing' },
+            { label: 'Submitted Applications', route: '/controller-dashboard/application-listing' },
+            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
+          ],
+        },
+      ],
+    },
+  ];
   public static InspectorControllerpages: MenuItem[] = [
     {
       group: 'Dashboard',
