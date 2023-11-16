@@ -2,16 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-button',
+  selector: 'app-loader',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <p>
-      button works!
-    </p>
-  `,
-  styleUrls: ['./button.component.scss']
+  templateUrl: './loader.component.html',
+  styleUrls: ['./loader.component.scss']
 })
-export class ButtonComponent {
+export class LoaderComponent {
 
 }

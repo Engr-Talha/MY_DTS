@@ -1,3 +1,5 @@
+<p-toast></p-toast>
+
 <div class="px-10 py-10">
   <div class="text-xl font-semibold text-black">Tourist Guide Registration Form</div>
 
@@ -15,7 +17,7 @@
   <div class="grid">
     <form *ngIf="currentStep === 1" [formGroup]="step1Form">
       <div>
-        <h2 class="mt-4 text-lg font-medium">Name:</h2>
+        <h2 class="mt-4 text-lg font-normal">Name:</h2>
         <div class="form-group grid-col-12 grid px-5">
           <div class="col-span-12">
             <label class="text-base" for="name">Name:</label>
@@ -30,10 +32,10 @@
       </div>
 
       <div>
-        <h2 class="mt-4 text-lg font-medium">Address</h2>
+        <h2 class="mt-4 text-lg font-normal">Address</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="form-group col-span-6">
-            <label for="province">Businees address <span class="text-sm">(If any registered address)</span></label>
+            <label for="province">Business address <span class="text-sm">(If any registered address)</span></label>
             <input type="text" id="province" formControlName="BusinessAddress" />
           </div>
           <div class="form-group col-span-6">
@@ -52,9 +54,9 @@
       </div>
 
       <div>
-        <h2 class="mt-4 text-lg font-medium">Telephone number</h2>
+        <h2 class="mt-4 text-lg font-normal">Telephone number</h2>
         <div class="form-group grid grid-cols-12 gap-5 px-5">
-          <div class="form-group col-span-4">
+          <div class="form-group col-span-4 my-2">
             <label for="TelegraphicNumber">Telegraphic Address</label>
             <input type="text" id="TelegraphicNumber" formControlName="TelegraphicNumber" />
             <div
@@ -65,7 +67,7 @@
               Telegraphic Address is required.
             </div>
           </div>
-          <div class="form-group col-span-4">
+          <div class="form-group col-span-4 my-2">
             <label for="TelephoneNumberLines">Telephone Number Lines</label>
             <input type="text" id="TelephoneNumberLines" formControlName="TelephoneNumberLines" />
             <div
@@ -77,7 +79,7 @@
               Telephone number lines is required.
             </div>
           </div>
-          <div class="form-group col-span-4">
+          <div class="form-group col-span-4 my-2">
             <label for="TelephoneNumber">Telephone Number(if any)</label>
             <input type="text" id="TelephoneNumber" formControlName="TelephoneNumber" />
             <div
@@ -92,9 +94,9 @@
       </div>
 
       <div>
-        <h2 class="mt-4 text-lg font-medium">Qualification</h2>
+        <h2 class="mt-4 text-lg font-normal">Qualification</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
-          <div class="col-span-4">
+          <div class="col-span-4 my-2">
             <div class="form-group">
               <label for="EducationalQualifications">Educational Qualification Highest</label>
               <input type="text" id="EducationalQualifications" formControlName="EducationalQualifications" />
@@ -108,7 +110,7 @@
               </div>
             </div>
           </div>
-          <div class="form-group col-span-4">
+          <div class="form-group col-span-4 my-2">
             <label for="ExpAsTouristGuide">Experience of Tourist Guide in Years</label>
             <input type="text" id="ExpAsTouristGuide" formControlName="ExpAsTouristGuide" />
             <div
@@ -119,7 +121,7 @@
               Experience as tourist guide is required.
             </div>
           </div>
-          <div class="form-group col-span-4">
+          <div class="form-group col-span-4 my-2">
             <label for="ForiegnLanguage">Knowledge of foriegn languages</label>
             <input
               type="text"
@@ -135,16 +137,16 @@
             </div>
           </div>
 
-          <div class="form-group col-span-4">
-            <label for="Trainings">Training if any</label>
+          <div class="form-group col-span-4 my-2">
+            <label for="Trainings">Training (if any)</label>
             <input type="text" id="Trainings" formControlName="Trainings" />
           </div>
         </div>
 
-        <div class="place-item-end grid grid-cols-12 justify-items-end gap-5 px-5">
+        <div class="place-item-end mr-[10%] flex justify-end gap-5">
           <button
             (click)="nextStep()"
-            class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+            class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
             type="submit">
             Next
           </button>
@@ -154,9 +156,9 @@
 
     <form *ngIf="currentStep === 2" [formGroup]="step2Form" (ngSubmit)="onSubmit()">
       <div>
-        <h2 class="mt-4 text-lg font-medium">Bank Details</h2>
+        <h2 class="mt-4 text-lg font-normal">Bank Details</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
-          <div class="col-span-4">
+          <div class="col-span-4 my-2">
             <label for="BankerName"
               >Name of Banker <span class="text-sm">(Please attach refrence from Bank)</span>:</label
             >
@@ -167,7 +169,7 @@
               Name of Banker is required.
             </div>
           </div>
-          <div class="col-span-4">
+          <div class="col-span-4 my-2">
             <label for="BankerImage">Upload Image:</label><br />
             <input
               type="file"
@@ -183,7 +185,7 @@
       </div>
 
       <div>
-        <h2 class="mt-4 text-lg font-medium">Auditors details (if any)</h2>
+        <h2 class="mt-4 text-lg font-normal">Auditors details (if any)</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-6">
             <label for="AuditorsAddress"> Name of Auditor</label>
@@ -198,7 +200,7 @@
 
       <!-- Form Group name -->
       <div>
-        <h2 class="mt-4 text-lg font-medium">Number of Staff with their roles</h2>
+        <h2 class="mt-4 text-lg font-normal">Number of Staff with their roles</h2>
         <div class="col-span-12 px-5">
           <textarea formControlName="NumberofStaff" cols="4"></textarea>
         </div>
@@ -207,24 +209,24 @@
       <div formArrayName="employees">
         <div *ngFor="let employee of employees.controls; let i = index">
           <div [formGroupName]="i" class="grid grid-cols-12 gap-5">
-            <div class="col-span-4">
+            <div class="col-span-3 my-2">
               <label for="name">Name</label>
               <input type="text" formControlName="name" />
             </div>
-            <div class="col-span-4">
-              <label for="name">employmentStatus</label>
+            <div class="col-span-3 my-2">
+              <label for="name">Employment Status</label>
               <input type="text" formControlName="employmentStatus" />
             </div>
-            <div class="col-span-4">
-              <label for="name">experience</label>
+            <div class="col-span-2 my-2">
+              <label for="name">Experience</label>
               <input type="text" formControlName="experience" />
             </div>
-            <div class="col-span-4">
-              <label for="name">qualification</label>
+            <div class="col-span-2 my-2">
+              <label for="name">Qualification highest degree</label>
               <input type="text" formControlName="qualification" />
               <!-- Add other fields: employmentStatus, qualification, experience -->
             </div>
-            <div>
+            <div class="col-span-2 my-2">
               <button
                 class="rounded-sm border bg-green-400 px-5 py-3 hover:bg-white"
                 type="button"
@@ -240,12 +242,12 @@
           class="rounded-sm border bg-green-400 px-5 py-3 text-sm hover:bg-white"
           type="button"
           (click)="addEmployee()">
-          Click here to add Staff/Employee Details.
+          Add Staff/Employee Details.
         </button>
       </div>
 
       <div>
-        <h2 class="mt-4 text-lg font-medium">
+        <h2 class="mt-4 text-lg font-normal">
           Capital Invested
           <span class="text-sm"
             >(Please indicate clearly the paid up capital and enclose certificate of appropriate authority in support of
@@ -263,7 +265,7 @@
       </div>
 
       <div>
-        <h2 class="mt-4 text-lg font-medium">
+        <h2 class="mt-4 text-lg font-normal">
           Whether any other is activities are proposed to be undertaken if so, in what fields.
         </h2>
         <div class="col-span-12 px-5">
@@ -271,7 +273,7 @@
         </div>
       </div>
       <div>
-        <h2 class="mt-4 text-lg font-medium">
+        <h2 class="mt-4 text-lg font-normal">
           Please state if you or your partner, if anyone has been convicted of an offence, if so please give details.
         </h2>
         <div class="col-span-12 px-5">
@@ -280,9 +282,9 @@
       </div>
 
       <div>
-        <h2 class="mt-4 text-lg font-medium">Documents</h2>
+        <h2 class="mt-4 text-lg font-normal">Documents</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
-          <div class="col-span-4">
+          <div class="col-span-4 my-2 my-2">
             <label for="cnicFrontAttachment">Upload CNIC Front Image:</label><br />
             <input
               type="file"
@@ -294,7 +296,7 @@
               Invalid image format. Supported formats: jpg, jpeg, png, gif.
             </div>
           </div>
-          <div class="col-span-4">
+          <div class="col-span-4 my-2 my-2">
             <label for="cnicBackAttachment">Upload CNIC Back Image:</label><br />
             <input
               type="file"
@@ -308,7 +310,7 @@
           </div>
         </div>
         <div class="grid grid-cols-12 gap-5 px-5">
-          <div class="col-span-4">
+          <div class="col-span-4 my-2 my-2">
             <label for="metricAttachment">Upload Matric Degree Image:</label><br />
             <input
               type="file"
@@ -320,7 +322,7 @@
               Invalid image format. Supported formats: jpg, jpeg, png, gif.
             </div>
           </div>
-          <div class="col-span-4">
+          <div class="col-span-4 my-2">
             <label for="fscAttachment">Upload FSC Degree Image:</label><br />
             <input
               type="file"
@@ -334,7 +336,7 @@
           </div>
         </div>
         <div class="grid grid-cols-12 gap-5 px-5">
-          <div class="col-span-4">
+          <div class="col-span-4 my-2">
             <label for="experienceAttachment">Upload Experience Image:</label><br />
             <input
               type="file"
@@ -356,7 +358,7 @@
             <span class="checkmark"></span>
           </label>
 
-          <h2 class="ml-[13px] text-lg font-medium">
+          <h2 class="ml-[13px] text-lg font-normal">
             I/we hereby solemnly declare that all the particulars give above are correct.
           </h2>
         </div>
@@ -377,7 +379,7 @@
             <span class="checkmark"></span>
           </label>
 
-          <h2 class="ml-[13px] text-lg font-medium">
+          <h2 class="ml-[13px] text-lg font-normal">
             I/we hereby solemnly declare that if a licence is granted to me.us, I.we will abide by the Pakistan Tourist
             Guides, Act 1976 and Rules made the re-under.
           </h2>
@@ -388,15 +390,15 @@
           Declaration is required.
         </div>
       </div>
-      <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
+      <div class="place-item-end mr-[10%] ml-[10%] flex items-center justify-end gap-5 px-5">
         <button
           (click)="prevStep()"
-          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Back
         </button>
         <button
-          class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
+          class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Submit
         </button>
@@ -404,3 +406,5 @@
     </form>
   </div>
 </div>
+
+<app-loader *ngIf="isLoading"></app-loader>

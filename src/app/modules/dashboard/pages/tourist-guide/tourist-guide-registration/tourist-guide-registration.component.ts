@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormArray, FormGroup, Validators } from '@angular/forms';
 import { TouristGuideService } from 'src/app/core/services/tourist-guide.service';
+import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tourist-guide-registration',
   templateUrl: './tourist-guide-registration.component.html',
   styleUrls: ['./tourist-guide-registration.component.scss'],
+  providers: [MessageService],
 })
 export class TouristGuideRegistrationComponent {
   myForm!: FormGroup;
-
+  isLoading: boolean = false;
   years: number[] = [];
   isCheckedAccpet: boolean = false;
   isCheckeddetialsCorrect: boolean = false;
@@ -19,7 +22,11 @@ export class TouristGuideRegistrationComponent {
 
   employees!: FormArray; // Declare employees as FormArray
 
-  constructor(private TouristGuideService: TouristGuideService) {
+  constructor(
+    private router: Router,
+    private TouristGuideService: TouristGuideService,
+    private messageService: MessageService,
+  ) {
     this.initTouristGuideForm();
     this.initStep1Form();
     this.initStep2Form();
@@ -119,14 +126,15 @@ export class TouristGuideRegistrationComponent {
     console.log('====================================');
     this.markFormGroupTouched(this.step2Form);
 
-    // if (this.myForm.invalid) {
-    //   // Handle form validation errors
-    //   return;
-    // }
+    if (this.step2Form.invalid) {
+      // Handle form validation errors
+      return;
+    }
 
     // this.step1Form;
     const formData = new FormData();
-    formData.append('courseDescription', this.step1Form?.value['name']);
+    formData.append('user_id', '1');
+    formData.append('name', this.step1Form?.value['name']);
     formData.append('bussiness_address', this.step1Form?.value['BusinessAddress']);
     formData.append('residential_address', this.step1Form?.value['ResidentialAddress']);
     formData.append('telegraphic_address', this.step1Form?.value['TelegraphicNumber']);
@@ -137,42 +145,31 @@ export class TouristGuideRegistrationComponent {
     formData.append('languages', this.step1Form?.value['ForiegnLanguage']);
     formData.append('traning', this.step1Form?.value['Trainings']);
     formData.append('banker_name', this.step2Form?.value['BankerName']);
-    formData.append('touristAttachment', this.bankerImage);
-    formData.append('staff_details', this.step2Form?.value['employees']);
+    formData.append('bankAttachment', this.bankerImage);
+    formData.append('staff_details', JSON.stringify(this.step2Form?.value['employees']));
 
     formData.append('auditor_name', this.step2Form?.value['AuditorsName']);
     formData.append('auditor_address', this.step2Form?.value['AuditorsAddress']);
-    formData.append('NumberofStaff', this.step2Form?.value['NumberofStaff']);
+    formData.append('number_of_staff', this.step2Form?.value['NumberofStaff']);
     formData.append('capital_invested', this.step2Form?.value['CapitalInvested']);
     formData.append('activities_undertaken', this.step2Form?.value['OtherActivitiesunderTaken']);
     formData.append('convicted_offence', this.step2Form?.value['OtherActivitiesunderTaken']);
     formData.append('metricAttachment', this.metricAttachment);
     formData.append('fscAttachment', this.fscAttachment);
-    formData.append('ExperienceImage', this.ExperienceImage);
+    formData.append('experienceAttachment', this.ExperienceImage);
     formData.append('cnicFrontAttachment', this.cnicFrontAttachment);
     formData.append('cnicBackAttachment', this.cnicBackAttachment);
 
-    // metricAttachment: any;
-    // fscAttachment: any;
-    // ExperienceImage: any;
-
-    // cnicFrontAttachment: any;
-    // cnicBackAttachment: any;
-
-    console.log('====================================');
-    console.log('adf', this.step2Form);
-    console.log('====================================');
-    // Handle form submission
-    // const formValue = this.myForm.value;
-    // Include images (userImage, cnicFrontImage, cnicBackImage) in your submission as needed
-    console.log('Form submitted with values:', formData);
+    this.isLoading = true;
     this.TouristGuideService.registerTouristguide(formData).subscribe(
       (res: any) => {
-        console.log('====================================');
-        console.log('result', res);
-        console.log('====================================');
+        this.isLoading = false;
+        this.showSuccess('Congratulations!', 'You Application has been submitted, you will be updated shortly.');
+        this.router.navigate(['/dashboard']);
       },
       (err: any) => {
+        this.isLoading = false;
+        this.showError('Error', err);
         console.log('====================================');
         console.log(err);
         console.log('====================================');
@@ -239,7 +236,7 @@ export class TouristGuideRegistrationComponent {
   onImageChange(event: any, imageType: any) {
     const file = event.target.files[0]; // Get the selected file
 
-    if (imageType == 'bankerImage') this.bankerImage = event.target.files[0];
+    if (imageType == 'BankerImage') this.bankerImage = event.target.files[0];
     else if (imageType == 'metricAttachment') this.metricAttachment = event.target.files[0];
     else if (imageType == 'fscAttachment') this.fscAttachment = event.target.files[0];
     else if (imageType == 'ExperienceImage') this.ExperienceImage = event.target.files[0];
@@ -293,4 +290,11 @@ export class TouristGuideRegistrationComponent {
   //     this.employees.push(employeeGroup); // Use 'this.employees'
   //   });
   // }
+
+  showError(summary: any, errormessage: any) {
+    this.messageService.add({ severity: 'error', summary: summary, detail: errormessage });
+  }
+  showSuccess(summary: any, success: any) {
+    this.messageService.add({ severity: 'success', summary: summary, detail: success });
+  }
 }

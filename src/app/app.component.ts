@@ -8,8 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: true,
-  imports: [NgClass, RouterOutlet, HttpClientModule, ResponsiveHelperComponent],
 })
 export class AppComponent {
   title = 'DTS';
