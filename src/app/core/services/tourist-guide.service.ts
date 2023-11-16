@@ -10,4 +10,8 @@ export class TouristGuideService {
   public registerTouristguide(payloadObj: FormData) {
     return this.http.post(`${BACKEND_URL}v1/apply-tourism`, payloadObj);
   }
+
+  public getTouristguidebyID(id: any) {
+    return this.http.get(`${BACKEND_URL}v1/apply-tourism/${id}`);
+  }
 }

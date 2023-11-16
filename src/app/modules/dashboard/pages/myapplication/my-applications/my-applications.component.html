@@ -1,12 +1,19 @@
 <div class="px-10 py-10">
   <div class="text-xl font-semibold text-black">My Applications</div>
-  <div class="mt-5 grid grid-cols-12 gap-5">
-    <div class="col-span-3">
+  <div
+    *ngIf="showAllApplications"
+    class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-12">
+    <div *ngFor="let item of myApplication" class="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3">
       <div class="h-[350px] border-t-4 border-green-400 bg-white p-3 shadow-xl hover:shadow-2xl">
-        <div class="flex justify-end">
+        <div class="flex justify-between">
           <div class="flex items-center justify-center gap-2 text-red-600">
             <div class="h-[10px] w-[10px] rounded-full border-none bg-red-600"></div>
             Pending
+          </div>
+          <div
+            (click)="navigateTo('/dashboard/tourist-guide/edit/1')"
+            class="cursor-pointer text-gray-500 hover:text-green-400">
+            Edit<i class="pi pi-pencil ml-1"></i>
           </div>
         </div>
         <div class="flex items-center justify-center">
@@ -22,35 +29,139 @@
             [title]="'10'"
             [renderOnClick]="true"></circle-progress>
         </div>
-        <div class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
-          Hotel Registration
+        <div
+          (click)="selectShowApplication(item)"
+          class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
+          {{ item.name }}
         </div>
       </div>
     </div>
-    <div class="col-span-3">
-      <div class="h-[350px] border-t-4 border-green-400 bg-white p-3 shadow-xl hover:shadow-2xl">
-        <div class="flex justify-end">
-          <div class="flex items-center justify-center gap-2 text-green-600">
-            <div class="h-[10px] w-[10px] rounded-full border-none bg-green-600"></div>
-            Completed
+  </div>
+</div>
+
+<div *ngIf="showSingleApplications" class="mb-5">
+  <div class="">
+    <div class="flex flex-row justify-between">
+      <div
+        (click)="showAllApplications = true; showSingleApplications = false"
+        class="cursor-pointer px-10 text-base text-gray-500 hover:text-green-500">
+        Go Back
+      </div>
+      <div
+        (click)="showAllApplications = true; showSingleApplications = false"
+        class="cursor-pointer px-10 text-base text-gray-500 hover:text-green-500">
+        Edit Application
+      </div>
+    </div>
+
+    <div *ngIf="SelectedApplication" class="grid grid-cols-12 gap-5">
+      <div class="cols-span-1"></div>
+      <div class="col-span-4">
+        <div class="flex flex-col gap-5">
+          <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+            <div class="flex flex-col">
+              <h2 class="mt-4 font-bold">{{ SelectedApplication.name }}</h2>
+              <p>
+                <i class="pi-map-marker pi" style="color: slateblue"></i> {{ SelectedApplication.residential_address }}
+              </p>
+              <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Email address</p>
+                  <p class="text-sm">user@gmail.com</p>
+                </div>
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Home address</p>
+                  <p class="text-sm">{{ SelectedApplication.business_address }}</p>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Telegraphic</p>
+                  <p class="text-sm">{{ SelectedApplication.telegraphic_address }}</p>
+                </div>
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Telephone Number</p>
+                  <p class="text-sm">{{ SelectedApplication.telephone_number }}</p>
+                </div>
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Mobile Number</p>
+                  <p class="text-sm">{{ SelectedApplication.mobile_number }}</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Qualification</p>
+                  <p class="text-sm">{{ SelectedApplication.qualification }}</p>
+                </div>
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Experience in Years</p>
+                  <p class="text-sm">{{ SelectedApplication.experience }}</p>
+                </div>
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Languages</p>
+                  <p class="text-sm">{{ SelectedApplication.languages }}</p>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Traning</p>
+                  <p class="text-sm">{{ SelectedApplication.traning }}</p>
+                </div>
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Auditor Name</p>
+                  <p class="text-sm">{{ SelectedApplication.bank_details.auditor_name }}</p>
+                </div>
+                <div class="col-span-4 gap-2">
+                  <p class="mt-2 text-[#6b7280]">Auditor Address</p>
+                  <p class="text-sm">{{ SelectedApplication.bank_details.auditor_address }}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex items-center justify-center">
-          <circle-progress
-            [percent]="100"
-            [radius]="100"
-            [outerStrokeWidth]="16"
-            [innerStrokeWidth]="8"
-            [outerStrokeColor]="'#20c0a0'"
-            [innerStrokeColor]="'#EDEEFE'"
-            [animation]="true"
-            [animationDuration]="300"
-            [title]="'100'"
-            [renderOnClick]="true"></circle-progress>
+      </div>
+      <div class="col-span-6">
+        <div class="flex flex-col gap-5">
+          <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+            <div class="font-bold">Submitted Documents</div>
+            <p-tag [style]="{ background: 'linear-gradient(-225deg,#AC32E4 0%,#7918F2 48%,#4801FF 100%)' }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">Building Plan of Hotel or Restaurant.</span>
+              </div>
+            </p-tag>
+          </div>
+
+          <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+            <!-- linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65% -->
+            <div class="font-bold">Verified Documents</div>
+            <div class="flex flex-row gap-2">
+              <p-tag
+                [style]="{
+                  background:
+                    'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+                }">
+                <div class="align-items-center flex gap-2">
+                  <span class="text-base">CNIC</span>
+                </div>
+              </p-tag>
+              <p-tag
+                [style]="{
+                  background:
+                    'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+                }">
+                <div class="align-items-center flex gap-2">
+                  <span class="text-base">MATRIC DEGREE</span>
+                </div>
+              </p-tag>
+            </div>
+          </div>
         </div>
-        <div class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
-          Travel Agent Registration
+        <div class="mt-2">
+          <div class="font-bold">Recent Comments on Application</div>
         </div>
+        <div class="cols-span-1"></div>
       </div>
     </div>
   </div>

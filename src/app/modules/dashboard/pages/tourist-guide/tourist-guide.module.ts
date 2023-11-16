@@ -7,8 +7,9 @@ import { ChartModule } from 'primeng/chart';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TouristGuideRegistrationComponent } from './tourist-guide-registration/tourist-guide-registration.component'; // Import the ReactiveFormsModule
 import { LoaderComponent } from 'src/app/shared/components/loader/loader.component';
+import { EditapplicationComponent } from './editapplication/editapplication.component';
 @NgModule({
-  declarations: [TouristGuideRegistrationComponent],
+  declarations: [TouristGuideRegistrationComponent, EditapplicationComponent],
   imports: [
     CommonModule,
     FormsModule,
