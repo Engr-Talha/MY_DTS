@@ -1,0 +1,352 @@
+<p-toast></p-toast>
+<div class="px-10 py-10">
+  <div class="mb-3 text-xl font-semibold text-black">Applications</div>
+
+  <div class="item-end mb-3 flex flex-row justify-end">
+    <div class="button-container">
+      <!-- <button class="addCommentButton" (click)="addComment()">Add Comment</button> -->
+      <button class="approveButton" (click)="approvedialogbox = true">Approve and Generate Challan</button>
+      <button class="approveButton" (click)="showreject = true">Reject</button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-12 gap-5">
+    <div class="col-span-6">
+      <div class="flex flex-col gap-5">
+        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+          <div class="flex flex-col">
+            <h2 class="mt-4 font-bold">{{ SelectedApplication.name }}</h2>
+            <p>
+              <i class="pi-map-marker pi" style="color: slateblue"></i> {{ SelectedApplication.residential_address }}
+            </p>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Email address</p>
+                <p class="text-sm">user@gmail.com</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Home address</p>
+                <p class="text-sm">{{ SelectedApplication.business_address }}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Telegraphic</p>
+                <p class="text-sm">{{ SelectedApplication.telegraphic_address }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Telephone Number</p>
+                <p class="text-sm">{{ SelectedApplication.telephone_number }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Mobile Number</p>
+                <p class="text-sm">{{ SelectedApplication.mobile_number }}</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Qualification</p>
+                <p class="text-sm">{{ SelectedApplication.qualification }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Experience in Years</p>
+                <p class="text-sm">{{ SelectedApplication.experience }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Languages</p>
+                <p class="text-sm">{{ SelectedApplication.languages }}</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Traning</p>
+                <p class="text-sm">{{ SelectedApplication.traning }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Capitan Invested in Rupees</p>
+                <p class="text-sm">{{ SelectedApplication.bank_details.capital_invested }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Any convicted offense</p>
+                <p class="text-sm">{{ SelectedApplication.bank_details.convicted_offense }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-5">
+      <div class="flex flex-col gap-5">
+        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+          <div class="font-bold">Tourist Guide</div>
+          <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-4 gap-2">
+              <p class="mt-2 text-[#6b7280]">Bank Details</p>
+              <p class="text-sm">{{ SelectedApplication.bank_details.name }}</p>
+            </div>
+            <div class="col-span-4 gap-2">
+              <p class="mt-2 text-[#6b7280]">Auditor Name</p>
+              <p class="text-sm">{{ SelectedApplication.bank_details.auditor_name }}</p>
+            </div>
+            <div class="col-span-4 gap-2">
+              <p class="mt-2 text-[#6b7280]">Auditor Address</p>
+              <p class="text-sm">{{ SelectedApplication.bank_details.auditor_address }}</p>
+            </div>
+          </div>
+
+          <div class="mt-5 font-bold">Submitted Documents</div>
+          <div class="flex flex-row gap-2">
+            <p-tag
+              [style]="{
+                background:
+                  'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+              }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">CNIC</span>
+              </div>
+            </p-tag>
+            <p-tag
+              [style]="{
+                background:
+                  'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+              }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">Matric Degree</span>
+              </div>
+            </p-tag>
+            <p-tag
+              [style]="{
+                background:
+                  'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+              }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">FSc Degree</span>
+              </div>
+            </p-tag>
+            <p-tag
+              [style]="{
+                background:
+                  'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+              }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">Experience Certificate</span>
+              </div>
+            </p-tag>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="flex flex-col gap-5">
+        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+          <div class="font-bold">Verified Documents</div>
+          <p-tag [style]="{ background: 'linear-gradient(-225deg,#AC32E4 0%,#7918F2 48%,#4801FF 100%)' }">
+            <div class="align-items-center flex gap-2">
+              <span class="text-base">Building Plan of Hotel or Restaurant.</span>
+            </div>
+          </p-tag>
+        </div>
+      </div> -->
+    </div>
+    <div class="col-span-4"></div>
+  </div>
+
+  <div class="mt-5">
+    <div class="my-5 text-xl font-semibold text-black">Submitted Documents by User:</div>
+
+    <div class="my-3 text-xs text-red-500">Click on each document to View.</div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+      <!-- Column 1 -->
+      <div
+        *ngIf="SelectedApplication.cnic_front_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">CNIC</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', convertImageUrl(SelectedApplication.cnic_front_attachment?.path))"
+            [src]="convertImageUrl(SelectedApplication.cnic_front_attachment?.path)"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+        <!-- <div class="mt-4 flex items-center justify-center">
+          <button (click)="showSuccess('Documents Approved', 'You approved user CNIC')" class="btn-approve rounded">
+            Approve
+          </button>
+          <button (click)="showError('CNIC Rejected')" class="btn-reject rounded">Reject</button>
+        </div> -->
+      </div>
+
+      <!-- Column 2 -->
+      <div
+        *ngIf="SelectedApplication.cnic_back_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">CNIC Back Attachment</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', convertImageUrl(SelectedApplication.cnic_back_attachment?.path))"
+            [src]="convertImageUrl(SelectedApplication.cnic_back_attachment?.path)"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+
+      <div
+        *ngIf="SelectedApplication.metric_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">Matric Degree Attachment</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', convertImageUrl(SelectedApplication.metric_attachment?.path))"
+            [src]="convertImageUrl(SelectedApplication.metric_attachment?.path)"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+
+      <div
+        *ngIf="SelectedApplication.fsc_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">FSC Degree Attachment</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', convertImageUrl(SelectedApplication.fsc_attachment?.path))"
+            [src]="convertImageUrl(SelectedApplication.fsc_attachment?.path)"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+
+      <div
+        *ngIf="SelectedApplication.experience_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">Experience Attachment</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', convertImageUrl(SelectedApplication.experience_attachment?.path))"
+            [src]="convertImageUrl(SelectedApplication.experience_attachment?.path)"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <div class="my-5 text-xl font-semibold text-black">Submitted Documents by Inspector:</div>
+    <div>
+      <p>No Documents Submitted by Inspector yet.</p>
+    </div>
+  </div>
+  <!-- <div>
+    <div class="my-5 text-xl font-semibold text-black">Upload Files Here</div>
+    <input type="file" (change)="onFileChange($event)" multiple />
+    <div *ngFor="let image of uploadedImages; let i = index">
+      <span
+        class="inline-block h-[50px] w-[50px] rounded-full border bg-green-500 hover:bg-green-700"
+        (click)="removeImage(i)"
+        >x</span
+      >
+
+      <img class="w-[500px]" [src]="image.url" alt="Uploaded Image" />
+    </div>
+  </div> -->
+</div>
+
+<p-dialog
+  [(visible)]="DocumentDialog"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false">
+  <div>
+    <div class="mb-2 text-center text-xl font-medium text-[#9095a0]">CNIC</div>
+    <div class="flex flex-row justify-center">
+      <img crossorigin="anonymous" class="h-1/2 w-1/2" src="{{ docpath }}" />
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="addCommentDialog"
+  header="Add Comment to Application"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false">
+  <div>
+    <div class="card justify-content-center flex">
+      <textarea pKeyFilter="int" rows="5" cols="30" pInputTextarea></textarea>
+    </div>
+    <div class="item-end mb-3 flex flex-row justify-end">
+      <div class="button-container">
+        <button class="addCommentButton" (click)="addComment()">Forward to User</button>
+        <button class="approveButton">Forward to Inspector</button>
+        <button class="approveButton">Forward to Controller</button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="approvedialogbox"
+  header="Approve Applications"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false">
+  <div>
+    <div class="card justify-content-center flex flex-col">
+      <p>Do you want to approve this applications.</p>
+      <br />
+      <div class="card justify-content-center flex">
+        <textarea pKeyFilter="int" rows="5" [(ngModel)]="addcommentt" cols="30" pInputTextarea></textarea>
+      </div>
+    </div>
+    <div class="item-end mb-3 flex flex-row justify-end">
+      <div class="button-container">
+        <button
+          class="approveButton"
+          (click)="
+            approve(); showSuccess('Application Approved', 'User Application Approved, sent for challan generation.')
+          ">
+          Approve
+        </button>
+        <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="showreject"
+  header="Reject Applications"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false">
+  <div>
+    <div class="card justify-content-center flex flex-col">
+      <p>Do you want to reject this applications. Please add comment.</p>
+      <br />
+      <div class="card justify-content-center flex">
+        <textarea pKeyFilter="int" rows="5" [(ngModel)]="addcommentt" cols="30" pInputTextarea></textarea>
+      </div>
+    </div>
+    <div class="item-end mb-3 flex flex-row justify-end">
+      <div class="button-container">
+        <button
+          class="approveButton"
+          (click)="reject(); showError2('Application Rejected', 'Application is Rejected and Informed to User.')">
+          Reject
+        </button>
+        <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+</p-dialog>

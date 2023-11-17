@@ -1,0 +1,77 @@
+<div class="px-10 py-10">
+  <div class="mb-10 text-xl font-semibold text-black">Applications</div>
+
+  <div class="my-3 flex flex-row flex-wrap items-center justify-start gap-5 lg:flex-nowrap lg:justify-evenly">
+    <div class="card justify-content-center flex flex-col">
+      <p>Select Application Status:</p>
+      <p-dropdown
+        [options]="dropdown"
+        [(ngModel)]="selecteddropdown"
+        optionLabel="name"
+        placeholder="Application Status"></p-dropdown>
+    </div>
+    <div class="card justify-content-center flex flex-col">
+      <p>Select Application Type:</p>
+      <p-dropdown
+        [options]="ApplicationTypeDropdown"
+        [(ngModel)]="selectedApplicationTypeDropdown"
+        optionLabel="name"
+        placeholder="Application Type"></p-dropdown>
+    </div>
+    <div class="card justify-content-center flex flex-col">
+      <p>Select Date From:</p>
+      <p-calendar [(ngModel)]="dateRangeFirst" [showIcon]="true"></p-calendar>
+    </div>
+    <div class="card justify-content-center flex flex-col">
+      <p>Select Date From:</p>
+      <p-calendar [(ngModel)]="dateRangeSecond" [showIcon]="true"></p-calendar>
+    </div>
+    <div>
+      <p>Search by name:</p>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText [(ngModel)]="SearchByName" />
+      </span>
+    </div>
+    <div>
+      <p>Search by ID:</p>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText [(ngModel)]="SearchbyID" />
+      </span>
+    </div>
+
+    <div>
+      <button class="filterButton" (click)="filterByDate()">Filter</button>
+    </div>
+  </div>
+  <div
+    class="rounded-lg border border-gray-200 bg-white py-5 shadow dark:border-none dark:bg-night-700 dark:shadow-none">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th *ngFor="let header of tableHeaders">{{ header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of myApplication">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.application_status?.verification_type?.Name }}</td>
+          <td>{{ item.application_status?.current_status }}</td>
+          <td>{{ item.mobile_number }}</td>
+          <td>
+            <button
+              (click)="NavigateTo(item.id)"
+              class="cursor-pointer rounded-lg bg-green-500 py-2 px-4 text-white hover:bg-green-800">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mt-2 mr-16 flex cursor-pointer flex-row justify-end">
+      <p class="text-gray-500 hover:underline"></p>
+    </div>
+  </div>
+</div>
