@@ -3,7 +3,7 @@ import { MenuItem } from '../models/menu.model';
 export class Menu {
   public static pages: MenuItem[] = [
     {
-      group: 'Dashboard',
+      group: 'User Dashboard',
       separator: false,
       items: [
         {
@@ -76,7 +76,7 @@ export class Menu {
 
   public static DptControllerpages: MenuItem[] = [
     {
-      group: 'Dashboard',
+      group: 'D. Controller Dashboard',
       separator: false,
       items: [
         {
@@ -84,9 +84,9 @@ export class Menu {
           label: 'Dashboard',
           route: '/dashboard',
           children: [
-            { label: 'Dashboard', route: '/dashboard' },
-            { label: ' User Application', route: '/dashboard/tourist-guide/register' },
-            { label: 'Inspector Check', route: '/dashboard/hotel/register' },
+            { label: 'Dashboard', route: '/dptcontroller-dashboard' },
+            // { label: ' User Application', route: '/dashboard/tourist-guide/register' },
+            // { label: 'Inspector Check', route: '/dashboard/hotel/register' },
 
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
@@ -97,7 +97,7 @@ export class Menu {
 
   public static Controllerpages: MenuItem[] = [
     {
-      group: 'Dashboard',
+      group: 'Controller Dashboard',
       separator: false,
       items: [
         {
@@ -126,7 +126,7 @@ export class Menu {
   ];
   public static InspectorControllerpages: MenuItem[] = [
     {
-      group: 'Dashboard',
+      group: 'Inspector Dashboard',
       separator: false,
       items: [
         {

@@ -28,8 +28,9 @@ export class SidebarComponent implements OnInit {
   toggleTheme() {
     this.themeService.theme = !this.themeService.isDark ? 'dark' : 'light';
   }
-  logout() {
+  public logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('userDetails');
     this.router.navigate(['/auth']);
   }
 }

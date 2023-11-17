@@ -37,117 +37,17 @@ export class EditapplicationComponent {
     this.ActivatedRoute.params.subscribe((params: any) => {
       this.applicationID = params.id;
       if (this.applicationID > 0) {
-        // this.getApplicationbyID(this.applicationID);
-        this.patchFormData(); // Call the function here or wherever appropriate
+        this.getApplicationbyID(this.applicationID);
+        // Call the function here or wherever appropriate
       } else {
         this.applicationID = -1;
       }
     });
   }
-
+  mydata: any;
   patchFormData() {
     // Assuming your data is stored in a variable named 'formData'
-    const formData = {
-      id: 8,
-      name: 'talha Ihtasham',
-      business_address: 'mohallah muree',
-      residential_address: 'islamabad',
-      telegraphic_address: '+923434519912',
-      telephone_number: '0323233424',
-      mobile_number: '145145151',
-      qualification: 'BS',
-      experience: '3',
-      languages: 'Urdu,English',
-      training: '',
-      user_id: 1,
-      bank_details: {
-        id: 7,
-        name: 'alfalah',
-        auditor_name: 'talha',
-        auditor_address: 'karachi',
-        no_of_staff: '3',
-        capital_invested: '122000\r\n',
-        activities_undertaken: 'none',
-        convicted_offense: 'none',
-        tourism_application_id: 8,
-        staff_details: [
-          {
-            id: 7,
-            name: 'talha',
-            employment_status: null,
-            qualification: 'BS',
-            experience: '3',
-            bank_detail_id: 7,
-          },
-        ],
-        back_reference: {
-          id: 36,
-          attachmentable_id: 1,
-          field_name: 'UserBankReference',
-          Image_key: '',
-          attachment_types: {
-            id: 1,
-            name: 'Image',
-          },
-          path: 'localhost:3001/public\\touristService\\images\\1700075822211-808938368.jpg',
-        },
-      },
-      cnic_front_attachment: {
-        id: 31,
-        attachmentable_id: 1,
-        field_name: 'UserCnicFront',
-        Image_key: '',
-        attachment_types: {
-          id: 1,
-          name: 'Image',
-        },
-        path: 'localhost:3001/public\\touristService\\images\\1700075822244-368700289.jpg',
-      },
-      cnic_back_attachment: {
-        id: 32,
-        attachmentable_id: 1,
-        field_name: 'UserCnicBack',
-        Image_key: '',
-        attachment_types: {
-          id: 1,
-          name: 'Image',
-        },
-        path: 'localhost:3001/public\\touristService\\images\\1700075822252-650912009.jpg',
-      },
-      metric_attachment: {
-        id: 33,
-        attachmentable_id: 1,
-        field_name: 'UserMetricCertificate',
-        Image_key: '',
-        attachment_types: {
-          id: 1,
-          name: 'Image',
-        },
-        path: 'localhost:3001/public\\touristService\\images\\1700075822221-189995908.jpg',
-      },
-      fsc_attachment: {
-        id: 34,
-        attachmentable_id: 1,
-        field_name: 'UserFscCertificate',
-        Image_key: '',
-        attachment_types: {
-          id: 1,
-          name: 'Image',
-        },
-        path: 'localhost:3001/public\\touristService\\images\\1700075822231-155989271.jpg',
-      },
-      experience_attachment: {
-        id: 35,
-        attachmentable_id: 1,
-        field_name: 'UserExperienceCertificate',
-        Image_key: '',
-        attachment_types: {
-          id: 1,
-          name: 'Image',
-        },
-        path: 'localhost:3001/public\\touristService\\images\\1700075822237-284268185.jpg',
-      },
-    };
+    const formData = this.mydata;
 
     // Patching the form with the provided data
     this.step1Form.patchValue({
@@ -212,8 +112,8 @@ export class EditapplicationComponent {
 
           break;
         case 'experienceAttachment':
-          this.step2Form.get('experienceAttachment')?.setValue(file);
           this.displayPreview(file, 'experienceAttachment');
+          this.step2Form.get('experienceAttachment')?.setValue(file);
           break;
       }
     }
@@ -236,6 +136,8 @@ export class EditapplicationComponent {
           break;
         case 'experienceAttachment':
           this.experienceAttachmentPath = reader.result as string;
+          // this.step2Form.get(controlName)?.setValue(file);
+          this.ExperienceImage = file;
           break;
         // Handle other image previews similarly
         // case 'BankerImage':
@@ -247,8 +149,36 @@ export class EditapplicationComponent {
     reader.readAsDataURL(file);
   }
 
-  getApplicationbyID(id: any) {}
+  getApplicationbyID(id: any) {
+    this.TouristGuideService.getTouristguidebyID(id).subscribe(
+      (res: any) => {
+        this.mydata = res.data;
 
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
+        this.patchFormData();
+      },
+      (err: any) => {
+        console.log('====================================');
+        console.log(err);
+        console.log('====================================');
+      },
+    );
+  }
+
+  convertImageUrl(apiImageUrl: string): string {
+    // Replace backslashes with forward slashes and escape special characters
+    const convertedUrl = apiImageUrl.replace(/\\/g, '/').replace(/\t/g, '');
+
+    // Check if the link starts with 'localhost' and prepend 'http://' if needed
+    if (convertedUrl.startsWith('localhost')) {
+      return `http://${convertedUrl}`;
+    }
+
+    // If the link doesn't start with 'localhost', return the original link
+    return apiImageUrl;
+  }
   markFormGroupTouched(formGroup: FormGroup) {
     Object.values(formGroup.controls).forEach((control) => {
       control.markAsTouched();
@@ -322,6 +252,7 @@ export class EditapplicationComponent {
     });
     this.employees = this.step2Form.get('employees') as FormArray;
   }
+
   addEmployee() {
     const employeeGroup = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -396,7 +327,7 @@ export class EditapplicationComponent {
     formData.append('convicted_offence', this.step2Form?.value['OtherActivitiesunderTaken']);
     formData.append('metricAttachment', this.cnicFrontAttachmentPath);
     formData.append('fscAttachment', this.fscAttachmentPath);
-    formData.append('experienceAttachment', this.experienceAttachmentPath);
+    formData.append('experienceAttachment', this.ExperienceImage);
     formData.append('cnicFrontAttachment', this.cnicBackAttachmentPath);
     formData.append('cnicBackAttachment', this.cnicBackAttachmentPath);
 

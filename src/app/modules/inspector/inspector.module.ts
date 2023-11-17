@@ -11,9 +11,15 @@ import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { ApplicationListingComponent } from './application-listing/application-listing.component';
 import { InspectorUserApplicationComponent } from './inspector-user-application/inspector-user-application.component';
+import { TagModule } from 'primeng/tag';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [InspectorDashboardComponent, ApplicationListingComponent, InspectorUserApplicationComponent],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    TagModule,
     CommonModule,
     InspectorRoutingModule,
     DialogModule,

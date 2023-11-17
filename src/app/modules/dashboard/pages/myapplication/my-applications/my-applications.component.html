@@ -10,9 +10,7 @@
             <div class="h-[10px] w-[10px] rounded-full border-none bg-red-600"></div>
             Pending
           </div>
-          <div
-            (click)="navigateTo('/dashboard/tourist-guide/edit/1')"
-            class="cursor-pointer text-gray-500 hover:text-green-400">
+          <div (click)="navigateTo(item.id)" class="cursor-pointer text-gray-500 hover:text-green-400">
             Edit<i class="pi pi-pencil ml-1"></i>
           </div>
         </div>
@@ -121,21 +119,28 @@
             </div>
           </div>
         </div>
+
+        <div class="mt-5 flex flex-col gap-5">
+          <div class="h-[300px] overflow-y-scroll rounded-xl border-gray-200 bg-white p-[2rem]">
+            <div class="font-bold">Comments <span class="text-sm"> (Sorted by latest)</span></div>
+            <!-- let comment of comments.reverse() -->
+            <div class="" *ngFor="let comment of SelectedApplication.application_status.comments.reverse()">
+              <div class="my-2 px-4 text-sm dark:text-gray-500">
+                <p>
+                  {{ comment.description }} by
+                  <span class="text-bold text-green-500">
+                    {{ comment.comment_by }}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-span-6">
         <div class="flex flex-col gap-5">
           <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
             <div class="font-bold">Submitted Documents</div>
-            <p-tag [style]="{ background: 'linear-gradient(-225deg,#AC32E4 0%,#7918F2 48%,#4801FF 100%)' }">
-              <div class="align-items-center flex gap-2">
-                <span class="text-base">Building Plan of Hotel or Restaurant.</span>
-              </div>
-            </p-tag>
-          </div>
-
-          <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
-            <!-- linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65% -->
-            <div class="font-bold">Verified Documents</div>
             <div class="flex flex-row gap-2">
               <p-tag
                 [style]="{
@@ -152,14 +157,86 @@
                     'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
                 }">
                 <div class="align-items-center flex gap-2">
-                  <span class="text-base">MATRIC DEGREE</span>
+                  <span class="text-base">Matric Degree</span>
+                </div>
+              </p-tag>
+              <p-tag
+                [style]="{
+                  background:
+                    'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+                }">
+                <div class="align-items-center flex gap-2">
+                  <span class="text-base">FSc Degree</span>
+                </div>
+              </p-tag>
+              <p-tag
+                [style]="{
+                  background:
+                    'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+                }">
+                <div class="align-items-center flex gap-2">
+                  <span class="text-base">Experience Certificate</span>
                 </div>
               </p-tag>
             </div>
           </div>
         </div>
         <div class="mt-2">
-          <div class="font-bold">Recent Comments on Application</div>
+          <div
+            class="notification_container h-[365px] items-start rounded-lg border border-gray-200 bg-white py-[20px] px-[20px] shadow dark:border-none dark:bg-night-600 dark:hover:bg-night-500">
+            <div class="font-bold">Application Status</div>
+
+            <div class="mt-5 flex flex-row justify-between px-5">
+              <div class="text-sm font-bold dark:text-gray-500">Application Type</div>
+              <div class="text-sm dark:text-gray-500">
+                {{ SelectedApplication.application_status.verification_type.Name }}
+              </div>
+            </div>
+            <div class="card mt-7 flex flex-col gap-5 px-5">
+              <div class="">
+                <div class="flex flex-row justify-between">
+                  <div class="text-sm dark:text-gray-500">Current Status</div>
+                  <div class="text-sm dark:text-gray-500">
+                    {{ SelectedApplication.application_status.current_status }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="">
+                <div class="flex flex-row justify-between">
+                  <div class="text-sm dark:text-gray-500">Application Submission</div>
+                  <div class="text-sm dark:text-gray-500">100%</div>
+                </div>
+              </div>
+              <div>
+                <div class="flex flex-row justify-between">
+                  <div class="text-sm dark:text-gray-500">Controller Verification</div>
+                  <div class="text-sm dark:text-gray-500">
+                    {{ SelectedApplication.application_status.controller_status }}
+                  </div>
+                </div>
+                <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="70"></p-progressBar> -->
+              </div>
+              <div>
+                <div class="flex flex-row justify-between">
+                  <div class="text-sm dark:text-gray-500">On-Site/Inspector Verification</div>
+                  <div class="text-sm dark:text-gray-500">
+                    {{ SelectedApplication.application_status.inspector_status }}
+                  </div>
+                </div>
+                <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="20"></p-progressBar> -->
+              </div>
+              <div>
+                <div class="flex flex-row justify-between">
+                  <div class="text-sm dark:text-gray-500">Deputy Controller Verification</div>
+                  <div class="text-sm dark:text-gray-500">
+                    {{ SelectedApplication.application_status.inspector_status }}
+                  </div>
+                </div>
+                <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="0"></p-progressBar> -->
+              </div>
+            </div>
+          </div>
         </div>
         <div class="cols-span-1"></div>
       </div>

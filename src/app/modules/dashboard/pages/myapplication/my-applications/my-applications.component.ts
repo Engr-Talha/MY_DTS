@@ -15,8 +15,10 @@ export class MyApplicationsComponent implements OnInit {
   showSingleApplications: boolean = false;
   SelectedApplication: any;
 
-  userID: any = 1;
+  userID: any;
   ngOnInit() {
+    let Usertype = localStorage.getItem('userDetails');
+    this.userID = JSON.parse(Usertype ? Usertype : '{}').id;
     this.GetAllNewApplications();
   }
 
@@ -35,8 +37,11 @@ export class MyApplicationsComponent implements OnInit {
     this.showSingleApplications = !this.showSingleApplications;
     this.showAllApplications = !this.showAllApplications;
     this.SelectedApplication = data;
+    console.log('====================================');
+    console.log('selected application', this.SelectedApplication);
+    console.log('====================================');
   }
   navigateTo(path: any) {
-    this.Router.navigate([path]);
+    this.Router.navigate([`/dashboard/tourist-guide/edit/${path}`]);
   }
 }

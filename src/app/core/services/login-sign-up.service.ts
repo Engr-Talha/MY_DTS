@@ -11,14 +11,8 @@ export class LoginSignUpService {
     return this.http.post(`${BACKEND_URL}v1/auth/login`, data);
   }
 
-  public signup(username: string, email: string, password: string, confirmpassword: string, cninc: any) {
-    return this.http.post(`${BACKEND_URL}api/user/register`, {
-      username,
-      email,
-      password,
-      confirmpassword,
-      cninc,
-    });
+  public signup(formdata: FormData) {
+    return this.http.post(`${BACKEND_URL}v1/auth/register/user`, formdata);
   }
 
   public getUserProfile(access_token: string) {

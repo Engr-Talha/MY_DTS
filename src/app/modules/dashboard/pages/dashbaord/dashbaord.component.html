@@ -30,19 +30,32 @@
     <div class="col-span-12 md:col-span-6 xl:col-span-4">
       <div
         class="notification_container items-start rounded-lg border border-gray-200 bg-white py-[20px] pl-[20px] shadow dark:border-none dark:bg-night-700 dark:shadow-none">
-        <p class="Headingtext2 dark:text-white">Number of Applications</p>
-        <p-chart type="doughnut" [data]="data" width="200" height="300" [options]="options2"></p-chart>
+        <p class="Headingtext2 dark:text-white">My Applications</p>
+
+        <ul class="custom-list mt-5">
+          <li class="px-10" *ngFor="let count of verificationCount; let i = index">
+            <span class="label">{{ labels[i] }}:</span>
+            <span class="count">{{ count }}</span>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="col-span-12 md:col-span-6 xl:col-span-4">
       <div
         class="notification_container h-[365px] items-start rounded-lg border border-gray-200 bg-white py-[20px] px-[20px] shadow dark:border-none dark:bg-night-600 dark:hover:bg-night-500">
-        <p class="Headingtext2 dark:text-white">Progress of Current Application</p>
+        <p class="Headingtext2 dark:text-white">Progress of Latest Application</p>
         <div class="mt-5 flex flex-row justify-between px-5">
           <div class="text-sm font-bold dark:text-gray-500">Application Type</div>
-          <div class="text-sm dark:text-gray-500">Hotel Registration Form</div>
+          <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].verification_type.Name }}</div>
         </div>
         <div class="card mt-7 flex flex-col gap-5 px-5">
+          <div class="">
+            <div class="flex flex-row justify-between">
+              <div class="text-sm dark:text-gray-500">Current Status</div>
+              <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].current_status }}</div>
+            </div>
+          </div>
+
           <div class="">
             <div class="flex flex-row justify-between">
               <div class="text-sm dark:text-gray-500">Application Submission</div>
@@ -52,24 +65,24 @@
           </div>
           <div>
             <div class="flex flex-row justify-between">
-              <div class="text-sm dark:text-gray-500">Document Verification</div>
-              <div class="text-sm dark:text-gray-500">70%</div>
+              <div class="text-sm dark:text-gray-500">Controller Verification</div>
+              <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].controller_status }}</div>
             </div>
-            <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="70"></p-progressBar>
+            <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="70"></p-progressBar> -->
           </div>
           <div>
             <div class="flex flex-row justify-between">
-              <div class="text-sm dark:text-gray-500">On-Site Verification</div>
-              <div class="text-sm dark:text-gray-500">20%</div>
+              <div class="text-sm dark:text-gray-500">On-Site/Inspector Verification</div>
+              <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].inspector_status }}</div>
             </div>
-            <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="20"></p-progressBar>
+            <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="20"></p-progressBar> -->
           </div>
           <div>
             <div class="flex flex-row justify-between">
-              <div class="text-sm dark:text-gray-500">Overall Progress</div>
-              <div class="text-sm dark:text-gray-500">0%</div>
+              <div class="text-sm dark:text-gray-500">Deputy Controller Verification</div>
+              <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].inspector_status }}</div>
             </div>
-            <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="0"></p-progressBar>
+            <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="0"></p-progressBar> -->
           </div>
         </div>
       </div>

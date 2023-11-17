@@ -5,6 +5,7 @@ interface Column {
   field: string;
   header: string;
 }
+import { ControllerService } from 'src/app/core/services/controller.service';
 
 @Component({
   selector: 'app-controller-dashbaord',
@@ -15,7 +16,7 @@ export class ControllerDashbaordComponent {
   datatable: any;
   cols!: Column[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private ControllerService: ControllerService) {
     this.data = [
       {
         name: 'John',
@@ -65,8 +66,17 @@ export class ControllerDashbaordComponent {
   Tabledata: any;
 
   options2: any;
-
+  myApplication: any;
   ngOnInit() {
+    this.ControllerService.getAlluserApplications().subscribe(
+      (res: any) => {
+        this.myApplication = res.data;
+        console.log(this.myApplication);
+      },
+      (err: any) => {
+        console.log('Error in gettting my applications', err);
+      },
+    );
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
 
@@ -126,5 +136,9 @@ export class ControllerDashbaordComponent {
 
   NavigateTo(link: any) {
     this.router.navigate([link]);
+  }
+
+  NavigateToo(link: any) {
+    this.router.navigate([`/controller-dashboard/userCont-application-listing/${link}`]);
   }
 }

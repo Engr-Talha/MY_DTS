@@ -175,7 +175,7 @@
               type="file"
               id="BankerImage"
               formControlName="BankerImage"
-              (change)="onImageChange($event, 'BankerImage')" />
+              (change)="onImageChange1($event, 'BankerImage')" />
             <!-- <div *ngIf="step2Form.get('BankerImage')?.hasError('required')" class="text-danger">Image is required.</div> -->
             <div *ngIf="step2Form.get('BankerImage')?.hasError('validImage')" class="text-danger">
               Invalid image format. Supported formats: jpg, jpeg, png, gif.
@@ -286,6 +286,7 @@
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-4 my-2">
             <label for="cnicFrontAttachment">Upload CNIC Front Image:</label><br />
+            {{ convertImageUrl(cnicFrontAttachmentPath) }}
             <button
               *ngIf="cnicFrontAttachmentPath"
               class="bg-red p-3 font-extrabold"
@@ -293,18 +294,20 @@
               x
             </button>
             <img
+              crossorigin="anonymous"
               *ngIf="cnicFrontAttachmentPath"
-              [src]="cnicFrontAttachmentPath"
+              [src]="convertImageUrl(cnicFrontAttachmentPath)"
               alt="CNIC Front Image"
               width="200"
               height="200" />
-            <input type="file" id="cnicFrontAttachment" (change)="onImageChange($event, 'cnicFrontAttachment')" />
+            <input type="file" id="cnicFrontAttachment" (change)="onImageChange1($event, 'cnicFrontAttachment')" />
             <!-- <div *ngIf="step2Form.get('cnicFrontAttachment')?.hasError('validImage')" class="text-danger">
               Invalid image format. Supported formats: jpg, jpeg, png, gif.
             </div> -->
           </div>
           <div class="col-span-4 my-2">
             <label for="cnicBackAttachment">Upload CNIC Back Image:</label><br />
+            {{ convertImageUrl(cnicBackAttachmentPath) }}
             <button
               *ngIf="cnicBackAttachmentPath"
               class="bg-red rounded-full p-3 font-extrabold"
@@ -312,8 +315,9 @@
               x
             </button>
             <img
+              crossorigin="anonymous"
               *ngIf="cnicBackAttachmentPath"
-              [src]="cnicBackAttachmentPath"
+              [src]="convertImageUrl(cnicBackAttachmentPath)"
               alt="CNIC Front Image"
               width="200"
               height="200" />
@@ -321,7 +325,7 @@
               type="file"
               id="cnicBackAttachment"
               formControlName="cnicBackAttachment"
-              (change)="onImageChange($event, 'cnicBackAttachment')" />
+              (change)="onImageChange1($event, 'cnicBackAttachment')" />
             >
             <!-- <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('validImage')" class="text-danger">
               Invalid image format. Supported formats: jpg, jpeg, png, gif.
@@ -331,6 +335,7 @@
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-4 my-2">
             <label for="metricAttachment">Upload Matric Degree:</label><br />
+            {{ convertImageUrl(metricAttachmentPath) }}
             <button
               *ngIf="metricAttachmentPath"
               class="bg-red rounded-full p-3 font-extrabold"
@@ -338,8 +343,9 @@
               x
             </button>
             <img
+              crossorigin="anonymous"
               *ngIf="metricAttachmentPath"
-              [src]="metricAttachmentPath"
+              [src]="convertImageUrl(metricAttachmentPath)"
               alt="CNIC Front Image"
               width="200"
               height="200" />
@@ -347,7 +353,7 @@
               type="file"
               id="metricAttachment"
               formControlName="metricAttachment"
-              (change)="onImageChange($event, 'metricAttachment')" />
+              (change)="onImageChange1($event, 'metricAttachment')" />
             >
             <!-- <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('validImage')" class="text-danger">
                   Invalid image format. Supported formats: jpg, jpeg, png, gif.
@@ -363,8 +369,9 @@
                 x
               </button>
               <img
+                crossorigin="anonymous"
                 *ngIf="fscAttachmentPath"
-                [src]="fscAttachmentPath"
+                [src]="convertImageUrl(fscAttachmentPath)"
                 alt="CNIC Front Image"
                 width="200"
                 height="200" />
@@ -372,7 +379,7 @@
                 type="file"
                 id="fscAttachment"
                 formControlName="fscAttachment"
-                (change)="onImageChange($event, 'fscAttachment')" />
+                (change)="onImageChange1($event, 'fscAttachment')" />
               >
               <!-- <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('validImage')" class="text-danger">
                       Invalid image format. Supported formats: jpg, jpeg, png, gif.
@@ -390,8 +397,9 @@
               x
             </button>
             <img
+              crossorigin="anonymous"
               *ngIf="experienceAttachmentPath"
-              src="http://localhost:3001/public/touristService/images/1700125578597-376604016.jpg"
+              [src]="convertImageUrl(experienceAttachmentPath)"
               alt="CNIC Front Image"
               width="200"
               height="200" />
@@ -399,7 +407,7 @@
               type="file"
               id="experienceAttachment"
               formControlName="experienceAttachment"
-              (change)="onImageChange($event, 'experienceAttachment')" />
+              (change)="onImageChange1($event, 'experienceAttachment')" />
             >
             <!-- <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('validImage')" class="text-danger">
                       Invalid image format. Supported formats: jpg, jpeg, png, gif.

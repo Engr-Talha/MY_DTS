@@ -4,14 +4,15 @@ interface dropdownPending {
   name: string;
   code: string;
 }
-
+import { ControllerService } from 'src/app/core/services/controller.service';
 @Component({
   selector: 'app-cont-application-listing',
   templateUrl: './cont-application-listing.component.html',
   styleUrls: ['./cont-application-listing.component.scss'],
 })
 export class ContApplicationListingComponent implements OnInit {
-  constructor(private route: Router) {}
+  myApplication: any;
+  constructor(private route: Router, private ControllerService: ControllerService) {}
   dateRangeFirst: Date | undefined;
   dateRangeSecond: Date | undefined;
 
@@ -63,6 +64,16 @@ export class ContApplicationListingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ControllerService.getAlluserApplications().subscribe(
+      (res: any) => {
+        this.myApplication = res.data;
+        console.log(this.myApplication);
+      },
+      (err: any) => {
+        console.log('Error in gettting my applications', err);
+      },
+    );
+
     this.dropdown = [
       { name: 'Submitted Application', code: 'NY' },
       { name: 'Pending Application', code: 'RM' },
@@ -80,6 +91,6 @@ export class ContApplicationListingComponent implements OnInit {
   tableHeaders = ['Code', 'Name', 'Category', 'Status', 'Date'];
 
   NavigateTo(link: any) {
-    this.route.navigate([link]);
+    this.route.navigate([`/controller-dashboard/userCont-application-listing/${link}`]);
   }
 }

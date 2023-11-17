@@ -119,7 +119,7 @@ export class TouristGuideRegistrationComponent {
       this.currentStep--;
     }
   }
-
+  accountID: any;
   onSubmit() {
     console.log('====================================');
     console.log('submit');
@@ -130,10 +130,12 @@ export class TouristGuideRegistrationComponent {
       // Handle form validation errors
       return;
     }
+    let Usertype = localStorage.getItem('userDetails');
+    this.accountID = JSON.parse(Usertype ? Usertype : '{}').id;
 
     // this.step1Form;
     const formData = new FormData();
-    formData.append('user_id', '1');
+    formData.append('user_id', this.accountID);
     formData.append('name', this.step1Form?.value['name']);
     formData.append('bussiness_address', this.step1Form?.value['BusinessAddress']);
     formData.append('residential_address', this.step1Form?.value['ResidentialAddress']);

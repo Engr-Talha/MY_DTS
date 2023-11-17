@@ -18,6 +18,12 @@ const routes: Routes = [
     component: LayoutComponent,
     loadChildren: () => import('../controller/controller.module').then((m) => m.ControllerModule),
   },
+
+  {
+    path: 'dptcontroller-dashboard',
+    component: LayoutComponent,
+    loadChildren: () => import('../deputy-controller/deputy-controller.module').then((m) => m.DeputyControllerModule),
+  },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: 'error/404' },
 ];

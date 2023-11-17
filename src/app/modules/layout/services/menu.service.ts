@@ -25,9 +25,11 @@ export class MenuService implements OnDestroy {
     if (this.accounttype == 1) {
       this._pagesMenu.set(Menu.pages);
     } else if (this.accounttype == 2) {
-      this._pagesMenu.set(Menu.InspectorControllerpages);
-    } else if (this.accounttype == 3) {
       this._pagesMenu.set(Menu.Controllerpages);
+    } else if (this.accounttype == 3) {
+      this._pagesMenu.set(Menu.InspectorControllerpages);
+    } else if (this.accounttype == 4) {
+      this._pagesMenu.set(Menu.DptControllerpages);
     }
 
     // this._pagesMenu.set(Menu.pages);

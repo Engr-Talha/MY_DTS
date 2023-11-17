@@ -77,7 +77,30 @@
 
   <div
     class="rounded-lg border border-gray-200 bg-white py-5 shadow dark:border-none dark:bg-night-700 dark:shadow-none">
-    <p-table [value]="Tabledata" [tableStyle]="{ 'min-width': '50rem' }">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th *ngFor="let header of tableHeaders">{{ header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of myApplication">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.application_status?.verification_type?.Name }}</td>
+          <td>{{ item.application_status?.current_status }}</td>
+          <td>{{ item.mobile_number }}</td>
+          <td>
+            <button
+              (click)="NavigateToo(item.id)"
+              class="cursor-pointer rounded-lg bg-green-500 py-2 px-4 text-white hover:bg-green-800">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <p-table [value]="Tabledata" [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th>Code</th>
@@ -100,26 +123,8 @@
           </td>
         </tr>
       </ng-template>
-    </p-table>
-    <!-- <table class="responsive-table">
-        <thead>
-          <tr>
-            <th *ngFor="let header of tableHeaders">{{ header }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of Tabledata">
-            <td>{{ item.code }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.Category }}</td>
-            <td>{{ item.status }}</td>
-            <td>{{ item.date }}</td>
-            <td>
-              <button class="cursor-pointer rounded-lg bg-green-500 py-2 px-4 text-white hover:bg-green-800">View</button>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
+    </p-table> -->
+
     <div class="mt-2 mr-16 flex cursor-pointer flex-row justify-end">
       <p (click)="NavigateTo('/controller-dashboard/application-listing')" class="text-gray-500 hover:underline">
         View All
