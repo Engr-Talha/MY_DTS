@@ -9,12 +9,12 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'Dashboard',
-          route: '/dashboard',
+          route: '/',
           children: [
-            { label: 'Dashboard', route: '/dashboard' },
-            { label: 'Apply for Tourist Guide', route: '/dashboard/tourist-guide/register' },
-            { label: 'Apply for Hotel', route: '/dashboard/hotel/register' },
-            { label: 'Apply for Resturant', route: '/dashboard/resturant/register' },
+            { label: 'Dashboard', route: '/' },
+            { label: 'Apply for Tourist Guide', route: '/tourist-guide/register' },
+            { label: 'Apply for Hotel', route: '/hotel/register' },
+            { label: 'Apply for Resturant', route: '/resturant/register' },
             { label: 'Apply for Travel Agency', route: '/travel-agency/register' },
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
@@ -22,7 +22,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/cog.svg',
           label: 'My Applications',
-          route: '/dashboard/my-registrations',
+          route: '/my-registrations',
           // children: [
           // { label: 'Sign up', route: '/auth/sign-up' },
           // { label: 'Sign in', route: '/auth/sign-in' },
@@ -39,8 +39,8 @@ export class Menu {
             // { label: 'Sign up', route: '/auth/sign-up' },
             // { label: 'Sign in', route: '/auth/sign-in' },
             { label: 'Change Password', route: '/auth/forgot-password' },
-            // { label: 'New Password', route: '/auth/new-password' },
-            { label: 'Profile', route: '/dashboard/profiles' },
+            { label: 'New Password', route: '/auth/new-password' },
+            { label: 'Profile', route: '/profile' },
           ],
         },
       ],
@@ -60,16 +60,16 @@ export class Menu {
         //   label: 'Notifications',
         //   route: '/gift',
         // },
-        {
-          icon: 'assets/icons/heroicons/outline/folder.svg',
-          label: 'Folders',
-          route: '/folders',
-          children: [
-            { label: 'Current Files', route: '/folders/current-files' },
-            { label: 'Downloads', route: '/folders/download' },
-            { label: 'Trash', route: '/folders/trash' },
-          ],
-        },
+        // {
+        //   icon: 'assets/icons/heroicons/outline/folder.svg',
+        //   label: 'Folders',
+        //   route: '/folders',
+        //   children: [
+        //     { label: 'Current Files', route: '/folders/current-files' },
+        //     { label: 'Downloads', route: '/folders/download' },
+        //     { label: 'Trash', route: '/folders/trash' },
+        //   ],
+        // },
       ],
     },
   ];
@@ -156,6 +156,61 @@ export class Menu {
           children: [
             { label: 'Application Submitted', route: '/inspector-dashboard/all-applications' },
 
+            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
+          ],
+        },
+      ],
+    },
+  ];
+
+  public static Reviewer: MenuItem[] = [
+    {
+      group: 'Reviewer Dashboard',
+      separator: false,
+      items: [
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'User Dashboard',
+          route: '/reviewer-dashboard',
+          children: [
+            { label: 'Dashboard', route: '/reviewer-dashboard' },
+
+            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
+          ],
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Applications',
+          route: '',
+          children: [
+            { label: 'Application', route: '/reviewer-dashboard' },
+            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
+          ],
+        },
+      ],
+    },
+  ];
+  public static astDashboard: MenuItem[] = [
+    {
+      group: 'A. Controller Dashboard',
+      separator: false,
+      items: [
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'A. Controller Dashboard',
+          route: '/astcontroller-dashboard',
+          children: [
+            { label: 'Dashboard', route: '/astcontroller-dashboard' },
+
+            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
+          ],
+        },
+        {
+          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
+          label: 'Applications',
+          route: '',
+          children: [
+            { label: 'Application', route: '/astcontroller-dashboard' },
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
         },

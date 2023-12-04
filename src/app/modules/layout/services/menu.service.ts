@@ -16,21 +16,21 @@ export class MenuService implements OnDestroy {
 
   constructor(private router: Router) {
     /** Set dynamic menu */
-
-    let Usertype = localStorage.getItem('user');
-    this.accounttype = JSON.parse(Usertype ? Usertype : '{}');
-    console.log('====================================');
-    console.log(Usertype, this.accounttype);
-    console.log('====================================');
-    if (this.accounttype == 1) {
-      this._pagesMenu.set(Menu.pages);
-    } else if (this.accounttype == 2) {
-      this._pagesMenu.set(Menu.Controllerpages);
-    } else if (this.accounttype == 3) {
-      this._pagesMenu.set(Menu.InspectorControllerpages);
-    } else if (this.accounttype == 4) {
-      this._pagesMenu.set(Menu.DptControllerpages);
-    }
+    this.loadMenu(); // Load menu initially
+    // let Usertype = localStorage.getItem('user');
+    // this.accounttype = JSON.parse(Usertype ? Usertype : '{}');
+    // console.log('====================================');
+    // console.log(Usertype, this.accounttype);
+    // console.log('====================================');
+    // if (this.accounttype == 1) {
+    //   this._pagesMenu.set(Menu.pages);
+    // } else if (this.accounttype == 2) {
+    //   this._pagesMenu.set(Menu.Controllerpages);
+    // } else if (this.accounttype == 3) {
+    //   this._pagesMenu.set(Menu.InspectorControllerpages);
+    // } else if (this.accounttype == 4) {
+    //   this._pagesMenu.set(Menu.DptControllerpages);
+    // }
 
     // this._pagesMenu.set(Menu.pages);
 
@@ -55,6 +55,25 @@ export class MenuService implements OnDestroy {
     this._subscription.add(sub);
   }
 
+  loadMenu() {
+    let Usertype = localStorage.getItem('user');
+    this.accounttype = JSON.parse(Usertype ? Usertype : '{}');
+    console.log('User Type:', this.accounttype);
+
+    if (this.accounttype == 1) {
+      this._pagesMenu.set(Menu.pages);
+    } else if (this.accounttype == 2) {
+      this._pagesMenu.set(Menu.Controllerpages);
+    } else if (this.accounttype == 3) {
+      this._pagesMenu.set(Menu.InspectorControllerpages);
+    } else if (this.accounttype == 4) {
+      this._pagesMenu.set(Menu.DptControllerpages);
+    } else if (this.accounttype == 6) {
+      this._pagesMenu.set(Menu.Reviewer);
+    } else if (this.accounttype == 5) {
+      this._pagesMenu.set(Menu.astDashboard);
+    }
+  }
   get showSideBar() {
     return this._showSidebar();
   }

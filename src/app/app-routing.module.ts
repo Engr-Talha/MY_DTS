@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GeneratechallanComponent } from './shared/components/generatechallan/generatechallan.component';
+import { CertificateComponent } from './shared/components/certificate/certificate.component';
 
 const routes: Routes = [
   {
@@ -12,6 +14,8 @@ const routes: Routes = [
   },
 
   { path: '**', redirectTo: 'error/404' },
+  { path: 'generate-challan', component: GeneratechallanComponent },
+  { path: 'Show-Certificate', component: CertificateComponent },
 ];
 
 @NgModule({

@@ -3,6 +3,8 @@ import { MessageService } from 'primeng/api';
 import { ControllerService } from 'src/app/core/services/controller.service';
 import { ActivatedRoute } from '@angular/router';
 import { TouristGuideService } from 'src/app/core/services/tourist-guide.service';
+import { UserApplicationService } from 'src/app/core/services/user-application.service';
+
 @Component({
   selector: 'app-controller-user-application',
   templateUrl: './controller-user-application.component.html',
@@ -20,6 +22,7 @@ export class ControllerUserApplicationComponent implements OnInit {
     private ActivatedRoute: ActivatedRoute,
     private ControllerService: ControllerService,
     private messageService: MessageService,
+    private UserApplicationService: UserApplicationService,
   ) {}
 
   ngOnInit() {
@@ -51,19 +54,15 @@ export class ControllerUserApplicationComponent implements OnInit {
   }
 
   getApplicationbyID(id: any) {
-    this.TouristGuideService.getTouristguidebyID(id).subscribe(
+    this.UserApplicationService.getUserApplicationsByID(id).subscribe(
       (res: any) => {
-        this.SelectedApplication = res.data;
-
+        this.SelectedApplication = res;
         console.log('====================================');
-        console.log(res);
+        console.log('selected application in user block ', this.SelectedApplication);
         console.log('====================================');
-        // this.patchFormData();
       },
       (err: any) => {
-        console.log('====================================');
-        console.log(err);
-        console.log('====================================');
+        console.log('Error in gettting my applications', err);
       },
     );
   }
@@ -125,6 +124,37 @@ export class ControllerUserApplicationComponent implements OnInit {
       },
     );
     this.approvedialogbox = false;
+  }
+
+  ChangeStatus(rolestobeSent: any) {
+    // this.approvedialogbox = true;
+
+    const data = new FormData();
+
+    data.append('status', rolestobeSent);
+    data.append('remarks', this.addcommentt);
+
+    this.UserApplicationService.changeStatus(this.applicationID, data).subscribe(
+      (res) => {
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
+        this.addcommentt = '';
+        this.approvedialogbox = false;
+        if (rolestobeSent == 1) {
+          this.showSuccess('Application Approved', 'User Application Approved, Challan Generated');
+        } else if (rolestobeSent == 3) {
+          this.showError2('Application Rejected', 'Application is Rejected and Informed to User.');
+        }
+      },
+      (err) => {
+        console.log('====================================');
+        console.log(err);
+        console.log('====================================');
+        this.addcommentt = '';
+        this.approvedialogbox = false;
+      },
+    );
   }
 
   showreject: boolean = false;

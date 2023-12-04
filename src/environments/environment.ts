@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  BACKEND_URL: 'http://localhost:3001/',
+  BACKEND_URL: 'http://127.0.0.1:8000/',
 };
 
-/*
+/*http://127.0.0.1:8000/api/register
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *

@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+interface dropdownPending {
+  name: string;
+  code: string;
+}
 import { ControllerService } from 'src/app/core/services/controller.service';
-
+import { UserApplicationService } from 'src/app/core/services/user-application.service';
 @Component({
   selector: 'app-application-listing',
   templateUrl: './application-listing.component.html',
@@ -9,47 +13,21 @@ import { ControllerService } from 'src/app/core/services/controller.service';
 })
 export class ApplicationListingComponent {
   myApplication: any;
-  constructor(private route: Router, private ControllerService: ControllerService) {}
+  constructor(
+    private UserApplicationService: UserApplicationService,
+    private route: Router,
+    private ControllerService: ControllerService,
+  ) {}
   dateRangeFirst: Date | undefined;
   dateRangeSecond: Date | undefined;
 
-  // dropdown: dropdownPending[] | undefined;
-  // selecteddropdown: dropdownPending | undefined;
+  dropdown: dropdownPending[] | undefined;
+  selecteddropdown: dropdownPending | undefined;
   ApplicationTypeDropdown: any[] | undefined;
   selectedApplicationTypeDropdown: any[] | undefined;
 
   SearchByName: any;
   SearchbyID: any;
-  data2 = [
-    {
-      name: 'John',
-      code: '123',
-      Category: 'Hotel Registration',
-      status: 'Pending',
-      date: '2023-11-08',
-    },
-    {
-      name: 'Alice',
-      code: '456',
-      Category: 'Restaurant Registration',
-      status: 'Submitted',
-      date: '2023-11-09',
-    },
-    {
-      name: 'Bob',
-      code: '789',
-      Category: 'Travel Guide',
-      status: 'Active',
-      date: '2023-11-10',
-    },
-    {
-      name: 'Mike',
-      code: '321',
-      Category: 'Travel Agency',
-      status: 'Inactive',
-      date: '2023-11-12',
-    },
-  ];
 
   selectedDate: string = ''; // To store the selected date
   dateOptions: { label: string; value: string }[] = [];
@@ -61,9 +39,9 @@ export class ApplicationListingComponent {
   }
 
   ngOnInit() {
-    this.ControllerService.getAlluserApplications().subscribe(
+    this.UserApplicationService.getApplicationByRole().subscribe(
       (res: any) => {
-        this.myApplication = res.data;
+        this.myApplication = res;
         console.log(this.myApplication);
       },
       (err: any) => {
@@ -71,18 +49,18 @@ export class ApplicationListingComponent {
       },
     );
 
-    // this.dropdown = [
-    //   { name: 'Submitted Application', code: 'NY' },
-    //   { name: 'Pending Application', code: 'RM' },
-    //   { name: 'New Applications', code: 'LDN' },
-    // ];
+    this.dropdown = [
+      { name: 'Submitted Application', code: 'NY' },
+      { name: 'Pending Application', code: 'RM' },
+      { name: 'New Applications', code: 'LDN' },
+    ];
 
-    // this.ApplicationTypeDropdown = [
-    //   { name: 'Hotel Registration', code: 'NY' },
-    //   { name: 'Tourist Guide', code: 'RM' },
-    //   { name: 'Resturant Registration', code: 'LDN' },
-    //   { name: 'Travel Agency', code: 'LDN' },
-    // ];
+    this.ApplicationTypeDropdown = [
+      { name: 'Hotel Registration', code: 'NY' },
+      { name: 'Tourist Guide', code: 'RM' },
+      { name: 'Resturant Registration', code: 'LDN' },
+      { name: 'Travel Agency', code: 'LDN' },
+    ];
   }
 
   tableHeaders = ['Code', 'Name', 'Category', 'Status', 'Date'];

@@ -135,39 +135,41 @@ export class TouristGuideRegistrationComponent {
 
     // this.step1Form;
     const formData = new FormData();
-    formData.append('user_id', this.accountID);
+    // formData.append('user_id', this.accountID);
     formData.append('name', this.step1Form?.value['name']);
     formData.append('bussiness_address', this.step1Form?.value['BusinessAddress']);
     formData.append('residential_address', this.step1Form?.value['ResidentialAddress']);
-    formData.append('telegraphic_address', this.step1Form?.value['TelegraphicNumber']);
-    formData.append('telephone_number', this.step1Form?.value['TelephoneNumberLines']);
-    formData.append('mobile_number', this.step1Form?.value['TelephoneNumber']);
-    formData.append('educational_qualification', this.step1Form?.value['EducationalQualifications']);
-    formData.append('experience_in_years', this.step1Form?.value['ExpAsTouristGuide']);
-    formData.append('languages', this.step1Form?.value['ForiegnLanguage']);
-    formData.append('traning', this.step1Form?.value['Trainings']);
+    formData.append('telegraphic_number', this.step1Form?.value['TelegraphicNumber']);
+    formData.append('telephone_number_lines', this.step1Form?.value['TelephoneNumberLines']);
+    formData.append('telephone_number', this.step1Form?.value['TelephoneNumber']);
+    formData.append('educational_qualifications', this.step1Form?.value['EducationalQualifications']);
+    formData.append('exp_as_tourist_guide', this.step1Form?.value['ExpAsTouristGuide']);
+    formData.append('foreign_language', this.step1Form?.value['ForiegnLanguage']);
+    formData.append('trainings', this.step1Form?.value['Trainings']);
     formData.append('banker_name', this.step2Form?.value['BankerName']);
-    formData.append('bankAttachment', this.bankerImage);
+    formData.append('banker_image', this.bankerImage);
     formData.append('staff_details', JSON.stringify(this.step2Form?.value['employees']));
 
-    formData.append('auditor_name', this.step2Form?.value['AuditorsName']);
-    formData.append('auditor_address', this.step2Form?.value['AuditorsAddress']);
+    formData.append('auditors_name', this.step2Form?.value['AuditorsName']);
+    formData.append('auditors_address', this.step2Form?.value['AuditorsAddress']);
     formData.append('number_of_staff', this.step2Form?.value['NumberofStaff']);
     formData.append('capital_invested', this.step2Form?.value['CapitalInvested']);
-    formData.append('activities_undertaken', this.step2Form?.value['OtherActivitiesunderTaken']);
-    formData.append('convicted_offence', this.step2Form?.value['OtherActivitiesunderTaken']);
-    formData.append('metricAttachment', this.metricAttachment);
-    formData.append('fscAttachment', this.fscAttachment);
-    formData.append('experienceAttachment', this.ExperienceImage);
-    formData.append('cnicFrontAttachment', this.cnicFrontAttachment);
-    formData.append('cnicBackAttachment', this.cnicBackAttachment);
+    formData.append('other_activities_undertaken', this.step2Form?.value['OtherActivitiesunderTaken']);
+    formData.append('partner_details', this.step2Form?.value['partner_details']);
+    formData.append('is_checked_details_correct', 1 + '');
+    formData.append('is_checked_accept', 1 + '');
+    formData.append('metric_attachment', this.metricAttachment);
+    formData.append('fsc_attachment', this.fscAttachment);
+    formData.append('experience_attachment', this.ExperienceImage);
+    formData.append('cnic_front_attachment', this.cnicFrontAttachment);
+    formData.append('cnic_back_attachment', this.cnicBackAttachment);
 
     this.isLoading = true;
     this.TouristGuideService.registerTouristguide(formData).subscribe(
       (res: any) => {
         this.isLoading = false;
         this.showSuccess('Congratulations!', 'You Application has been submitted, you will be updated shortly.');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/my-registrations']);
       },
       (err: any) => {
         this.isLoading = false;

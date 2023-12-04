@@ -1,0 +1,341 @@
+<p-toast></p-toast>
+<div class="px-10 py-10">
+  <div class="mb-3 text-xl font-semibold text-black">Applications</div>
+
+  <div class="item-end mb-3 flex flex-row justify-end">
+    <div class="button-container">
+      <!-- <button class="addCommentButton" (click)="addComment()">Add Comment</button> -->
+      <button class="approveButton" (click)="approvedialogbox = true">Apprvove and Sent to Assistant Controller</button>
+
+      <!-- <button class="approveButton" (click)="approvedialogbox = true">Approve</button> -->
+      <button class="approveButton" (click)="showreject = true">Reject</button>
+    </div>
+  </div>
+
+  <div *ngIf="SelectedApplication" class="grid grid-cols-12 gap-5">
+    <!-- <div class="cols-span-1"></div> -->
+    <div class="col-span-6">
+      <div class="flex flex-col gap-5">
+        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+          <div class="flex flex-col">
+            <h2 class="mt-4 font-bold">{{ SelectedApplication?.data.name }}</h2>
+            <p>
+              <i class="pi-map-marker pi" style="color: slateblue"></i>
+              {{ SelectedApplication?.data.residential_address }}
+            </p>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Email address</p>
+                <p class="text-sm">user@gmail.com</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Home address</p>
+                <p class="text-sm">{{ SelectedApplication?.data.business_address }}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Telegraphic</p>
+                <p class="text-sm">{{ SelectedApplication?.data.telegraphic_number }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Telephone Number</p>
+                <p class="text-sm">{{ SelectedApplication?.data.telephone_number }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Mobile Number</p>
+                <p class="text-sm">{{ SelectedApplication?.data.telephone_number_lines }}</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Qualification</p>
+                <p class="text-sm">{{ SelectedApplication?.data.educational_qualifications }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Experience in Years</p>
+                <p class="text-sm">{{ SelectedApplication?.data.exp_as_tourist_guide }} years</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Languages</p>
+                <p class="text-sm">{{ SelectedApplication?.data.foreign_language }}</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Traning</p>
+                <p class="text-sm">{{ SelectedApplication?.data.trainings }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Auditor Name</p>
+                <p class="text-sm">{{ SelectedApplication?.data.auditors_name }}</p>
+              </div>
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Auditor Address</p>
+                <p class="text-sm">{{ SelectedApplication?.data.auditors_address }}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Banker name</p>
+                <p class="text-sm">{{ SelectedApplication?.data.banker_name }}</p>
+              </div>
+
+              <div class="col-span-4 gap-2">
+                <p class="mt-2 text-[#6b7280]">Capital Invested</p>
+                <p class="text-sm">{{ SelectedApplication?.data.capital_invested }}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-12 gap-2">
+                <p class="mt-2 text-[#6b7280]">Other activities undertaken</p>
+                <p class="text-sm">{{ SelectedApplication?.data.other_activities_undertaken }}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-12 gap-4">
+              <div class="col-span-12 gap-2">
+                <p class="mt-2 text-[#6b7280]">Partner Details</p>
+                <p class="text-sm">{{ SelectedApplication?.data.partner_details }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-6">
+      <div class="flex flex-col gap-5">
+        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+          <div class="font-bold">Submitted Documents</div>
+          <div class="flex flex-row gap-2">
+            <p-tag
+              [style]="{
+                background:
+                  'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+              }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">CNIC</span>
+              </div>
+            </p-tag>
+            <p-tag
+              *ngIf="SelectedApplication?.data.metric_attachment"
+              [style]="{
+                background:
+                  'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+              }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">Matric Degree</span>
+              </div>
+            </p-tag>
+            <p-tag
+              *ngIf="SelectedApplication?.data?.fsc_attachment"
+              [style]="{
+                background:
+                  'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+              }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">FSc Degree</span>
+              </div>
+            </p-tag>
+            <p-tag
+              *ngIf="SelectedApplication?.data.experience_attachment"
+              [style]="{
+                background:
+                  'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+              }">
+              <div class="align-items-center flex gap-2">
+                <span class="text-base">Experience Certificate</span>
+              </div>
+            </p-tag>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 flex flex-col gap-5">
+        <div class="h-[300px] overflow-y-scroll rounded-xl border-gray-200 bg-white p-[2rem]">
+          <div class="font-bold">Comments <span class="text-sm"> (Sorted by latest)</span></div>
+          <!-- let comment of comments.reverse() -->
+          {{ SelectedApplication?.approvals }}
+          <div class="" *ngFor="let comment of SelectedApplication?.application?.approvals">
+            <div class="my-2 px-4 text-sm dark:text-gray-500">
+              <p>
+                {{ comment.from_role?.name }} {{ comment.from_user?.name }} has Processes application to
+                {{ comment.to_role?.name }} {{ comment.to_user?.name }}<br />
+                <span class="text-bold text-green-500"> Remarks: </span>
+                <span>{{ comment.remarks }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <div class="my-5 text-xl font-semibold text-black">Submitted Documents by User:</div>
+
+    <div class="my-3 text-xs text-red-500">Click on each document to View.</div>
+
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+      <div
+        *ngIf="SelectedApplication?.data?.cnic_front_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">CNIC</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', SelectedApplication?.data?.cnic_front_attachment)"
+            [src]="convertImageUrl(SelectedApplication?.data?.cnic_front_attachment)"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+
+      <div
+        *ngIf="SelectedApplication?.data?.cnic_back_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">CNIC Back Attachment</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', SelectedApplication?.data?.cnic_back_attachment)"
+            [src]="convertImageUrl(SelectedApplication?.data?.cnic_back_attachment)"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+
+      <div
+        *ngIf="SelectedApplication?.data.metric_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">Matric Degree Attachment</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', convertImageUrl(SelectedApplication?.data?.metric_attachment))"
+            [src]="convertImageUrl(SelectedApplication?.data?.metric_attachment)"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+
+      <div
+        *ngIf="SelectedApplication?.data?.fsc_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">FSC Degree Attachment</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', SelectedApplication?.data.fsc_attachment)"
+            [src]="SelectedApplication?.data.fsc_attachment"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+
+      <div
+        *ngIf="SelectedApplication?.data.experience_attachment"
+        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">Experience Attachment</div>
+        <div class="flex flex-row justify-center">
+          <img
+            crossorigin="anonymous"
+            (click)="OpenDialog('CNIC', SelectedApplication?.data.experience_attachment)"
+            [src]="SelectedApplication?.data.experience_attachment"
+            alt="Image 1"
+            class="h-[300px] w-[300px] cursor-pointer" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <div class="my-5 text-xl font-semibold text-black">Submitted Documents by Inspector:</div>
+    <div>
+      <p>No Documents Submitted by Inspector yet.</p>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  [(visible)]="DocumentDialog"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false">
+  <div>
+    <div class="mb-2 text-center text-xl font-medium text-[#9095a0]">CNIC</div>
+    <div class="flex flex-row justify-center">
+      <img crossorigin="anonymous" class="h-1/2 w-1/2" src="{{ docpath }}" />
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="addCommentDialog"
+  header="Add Comment to Application"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false">
+  <div>
+    <div class="card justify-content-center flex">
+      <textarea pKeyFilter="int" rows="5" cols="30" pInputTextarea></textarea>
+    </div>
+    <div class="item-end mb-3 flex flex-row justify-end">
+      <div class="button-container">
+        <button class="addCommentButton" (click)="addComment()">Forward to User</button>
+        <button class="approveButton">Forward to Inspector</button>
+        <button class="approveButton">Forward to Controller</button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="approvedialogbox"
+  header="Approve Applications"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false">
+  <div>
+    <div class="card justify-content-center flex flex-col">
+      <p>Do you want to approve this applications.</p>
+      <br />
+      <div class="card justify-content-center flex">
+        <textarea pKeyFilter="int" rows="5" [(ngModel)]="addcommentt" cols="30" pInputTextarea></textarea>
+      </div>
+    </div>
+    <div class="item-end mb-3 flex flex-row justify-end">
+      <div class="button-container">
+        <button class="approveButton" (click)="ChangeStatus(1)">Approve</button>
+        <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="showreject"
+  header="Reject Applications"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false">
+  <div>
+    <div class="card justify-content-center flex flex-col">
+      <p>Do you want to reject this applications. Please add comment.</p>
+      <br />
+      <div class="card justify-content-center flex">
+        <textarea pKeyFilter="int" rows="5" [(ngModel)]="addcommentt" cols="30" pInputTextarea></textarea>
+      </div>
+    </div>
+    <div class="item-end mb-3 flex flex-row justify-end">
+      <div class="button-container">
+        <button class="approveButton" (click)="ChangeStatus(3)">Reject</button>
+        <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+</p-dialog>

@@ -11,6 +11,10 @@ export class ControllerService {
     return this.http.get(`${BACKEND_URL}v1/apply-tourism/all?pageNo=0&limit=10`);
   }
 
+  public getuserApplications(userID?: any) {
+    return this.http.get(`${BACKEND_URL}v1/apply-tourism/all?pageNo=0&limit=10&user_id=${userID}`);
+  }
+
   // http://localhost:3001/v1/apply-tourism/controller-inspection/1?status=Approved&user_id=sdf&comment=asfdadsf
 
   public Inspectionbycontroller(application_id?: any, status?: any, user_id?: any, comment?: any) {
@@ -26,9 +30,15 @@ export class ControllerService {
     );
   }
 
+  public ControllertoDPTController(application_id?: any, status?: any, user_id?: any, comment?: any) {
+    return this.http.get(
+      `${BACKEND_URL}v1/apply-tourism/inspector-controller-inspection/${application_id}?status=${status}&user_id=${user_id}&comment=${comment}`,
+    );
+  }
+
   public DPTInspectionbycontroller(application_id?: any, status?: any, user_id?: any, comment?: any) {
     return this.http.get(
-      `${BACKEND_URL}v1/apply-tourism/controller-inspection/${application_id}?status=${status}&user_id=${user_id}&comment=${comment}`,
+      `${BACKEND_URL}v1/apply-tourism/deputy-controller-inspection/${application_id}?status=${status}&user_id=${user_id}&comment=${comment}`,
     );
   }
 }

@@ -1,0 +1,63 @@
+/* app.component.css */
+
+/* Define the styling for the approve button */
+.btn-approve {
+  background-color: #28a745; /* Green color */
+  color: #fff; /* White text */
+  border: none;
+  padding: 8px 16px;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-approve:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Define the styling for the reject button */
+.btn-reject {
+  background-color: #dc3545; /* Red color */
+  color: #fff; /* White text */
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-reject:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+/* Styling for the buttons */
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.addCommentButton,
+.approveButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #22c55e; /* Blue border */
+  background-color: #22c55e; /* Blue background */
+  color: white; /* White text */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for Add Comment button */
+.addCommentButton:hover {
+  background-color: white;
+  color: #22c55e;
+}
+
+/* Hover effect for Approve button */
+.approveButton:hover {
+  background-color: white;
+  color: #22c55e;
+  border-color: #22c55e;
+}

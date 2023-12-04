@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="col-span-12 md:col-span-6 xl:col-span-4">
-      <div
+      <!-- <div
         class="notification_container items-start rounded-lg border border-gray-200 bg-white py-[20px] pl-[20px] shadow dark:border-none dark:bg-night-700 dark:shadow-none">
         <p class="Headingtext2 dark:text-white">My Applications</p>
 
@@ -38,54 +38,54 @@
             <span class="count">{{ count }}</span>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
     <div class="col-span-12 md:col-span-6 xl:col-span-4">
-      <div
+      <!-- <div
         class="notification_container h-[365px] items-start rounded-lg border border-gray-200 bg-white py-[20px] px-[20px] shadow dark:border-none dark:bg-night-600 dark:hover:bg-night-500">
         <p class="Headingtext2 dark:text-white">Progress of Latest Application</p>
-        <div class="mt-5 flex flex-row justify-between px-5">
-          <div class="text-sm font-bold dark:text-gray-500">Application Type</div>
-          <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].verification_type.Name }}</div>
-        </div>
-        <div class="card mt-7 flex flex-col gap-5 px-5">
-          <div class="">
-            <div class="flex flex-row justify-between">
-              <div class="text-sm dark:text-gray-500">Current Status</div>
-              <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].current_status }}</div>
-            </div>
+        <div class="my-5 px-3" *ngIf="!this.myapplicationtypes[0]">No Application submitted yet.</div>
+        <div *ngIf="this.myapplicationtypes[0]">
+          <div class="mt-5 flex flex-row justify-between px-5">
+            <div class="text-sm font-bold dark:text-gray-500">Application Type</div>
+            <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0]?.verification_type.Name }}</div>
           </div>
+          <div class="card mt-7 flex flex-col gap-5 px-5">
+            <div class="">
+              <div class="flex flex-row justify-between">
+                <div class="text-sm dark:text-gray-500">Current Status</div>
+                <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0]?.current_status }}</div>
+              </div>
+            </div>
 
-          <div class="">
-            <div class="flex flex-row justify-between">
-              <div class="text-sm dark:text-gray-500">Application Submission</div>
-              <div class="text-sm dark:text-gray-500">100%</div>
+            <div class="">
+              <div class="flex flex-row justify-between">
+                <div class="text-sm dark:text-gray-500">Application Submission</div>
+                <div class="text-sm dark:text-gray-500">100%</div>
+              </div>
+              <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="100"></p-progressBar>
             </div>
-            <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="100"></p-progressBar>
-          </div>
-          <div>
-            <div class="flex flex-row justify-between">
-              <div class="text-sm dark:text-gray-500">Controller Verification</div>
-              <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].controller_status }}</div>
+            <div>
+              <div class="flex flex-row justify-between">
+                <div class="text-sm dark:text-gray-500">Controller Verification</div>
+                <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0]?.controller_status }}</div>
+              </div>
             </div>
-            <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="70"></p-progressBar> -->
-          </div>
-          <div>
-            <div class="flex flex-row justify-between">
-              <div class="text-sm dark:text-gray-500">On-Site/Inspector Verification</div>
-              <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].inspector_status }}</div>
+            <div>
+              <div class="flex flex-row justify-between">
+                <div class="text-sm dark:text-gray-500">On-Site/Inspector Verification</div>
+                <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0]?.inspector_status }}</div>
+              </div>
             </div>
-            <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="20"></p-progressBar> -->
-          </div>
-          <div>
-            <div class="flex flex-row justify-between">
-              <div class="text-sm dark:text-gray-500">Deputy Controller Verification</div>
-              <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0].inspector_status }}</div>
+            <div>
+              <div class="flex flex-row justify-between">
+                <div class="text-sm dark:text-gray-500">Deputy Controller Verification</div>
+                <div class="text-sm dark:text-gray-500">{{ this.myapplicationtypes[0]?.deputy_controller_status }}</div>
+              </div>
             </div>
-            <!-- <p-progressBar color="#23C35E" [showValue]="false" class="h-[20px] text-sm" [value]="0"></p-progressBar> -->
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -104,7 +104,7 @@
       <!-- Buttons -->
       <div class="mt-6 flex items-center justify-between">
         <button
-          (click)="gotoPage('dashboard/hotel/register')"
+          (click)="gotoPage('/hotel/register')"
           class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
           Apply
         </button>
@@ -128,7 +128,7 @@
       <!-- Buttons -->
       <div class="mt-6 flex items-center justify-between">
         <button
-          (click)="gotoPage('dashboard/tourist-guide/register')"
+          (click)="gotoPage('/tourist-guide/register')"
           class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
           Apply
         </button>
@@ -173,7 +173,7 @@
       <!-- Buttons -->
       <div class="mt-6 flex items-center justify-between">
         <button
-          (click)="gotoPage('dashboard/resturant/register')"
+          (click)="gotoPage('/resturant/register')"
           class="flex-none rounded-md bg-primary-500 px-4 py-2.5 text-xs font-semibold text-white hover:bg-primary-600">
           Apply
         </button>

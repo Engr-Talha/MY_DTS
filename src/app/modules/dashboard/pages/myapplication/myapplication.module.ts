@@ -6,9 +6,9 @@ import { MyApplicationsComponent } from './my-applications/my-applications.compo
 import { TagModule } from 'primeng/tag';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
+import { GeneratechallanComponent } from 'src/app/shared/components/generatechallan/generatechallan.component';
 @NgModule({
   declarations: [MyApplicationsComponent],
-  imports: [CommonModule, MyapplicationRoutingModule, NgCircleProgressModule, TagModule],
+  imports: [CommonModule, MyapplicationRoutingModule, NgCircleProgressModule, GeneratechallanComponent, TagModule],
 })
 export class MyapplicationModule {}

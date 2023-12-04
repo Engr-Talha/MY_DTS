@@ -25,7 +25,18 @@ export class DashbaordComponent {
   labels: any[] = ['Tourist Guide', 'Hotel Reg', 'Resturant Reg', 'Travel Agency'];
 
   ngOnInit() {
-    this.ControllerService.getAlluserApplications().subscribe(
+    let Usertype = localStorage.getItem('userDetails');
+    this.UserID = JSON.parse(Usertype ? Usertype : '{}').id;
+    this.cities = [
+      { name: 'Hotel Registration Application', code: 'NY' },
+      { name: 'Rome', code: 'RM' },
+      { name: 'London', code: 'LDN' },
+      { name: 'Istanbul', code: 'IST' },
+      { name: 'Paris', code: 'PRS' },
+    ];
+
+    return;
+    this.ControllerService.getuserApplications(this.UserID).subscribe(
       (res: any) => {
         this.myApplication = res.data;
 
@@ -64,8 +75,7 @@ export class DashbaordComponent {
     );
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
-    let Usertype = localStorage.getItem('userDetails');
-    this.UserID = JSON.parse(Usertype ? Usertype : '{}').id;
+
     this.data = {
       labels: ['Tourist Guide', 'Hotel Reg', 'Resturant Reg', 'Travel Agency'],
       datasets: [
@@ -88,13 +98,6 @@ export class DashbaordComponent {
         },
       },
     };
-    this.cities = [
-      { name: 'Hotel Registration Application', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' },
-    ];
   }
 
   cities: any | undefined;

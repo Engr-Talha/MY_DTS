@@ -5,6 +5,11 @@ interface dropdownPending {
   code: string;
 }
 import { ControllerService } from 'src/app/core/services/controller.service';
+import { UserApplicationService } from 'src/app/core/services/user-application.service';
+interface dropdownPending {
+  name: string;
+  code: string;
+}
 @Component({
   selector: 'app-applications',
   templateUrl: './applications.component.html',
@@ -12,7 +17,11 @@ import { ControllerService } from 'src/app/core/services/controller.service';
 })
 export class ApplicationsComponent {
   myApplication: any;
-  constructor(private route: Router, private ControllerService: ControllerService) {}
+  constructor(
+    private UserApplicationService: UserApplicationService,
+    private route: Router,
+    private ControllerService: ControllerService,
+  ) {}
   dateRangeFirst: Date | undefined;
   dateRangeSecond: Date | undefined;
 
@@ -23,36 +32,6 @@ export class ApplicationsComponent {
 
   SearchByName: any;
   SearchbyID: any;
-  data2 = [
-    {
-      name: 'John',
-      code: '123',
-      Category: 'Hotel Registration',
-      status: 'Pending',
-      date: '2023-11-08',
-    },
-    {
-      name: 'Alice',
-      code: '456',
-      Category: 'Restaurant Registration',
-      status: 'Submitted',
-      date: '2023-11-09',
-    },
-    {
-      name: 'Bob',
-      code: '789',
-      Category: 'Travel Guide',
-      status: 'Active',
-      date: '2023-11-10',
-    },
-    {
-      name: 'Mike',
-      code: '321',
-      Category: 'Travel Agency',
-      status: 'Inactive',
-      date: '2023-11-12',
-    },
-  ];
 
   selectedDate: string = ''; // To store the selected date
   dateOptions: { label: string; value: string }[] = [];
@@ -64,9 +43,9 @@ export class ApplicationsComponent {
   }
 
   ngOnInit() {
-    this.ControllerService.getAlluserApplications().subscribe(
+    this.UserApplicationService.getApplicationByRole().subscribe(
       (res: any) => {
-        this.myApplication = res.data;
+        this.myApplication = res;
         console.log(this.myApplication);
       },
       (err: any) => {

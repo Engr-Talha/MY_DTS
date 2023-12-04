@@ -47,10 +47,10 @@ export class SignUpComponent implements OnInit {
   signup() {
     const { email, password, fullName, confirmPassword, cnic } = this.form.value;
     const formData = new FormData();
-    formData.append('fullName', fullName);
+    formData.append('user_name', fullName);
     formData.append('email', email);
-    formData.append('roleId', this.roleId);
-    formData.append('confirmPassword', confirmPassword);
+    formData.append('role_id', this.roleId);
+    formData.append('password_confirmation', confirmPassword);
     formData.append('password', password);
     formData.append('cnic', cnic);
 
@@ -67,12 +67,19 @@ export class SignUpComponent implements OnInit {
         this.Router.navigate(['/auth/sign-in']);
       },
       (err: any) => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: err });
+        // this.messageService.add({ severity: 'error', summary:. 'Error', detail: 'Error' });
 
         console.log('====================================');
-        console.log('error in signup', err);
+        console.log('error in signup', err.error.error);
         console.log('====================================');
+        this.showError(err?.error?.error);
       },
     );
+  }
+  showError(errormessage: any) {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: errormessage });
+  }
+  showSuccess(summary: any, success: any) {
+    this.messageService.add({ severity: 'success', summary: summary, detail: success });
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ChartModule } from 'primeng/chart';
@@ -13,6 +13,7 @@ import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
+import { RoleBasedAuthGuard } from 'src/app/core/guards/role-based-auth-guard.guard';
 @NgModule({
   imports: [
     LayoutRoutingModule,
@@ -50,6 +51,9 @@ import { AuthInterceptor } from 'src/app/core/interceptor/auth.interceptor';
       lazy: false,
     }),
   ],
-  providers: [HttpClientModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // RoleBasedAuthGuard, // Provide the guard within the LayoutModule
+  ],
 })
 export class LayoutModule {}

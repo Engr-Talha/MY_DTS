@@ -4,6 +4,7 @@ import { TouristGuideService } from 'src/app/core/services/tourist-guide.service
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { UserApplicationService } from 'src/app/core/services/user-application.service';
 @Component({
   selector: 'app-editapplication',
   templateUrl: './editapplication.component.html',
@@ -27,13 +28,16 @@ export class EditapplicationComponent {
     private TouristGuideService: TouristGuideService,
     private messageService: MessageService,
     private ActivatedRoute: ActivatedRoute,
+    private UserApplicationService: UserApplicationService,
   ) {
     this.initTouristGuideForm();
     this.initStep1Form();
     this.initStep2Form();
   }
-
+  userID: any;
   ngOnInit() {
+    let Usertype = localStorage.getItem('userDetails');
+    this.userID = JSON.parse(Usertype ? Usertype : '{}').id;
     this.ActivatedRoute.params.subscribe((params: any) => {
       this.applicationID = params.id;
       if (this.applicationID > 0) {
@@ -54,35 +58,39 @@ export class EditapplicationComponent {
       name: formData.name,
       BusinessAddress: formData.business_address,
       ResidentialAddress: formData.residential_address,
-      TelephoneNumberLines: formData.telephone_number,
-      TelegraphicNumber: formData.telegraphic_address,
-      TelephoneNumber: formData.mobile_number,
-      EducationalQualifications: formData.qualification,
-      ExpAsTouristGuide: formData.experience,
-      ForiegnLanguage: formData.languages,
-      Trainings: formData.training,
+      TelephoneNumberLines: formData.telephone_number_lines,
+      TelegraphicNumber: formData.telegraphic_number,
+      TelephoneNumber: formData.telephone_number,
+      EducationalQualifications: formData.educational_qualifications,
+      ExpAsTouristGuide: formData.exp_as_tourist_guide,
+      ForiegnLanguage: formData.foreign_language,
+      Trainings: formData.trainings,
     });
 
     this.step2Form.patchValue({
-      BankerName: formData.bank_details.name,
-      AuditorsAddress: formData.bank_details.auditor_address,
-      AuditorsName: formData.bank_details.auditor_name,
-      NumberofStaff: formData.bank_details.no_of_staff,
-      CapitalInvested: formData.bank_details.capital_invested,
-      OtherActivitiesunderTaken: formData.bank_details.activities_undertaken,
-      PartnerDetails: formData.bank_details.convicted_offense,
-      isCheckeddetialsCorrect: false, // Set default value if not available in the data
-      isCheckedAccpet: false, // Set default value if not available in the data
+      BankerName: formData.banker_name,
+      AuditorsAddress: formData.auditors_address,
+      AuditorsName: formData.auditors_name,
+      NumberofStaff: formData.number_of_staff,
+      CapitalInvested: formData.capital_invested,
+      OtherActivitiesunderTaken: formData.other_activities_undertaken,
+      PartnerDetails: formData.partner_details,
+      // PartnerDetails: formData.partner_details,
+
+      isCheckeddetialsCorrect: true, // Set default value if not available in the data
+      isCheckedAccpet: true, // Set default value if not available in the data
       // Patching attachments, assuming attachment paths are available in the data
     });
 
-    this.cnicFrontAttachmentPath = formData.cnic_front_attachment?.path;
-    this.cnicBackAttachmentPath = formData.cnic_back_attachment.path;
-    this.metricAttachmentPath = formData.metric_attachment.path;
-    this.fscAttachmentPath = formData.fsc_attachment.path;
-    this.experienceAttachmentPath = formData.experience_attachment.path;
+    this.cnicFrontAttachmentPath = formData.cnic_front_attachment;
+    this.cnicBackAttachmentPath = formData.cnic_front_attachment;
+    this.metricAttachmentPath = formData.cnic_front_attachment;
+    this.fscAttachmentPath = formData.cnic_front_attachment;
+    this.experienceAttachmentPath = formData.cnic_front_attachment;
+    this.BankerImagePath = formData.BankerImage;
   }
 
+  BankerImagePath: string;
   cnicFrontAttachmentPath: string;
   metricAttachmentPath: string;
   cnicBackAttachmentPath: string;
@@ -101,6 +109,10 @@ export class EditapplicationComponent {
         case 'cnicBackAttachment':
           this.step2Form.get('cnicBackAttachment')?.setValue(file);
           this.displayPreview(file, 'cnicBackAttachment');
+          break;
+        case 'BankerImage':
+          this.step2Form.get('BankerImage')?.setValue(file);
+          this.displayPreview(file, 'BankerImage');
           break;
         case 'metricAttachment':
           this.step2Form.get('metricAttachment')?.setValue(file);
@@ -125,6 +137,9 @@ export class EditapplicationComponent {
         case 'cnicFrontAttachment':
           this.cnicFrontAttachmentPath = reader.result as string;
           break;
+        case 'BankerImage':
+          this.BankerImagePath = reader.result as string;
+          break;
         case 'cnicBackAttachment':
           this.cnicBackAttachmentPath = reader.result as string;
           break;
@@ -136,21 +151,15 @@ export class EditapplicationComponent {
           break;
         case 'experienceAttachment':
           this.experienceAttachmentPath = reader.result as string;
-          // this.step2Form.get(controlName)?.setValue(file);
           this.ExperienceImage = file;
           break;
-        // Handle other image previews similarly
-        // case 'BankerImage':
-        //   this.bankerImagePath = reader.result as string;
-        //   break;
-        // ... and so on for other image previews
       }
     };
     reader.readAsDataURL(file);
   }
 
   getApplicationbyID(id: any) {
-    this.TouristGuideService.getTouristguidebyID(id).subscribe(
+    this.UserApplicationService.getUserApplicationsByID(id).subscribe(
       (res: any) => {
         this.mydata = res.data;
 
@@ -209,6 +218,10 @@ export class EditapplicationComponent {
       case 'experienceAttachment':
         this.experienceAttachmentPath = '';
         this.step2Form.get('experienceAttachment')?.setValue(null);
+        break;
+      case 'BankerImage':
+        this.BankerImagePath = '';
+        this.step2Form.get('BankerImage')?.setValue(null);
         break;
       // ... Handle other image removals similarly
     }
@@ -304,40 +317,41 @@ export class EditapplicationComponent {
 
     // this.step1Form;
     const formData = new FormData();
-    formData.append('user_id', '1');
     formData.append('name', this.step1Form?.value['name']);
     formData.append('bussiness_address', this.step1Form?.value['BusinessAddress']);
     formData.append('residential_address', this.step1Form?.value['ResidentialAddress']);
-    formData.append('telegraphic_address', this.step1Form?.value['TelegraphicNumber']);
-    formData.append('telephone_number', this.step1Form?.value['TelephoneNumberLines']);
-    formData.append('mobile_number', this.step1Form?.value['TelephoneNumber']);
-    formData.append('educational_qualification', this.step1Form?.value['EducationalQualifications']);
-    formData.append('experience_in_years', this.step1Form?.value['ExpAsTouristGuide']);
-    formData.append('languages', this.step1Form?.value['ForiegnLanguage']);
-    formData.append('traning', this.step1Form?.value['Trainings']);
+    formData.append('telegraphic_number', this.step1Form?.value['TelegraphicNumber']);
+    formData.append('telephone_number_lines', this.step1Form?.value['TelephoneNumberLines']);
+    formData.append('telephone_number', this.step1Form?.value['TelephoneNumber']);
+    formData.append('educational_qualifications', this.step1Form?.value['EducationalQualifications']);
+    formData.append('exp_as_tourist_guide', this.step1Form?.value['ExpAsTouristGuide']);
+    formData.append('foreign_language', this.step1Form?.value['ForiegnLanguage']);
+    formData.append('trainings', this.step1Form?.value['Trainings']);
     formData.append('banker_name', this.step2Form?.value['BankerName']);
-    formData.append('bankAttachment', this.bankerImage);
+    formData.append('banker_image', this.bankerImage);
     formData.append('staff_details', JSON.stringify(this.step2Form?.value['employees']));
 
-    formData.append('auditor_name', this.step2Form?.value['AuditorsName']);
-    formData.append('auditor_address', this.step2Form?.value['AuditorsAddress']);
+    formData.append('auditors_name', this.step2Form?.value['AuditorsName']);
+    formData.append('auditors_address', this.step2Form?.value['AuditorsAddress']);
     formData.append('number_of_staff', this.step2Form?.value['NumberofStaff']);
     formData.append('capital_invested', this.step2Form?.value['CapitalInvested']);
-    formData.append('activities_undertaken', this.step2Form?.value['OtherActivitiesunderTaken']);
-    formData.append('convicted_offence', this.step2Form?.value['OtherActivitiesunderTaken']);
-    formData.append('metricAttachment', this.cnicFrontAttachmentPath);
-    formData.append('fscAttachment', this.fscAttachmentPath);
-    formData.append('experienceAttachment', this.ExperienceImage);
-    formData.append('cnicFrontAttachment', this.cnicBackAttachmentPath);
-    formData.append('cnicBackAttachment', this.cnicBackAttachmentPath);
+    formData.append('other_activities_undertaken', this.step2Form?.value['OtherActivitiesunderTaken']);
+    formData.append('partner_details', this.step2Form?.value['partner_details']);
+    formData.append('is_checked_details_correct', 1 + '');
+    formData.append('is_checked_accept', 1 + '');
+
+    formData.append('metric_attachment', this.cnicFrontAttachmentPath);
+    formData.append('fsc_attachment', this.fscAttachmentPath);
+    formData.append('experience_attachment', this.ExperienceImage);
+    formData.append('cnic_front_attachment', this.cnicBackAttachmentPath);
+    formData.append('cnic_back_attachment', this.cnicBackAttachmentPath);
 
     console.log('====================================');
     console.log(formData);
     console.log('====================================');
 
-    return;
     this.isLoading = true;
-    this.TouristGuideService.registerTouristguide(formData).subscribe(
+    this.TouristGuideService.UpdateTouristguide(this.applicationID, formData).subscribe(
       (res: any) => {
         this.isLoading = false;
         this.showSuccess('Congratulations!', 'You Application has been submitted, you will be updated shortly.');

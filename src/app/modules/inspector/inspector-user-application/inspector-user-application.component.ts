@@ -3,6 +3,8 @@ import { MessageService } from 'primeng/api';
 import { ControllerService } from 'src/app/core/services/controller.service';
 import { ActivatedRoute } from '@angular/router';
 import { TouristGuideService } from 'src/app/core/services/tourist-guide.service';
+import { UserApplicationService } from 'src/app/core/services/user-application.service';
+
 @Component({
   selector: 'app-inspector-user-application',
   templateUrl: './inspector-user-application.component.html',
@@ -40,6 +42,7 @@ export class InspectorUserApplicationComponent {
     private ActivatedRoute: ActivatedRoute,
     private ControllerService: ControllerService,
     private messageService: MessageService,
+    private UserApplicationService: UserApplicationService,
   ) {}
 
   ngOnInit() {
@@ -71,19 +74,49 @@ export class InspectorUserApplicationComponent {
   }
 
   getApplicationbyID(id: any) {
-    this.TouristGuideService.getTouristguidebyID(id).subscribe(
+    this.UserApplicationService.getUserApplicationsByID(id).subscribe(
       (res: any) => {
-        this.SelectedApplication = res.data;
+        this.SelectedApplication = res;
+        console.log('====================================');
+        console.log('selected application in user block ', this.SelectedApplication);
+        console.log('====================================');
+      },
+      (err: any) => {
+        console.log('Error in gettting my applications', err);
+      },
+    );
+  }
+  ChangeStatus(rolestobeSent: any) {
+    // this.approvedialogbox = true;
 
+    const data = new FormData();
+
+    data.append('status', rolestobeSent);
+    data.append('remarks', this.addcommentt);
+    data.append('attachment', JSON.stringify(this.uploadedImages));
+
+    this.UserApplicationService.changeStatus(this.applicationID, data).subscribe(
+      (res) => {
         console.log('====================================');
         console.log(res);
         console.log('====================================');
-        // this.patchFormData();
+        this.addcommentt = '';
+        this.approvedialogbox = false;
+        if (rolestobeSent == 1) {
+          this.showSuccess(
+            'Application Approved',
+            'User Application Approved, sent to the  Controller for further checking.',
+          );
+        } else if (rolestobeSent == 3) {
+          this.showError2('Application Rejected', 'Application is Rejected and Informed to User.');
+        }
       },
-      (err: any) => {
+      (err) => {
         console.log('====================================');
         console.log(err);
         console.log('====================================');
+        this.addcommentt = '';
+        this.approvedialogbox = false;
       },
     );
   }
