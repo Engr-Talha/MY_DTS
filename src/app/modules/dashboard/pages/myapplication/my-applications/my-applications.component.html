@@ -1,7 +1,6 @@
 <div class="px-10 py-10">
   <div class="text-xl font-semibold text-black">My Applications</div>
-  <div
-    *ngIf="showAllApplications"
+  <div *ngIf="showAllApplications"
     class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-12">
     <div *ngFor="let item of myApplication" class="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3">
       <div class="h-[350px] border-t-4 border-green-400 bg-white p-3 shadow-xl hover:shadow-2xl">
@@ -15,20 +14,11 @@
           </div>
         </div>
         <div class="flex items-center justify-center">
-          <circle-progress
-            [percent]="10"
-            [radius]="100"
-            [outerStrokeWidth]="16"
-            [innerStrokeWidth]="8"
-            [outerStrokeColor]="'#20c0a0'"
-            [innerStrokeColor]="'#EDEEFE'"
-            [animation]="true"
-            [animationDuration]="300"
-            [title]="'10'"
-            [renderOnClick]="true"></circle-progress>
+          <circle-progress [percent]="10" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#20c0a0'" [innerStrokeColor]="'#EDEEFE'" [animation]="true" [animationDuration]="300"
+            [title]="'10'" [renderOnClick]="true"></circle-progress>
         </div>
-        <div
-          (click)="selectShowApplication(item?.tourist_guide?.id)"
+        <div (click)="selectShowApplication(item?.tourist_guide?.id)"
           class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
           {{ item.tourist_guide?.name }}
         </div>
@@ -43,13 +33,11 @@
       <div class="generate-challan-button" (click)="generatechallan()" *ngIf="generateChallan">Generate Challan</div>
     </div>
     <div class="flex flex-row justify-between">
-      <div
-        (click)="showAllApplications = true; showSingleApplications = false"
+      <div (click)="showAllApplications = true; showSingleApplications = false"
         class="cursor-pointer text-base text-gray-500 hover:text-green-500">
         Go Back
       </div>
-      <div
-        (click)="showAllApplications = true; showSingleApplications = false"
+      <div (click)="showAllApplications = true; showSingleApplications = false"
         class="cursor-pointer px-10 text-base text-gray-500 hover:text-green-500">
         Edit Application
       </div>
@@ -68,7 +56,7 @@
               <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-4 gap-2">
                   <p class="mt-2 text-[#6b7280]">Email address</p>
-                  <p class="text-sm">user@gmail.com</p>
+                  <p class="text-sm"></p>
                 </div>
                 <div class="col-span-4 gap-2">
                   <p class="mt-2 text-[#6b7280]">Home address</p>
@@ -151,8 +139,7 @@
           <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
             <div class="font-bold">Submitted Documents</div>
             <div class="flex flex-row gap-2">
-              <p-tag
-                [style]="{
+              <p-tag [style]="{
                   background:
                     'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
                 }">
@@ -160,8 +147,7 @@
                   <span class="text-base">CNIC</span>
                 </div>
               </p-tag>
-              <p-tag
-                [style]="{
+              <p-tag [style]="{
                   background:
                     'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
                 }">
@@ -169,8 +155,7 @@
                   <span class="text-base">Matric Degree</span>
                 </div>
               </p-tag>
-              <p-tag
-                [style]="{
+              <p-tag [style]="{
                   background:
                     'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
                 }">
@@ -178,8 +163,7 @@
                   <span class="text-base">FSc Degree</span>
                 </div>
               </p-tag>
-              <p-tag
-                [style]="{
+              <p-tag [style]="{
                   background:
                     'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
                 }">

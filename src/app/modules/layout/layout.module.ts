@@ -51,9 +51,6 @@ import { RoleBasedAuthGuard } from 'src/app/core/guards/role-based-auth-guard.gu
       lazy: false,
     }),
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    // RoleBasedAuthGuard, // Provide the guard within the LayoutModule
-  ],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 })
 export class LayoutModule {}
