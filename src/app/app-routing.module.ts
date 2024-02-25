@@ -8,14 +8,15 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./modules/layout/layout.module').then((m) => m.LayoutModule),
   },
+
   {
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
 
   { path: '**', redirectTo: 'error/404' },
-  { path: 'generate-challan', component: GeneratechallanComponent },
-  { path: 'Show-Certificate', component: CertificateComponent },
+  { path: 'generate-challan/:id', component: GeneratechallanComponent },
+  { path: 'Show-Certificate/:id', component: CertificateComponent },
 ];
 
 @NgModule({

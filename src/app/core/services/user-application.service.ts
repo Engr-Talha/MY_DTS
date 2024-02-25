@@ -25,7 +25,7 @@ export class UserApplicationService {
 
   // http://dts-api.test/api/tourist-guides/change-status/39
   public changeStatus(application_id?: any, data?: FormData) {
-    return this.http.post(`${BACKEND_URL}api/tourist-guides/change-status/${application_id}`, data);
+    return this.http.post(`${BACKEND_URL}api/change-status/${application_id}`, data);
   }
   // http://localhost:3001/v1/apply-tourism/all?pageNo=0&limit=10&user_id=1
 }

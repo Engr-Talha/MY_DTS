@@ -7,7 +7,6 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      // { path: '', redirectTo: 'nfts', pathMatch: 'full' },
       { path: '', component: DashbaordComponent },
       { path: '**', redirectTo: 'error/404' },
       {
@@ -23,9 +22,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/profile/profile.module').then((m) => m.ProfileModule),
       },
       {
-        path: 'tourist-guide',
-        loadChildren: () => import('./pages/tourist-guide/tourist-guide.module').then((m) => m.TouristGuideModule),
+        path: 'travel-agency',
+        loadChildren: () => import('./pages/travel-agency/travel-agency.module').then((m) => m.TravelAgencyModule),
       },
+
       {
         path: 'my-registrations',
         loadChildren: () => import('./pages/myapplication/myapplication.module').then((m) => m.MyapplicationModule),

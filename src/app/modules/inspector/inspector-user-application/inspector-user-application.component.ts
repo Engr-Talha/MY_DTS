@@ -94,6 +94,7 @@ export class InspectorUserApplicationComponent {
     data.append('status', rolestobeSent);
     data.append('remarks', this.addcommentt);
     data.append('attachment', JSON.stringify(this.uploadedImages));
+    data.append('application_entity_type_id', this.SelectedApplication.application.application_entity_type_id);
 
     this.UserApplicationService.changeStatus(this.applicationID, data).subscribe(
       (res) => {

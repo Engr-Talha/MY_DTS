@@ -4,6 +4,9 @@ import { ControllerService } from 'src/app/core/services/controller.service';
 import { ActivatedRoute } from '@angular/router';
 import { TouristGuideService } from 'src/app/core/services/tourist-guide.service';
 import { UserApplicationService } from 'src/app/core/services/user-application.service';
+import { SharedService } from 'src/app/core/services/shared.service';
+import { forkJoin } from 'rxjs';
+
 @Component({
   selector: 'app-application-dpt',
   templateUrl: './application-dpt.component.html',
@@ -22,6 +25,7 @@ export class ApplicationDptComponent {
     private ControllerService: ControllerService,
     private messageService: MessageService,
     private UserApplicationService: UserApplicationService,
+    private SharedService: SharedService,
   ) {}
 
   ngOnInit() {
@@ -103,57 +107,78 @@ export class ApplicationDptComponent {
   addcommentt: string;
 
   approvedialogbox: boolean = false;
-  approve() {
-    this.approvedialogbox = true;
-    this.ControllerService.Inspectionbycontroller(
-      this.applicationID,
-      'Approved',
-      this.userID,
-      this.addcommentt,
-    ).subscribe(
-      (res) => {
-        console.log('====================================');
-        console.log(res);
-        console.log('====================================');
+  feeTypes: any[];
+  selectedFeeTypes: any;
+  approveDialogbox() {
+    const data = new FormData();
+    data.append('application_entity_type_id', this.SelectedApplication.application.application_entity_type_id);
+
+    this.SharedService.get_header_types_of_challan(data).subscribe(
+      (res: any) => {
+        this.feeTypes = res.data;
+        // console.log(res);
       },
-      (err) => {
-        console.log('====================================');
-        console.log(err);
-        console.log('====================================');
-      },
+      (err: any) => {},
     );
-    this.approvedialogbox = false;
+    this.approvedialogbox = true;
   }
 
   ChangeStatus(rolestobeSent: any) {
     // this.approvedialogbox = true;
+    // const ids: string[] = this.selectedFeeTypes.map((item: FeeType) => item.id);
+
+    // const obj: { [key: number]: number } = {};
+
+    // for (let i = 0; i < ids.length; i++) {
+    //   // Use Number(i) to convert the index to a number key
+    //   obj[Number(i)] = Number(ids[i]);
+    // }
+
+    // console.log(obj); // { 0: 23, 1: 24, 2: 22 }
+
+    // const challan_data = new FormData();
+    // challan_data.append('application_entity_type_id', this.SelectedApplication.application.application_entity_type_id);
+    // challan_data.append('application_id', this.applicationID);
+    // challan_data.append('header_type_id', JSON.stringify(obj));
 
     const data = new FormData();
 
+    // console.log(this.selectedFeeTypes);
+
     data.append('status', rolestobeSent);
     data.append('remarks', this.addcommentt);
+    data.append('application_entity_type_id', this.SelectedApplication.application.application_entity_type_id);
 
-    this.UserApplicationService.changeStatus(this.applicationID, data).subscribe(
-      (res) => {
-        console.log('====================================');
-        console.log(res);
-        console.log('====================================');
+    // const challanCall = this.SharedService.generate_challan(challan_data);
+    const statusCall = this.UserApplicationService.changeStatus(this.applicationID, data);
+
+    forkJoin([statusCall]).subscribe(
+      ([statusRes]) => {
+        // Handle success for both APIs
+        // console.log('Challan response:', challanRes);
+        console.log('Status response:', statusRes);
+
+        // You can add comments, show messages, etc. based on the responses
         this.addcommentt = '';
         this.approvedialogbox = false;
-        if (rolestobeSent == 1) {
-          this.showSuccess('Application Approved', 'User Application Approved, Challan Generated');
-        } else if (rolestobeSent == 3) {
+
+        if (rolestobeSent === 1) {
+          this.showSuccess('Application Approved', 'User Application Approved, Sent to Controller.');
+        } else if (rolestobeSent === 3) {
           this.showError2('Application Rejected', 'Application is Rejected and Informed to User.');
         }
       },
-      (err) => {
-        console.log('====================================');
-        console.log(err);
-        console.log('====================================');
+      (error) => {
+        // Handle error for any API
+        console.error('Error:', error);
+
+        // You can handle common errors or specific errors for each API here
         this.addcommentt = '';
         this.approvedialogbox = false;
       },
     );
+
+    return;
   }
 
   showreject: boolean = false;
@@ -166,15 +191,15 @@ export class ApplicationDptComponent {
       this.addcommentt,
     ).subscribe(
       (res) => {
-        console.log('====================================');
-        console.log(res);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log(res);
+        // console.log('====================================');
         this.showreject = false;
       },
       (err) => {
-        console.log('====================================');
-        console.log(err);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log(err);
+        // console.log('====================================');
         this.showreject = false;
       },
     );
@@ -199,4 +224,9 @@ export class ApplicationDptComponent {
   showError(errormessage: any) {
     this.messageService.add({ severity: 'error', summary: 'Document Rejected', detail: errormessage });
   }
+}
+
+interface FeeType {
+  id: number;
+  name: string;
 }

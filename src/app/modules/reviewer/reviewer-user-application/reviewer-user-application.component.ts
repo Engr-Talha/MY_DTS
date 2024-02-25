@@ -131,6 +131,7 @@ export class ReviewerUserApplicationComponent {
 
     data.append('status', rolestobeSent);
     data.append('remarks', this.addcommentt);
+    data.append('application_entity_type_id', this.SelectedApplication.application.application_entity_type_id);
 
     this.UserApplicationService.changeStatus(this.applicationID, data).subscribe(
       (res) => {

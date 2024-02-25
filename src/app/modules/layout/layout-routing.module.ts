@@ -29,6 +29,7 @@ const routes: Routes = [
     component: LayoutComponent,
     loadChildren: () => import('../deputy-controller/deputy-controller.module').then((m) => m.DeputyControllerModule),
   },
+
   {
     path: 'astcontroller-dashboard',
 

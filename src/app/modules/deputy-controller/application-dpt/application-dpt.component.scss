@@ -61,3 +61,10 @@
   color: #22c55e;
   border-color: #22c55e;
 }
+
+:host ::ng-deep {
+  .p-multiselect.p-component {
+    border: 1px solid #bfc4b6;
+    border-radius: 7px;
+  }
+}

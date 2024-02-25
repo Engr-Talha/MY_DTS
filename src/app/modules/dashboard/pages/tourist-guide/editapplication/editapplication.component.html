@@ -22,8 +22,7 @@
           <div class="col-span-12">
             <label class="text-base" for="name">Name:</label>
             <input type="text" id="name" formControlName="name" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="step1Form.get('name')?.hasError('required') && step1Form.get('name')?.touched">
               Name is required.
             </div>
@@ -41,9 +40,7 @@
           <div class="form-group col-span-6">
             <label for="town">Residential Address:</label>
             <input type="text" id="town" formControlName="ResidentialAddress" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('ResidentialAddress')?.hasError('required') &&
                 step1Form.get('ResidentialAddress')?.touched
               ">
@@ -59,9 +56,7 @@
           <div class="form-group col-span-4 my-2">
             <label for="TelegraphicNumber">Telegraphic Address</label>
             <input type="text" id="TelegraphicNumber" formControlName="TelegraphicNumber" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('TelegraphicNumber')?.hasError('required') && step1Form.get('TelegraphicNumber')?.touched
               ">
               Telegraphic Address is required.
@@ -70,9 +65,7 @@
           <div class="form-group col-span-4 my-2">
             <label for="TelephoneNumberLines">Telephone Number Lines</label>
             <input type="text" id="TelephoneNumberLines" formControlName="TelephoneNumberLines" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('TelephoneNumberLines')?.hasError('required') &&
                 step1Form.get('TelephoneNumberLines')?.touched
               ">
@@ -82,9 +75,7 @@
           <div class="form-group col-span-4 my-2">
             <label for="TelephoneNumber">Telephone Number(if any)</label>
             <input type="text" id="TelephoneNumber" formControlName="TelephoneNumber" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('TelephoneNumber')?.hasError('required') && step1Form.get('TelephoneNumber')?.touched
               ">
               Telephone number is required.
@@ -100,9 +91,7 @@
             <div class="form-group">
               <label for="EducationalQualifications">Educational Qualification Highest</label>
               <input type="text" id="EducationalQualifications" formControlName="EducationalQualifications" />
-              <div
-                class="text-sm text-red-600"
-                *ngIf="
+              <div class="text-sm text-red-600" *ngIf="
                   step1Form.get('EducationalQualifications')?.hasError('required') &&
                   step1Form.get('EducationalQualifications')?.touched
                 ">
@@ -113,9 +102,7 @@
           <div class="form-group col-span-4 my-2">
             <label for="ExpAsTouristGuide">Experience of Tourist Guide in Years</label>
             <input type="text" id="ExpAsTouristGuide" formControlName="ExpAsTouristGuide" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('ExpAsTouristGuide')?.hasError('required') && step1Form.get('ExpAsTouristGuide')?.touched
               ">
               Experience as tourist guide is required.
@@ -123,14 +110,9 @@
           </div>
           <div class="form-group col-span-4 my-2">
             <label for="ForiegnLanguage">Knowledge of foriegn languages</label>
-            <input
-              type="text"
-              id="ForiegnLanguage"
-              placeholder="Urdu English German French"
+            <input type="text" id="ForiegnLanguage" placeholder="Urdu English German French"
               formControlName="ForiegnLanguage" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('ForiegnLanguage')?.hasError('required') && step1Form.get('ForiegnLanguage')?.touched
               ">
               Knowledge of foriegn languages is required.
@@ -144,8 +126,7 @@
         </div>
 
         <div class="place-item-end mr-[10%] flex justify-end gap-5">
-          <button
-            (click)="nextStep()"
+          <button (click)="nextStep()"
             class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
             type="submit">
             Next
@@ -159,12 +140,10 @@
         <h2 class="mt-4 text-lg font-normal">Bank Details</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-4 my-2">
-            <label for="BankerName"
-              >Name of Banker <span class="text-sm">(Please attach refrence from Bank)</span>:</label
-            >
+            <label for="BankerName">Name of Banker <span class="text-sm">(Please attach refrence from
+                Bank)</span>:</label>
             <input type="text" id="BankerName" formControlName="BankerName" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="step2Form.get('BankerName')?.hasError('required') && step2Form.get('BankerName')?.touched">
               Name of Banker is required.
             </div>
@@ -179,23 +158,13 @@
               Invalid image format. Supported formats: jpg, jpeg, png, gif.
             </div> -->
             <label for="BankerImage">Banker Image:</label><br />
-            <button
-              *ngIf="BankerImagePath"
-              class="bg-red rounded-full p-3 font-extrabold"
+            <button *ngIf="BankerImagePath" class="bg-red rounded-full p-3 font-extrabold"
               (click)="removeImage('BankerImage')">
               x
             </button>
-            <img
-              crossorigin="anonymous"
-              *ngIf="BankerImagePath"
-              [src]="convertImageUrl(BankerImagePath)"
-              alt="CNIC Front Image"
-              width="200"
+            <img *ngIf="BankerImagePath" [src]="convertImageUrl(BankerImagePath)" alt="CNIC Front Image" width="200"
               height="200" />
-            <input
-              type="file"
-              id="BankerImage"
-              formControlName="BankerImage"
+            <input type="file" id="BankerImage" formControlName="BankerImage"
               (change)="onImageChange1($event, 'BankerImage')" />
             >
             <!-- <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('validImage')" class="text-danger">
@@ -248,9 +217,7 @@
               <!-- Add other fields: employmentStatus, qualification, experience -->
             </div>
             <div class="col-span-2 my-2">
-              <button
-                class="rounded-sm border bg-green-400 px-5 py-3 hover:bg-white"
-                type="button"
+              <button class="rounded-sm border bg-green-400 px-5 py-3 hover:bg-white" type="button"
                 (click)="removeEmployee(i)">
                 Remove
               </button>
@@ -259,9 +226,7 @@
         </div>
       </div>
       <div class="my-3 flex flex-row items-end justify-end">
-        <button
-          class="rounded-sm border bg-green-400 px-5 py-3 text-sm hover:bg-white"
-          type="button"
+        <button class="rounded-sm border bg-green-400 px-5 py-3 text-sm hover:bg-white" type="button"
           (click)="addEmployee()">
           Add Staff/Employee Details.
         </button>
@@ -270,15 +235,13 @@
       <div>
         <h2 class="mt-4 text-lg font-normal">
           Capital Invested
-          <span class="text-sm"
-            >(Please indicate clearly the paid up capital and enclose certificate of appropriate authority in support of
-            your statment.)</span
-          >
+          <span class="text-sm">(Please indicate clearly the paid up capital and enclose certificate of appropriate
+            authority in support of
+            your statment.)</span>
         </h2>
         <div class="col-span-12 px-5">
           <textarea formControlName="CapitalInvested" cols="4"></textarea>
-          <div
-            class="text-sm text-red-600"
+          <div class="text-sm text-red-600"
             *ngIf="step2Form.get('CapitalInvested')?.hasError('required') && step2Form.get('CapitalInvested')?.touched">
             Capital Invested is required.
           </div>
@@ -308,23 +271,13 @@
           <div class="col-span-4 my-2">
             <label for="cnicFrontAttachment">Upload CNIC Front Image:</label><br />
             <!-- {{ convertImageUrl(cnicFrontAttachmentPath) }} -->
-            <button
-              *ngIf="cnicFrontAttachmentPath"
-              class="bg-red p-3 font-extrabold"
+            <button *ngIf="cnicFrontAttachmentPath" class="bg-red p-3 font-extrabold"
               (click)="removeImage('cnicFrontAttachment')">
               x
             </button>
-            <img
-              crossorigin="anonymous"
-              *ngIf="cnicFrontAttachmentPath"
-              [src]="cnicFrontAttachmentPath"
-              alt="CNIC Front Image"
-              width="200"
+            <img *ngIf="cnicFrontAttachmentPath" [src]="cnicFrontAttachmentPath" alt="CNIC Front Image" width="200"
               height="200" />
-            <input
-              *ngIf="!cnicFrontAttachmentPath"
-              type="file"
-              id="cnicFrontAttachment"
+            <input *ngIf="!cnicFrontAttachmentPath" type="file" id="cnicFrontAttachment"
               (change)="onImageChange1($event, 'cnicFrontAttachment')" />
             <!-- <div *ngIf="step2Form.get('cnicFrontAttachment')?.hasError('validImage')" class="text-danger">
               Invalid image format. Supported formats: jpg, jpeg, png, gif.
@@ -332,45 +285,25 @@
           </div>
           <div class="col-span-4 my-2">
             <label for="cnicBackAttachment">Upload CNIC Back Image:</label><br />
-            <button
-              *ngIf="cnicBackAttachmentPath"
-              class="bg-red p-3 font-extrabold"
+            <button *ngIf="cnicBackAttachmentPath" class="bg-red p-3 font-extrabold"
               (click)="removeImage('cnicBackAttachment')">
               x
             </button>
-            <img
-              crossorigin="anonymous"
-              *ngIf="cnicBackAttachmentPath"
-              [src]="cnicBackAttachmentPath"
-              alt="CNIC Front Image"
-              width="200"
+            <img *ngIf="cnicBackAttachmentPath" [src]="cnicBackAttachmentPath" alt="CNIC Front Image" width="200"
               height="200" />
-            <input
-              *ngIf="!cnicBackAttachmentPath"
-              type="file"
-              id="cnicBackAttachment"
+            <input *ngIf="!cnicBackAttachmentPath" type="file" id="cnicBackAttachment"
               (change)="onImageChange1($event, 'cnicBackAttachment')" />
           </div>
 
           <div class="col-span-4 my-2">
             <label for="metricAttachment">Upload Matric Degree:</label><br />
-            <button
-              *ngIf="metricAttachmentPath"
-              class="bg-red p-3 font-extrabold"
+            <button *ngIf="metricAttachmentPath" class="bg-red p-3 font-extrabold"
               (click)="removeImage('metricAttachment')">
               x
             </button>
-            <img
-              crossorigin="anonymous"
-              *ngIf="metricAttachmentPath"
-              [src]="metricAttachmentPath"
-              alt="CNIC Front Image"
-              width="200"
+            <img *ngIf="metricAttachmentPath" [src]="metricAttachmentPath" alt="CNIC Front Image" width="200"
               height="200" />
-            <input
-              *ngIf="!metricAttachmentPath"
-              type="file"
-              id="metricAttachment"
+            <input *ngIf="!metricAttachmentPath" type="file" id="metricAttachment"
               (change)="onImageChange1($event, 'metricAttachment')" />
           </div>
         </div>
@@ -380,40 +313,20 @@
             <button *ngIf="fscAttachmentPath" class="bg-red p-3 font-extrabold" (click)="removeImage('fscAttachment')">
               x
             </button>
-            <img
-              crossorigin="anonymous"
-              *ngIf="fscAttachmentPath"
-              [src]="fscAttachmentPath"
-              alt="CNIC Front Image"
-              width="200"
-              height="200" />
-            <input
-              *ngIf="!fscAttachmentPath"
-              type="file"
-              id="fscAttachment"
+            <img *ngIf="fscAttachmentPath" [src]="fscAttachmentPath" alt="CNIC Front Image" width="200" height="200" />
+            <input *ngIf="!fscAttachmentPath" type="file" id="fscAttachment"
               (change)="onImageChange1($event, 'fscAttachment')" />
           </div>
           <div class="col-span-4 my-2">
             <label for="experienceAttachment">Upload Experience Certificate:</label><br />
-            <button
-              *ngIf="experienceAttachmentPath"
-              class="bg-red rounded-full p-3 font-extrabold"
+            <button *ngIf="experienceAttachmentPath" class="bg-red rounded-full p-3 font-extrabold"
               (click)="removeImage('experienceAttachment')">
               x
             </button>
-            <img
-              crossorigin="anonymous"
-              *ngIf="experienceAttachmentPath"
-              [src]="experienceAttachmentPath"
-              alt="CNIC Front Image"
-              width="200"
+            <img *ngIf="experienceAttachmentPath" [src]="experienceAttachmentPath" alt="CNIC Front Image" width="200"
               height="200" />
-            <input
-              type="file"
-              *ngIf="!experienceAttachmentPath"
-              id="experienceAttachment"
-              formControlName="experienceAttachment"
-              (change)="onImageChange1($event, 'experienceAttachment')" />
+            <input type="file" *ngIf="!experienceAttachmentPath" id="experienceAttachment"
+              formControlName="experienceAttachment" (change)="onImageChange1($event, 'experienceAttachment')" />
             >
             <!-- <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('validImage')" class="text-danger">
                       Invalid image format. Supported formats: jpg, jpeg, png, gif.
@@ -433,9 +346,7 @@
             I/we hereby solemnly declare that all the particulars give above are correct.
           </h2>
         </div>
-        <div
-          class="text-sm text-red-600"
-          *ngIf="
+        <div class="text-sm text-red-600" *ngIf="
             step2Form.get('isCheckeddetialsCorrect')?.hasError('required') &&
             step2Form.get('isCheckeddetialsCorrect')?.touched
           ">
@@ -455,21 +366,18 @@
             Guides, Act 1976 and Rules made the re-under.
           </h2>
         </div>
-        <div
-          class="text-sm text-red-600"
+        <div class="text-sm text-red-600"
           *ngIf="step2Form.get('isCheckedAccpet')?.hasError('required') && step2Form.get('isCheckedAccpet')?.touched">
           Declaration is required.
         </div>
       </div>
       <div class="place-item-end mr-[10%] ml-[10%] flex items-center justify-end gap-5 px-5">
-        <button
-          (click)="prevStep()"
+        <button (click)="prevStep()"
           class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Back
         </button>
-        <button
-          class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
+        <button class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Submit
         </button>

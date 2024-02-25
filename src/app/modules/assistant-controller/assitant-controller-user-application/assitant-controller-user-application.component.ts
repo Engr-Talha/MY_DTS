@@ -102,35 +102,13 @@ export class AssitantControllerUserApplicationComponent {
   addcommentt: string;
 
   approvedialogbox: boolean = false;
-  approve() {
-    this.approvedialogbox = true;
-    this.ControllerService.Inspectionbycontroller(
-      this.applicationID,
-      'Approved',
-      this.userID,
-      this.addcommentt,
-    ).subscribe(
-      (res) => {
-        console.log('====================================');
-        console.log(res);
-        console.log('====================================');
-      },
-      (err) => {
-        console.log('====================================');
-        console.log(err);
-        console.log('====================================');
-      },
-    );
-    this.approvedialogbox = false;
-  }
 
   ChangeStatus(rolestobeSent: any) {
-    // this.approvedialogbox = true;
-
     const data = new FormData();
 
     data.append('status', rolestobeSent);
     data.append('remarks', this.addcommentt);
+    data.append('application_entity_type_id', this.SelectedApplication.application.application_entity_type_id);
 
     this.UserApplicationService.changeStatus(this.applicationID, data).subscribe(
       (res) => {
@@ -141,7 +119,7 @@ export class AssitantControllerUserApplicationComponent {
         this.approvedialogbox = false;
         if (rolestobeSent == 1) {
           this.showSuccess('Application Approved', 'User Application Approved, sent for further checking.');
-        } else if (rolestobeSent == 3) {
+        } else {
           this.showError2('Application Rejected', 'Application is Rejected and Informed to User.');
         }
       },

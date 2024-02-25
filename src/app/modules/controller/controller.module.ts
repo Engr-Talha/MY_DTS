@@ -18,6 +18,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CertificateComponent } from 'src/app/shared/components/certificate/certificate.component';
+
 @NgModule({
   declarations: [
     ControllerDashbaordComponent,
@@ -27,6 +30,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
   ],
   imports: [
     InputTextModule,
+    CertificateComponent,
     InputTextareaModule,
     CommonModule,
     ControllerRoutingModule,
@@ -34,6 +38,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     DialogModule,
     ProgressBarModule,
     ToastModule,
+    MultiSelectModule,
     DropdownModule,
     ChartModule,
     CommonModule,

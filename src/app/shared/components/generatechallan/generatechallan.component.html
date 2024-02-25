@@ -4,7 +4,9 @@
   <div class="mt-4 grid grid-cols-3">
     <!-- Column 1 -->
     <div class="col-span-1 border border-black p-5">
-      <p>Challan of cash paid into Challan No.</p>
+      <p>Challan of cash paid into Challan
+        No: <span class="font-bold">{{this.SelectedApplication?.application?.challans[0]?.challan_number}}</span> </p>
+
     </div>
 
     <!-- Column 2 -->
@@ -47,14 +49,11 @@
           <div class="black col-span-1 border-l border-t border-b border-black">
             <div class="mt-4">
               <h3 class="text-center font-semibold">Select Relevant No.</h3>
-              <ol class="list-decimal pl-8 text-center">
-                <!-- <li>Licence Fee</li> -->
-                <li>Registration fee</li>
-                <!-- <li>Renewal Fee</li>
-                <li>Late Fee</li>
-                <li>Penalty</li>
-                <li>Alteration fee</li>
-                <li>Change of Address Fee</li> -->
+              <ol *ngFor="let item of this.SelectedApplication?.application?.challans[0]?.challan_headers"
+                class="list-decimal pl-8 text-center">
+
+                <li>{{item.header_types.name}}</li>
+
               </ol>
             </div>
           </div>
@@ -75,11 +74,13 @@
     <div class="col-span-1 border-b border-l border-black">
       <div class="flex h-full flex-col justify-between">
         <div class="border-b border-black">
-          <p class="p-5">Amount</p>
+          <p class="p-5">Amount :<span
+              class="font-bold">{{this.SelectedApplication?.application?.challans[0]?.total_amount}}</span> Rupees </p>
         </div>
 
         <div class="border-t border-black">
-          <p class="">.</p>
+          <p class=""><span
+              class="font-bold">{{this.SelectedApplication?.application?.challans[0]?.total_amount}}</span> Rupees</p>
         </div>
       </div>
     </div>

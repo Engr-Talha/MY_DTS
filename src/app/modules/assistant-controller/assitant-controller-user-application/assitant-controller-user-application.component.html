@@ -109,8 +109,7 @@
         <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
           <div class="font-bold">Submitted Documents</div>
           <div class="flex flex-row gap-2">
-            <p-tag
-              [style]="{
+            <p-tag [style]="{
                 background:
                   'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
               }">
@@ -118,9 +117,7 @@
                 <span class="text-base">CNIC</span>
               </div>
             </p-tag>
-            <p-tag
-              *ngIf="SelectedApplication?.data.metric_attachment"
-              [style]="{
+            <p-tag *ngIf="SelectedApplication?.data.metric_attachment" [style]="{
                 background:
                   'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
               }">
@@ -128,9 +125,7 @@
                 <span class="text-base">Matric Degree</span>
               </div>
             </p-tag>
-            <p-tag
-              *ngIf="SelectedApplication?.data?.fsc_attachment"
-              [style]="{
+            <p-tag *ngIf="SelectedApplication?.data?.fsc_attachment" [style]="{
                 background:
                   'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
               }">
@@ -138,9 +133,7 @@
                 <span class="text-base">FSc Degree</span>
               </div>
             </p-tag>
-            <p-tag
-              *ngIf="SelectedApplication?.data.experience_attachment"
-              [style]="{
+            <p-tag *ngIf="SelectedApplication?.data.experience_attachment" [style]="{
                 background:
                   'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
               }">
@@ -177,72 +170,51 @@
     <div class="my-3 text-xs text-red-500">Click on each document to View.</div>
 
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-      <div
-        *ngIf="SelectedApplication?.data?.cnic_front_attachment"
+      <div *ngIf="SelectedApplication?.data?.cnic_front_attachment"
         class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
         <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">CNIC</div>
         <div class="flex flex-row justify-center">
-          <img
-            crossorigin="anonymous"
-            (click)="OpenDialog('CNIC', SelectedApplication?.data?.cnic_front_attachment)"
-            [src]="convertImageUrl(SelectedApplication?.data?.cnic_front_attachment)"
-            alt="Image 1"
+          <img (click)="OpenDialog('CNIC', SelectedApplication?.data?.cnic_front_attachment)"
+            [src]="convertImageUrl(SelectedApplication?.data?.cnic_front_attachment)" alt="Image 1"
             class="h-[300px] w-[300px] cursor-pointer" />
         </div>
       </div>
 
-      <div
-        *ngIf="SelectedApplication?.data?.cnic_back_attachment"
+      <div *ngIf="SelectedApplication?.data?.cnic_back_attachment"
         class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
         <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">CNIC Back Attachment</div>
         <div class="flex flex-row justify-center">
-          <img
-            crossorigin="anonymous"
-            (click)="OpenDialog('CNIC', SelectedApplication?.data?.cnic_back_attachment)"
-            [src]="convertImageUrl(SelectedApplication?.data?.cnic_back_attachment)"
-            alt="Image 1"
+          <img (click)="OpenDialog('CNIC', SelectedApplication?.data?.cnic_back_attachment)"
+            [src]="convertImageUrl(SelectedApplication?.data?.cnic_back_attachment)" alt="Image 1"
             class="h-[300px] w-[300px] cursor-pointer" />
         </div>
       </div>
 
-      <div
-        *ngIf="SelectedApplication?.data.metric_attachment"
+      <div *ngIf="SelectedApplication?.data.metric_attachment"
         class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
         <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">Matric Degree Attachment</div>
         <div class="flex flex-row justify-center">
-          <img
-            crossorigin="anonymous"
-            (click)="OpenDialog('CNIC', convertImageUrl(SelectedApplication?.data?.metric_attachment))"
-            [src]="convertImageUrl(SelectedApplication?.data?.metric_attachment)"
-            alt="Image 1"
+          <img (click)="OpenDialog('CNIC', convertImageUrl(SelectedApplication?.data?.metric_attachment))"
+            [src]="convertImageUrl(SelectedApplication?.data?.metric_attachment)" alt="Image 1"
             class="h-[300px] w-[300px] cursor-pointer" />
         </div>
       </div>
 
-      <div
-        *ngIf="SelectedApplication?.data?.fsc_attachment"
+      <div *ngIf="SelectedApplication?.data?.fsc_attachment"
         class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
         <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">FSC Degree Attachment</div>
         <div class="flex flex-row justify-center">
-          <img
-            crossorigin="anonymous"
-            (click)="OpenDialog('CNIC', SelectedApplication?.data.fsc_attachment)"
-            [src]="SelectedApplication?.data.fsc_attachment"
-            alt="Image 1"
-            class="h-[300px] w-[300px] cursor-pointer" />
+          <img (click)="OpenDialog('CNIC', SelectedApplication?.data.fsc_attachment)"
+            [src]="SelectedApplication?.data.fsc_attachment" alt="Image 1" class="h-[300px] w-[300px] cursor-pointer" />
         </div>
       </div>
 
-      <div
-        *ngIf="SelectedApplication?.data.experience_attachment"
+      <div *ngIf="SelectedApplication?.data.experience_attachment"
         class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
         <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">Experience Attachment</div>
         <div class="flex flex-row justify-center">
-          <img
-            crossorigin="anonymous"
-            (click)="OpenDialog('CNIC', SelectedApplication?.data.experience_attachment)"
-            [src]="SelectedApplication?.data.experience_attachment"
-            alt="Image 1"
+          <img (click)="OpenDialog('CNIC', SelectedApplication?.data.experience_attachment)"
+            [src]="SelectedApplication?.data.experience_attachment" alt="Image 1"
             class="h-[300px] w-[300px] cursor-pointer" />
         </div>
       </div>
@@ -257,27 +229,18 @@
   </div>
 </div>
 
-<p-dialog
-  [(visible)]="DocumentDialog"
-  [breakpoints]="{ '960px': '75vw' }"
-  [style]="{ width: '50vw' }"
-  [draggable]="false"
-  [resizable]="false">
+<p-dialog [(visible)]="DocumentDialog" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '50vw' }"
+  [draggable]="false" [resizable]="false">
   <div>
     <div class="mb-2 text-center text-xl font-medium text-[#9095a0]">CNIC</div>
     <div class="flex flex-row justify-center">
-      <img crossorigin="anonymous" class="h-1/2 w-1/2" src="{{ docpath }}" />
+      <img class="h-1/2 w-1/2" src="{{ docpath }}" />
     </div>
   </div>
 </p-dialog>
 
-<p-dialog
-  [(visible)]="addCommentDialog"
-  header="Add Comment to Application"
-  [breakpoints]="{ '960px': '75vw' }"
-  [style]="{ width: '50vw' }"
-  [draggable]="false"
-  [resizable]="false">
+<p-dialog [(visible)]="addCommentDialog" header="Add Comment to Application" [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
   <div>
     <div class="card justify-content-center flex">
       <textarea pKeyFilter="int" rows="5" cols="30" pInputTextarea></textarea>
@@ -292,13 +255,8 @@
   </div>
 </p-dialog>
 
-<p-dialog
-  [(visible)]="approvedialogbox"
-  header="Approve Applications"
-  [breakpoints]="{ '960px': '75vw' }"
-  [style]="{ width: '50vw' }"
-  [draggable]="false"
-  [resizable]="false">
+<p-dialog [(visible)]="approvedialogbox" header="Approve Applications" [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
   <div>
     <div class="card justify-content-center flex flex-col">
       <p>Do you want to approve this applications.</p>
@@ -316,13 +274,8 @@
   </div>
 </p-dialog>
 
-<p-dialog
-  [(visible)]="showreject"
-  header="Reject Applications"
-  [breakpoints]="{ '960px': '75vw' }"
-  [style]="{ width: '50vw' }"
-  [draggable]="false"
-  [resizable]="false">
+<p-dialog [(visible)]="showreject" header="Reject Applications" [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
   <div>
     <div class="card justify-content-center flex flex-col">
       <p>Do you want to reject this applications. Please add comment.</p>
@@ -333,7 +286,7 @@
     </div>
     <div class="item-end mb-3 flex flex-row justify-end">
       <div class="button-container">
-        <button class="approveButton" (click)="ChangeStatus(3)">Reject</button>
+        <button class="approveButton" (click)="ChangeStatus(2)">Reject</button>
         <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
       </div>
     </div>

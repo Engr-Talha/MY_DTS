@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginSignUpService } from 'src/app/core/services/login-sign-up.service';
 import { MenuService } from 'src/app/modules/layout/services/menu.service';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +14,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./sign-in.component.scss'],
   standalone: true,
   providers: [MessageService],
-  imports: [FormsModule, ReactiveFormsModule, RouterLink, AngularSvgIconModule, NgClass, NgIf],
+  imports: [FormsModule, ReactiveFormsModule, RouterLink, AngularSvgIconModule, NgClass, NgIf, ToastModule],
 })
 export class SignInComponent implements OnInit {
   form!: FormGroup;
@@ -62,31 +63,36 @@ export class SignInComponent implements OnInit {
         (res: any) => {
           this.UserDetails = res.user;
           localStorage.setItem('token', JSON.stringify(res.access_token.accessToken));
-          console.log('====================================');
-          console.log(res);
-          console.log('====================================');
+          this.showSuccess('Logged In ', ' Successfully Logged In');
+          // console.log('====================================');
+          // console.log(res);
+          // console.log('====================================');
           localStorage.setItem('userDetails', JSON.stringify(this.UserDetails));
-          console.log('====================================');
-          console.log(this.UserDetails);
+          // console.log('====================================');
+          // console.log(this.UserDetails);
           localStorage.setItem('user', JSON.stringify(this.UserDetails?.role_id));
-          console.log('====================================');
+          // console.log('====================================');
 
           this.LoginSignUpServicegin.getalltourists().subscribe(
             (res: any) => {
-              console.log('====================================');
-              console.log(res);
-              console.log('====================================');
+              // console.log('====================================');
+              // console.log(res);
+              // console.log('====================================');
             },
             (err: any) => {
-              console.log('====================================');
-              console.log(err);
+              // console.log('====================================');
+              // console.log(err);
               this.showError('Error in Signin', err.error);
-              console.log('====================================');
+              // console.log('====================================');
             },
           );
 
           if (this.UserDetails?.role_id == 1) {
+            // console.log('====================================');
+            // console.log('Admin logged In! Redirecting to Admin Dashboard...');
+            // console.log('====================================');
             this._router.navigate(['/']);
+            // debugger;
             // localStorage.setItem('user', '1');
           } else if (this.UserDetails.role_id == 3) {
             this._router.navigate(['/inspector-dashboard']);
@@ -132,9 +138,11 @@ export class SignInComponent implements OnInit {
           // this.menuService.loadMenu();
         },
         (err: any) => {
-          console.log('====================================');
-          console.log('error in signin', err);
-          console.log('====================================');
+          this.showError('Logged In Error ', err?.error.error);
+
+          // console.log('====================================');
+          // console.log('error in signin', err);
+          // console.log('====================================');
         },
       );
 

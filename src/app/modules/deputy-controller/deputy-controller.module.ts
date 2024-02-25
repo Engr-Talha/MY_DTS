@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DeputyControllerRoutingModule } from './deputy-controller-routing.module';
 import { ApplicationsComponent } from './applications/applications.component';
-
+import { MultiSelectModule } from 'primeng/multiselect';
 import { ChartModule } from 'primeng/chart';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
@@ -21,6 +21,7 @@ import { ApplicationDptComponent } from './application-dpt/application-dpt.compo
   declarations: [ApplicationsComponent, ApplicationDptComponent],
   imports: [
     CommonModule,
+    MultiSelectModule,
     DeputyControllerRoutingModule,
     InputTextModule,
     InputTextareaModule,
