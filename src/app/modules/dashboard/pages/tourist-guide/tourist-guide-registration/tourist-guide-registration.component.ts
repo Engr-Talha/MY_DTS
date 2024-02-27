@@ -169,7 +169,7 @@ export class TouristGuideRegistrationComponent {
       (res: any) => {
         this.isLoading = false;
         this.showSuccess('Congratulations!', 'You Application has been submitted, you will be updated shortly.');
-        this.router.navigate(['/my-registrations']);
+        this.router.navigate(['/layout/my-registrations']);
       },
       (err: any) => {
         this.isLoading = false;

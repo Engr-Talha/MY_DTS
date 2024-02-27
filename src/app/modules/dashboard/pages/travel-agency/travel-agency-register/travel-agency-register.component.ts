@@ -89,9 +89,9 @@ export class TravelAgencyRegisterComponent {
       office_details: new FormArray([]),
       employees_details: new FormArray([]),
       ownership_nature_type_id: new FormControl('', Validators.required),
-      TelephoneNumberLines: new FormControl('', Validators.required),
-      TelegraphicNumber: new FormControl('', Validators.required),
-      TelephoneNumber: new FormControl('', Validators.required),
+      no_of_lines: new FormControl('', Validators.required),
+      telegraphic_address: new FormControl('', Validators.required),
+      telephone_no: new FormControl('', Validators.required),
       capital_invested: new FormControl('', Validators.required),
       BankerName: new FormControl('', Validators.required),
       bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
@@ -240,10 +240,11 @@ export class TravelAgencyRegisterComponent {
   onSubmit() {
     this.markFormGroupTouched(this.step2Form);
 
-    if (this.step2Form.invalid) {
-      // Handle form validation errors
-      return;
-    }
+    console.log('this.step2form', this.step2Form);
+    // if (this.step2Form.invalid) {
+    //   // Handle form validation errors
+    //   return;
+    // }
     let Usertype = localStorage.getItem('userDetails');
     this.accountID = JSON.parse(Usertype ? Usertype : '{}').id;
 
@@ -284,9 +285,9 @@ export class TravelAgencyRegisterComponent {
     });
 
     formData.append('ownership_nature_type_id', this.step1Form?.value['ownership_nature_type_id']);
-    formData.append('telegraphic_number', this.step1Form?.value['TelegraphicNumber']);
-    formData.append('telephone_number_lines', this.step1Form?.value['TelephoneNumberLines']);
-    formData.append('telephone_number', this.step1Form?.value['TelephoneNumber']);
+    formData.append('telegraphic_number', this.step1Form?.value['telegraphic_address']);
+    formData.append('telephone_number_lines', this.step1Form?.value['no_of_lines']);
+    formData.append('telephone_number', this.step1Form?.value['telephone_no']);
     formData.append('paidup_capital', this.step1Form?.value['CapitalInvested']);
     formData.append('banker_name', this.step1Form?.value['BankerName']);
     formData.append('banker_image', this.bank_reference);
@@ -345,11 +346,11 @@ export class TravelAgencyRegisterComponent {
     console.log(formData);
 
     this.isLoading = true;
-    this.TravelAgencyService.registerTouristguide(formData).subscribe(
+    this.TravelAgencyService.registerTravelAgency(formData).subscribe(
       (res: any) => {
         this.isLoading = false;
         this.showSuccess('Congratulations!', 'You Application has been submitted, you will be updated shortly.');
-        this.router.navigate(['/my-registrations']);
+        this.router.navigate(['/layout/my-registrations']);
       },
       (err: any) => {
         this.isLoading = false;

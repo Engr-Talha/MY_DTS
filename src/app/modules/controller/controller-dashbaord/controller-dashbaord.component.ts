@@ -139,6 +139,6 @@ export class ControllerDashbaordComponent {
   }
 
   NavigateToo(link: any) {
-    this.router.navigate([`/controller-dashboard/userCont-application-listing/${link}`]);
+    this.router.navigate([`/layout/controller-dashboard/userCont-application-listing/${link}`]);
   }
 }

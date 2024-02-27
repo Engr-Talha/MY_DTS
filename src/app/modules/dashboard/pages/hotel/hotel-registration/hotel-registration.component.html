@@ -37,8 +37,7 @@
           <div class="col-span-12">
             <label class="text-base" for="name">Name:</label>
             <input type="text" id="name" formControlName="name" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('name')?.hasError('required') && myForm1.get('name')?.touched">
               Name is required.
             </div>
@@ -55,8 +54,7 @@
                 <option value="" disabled>Select a year</option>
                 <option *ngFor="let year of years" [value]="year">{{ year }}</option>
               </select>
-              <div
-                class="text-sm text-red-600"
+              <div class="text-sm text-red-600"
                 *ngIf="myForm1.get('year')?.hasError('required') && myForm1.get('year')?.touched">
                 Year is required.
               </div>
@@ -64,8 +62,7 @@
           </div>
           <div class="col-span-6">
             <label for="name">
-              Exact date of commission in respect of new resturant commission or after 1st January, 1997</label
-            >
+              Exact date of commission in respect of new resturant commission or after 1st January, 1997</label>
             <input type="text" id="name" formControlName="dateofcommisionbefore1997" />
           </div>
         </div>
@@ -76,9 +73,7 @@
           <div class="form-group col-span-4">
             <label for="telegraphicAddress">Telegraphic Address</label>
             <input type="text" id="telegraphicAddress" formControlName="telegraphicAddress" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 myForm1.get('telegraphicAddress')?.hasError('required') && myForm1.get('telegraphicAddress')?.touched
               ">
               Telegraphic Address is required.
@@ -87,8 +82,7 @@
           <div class="form-group col-span-4">
             <label for="telexNumber">Telex Number</label>
             <input type="text" id="telexNumber" formControlName="telexNumber" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('telexNumber')?.hasError('required') && myForm1.get('telexNumber')?.touched">
               Telex Number is required.
             </div>
@@ -112,8 +106,7 @@
           <div class="form-group col-span-4">
             <label for="Street">Province:</label>
             <input type="text" id="province" formControlName="province" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('province')?.hasError('required') && myForm1.get('province')?.touched">
               Province is required.
             </div>
@@ -121,8 +114,7 @@
           <div class="form-group col-span-4">
             <label for="town">Town:</label>
             <input type="text" id="town" formControlName="town" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('town')?.hasError('required') && myForm1.get('town')?.touched">
               Town is required.
             </div>
@@ -130,8 +122,7 @@
           <div class="form-group col-span-4">
             <label for="street">Street:</label>
             <input type="text" id="street" formControlName="street" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('street')?.hasError('required') && myForm1.get('street')?.touched">
               Street is required.
             </div>
@@ -140,8 +131,7 @@
       </div>
 
       <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
-        <button
-          (click)="nextStep()"
+        <button (click)="nextStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Next
@@ -162,9 +152,7 @@
                   <option *ngFor="let natue_of_ownership of Nature_of_Ownership" [value]="natue_of_ownership">
                     {{ natue_of_ownership }}
                   </option>
-                  <div
-                    class="text-sm text-red-600"
-                    *ngIf="
+                  <div class="text-sm text-red-600" *ngIf="
                       myForm1.get('natue_of_ownership')?.hasError('required') &&
                       myForm1.get('natue_of_ownership')?.touched
                     ">
@@ -177,8 +165,7 @@
           <div class="form-group col-span-4">
             <label for="NameofOwner">Name of Owner</label>
             <input type="text" id="NameofOwner" formControlName="NameofOwner" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('NameofOwner')?.hasError('required') && myForm1.get('NameofOwner')?.touched">
               Nature of Ownership is required.
             </div>
@@ -186,8 +173,7 @@
           <div class="form-group col-span-4">
             <label for="FatherofOwner">Father Name of Owner</label>
             <input type="text" id="FatherofOwner" formControlName="FatherofOwner" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('FatherofOwner')?.hasError('required') && myForm1.get('FatherofOwner')?.touched">
               Father name of Owner is required.
             </div>
@@ -201,8 +187,7 @@
           <div class="col-span-4">
             <label for="owner_address">Address:</label>
             <input type="text" id="owner_address" formControlName="owner_address" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('owner_address')?.hasError('required') && myForm1.get('owner_address')?.touched">
               Address of Owner is required.
             </div>
@@ -210,9 +195,7 @@
           <div class="col-span-4">
             <label for="owner_telephonic_address">Telephonic Address</label>
             <input type="text" id="owner_telephonic_address" formControlName="owner_telephonic_address" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 myForm1.get('owner_telephonic_address')?.hasError('required') &&
                 myForm1.get('owner_telephonic_address')?.touched
               ">
@@ -232,8 +215,7 @@
           <div class="col-span-4">
             <label for="manager_name">Name of Manager:</label>
             <input type="text" id="manager_name" formControlName="manager_name" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('manager_name')?.hasError('required') && myForm1.get('manager_name')?.touched">
               Address of Owner is required.
             </div>
@@ -241,9 +223,7 @@
           <div class="col-span-4">
             <label for="manager_fathername">Father name of Manager:</label>
             <input type="text" id="manager_fathername" formControlName="manager_fathername" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 myForm1.get('manager_fathername')?.hasError('required') && myForm1.get('manager_fathername')?.touched
               ">
               Address of Owner is required.
@@ -252,8 +232,7 @@
           <div class="col-span-4">
             <label for="manager_address">Manager Address</label>
             <input type="text" id="manager_address" formControlName="manager_address" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="myForm1.get('manager_address')?.hasError('required') && myForm1.get('manager_address')?.touched">
               Manager Address is required.
             </div>
@@ -266,14 +245,12 @@
       </div>
 
       <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
-        <button
-          (click)="prevStep()"
+        <button (click)="prevStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Back
         </button>
-        <button
-          (click)="nextStep()"
+        <button (click)="nextStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Next
@@ -456,11 +433,10 @@
         <h2 class="mt-4 text-lg font-medium">Facilities available on the hotel premises.</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-12">
-            <label class="text-sm"
-              >Please give details e.g telephones whether provided in rooms or on each flooe or lobby, banking counter,
+            <label class="text-sm">Please give details e.g telephones whether provided in rooms or on each flooe or
+              lobby, banking counter,
               reception, postal counter, running hot and cold water, heating pr air-conditioning, resturant, coffee
-              shop, cold storage, lockers, entertaikments etc.</label
-            >
+              shop, cold storage, lockers, entertaikments etc.</label>
             <textarea formControlName="Facilitiesavailableonthehotelpremises" cols="4"></textarea>
           </div>
         </div>
@@ -479,23 +455,20 @@
         <h2 class="mt-4 text-lg font-medium">Class of majority of guests</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-12">
-            <label class="text-sm"
-              >Please indicate whether mostly foreigners of pakistanis and also mention the peak season of
-              business.</label
-            >
+            <label class="text-sm">Please indicate whether mostly foreigners of pakistanis and also mention the peak
+              season of
+              business.</label>
             <textarea formControlName="Classofmajorityofguests" cols="4"></textarea>
           </div>
         </div>
       </div>
       <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
-        <button
-          (click)="prevStep()"
+        <button (click)="prevStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Back
         </button>
-        <button
-          (click)="nextStep()"
+        <button (click)="nextStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Next
@@ -513,9 +486,8 @@
 
       <div>
         <h2 class="mt-4 text-lg font-medium">Rates Charged</h2>
-        <label class="text-sm"
-          >Please give full details of room rents, service chargesm taxes and rates for breakfast, meals, etc.</label
-        >
+        <label class="text-sm">Please give full details of room rents, service chargesm taxes and rates for breakfast,
+          meals, etc.</label>
         <div class="form-group grid grid-cols-12 gap-5 px-5">
           <div class="col-span-6">
             <div class="form-group">
@@ -656,9 +628,8 @@
 
       <div>
         <h2 class="mt-4 text-lg font-medium">Rates Charged</h2>
-        <label class="text-sm"
-          >Please give full details of room rents, service chargesm taxes and rates for breakfast, meals, etc.</label
-        >
+        <label class="text-sm">Please give full details of room rents, service chargesm taxes and rates for breakfast,
+          meals, etc.</label>
         <div class="form-group grid grid-cols-12 gap-5 px-5">
           <div class="col-span-6">
             <div class="form-group">
@@ -674,14 +645,12 @@
       </div>
 
       <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
-        <button
-          (click)="prevStep()"
+        <button (click)="prevStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Back
         </button>
-        <button
-          (click)="nextStep()"
+        <button (click)="nextStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Next
@@ -691,98 +660,53 @@
 
     <form *ngIf="currentStep === 5" [formGroup]="myForm5">
       <div class="form-group my-8">
-        <label for="medicalCertificate"
-          >Medical Fitness Certificate of each employee on the prescribed Form-I from a Registered Medical
-          Practitioner</label
-        ><br />
-        <input
-          type="file"
-          id="medicalCertificate"
-          (change)="onFileChange($event, 'medicalCertificate')"
-          accept=".pdf, .jpg, .png"
-          required />
+        <label for="medicalCertificate">Medical Fitness Certificate of each employee on the prescribed Form-I from a
+          Registered Medical
+          Practitioner</label><br />
+        <input type="file" id="medicalCertificate" (change)="onFileChange($event, 'medicalCertificate')"
+          accept=".pdf, .jpg, .png" required />
         <div class="!text-[8px] text-red-600" *ngIf="myForm5.get('medicalCertificate')?.hasError('required')">
           Medical Certificate is required
         </div>
         <br /><br />
-        <a
-          class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
-          *ngIf="myForm5.get('medicalCertificate')?.value"
-          (click)="cancelUpload('medicalCertificate')"
-          >Cancel Image</a
-        >
-        <a
-          class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
-          *ngIf="myForm5.get('medicalCertificate')?.value"
-          (click)="reupload('medicalCertificate')"
-          >Reupload Impage</a
-        ><br />
-        <img
-          class="h-[200px] w-[200px]"
-          *ngIf="myForm5.get('medicalCertificate')?.value"
-          [src]="myForm5?.get('medicalCertificate')?.value"
-          alt="Uploaded Image" />
+        <a class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm5.get('medicalCertificate')?.value" (click)="cancelUpload('medicalCertificate')">Cancel Image</a>
+        <a class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm5.get('medicalCertificate')?.value" (click)="reupload('medicalCertificate')">Reupload
+          Impage</a><br />
+        <img class="h-[200px] w-[200px]" *ngIf="myForm5.get('medicalCertificate')?.value"
+          [src]="myForm5.get('medicalCertificate')?.value" alt="Uploaded Image" />
       </div>
 
       <div class="form-group my-8">
         <label for="buildingPlan">Building Plan of Hotel or Restaurant.</label><br />
-        <input
-          type="file"
-          id="buildingPlan"
-          (change)="onFileChange($event, 'buildingPlan')"
-          accept=".pdf, .jpg, .png"
+        <input type="file" id="buildingPlan" (change)="onFileChange($event, 'buildingPlan')" accept=".pdf, .jpg, .png"
           required />
         <div class="!text-[8px] text-red-600" *ngIf="myForm5.get('buildingPlan')?.hasError('required')">
           Building Plan is required
         </div>
         <br /><br />
-        <a
-          class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
-          *ngIf="myForm5.get('buildingPlan')?.value"
-          (click)="cancelUpload('buildingPlan')"
-          >Cancel</a
-        >
-        <a
-          class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
-          *ngIf="myForm5.get('buildingPlan')?.value"
-          (click)="reupload('buildingPlan')"
-          >Reupload</a
-        ><br />
-        <img
-          class="h-[200px] w-[200px]"
-          *ngIf="myForm5.get('buildingPlan')?.value"
-          [src]="myForm5?.get('buildingPlan')?.value"
-          alt="Uploaded Image" />
+        <a class="m-2 rounded border border-red-500 px-3 py-2 text-red-500" *ngIf="myForm5.get('buildingPlan')?.value"
+          (click)="cancelUpload('buildingPlan')">Cancel</a>
+        <a class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm5.get('buildingPlan')?.value" (click)="reupload('buildingPlan')">Reupload</a><br />
+        <img class="h-[200px] w-[200px]" *ngIf="myForm5.get('buildingPlan')?.value"
+          [src]="myForm5.get('buildingPlan')?.value" alt="Uploaded Image" />
       </div>
 
       <div class="form-group my-8">
         <label for="roomRates">Room rates /copy of Menu Card or rate list.</label><br />
-        <input
-          type="file"
-          id="roomRates"
-          (change)="onFileChange($event, 'roomRates')"
-          accept=".pdf, .jpg, .png"
+        <input type="file" id="roomRates" (change)="onFileChange($event, 'roomRates')" accept=".pdf, .jpg, .png"
           required />
         <div class="!text-[8px] text-red-600" *ngIf="myForm5.get('roomRates')?.hasError('required')">
           Room Rates is required
         </div>
         <br /><br />
-        <a
-          class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
-          *ngIf="myForm5.get('roomRates')?.value"
-          (click)="cancelUpload('roomRates')"
-          >Cancel</a
-        >
-        <a
-          class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
-          *ngIf="myForm5.get('roomRates')?.value"
-          (click)="reupload('roomRates')"
-          >Reupload</a
-        ><br />
-        <img
-          class="h-[200px] w-[200px]"
-          *ngIf="myForm5.get('roomRates')?.value"
-          [src]="myForm5?.get('roomRates')?.value"
+        <a class="m-2 rounded border border-red-500 px-3 py-2 text-red-500" *ngIf="myForm5.get('roomRates')?.value"
+          (click)="cancelUpload('roomRates')">Cancel</a>
+        <a class="m-2 rounded border border-green-500 px-3 py-2 text-green-500" *ngIf="myForm5.get('roomRates')?.value"
+          (click)="reupload('roomRates')">Reupload</a><br />
+        <img class="h-[200px] w-[200px]" *ngIf="myForm5.get('roomRates')?.value" [src]="myForm5.get('roomRates')?.value"
           alt="Uploaded Image" />
       </div>
 
@@ -794,134 +718,74 @@
           CNIC is required
         </div>
         <br /><br />
-        <a
-          class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
-          *ngIf="myForm5.get('nicCopy')?.value"
-          (click)="cancelUpload('nicCopy')"
-          >Cancel</a
-        >
-        <a
-          class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
-          *ngIf="myForm5.get('nicCopy')?.value"
-          (click)="reupload('nicCopy')"
-          >Reupload</a
-        ><br />
-        <img
-          class="h-[200px] w-[200px]"
-          *ngIf="myForm5.get('nicCopy')?.value"
-          [src]="myForm5?.get('nicCopy')?.value"
+        <a class="m-2 rounded border border-red-500 px-3 py-2 text-red-500" *ngIf="myForm5.get('nicCopy')?.value"
+          (click)="cancelUpload('nicCopy')">Cancel</a>
+        <a class="m-2 rounded border border-green-500 px-3 py-2 text-green-500" *ngIf="myForm5.get('nicCopy')?.value"
+          (click)="reupload('nicCopy')">Reupload</a><br />
+        <img class="h-[200px] w-[200px]" *ngIf="myForm5.get('nicCopy')?.value" [src]="myForm5.get('nicCopy')?.value"
           alt="Uploaded Image" />
       </div>
 
       <div class="form-group my-8">
-        <label for="leaseAgreement"
-          >Attested copies of Lease Agreement /Proof of Ownership of Hotel/Restaurant premises</label
-        ><br />
-        <input
-          type="file"
-          id="leaseAgreement"
-          (change)="onFileChange($event, 'leaseAgreement')"
-          accept=".pdf, .jpg, .png"
-          required />
+        <label for="leaseAgreement">Attested copies of Lease Agreement /Proof of Ownership of Hotel/Restaurant
+          premises</label><br />
+        <input type="file" id="leaseAgreement" (change)="onFileChange($event, 'leaseAgreement')"
+          accept=".pdf, .jpg, .png" required />
         <div class="!text-[8px] text-red-600" *ngIf="myForm5.get('leaseAgreement')?.hasError('required')">
           Lease Agreement is required
         </div>
         <br /><br />
-        <a
-          class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
-          *ngIf="myForm5.get('leaseAgreement')?.value"
-          (click)="cancelUpload('leaseAgreement')"
-          >Cancel</a
-        >
-        <a
-          class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
-          *ngIf="myForm5.get('leaseAgreement')?.value"
-          (click)="reupload('leaseAgreement')"
-          >Reupload</a
-        ><br />
-        <img
-          class="h-[200px] w-[200px]"
-          *ngIf="myForm5.get('leaseAgreement')?.value"
-          [src]="myForm5?.get('leaseAgreement')?.value"
-          alt="Uploaded Image" />
+        <a class="m-2 rounded border border-red-500 px-3 py-2 text-red-500" *ngIf="myForm5.get('leaseAgreement')?.value"
+          (click)="cancelUpload('leaseAgreement')">Cancel</a>
+        <a class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm5.get('leaseAgreement')?.value" (click)="reupload('leaseAgreement')">Reupload</a><br />
+        <img class="h-[200px] w-[200px]" *ngIf="myForm5.get('leaseAgreement')?.value"
+          [src]="myForm5.get('leaseAgreement')?.value" alt="Uploaded Image" />
       </div>
 
       <div class="form-group my-8">
-        <label for="partnershipDocuments"
-          >In case of a Partnership Firm attested copies of Registration Certificate and Partnership Deed duly certified
-          by the Registrar of Firms</label
-        ><br />
-        <input
-          type="file"
-          id="partnershipDocuments"
-          (change)="onFileChange($event, 'partnershipDocuments')"
-          accept=".pdf, .jpg, .png"
-          required /><br /><br />
+        <label for="partnershipDocuments">In case of a Partnership Firm attested copies of Registration Certificate and
+          Partnership Deed duly certified
+          by the Registrar of Firms</label><br />
+        <input type="file" id="partnershipDocuments" (change)="onFileChange($event, 'partnershipDocuments')"
+          accept=".pdf, .jpg, .png" required /><br /><br />
         <div class="!text-[8px] text-red-600" *ngIf="myForm5.get('partnershipDocuments')?.hasError('required')">
           Partnership Document is required
         </div>
-        <a
-          class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
+        <a class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm5.get('partnershipDocuments')?.value" (click)="cancelUpload('partnershipDocuments')">Cancel</a>
+        <a class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
           *ngIf="myForm5.get('partnershipDocuments')?.value"
-          (click)="cancelUpload('partnershipDocuments')"
-          >Cancel</a
-        >
-        <a
-          class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
-          *ngIf="myForm5.get('partnershipDocuments')?.value"
-          (click)="reupload('partnershipDocuments')"
-          >Reupload</a
-        ><br />
-        <img
-          class="h-[200px] w-[200px]"
-          *ngIf="myForm5.get('partnershipDocuments')?.value"
-          [src]="myForm5?.get('partnershipDocuments')?.value"
-          alt="Uploaded Image" />
+          (click)="reupload('partnershipDocuments')">Reupload</a><br />
+        <img class="h-[200px] w-[200px]" *ngIf="myForm5.get('partnershipDocuments')?.value"
+          [src]="myForm5.get('partnershipDocuments')?.value" alt="Uploaded Image" />
       </div>
 
       <div class="form-group my-8">
-        <label for="companyDocuments"
-          >In case of a Limited Company, attested copies of Incorporation Certificate, Memorandum and Articles of
-          Association, Form-A and Form –29 duly certified by the Registrar of Companies.</label
-        ><br />
-        <input
-          type="file"
-          id="companyDocuments"
-          (change)="onFileChange($event, 'companyDocuments')"
-          accept=".pdf, .jpg, .png"
-          required />
+        <label for="companyDocuments">In case of a Limited Company, attested copies of Incorporation Certificate,
+          Memorandum and Articles of
+          Association, Form-A and Form –29 duly certified by the Registrar of Companies.</label><br />
+        <input type="file" id="companyDocuments" (change)="onFileChange($event, 'companyDocuments')"
+          accept=".pdf, .jpg, .png" required />
         <div class="!text-[8px] text-red-600" *ngIf="myForm5.get('companyDocuments')?.hasError('required')">
           Company Document is required
         </div>
         <br /><br />
-        <a
-          class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
-          *ngIf="myForm5.get('companyDocuments')?.value"
-          (click)="cancelUpload('companyDocuments')"
-          >Cancel</a
-        ><br />
-        <a
-          class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
-          *ngIf="myForm5.get('companyDocuments')?.value"
-          (click)="reupload('companyDocuments')"
-          >Reupload</a
-        >
-        <img
-          class="h-[200px] w-[200px]"
-          *ngIf="myForm5.get('companyDocuments')?.value"
-          [src]="myForm5?.get('companyDocuments')?.value"
-          alt="Uploaded Image" />
+        <a class="m-2 rounded border border-red-500 px-3 py-2 text-red-500"
+          *ngIf="myForm5.get('companyDocuments')?.value" (click)="cancelUpload('companyDocuments')">Cancel</a><br />
+        <a class="m-2 rounded border border-green-500 px-3 py-2 text-green-500"
+          *ngIf="myForm5.get('companyDocuments')?.value" (click)="reupload('companyDocuments')">Reupload</a>
+        <img class="h-[200px] w-[200px]" *ngIf="myForm5.get('companyDocuments')?.value"
+          [src]="myForm5.get('companyDocuments')?.value" alt="Uploaded Image" />
       </div>
 
       <div class="grid grid-cols-12 place-content-end justify-items-end gap-5 px-5">
-        <button
-          (click)="prevStep()"
+        <button (click)="prevStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Back
         </button>
-        <button
-          (click)="nextStep()"
+        <button (click)="nextStep()"
           class="mt-5 items-end rounded-xl border-none bg-[#22c55e] px-5 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Submit

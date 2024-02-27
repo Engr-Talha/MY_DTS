@@ -8,9 +8,9 @@ import { BACKEND_URL } from '../constants/constants';
 export class TravelAgencyService {
   constructor(private http: HttpClient) {}
 
-  public registerTouristguide(payloadObj: FormData) {
+  public registerTravelAgency(payloadObj: FormData) {
     // return this.http.post(`${BACKEND_URL}v1/apply-tourism`, payloadObj);
-    return this.http.post(`${BACKEND_URL}api/tourist-guides`, payloadObj);
+    return this.http.post(`${BACKEND_URL}api/travel-agencies`, payloadObj);
   }
 
   public UpdateTouristguide(id: any, payloadObj: FormData) {

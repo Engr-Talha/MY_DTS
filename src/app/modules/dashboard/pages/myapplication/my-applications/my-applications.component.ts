@@ -132,7 +132,7 @@ export class MyApplicationsComponent implements OnInit {
   }
 
   navigateTo(path: any) {
-    this.Router.navigate([`/tourist-guide/edit/${path}`]);
+    this.Router.navigate([`/layout/tourist-guide/edit/${path}`]);
   }
 }
 

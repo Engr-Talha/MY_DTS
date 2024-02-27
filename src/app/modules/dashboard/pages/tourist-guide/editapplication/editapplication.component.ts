@@ -355,7 +355,7 @@ export class EditapplicationComponent {
       (res: any) => {
         this.isLoading = false;
         this.showSuccess('Congratulations!', 'You Application has been submitted, you will be updated shortly.');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/layout/dashboard']);
       },
       (err: any) => {
         this.isLoading = false;

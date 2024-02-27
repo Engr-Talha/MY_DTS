@@ -64,7 +64,7 @@ export class SignUpComponent implements OnInit {
           summary: 'Account Created',
           detail: 'Your Account is Created Successfully',
         });
-        this.Router.navigate(['/auth/sign-in']);
+        this.Router.navigate(['/sign-in']);
       },
       (err: any) => {
         // this.messageService.add({ severity: 'error', summary:. 'Error', detail: 'Error' });

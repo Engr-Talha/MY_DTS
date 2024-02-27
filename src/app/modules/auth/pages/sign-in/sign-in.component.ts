@@ -91,23 +91,23 @@ export class SignInComponent implements OnInit {
             // console.log('====================================');
             // console.log('Admin logged In! Redirecting to Admin Dashboard...');
             // console.log('====================================');
-            this._router.navigate(['/']);
+            this._router.navigate(['/layout']);
             // debugger;
             // localStorage.setItem('user', '1');
           } else if (this.UserDetails.role_id == 3) {
-            this._router.navigate(['/inspector-dashboard']);
+            this._router.navigate(['/layout/inspector-dashboard']);
             // localStorage.setItem('user', '2');
           } else if (this.UserDetails.role_id == 2) {
-            this._router.navigate(['/controller-dashboard']);
+            this._router.navigate(['/layout/controller-dashboard']);
             // localStorage.setItem('user', '3');
           } else if (this.UserDetails.role_id == 4) {
-            this._router.navigate(['/dptcontroller-dashboard']);
+            this._router.navigate(['/layout/dptcontroller-dashboard']);
             // localStorage.setItem('user', '4');
           } else if (this.UserDetails.role_id == 6) {
-            this._router.navigate(['/reviewer-dashboard']);
+            this._router.navigate(['/layout/reviewer-dashboard']);
             // localStorage.setItem('user', '4');
           } else if (this.UserDetails.role_id == 5) {
-            this._router.navigate(['/astcontroller-dashboard']);
+            this._router.navigate(['/layout/astcontroller-dashboard']);
             // localStorage.setItem('user', '4');
           }
           this.menuService.loadMenu();

@@ -11,18 +11,18 @@ export class Menu {
           label: 'Dashboard',
           route: '/',
           children: [
-            { label: 'Dashboard', route: '/' },
-            { label: 'Apply for Tourist Guide', route: '/tourist-guide/register' },
-            { label: 'Apply for Hotel', route: '/hotel/register' },
-            { label: 'Apply for Resturant', route: '/resturant/register' },
-            { label: 'Apply for Travel Agency', route: '/travel-agency/register' },
+            { label: 'Dashboard', route: '/layout' },
+            { label: 'Apply for Tourist Guide', route: '/layout/tourist-guide/register' },
+            { label: 'Apply for Hotel', route: '/layout/hotel/register' },
+            { label: 'Apply for Resturant', route: '/layout/resturant/register' },
+            { label: 'Apply for Travel Agency', route: '/layout/travel-agency/register' },
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
         },
         {
           icon: 'assets/icons/heroicons/outline/cog.svg',
           label: 'My Applications',
-          route: '/my-registrations',
+          route: '/layout/my-registrations',
           // children: [
           // { label: 'Sign up', route: '/auth/sign-up' },
           // { label: 'Sign in', route: '/auth/sign-in' },
@@ -40,38 +40,38 @@ export class Menu {
             // { label: 'Sign in', route: '/auth/sign-in' },
             { label: 'Change Password', route: '/auth/forgot-password' },
             { label: 'New Password', route: '/auth/new-password' },
-            { label: 'Profile', route: '/profile' },
+            { label: 'Profile', route: '/layout/profile' },
           ],
         },
       ],
     },
 
-    {
-      group: 'Config',
-      separator: false,
-      items: [
-        {
-          icon: 'assets/icons/heroicons/outline/cog.svg',
-          label: 'Settings',
-          route: '/settings',
-        },
-        // {
-        //   icon: 'assets/icons/heroicons/outline/bell.svg',
-        //   label: 'Notifications',
-        //   route: '/gift',
-        // },
-        // {
-        //   icon: 'assets/icons/heroicons/outline/folder.svg',
-        //   label: 'Folders',
-        //   route: '/folders',
-        //   children: [
-        //     { label: 'Current Files', route: '/folders/current-files' },
-        //     { label: 'Downloads', route: '/folders/download' },
-        //     { label: 'Trash', route: '/folders/trash' },
-        //   ],
-        // },
-      ],
-    },
+    // {
+    //   group: 'Config',
+    //   separator: false,
+    //   items: [
+    //     {
+    //       icon: 'assets/icons/heroicons/outline/cog.svg',
+    //       label: 'Settings',
+    //       route: '/settings',
+    //     },
+    // {
+    //   icon: 'assets/icons/heroicons/outline/bell.svg',
+    //   label: 'Notifications',
+    //   route: '/gift',
+    // },
+    // {
+    //   icon: 'assets/icons/heroicons/outline/folder.svg',
+    //   label: 'Folders',
+    //   route: '/folders',
+    //   children: [
+    //     { label: 'Current Files', route: '/folders/current-files' },
+    //     { label: 'Downloads', route: '/folders/download' },
+    //     { label: 'Trash', route: '/folders/trash' },
+    //   ],
+    // },
+    //   ],
+    // },
   ];
 
   public static DptControllerpages: MenuItem[] = [
@@ -82,7 +82,7 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'Dashboard',
-          route: '/dashboard',
+          route: '/layout/dashboard',
           children: [
             { label: 'Dashboard', route: '/dptcontroller-dashboard' },
             // { label: ' User Application', route: '/dashboard/tourist-guide/register' },

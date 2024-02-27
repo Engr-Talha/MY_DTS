@@ -205,14 +205,14 @@ export class ControllerUserApplicationComponent implements OnInit {
   // GenerateLisence() {}
 
   GenerateLisence() {
-    const data = new FormData();
+    // const data = new FormData();
 
-    data.append('challan_id', this.SelectedApplication.application.challans[0].id);
-    data.append('application_id', this.SelectedApplication.application.id);
-    this.SharedService.Generate_lisence(data).subscribe(
-      (response: any) => {},
-      (err: any) => {},
-    );
+    // data.append('challan_id', this.SelectedApplication.application.challans[0].id);
+    // data.append('application_id', this.SelectedApplication.application.id);
+    // this.SharedService.Generate_lisence(data).subscribe(
+    //   (response: any) => {},
+    //   (err: any) => {},
+    // );
 
     const newTabUrl = `/Show-Certificate/${this.SelectedApplication.data.id}`;
     window.open(newTabUrl, '_blank');

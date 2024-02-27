@@ -18,6 +18,14 @@ const routes: Routes = [
         loadChildren: () => import('./pages/resturant/resturant.module').then((m) => m.ResturantModule),
       },
       {
+        path: 'resturant',
+        loadChildren: () => import('./pages/resturant/resturant.module').then((m) => m.ResturantModule),
+      },
+      {
+        path: 'tourist-guide',
+        loadChildren: () => import('./pages/tourist-guide/tourist-guide.module').then((m) => m.TouristGuideModule),
+      },
+      {
         path: 'profile',
         loadChildren: () => import('./pages/profile/profile.module').then((m) => m.ProfileModule),
       },
