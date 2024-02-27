@@ -94,7 +94,7 @@ export class TravelAgencyRegisterComponent {
       TelephoneNumber: new FormControl('', Validators.required),
       capital_invested: new FormControl('', Validators.required),
       BankerName: new FormControl('', Validators.required),
-      BankerImage: new FormControl(null, [Validators.required, this.imageValidator]),
+      bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
 
       ntn_number: new FormControl('', Validators.required),
       total_offices: new FormControl('', Validators.required),
@@ -108,7 +108,6 @@ export class TravelAgencyRegisterComponent {
       license_date: new FormControl('', Validators.required),
       auditor_address: new FormControl('', Validators.required),
       auditor_name: new FormControl('', Validators.required),
-
       is_abide_rules: new FormControl(true, Validators.required),
       is_detail_correct: new FormControl(true, Validators.required),
 
@@ -187,11 +186,22 @@ export class TravelAgencyRegisterComponent {
 
   initStep2Form() {
     this.step2Form = new FormGroup({
-      cnicFrontAttachment: new FormControl(null, [Validators.required, this.imageValidator]),
-      cnicBackAttachment: new FormControl(null, [Validators.required, this.imageValidator]),
-      metricAttachment: new FormControl(null, [Validators.required, this.imageValidator]),
-      fscAttachment: new FormControl(null, [Validators.required, this.imageValidator]),
-      experienceAttachment: new FormControl(null, [Validators.required, this.imageValidator]),
+      registration_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+      capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+      cv: new FormControl(null, [Validators.required, this.imageValidator]),
+      bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
+      licence: new FormControl(null, [Validators.required, this.imageValidator]),
+      statement_of_foreign_exchange: new FormControl(null, [Validators.required, this.imageValidator]),
+      travel_agent_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
+      bank_capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+      balance_sheet: new FormControl(null, [Validators.required, this.imageValidator]),
+      national_tax_registration: new FormControl(null, [Validators.required, this.imageValidator]),
+      lease_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
+      partmentship_deed_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+      memorandum: new FormControl(null, [Validators.required, this.imageValidator]),
+      counters_sketch: new FormControl(null, [Validators.required, this.imageValidator]),
+      staff_list: new FormControl(null, [Validators.required, this.imageValidator]),
+      car_registration: new FormControl(null, [Validators.required, this.imageValidator]),
     });
   }
 
@@ -279,7 +289,7 @@ export class TravelAgencyRegisterComponent {
     formData.append('telephone_number', this.step1Form?.value['TelephoneNumber']);
     formData.append('paidup_capital', this.step1Form?.value['CapitalInvested']);
     formData.append('banker_name', this.step1Form?.value['BankerName']);
-    formData.append('banker_image', this.bankerImage);
+    formData.append('banker_image', this.bank_reference);
     formData.append('ntn_number', this.step1Form?.value['ntn_number']);
 
     formData.append('nature_business', this.step1Form?.value['nature_business']);
@@ -297,13 +307,40 @@ export class TravelAgencyRegisterComponent {
     formData.append('is_detail_correct', this.step1Form?.value['is_detail_correct'] ? '1' : '0');
     formData.append('is_abide_rules', this.step1Form?.value['is_abide_rules'] ? '1' : '0');
 
-    // ////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////
 
-    formData.append('metric_attachment', this.metricAttachment);
-    formData.append('fsc_attachment', this.fscAttachment);
-    formData.append('experience_attachment', this.ExperienceImage);
-    formData.append('cnic_front_attachment', this.cnicFrontAttachment);
-    formData.append('cnic_back_attachment', this.cnicBackAttachment);
+    // registration_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+    // capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+    // cv: new FormControl(null, [Validators.required, this.imageValidator]),
+    // bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
+    // licence: new FormControl(null, [Validators.required, this.imageValidator]),
+    // statement_of_foreign_exchange: new FormControl(null, [Validators.required, this.imageValidator]),
+    // travel_agent_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
+    // bank_capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+    // balance_sheet: new FormControl(null, [Validators.required, this.imageValidator]),
+    // national_tax_registration: new FormControl(null, [Validators.required, this.imageValidator]),
+    // lease_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
+    // partmentship_deed_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+    // memorandum: new FormControl(null, [Validators.required, this.imageValidator]),
+    // counters_sketch: new FormControl(null, [Validators.required, this.imageValidator]),
+    // staff_list: new FormControl(null, [Validators.required, this.imageValidator]),
+    // car_registration: new FormControl(null, [Validators.required, this.imageValidator]),
+
+    formData.append('registration_certificate', this.registration_certificate);
+    formData.append('capital_certificate', this.capital_certificate);
+    formData.append('cv', this.cv);
+    formData.append('bank_reference', this.bank_reference);
+    formData.append('licence', this.licence);
+
+    formData.append('statement_of_foreign_exchange', this.statement_of_foreign_exchange);
+    formData.append('travel_agent_agreement', this.travel_agent_agreement);
+    formData.append('bank_capital_certificate', this.bank_capital_certificate);
+    formData.append('balance_sheet', this.balance_sheet);
+    formData.append('national_tax_registration', this.national_tax_registration);
+    formData.append('partmentship_deed_certificate', this.partmentship_deed_certificate);
+    formData.append('memorandum', this.memorandum);
+    formData.append('staff_list', this.staff_list);
+    formData.append('car_registration', this.car_registration);
 
     console.log(formData);
 
@@ -350,12 +387,28 @@ export class TravelAgencyRegisterComponent {
   metricAttachment: any;
   fscAttachment: any;
   ExperienceImage: any;
-
   cnicFrontAttachment: any;
   cnicBackAttachment: any;
 
+  registration_certificate: any;
+  capital_certificate: any;
+  cv: any;
+  bank_reference: any;
+  licence: any;
+  statement_of_foreign_exchange: any;
+  travel_agent_agreement: any;
+  bank_capital_certificate: any;
+  balance_sheet: any;
+  national_tax_registration: any;
+  lease_agreement: any;
+  partmentship_deed_certificate: any;
+  memorandum: any;
+  staff_list: any;
+  car_registration: any;
+  counters_sketch: any;
+
   onImageChange(event: any, imageType: any) {
-    const file = event.target.files[0]; // Get the selected file
+    const file = event.target.files[0];
 
     if (imageType == 'banker_image') this.bankerImage = event.target.files[0];
     else if (imageType == 'metricAttachment') this.metricAttachment = event.target.files[0];
@@ -363,6 +416,20 @@ export class TravelAgencyRegisterComponent {
     else if (imageType == 'ExperienceImage') this.ExperienceImage = event.target.files[0];
     else if (imageType == 'cnicFrontAttachment') this.cnicFrontAttachment = event.target.files[0];
     else if (imageType == 'cnicBackAttachment') this.cnicBackAttachment = event.target.files[0];
+    else if (imageType == 'registration_certificate') this.registration_certificate = event.target.files[0];
+    else if (imageType == 'capital_certificate') this.capital_certificate = event.target.files[0];
+    else if (imageType == 'cv') this.cv = event.target.files[0];
+    else if (imageType == 'bank_reference') this.bank_reference = event.target.files[0];
+    else if (imageType == 'licence') this.licence = event.target.files[0];
+    else if (imageType == 'statement_of_foreign_exchange') this.statement_of_foreign_exchange = event.target.files[0];
+    else if (imageType == 'travel_agent_agreement') this.travel_agent_agreement = event.target.files[0];
+    else if (imageType == 'balance_sheet') this.balance_sheet = event.target.files[0];
+    else if (imageType == 'lease_agreement') this.lease_agreement = event.target.files[0];
+    else if (imageType == 'partmentship_deed_certificate') this.partmentship_deed_certificate = event.target.files[0];
+    else if (imageType == 'memorandum') this.memorandum = event.target.files[0];
+    else if (imageType == 'staff_list') this.staff_list = event.target.files[0];
+    else if (imageType == 'car_registration') this.car_registration = event.target.files[0];
+    else if (imageType == 'counters_sketch') this.counters_sketch = event.target.files[0];
 
     if (file) {
       // Display the selected image as a preview
