@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ControllerService } from 'src/app/core/services/controller.service';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +7,8 @@ import { UserApplicationService } from 'src/app/core/services/user-application.s
 import { SharedService } from 'src/app/core/services/shared.service';
 import { forkJoin } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf';
 @Component({
   selector: 'app-generatechallan',
   standalone: true,
@@ -15,6 +17,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./generatechallan.component.scss'],
 })
 export class GeneratechallanComponent {
+  @Input({ required: true }) applicationID!: number;
   constructor(
     private TouristGuideService: TouristGuideService,
     private ActivatedRoute: ActivatedRoute,
@@ -25,7 +28,7 @@ export class GeneratechallanComponent {
   ) {}
 
   SelectedApplication: any;
-  applicationID: any;
+  // applicationID: any;
   userID: any;
 
   ngOnInit() {
@@ -55,5 +58,29 @@ export class GeneratechallanComponent {
         console.log('Error in gettting my applications', err);
       },
     );
+  }
+  ShowButton: boolean = true;
+  downloading: boolean = false; // Track download state
+
+  downloadAs(format: string) {
+    this.ShowButton = false; // Hide the button while downloading
+    const container = document.querySelector('.challan-container') as HTMLElement; // Cast to HTMLElement
+    if (!container) {
+      console.error('Container element not found.');
+      this.ShowButton = true; // Show the button again if the container is not found
+      return;
+    }
+
+    html2canvas(container).then((canvas: any) => {
+      if (format === 'png') {
+        const imageData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = imageData;
+        link.download = 'challan.png';
+        link.click();
+      }
+
+      this.ShowButton = true; // Show the button again after downloading
+    });
   }
 }

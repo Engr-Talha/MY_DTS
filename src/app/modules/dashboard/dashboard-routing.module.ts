@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { DashbaordComponent } from './pages/dashbaord/dashbaord.component';
+import { GeneratechallanComponent } from 'src/app/shared/components/generatechallan/generatechallan.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -38,6 +40,7 @@ const routes: Routes = [
         path: 'my-registrations',
         loadChildren: () => import('./pages/myapplication/myapplication.module').then((m) => m.MyapplicationModule),
       },
+      { path: 'generate-challan/:id', component: GeneratechallanComponent },
     ],
   },
 ];

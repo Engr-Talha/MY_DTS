@@ -22,6 +22,9 @@ export class SharedService {
   public Generate_lisence(payloadObj: FormData) {
     return this.http.post(`${BACKEND_URL}api/issue-license`, payloadObj);
   }
+  public Upload_lisence(payloadObj: FormData) {
+    return this.http.post(`${BACKEND_URL}api/upload-license`, payloadObj);
+  }
 
   public Get_all_Cities() {
     return this.http.get(`${BACKEND_URL}api/get-cities`);

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf';
+
 import { UserApplicationService } from 'src/app/core/services/user-application.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
@@ -11,6 +15,9 @@ import { SharedService } from 'src/app/core/services/shared.service';
   providers: [MessageService],
 })
 export class MyApplicationsComponent implements OnInit {
+  @ViewChild('dialogContent') dialogContent: ElementRef;
+  @ViewChild('downloadButton') downloadButton: ElementRef;
+
   constructor(
     private UserApplicationService: UserApplicationService,
     private Router: Router,
@@ -71,8 +78,13 @@ export class MyApplicationsComponent implements OnInit {
       },
     );
   }
+
+  visible: any;
   generatechallan() {
+    // this.Router.navigate([`/layout/generate-challan/${this.SelectedApplication.data.id}`]);
+    // this.visible = true;
     const newTabUrl = `/generate-challan/${this.SelectedApplication.data.id}`;
+    console.log(newTabUrl);
     window.open(newTabUrl, '_blank');
   }
 
@@ -133,6 +145,27 @@ export class MyApplicationsComponent implements OnInit {
 
   navigateTo(path: any) {
     this.Router.navigate([`/layout/tourist-guide/edit/${path}`]);
+  }
+  downloadAs(format: string) {
+    html2canvas(document.body).then((canvas: any) => {
+      if (format === 'png') {
+        const imageData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = imageData;
+        link.download = 'Lisence.png';
+        link.click();
+      }
+    });
+  }
+
+  showCertificate: boolean = false;
+
+  downloadImage(url: string) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'image.png';
+    link.target = '_blank';
+    link.click();
   }
 }
 

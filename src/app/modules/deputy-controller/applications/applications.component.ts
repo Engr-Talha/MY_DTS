@@ -70,6 +70,6 @@ export class ApplicationsComponent {
   tableHeaders = ['Code', 'Name', 'Category', 'Status', 'Date'];
 
   NavigateTo(link: any) {
-    this.route.navigate([`/dptcontroller-dashboard/app-dpt/${link}`]);
+    this.route.navigate([`layout/dptcontroller-dashboard/app-dpt/${link}`]);
   }
 }

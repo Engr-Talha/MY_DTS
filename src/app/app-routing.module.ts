@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'layout',
     loadChildren: () => import('./modules/layout/layout.module').then((m) => m.LayoutModule),
   },
+  { path: 'generate-challan', component: GeneratechallanComponent },
+  { path: 'Show-Certificate/:id', component: CertificateComponent },
+
+  { path: 'generate-challan/:id', component: GeneratechallanComponent },
 
   {
     path: '',
@@ -16,7 +20,6 @@ const routes: Routes = [
 
   { path: '**', redirectTo: 'error/404' },
   { path: 'generate-challan/:id', component: GeneratechallanComponent },
-  { path: 'Show-Certificate/:id', component: CertificateComponent },
 ];
 
 @NgModule({

@@ -92,7 +92,7 @@ export class TravelAgencyRegisterComponent {
       no_of_lines: new FormControl('', Validators.required),
       telegraphic_address: new FormControl('', Validators.required),
       telephone_no: new FormControl('', Validators.required),
-      capital_invested: new FormControl('', Validators.required),
+      paidup_capital: new FormControl('', Validators.required),
       BankerName: new FormControl('', Validators.required),
       bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
 
@@ -237,6 +237,7 @@ export class TravelAgencyRegisterComponent {
     }
   }
   accountID: any;
+
   onSubmit() {
     this.markFormGroupTouched(this.step2Form);
 
@@ -285,10 +286,10 @@ export class TravelAgencyRegisterComponent {
     });
 
     formData.append('ownership_nature_type_id', this.step1Form?.value['ownership_nature_type_id']);
-    formData.append('telegraphic_number', this.step1Form?.value['telegraphic_address']);
-    formData.append('telephone_number_lines', this.step1Form?.value['no_of_lines']);
-    formData.append('telephone_number', this.step1Form?.value['telephone_no']);
-    formData.append('paidup_capital', this.step1Form?.value['CapitalInvested']);
+    formData.append('telegraphic_address', this.step1Form?.value['telegraphic_address']);
+    formData.append('no_of_lines', this.step1Form?.value['no_of_lines']);
+    formData.append('telephone_no', this.step1Form?.value['telephone_no']);
+    formData.append('paidup_capital', this.step1Form?.value['paidup_capital']);
     formData.append('banker_name', this.step1Form?.value['BankerName']);
     formData.append('banker_image', this.bank_reference);
     formData.append('ntn_number', this.step1Form?.value['ntn_number']);
@@ -302,8 +303,8 @@ export class TravelAgencyRegisterComponent {
     formData.append('license_number', this.step1Form?.value['license_number']);
     formData.append('license_date', this.step1Form?.value['license_date']);
 
-    formData.append('auditors_name', this.step1Form?.value['auditor_name']);
-    formData.append('auditors_address', this.step1Form?.value['auditor_address']);
+    formData.append('auditor_name', this.step1Form?.value['auditor_name']);
+    formData.append('auditor_address', this.step1Form?.value['auditor_address']);
     formData.append('total_offices', this.step1Form?.value['total_offices']);
     formData.append('is_detail_correct', this.step1Form?.value['is_detail_correct'] ? '1' : '0');
     formData.append('is_abide_rules', this.step1Form?.value['is_abide_rules'] ? '1' : '0');
@@ -339,9 +340,11 @@ export class TravelAgencyRegisterComponent {
     formData.append('balance_sheet', this.balance_sheet);
     formData.append('national_tax_registration', this.national_tax_registration);
     formData.append('partmentship_deed_certificate', this.partmentship_deed_certificate);
+    formData.append('lease_agreement', this.lease_agreement);
     formData.append('memorandum', this.memorandum);
     formData.append('staff_list', this.staff_list);
     formData.append('car_registration', this.car_registration);
+    formData.append('counters_sketch', this.counters_sketch);
 
     console.log(formData);
 
@@ -370,8 +373,8 @@ export class TravelAgencyRegisterComponent {
     }
 
     if (image instanceof File) {
-      const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif']; // Add more extensions as needed
-      const fileExtension = (image.name.split('.').pop() || '').toLowerCase(); // Use nullish coalescing operator
+      const allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf'];
+      const fileExtension = (image.name.split('.').pop() || '').toLowerCase();
 
       if (allowedExtensions.indexOf(fileExtension) === -1) {
         return { validImage: false };
@@ -428,9 +431,11 @@ export class TravelAgencyRegisterComponent {
     else if (imageType == 'lease_agreement') this.lease_agreement = event.target.files[0];
     else if (imageType == 'partmentship_deed_certificate') this.partmentship_deed_certificate = event.target.files[0];
     else if (imageType == 'memorandum') this.memorandum = event.target.files[0];
+    else if (imageType == 'bank_capital_certificate') this.bank_capital_certificate = event.target.files[0];
     else if (imageType == 'staff_list') this.staff_list = event.target.files[0];
     else if (imageType == 'car_registration') this.car_registration = event.target.files[0];
     else if (imageType == 'counters_sketch') this.counters_sketch = event.target.files[0];
+    else if (imageType == 'national_tax_registration') this.national_tax_registration = event.target.files[0];
 
     if (file) {
       // Display the selected image as a preview

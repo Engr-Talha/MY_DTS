@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  // BACKEND_URL: 'http://10.71.71.40:8000/',
+  BACKEND_URL: 'http://10.71.71.40:8000/',
   // BACKEND_URL: 'https://staging.nitb.gov.pk:8614/',
-  BACKEND_URL: 'http://127.0.0.1:8000/',
+  // BACKEND_URL: 'http://127.0.0.1:8000/',
 };
 
 /*http://127.0.0.1:8000/api/register

@@ -5,7 +5,7 @@
   <div class="item-end mb-3 flex flex-row justify-end">
     <div class="button-container">
       <!-- <button class="addCommentButton" (click)="addComment()">Add Comment</button> -->
-      <button class="approveButton" (click)="approveDialogbox()">Apprvove Generate Challan</button>
+      <button class="approveButton" (click)="approveDialogbox()">Apprvove and Sent to Controller</button>
 
       <!-- <button class="approveButton" (click)="approvedialogbox = true">Approve</button> -->
       <button class="approveButton" (click)="showreject = true">Reject</button>
@@ -259,11 +259,11 @@
   [style]="{ width: '70vw', }" [draggable]="false" [resizable]="true">
   <div>
     <div class="card justify-content-center flex flex-col">
-      <div class="mt-5 flex flex-row gap-5 justify-between">
+      <!-- <div class="mt-5 flex flex-row gap-5 justify-between">
         <p>Please select fee types for the challan generation. This will be the collective fee for the registration.</p>
         <p-multiSelect [options]="feeTypes" [(ngModel)]="selectedFeeTypes" optionLabel="name" field="id"
           label="Select Fee Types" placeholder="Choose fees"></p-multiSelect>
-      </div>
+      </div> -->
       <p>Do you want to approve this applications, Please add comment if require.</p>
       <br />
       <div class="card justify-content-center flex">

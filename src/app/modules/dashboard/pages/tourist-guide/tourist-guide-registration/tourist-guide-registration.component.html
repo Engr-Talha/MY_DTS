@@ -22,8 +22,7 @@
           <div class="col-span-12">
             <label class="text-base" for="name">Name:</label>
             <input type="text" id="name" formControlName="name" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="step1Form.get('name')?.hasError('required') && step1Form.get('name')?.touched">
               Name is required.
             </div>
@@ -41,9 +40,7 @@
           <div class="form-group col-span-6">
             <label for="town">Residential Address:</label>
             <input type="text" id="town" formControlName="ResidentialAddress" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('ResidentialAddress')?.hasError('required') &&
                 step1Form.get('ResidentialAddress')?.touched
               ">
@@ -59,9 +56,7 @@
           <div class="form-group col-span-4 my-2">
             <label for="TelegraphicNumber">Telegraphic Address</label>
             <input type="text" id="TelegraphicNumber" formControlName="TelegraphicNumber" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('TelegraphicNumber')?.hasError('required') && step1Form.get('TelegraphicNumber')?.touched
               ">
               Telegraphic Address is required.
@@ -70,9 +65,7 @@
           <div class="form-group col-span-4 my-2">
             <label for="TelephoneNumberLines">Telephone Number Lines</label>
             <input type="text" id="TelephoneNumberLines" formControlName="TelephoneNumberLines" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('TelephoneNumberLines')?.hasError('required') &&
                 step1Form.get('TelephoneNumberLines')?.touched
               ">
@@ -82,9 +75,7 @@
           <div class="form-group col-span-4 my-2">
             <label for="TelephoneNumber">Telephone Number(if any)</label>
             <input type="text" id="TelephoneNumber" formControlName="TelephoneNumber" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('TelephoneNumber')?.hasError('required') && step1Form.get('TelephoneNumber')?.touched
               ">
               Telephone number is required.
@@ -100,9 +91,7 @@
             <div class="form-group">
               <label for="EducationalQualifications">Educational Qualification Highest</label>
               <input type="text" id="EducationalQualifications" formControlName="EducationalQualifications" />
-              <div
-                class="text-sm text-red-600"
-                *ngIf="
+              <div class="text-sm text-red-600" *ngIf="
                   step1Form.get('EducationalQualifications')?.hasError('required') &&
                   step1Form.get('EducationalQualifications')?.touched
                 ">
@@ -113,27 +102,20 @@
           <div class="form-group col-span-4 my-2">
             <label for="ExpAsTouristGuide">Experience of Tourist Guide in Years</label>
             <input type="text" id="ExpAsTouristGuide" formControlName="ExpAsTouristGuide" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('ExpAsTouristGuide')?.hasError('required') && step1Form.get('ExpAsTouristGuide')?.touched
               ">
               Experience as tourist guide is required.
             </div>
           </div>
           <div class="form-group col-span-4 my-2">
-            <label for="ForiegnLanguage">Knowledge of foriegn languages</label>
-            <input
-              type="text"
-              id="ForiegnLanguage"
-              placeholder="Urdu English German French"
+            <label for="ForiegnLanguage">Knowledge of foreign languages</label>
+            <input type="text" id="ForiegnLanguage" placeholder="Urdu English German French"
               formControlName="ForiegnLanguage" />
-            <div
-              class="text-sm text-red-600"
-              *ngIf="
+            <div class="text-sm text-red-600" *ngIf="
                 step1Form.get('ForiegnLanguage')?.hasError('required') && step1Form.get('ForiegnLanguage')?.touched
               ">
-              Knowledge of foriegn languages is required.
+              Knowledge of foreign languages is required.
             </div>
           </div>
 
@@ -144,8 +126,7 @@
         </div>
 
         <div class="place-item-end mr-[10%] flex justify-end gap-5">
-          <button
-            (click)="nextStep()"
+          <button (click)="nextStep()"
             class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
             type="submit">
             Next
@@ -159,22 +140,17 @@
         <h2 class="mt-4 text-lg font-normal">Bank Details</h2>
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-4 my-2">
-            <label for="BankerName"
-              >Name of Banker <span class="text-sm">(Please attach refrence from Bank)</span>:</label
-            >
+            <label for="BankerName">Name of Banker <span class="text-sm">(Please attach reference from
+                Bank)</span>:</label>
             <input type="text" id="BankerName" formControlName="BankerName" />
-            <div
-              class="text-sm text-red-600"
+            <div class="text-sm text-red-600"
               *ngIf="step2Form.get('BankerName')?.hasError('required') && step2Form.get('BankerName')?.touched">
               Name of Banker is required.
             </div>
           </div>
           <div class="col-span-4 my-2">
             <label for="BankerImage">Upload Image:</label><br />
-            <input
-              type="file"
-              id="BankerImage"
-              formControlName="BankerImage"
+            <input type="file" id="BankerImage" formControlName="BankerImage"
               (change)="onImageChange($event, 'BankerImage')" />
             <!-- <div *ngIf="step2Form.get('BankerImage')?.hasError('required')" class="text-danger">Image is required.</div> -->
             <div *ngIf="step2Form.get('BankerImage')?.hasError('validImage')" class="text-danger">
@@ -227,9 +203,7 @@
               <!-- Add other fields: employmentStatus, qualification, experience -->
             </div>
             <div class="col-span-2 my-2">
-              <button
-                class="rounded-sm border bg-green-400 px-5 py-3 hover:bg-white"
-                type="button"
+              <button class="rounded-sm border bg-green-400 px-5 py-3 hover:bg-white" type="button"
                 (click)="removeEmployee(i)">
                 Remove
               </button>
@@ -238,9 +212,7 @@
         </div>
       </div>
       <div class="my-3 flex flex-row items-end justify-end">
-        <button
-          class="rounded-sm border bg-green-400 px-5 py-3 text-sm hover:bg-white"
-          type="button"
+        <button class="rounded-sm border bg-green-400 px-5 py-3 text-sm hover:bg-white" type="button"
           (click)="addEmployee()">
           Add Staff/Employee Details.
         </button>
@@ -249,15 +221,13 @@
       <div>
         <h2 class="mt-4 text-lg font-normal">
           Capital Invested
-          <span class="text-sm"
-            >(Please indicate clearly the paid up capital and enclose certificate of appropriate authority in support of
-            your statment.)</span
-          >
+          <span class="text-sm">(Please indicate clearly the paid up capital and enclose certificate of appropriate
+            authority in support of
+            your statement.)</span>
         </h2>
         <div class="col-span-12 px-5">
           <textarea formControlName="CapitalInvested" cols="4"></textarea>
-          <div
-            class="text-sm text-red-600"
+          <div class="text-sm text-red-600"
             *ngIf="step2Form.get('CapitalInvested')?.hasError('required') && step2Form.get('CapitalInvested')?.touched">
             Capital Invested is required.
           </div>
@@ -286,10 +256,7 @@
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-4 my-2 my-2">
             <label for="cnicFrontAttachment">Upload CNIC Front Image:</label><br />
-            <input
-              type="file"
-              id="cnicFrontAttachment"
-              formControlName="cnicFrontAttachment"
+            <input type="file" id="cnicFrontAttachment" formControlName="cnicFrontAttachment"
               (change)="onImageChange($event, 'cnicFrontAttachment')" />
             <!-- <div *ngIf="step2Form.get('cnicFrontAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
             <div *ngIf="step2Form.get('cnicFrontAttachment')?.hasError('validImage')" class="text-danger">
@@ -298,10 +265,7 @@
           </div>
           <div class="col-span-4 my-2 my-2">
             <label for="cnicBackAttachment">Upload CNIC Back Image:</label><br />
-            <input
-              type="file"
-              id="cnicBackAttachment"
-              formControlName="cnicBackAttachment"
+            <input type="file" id="cnicBackAttachment" formControlName="cnicBackAttachment"
               (change)="onImageChange($event, 'cnicBackAttachment')" />
             <!-- <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
             <div *ngIf="step2Form.get('cnicBackAttachment')?.hasError('validImage')" class="text-danger">
@@ -312,10 +276,7 @@
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-4 my-2 my-2">
             <label for="metricAttachment">Upload Matric Degree Image:</label><br />
-            <input
-              type="file"
-              id="metricAttachment"
-              formControlName="metricAttachment"
+            <input type="file" id="metricAttachment" formControlName="metricAttachment"
               (change)="onImageChange($event, 'metricAttachment')" />
             <!-- <div *ngIf="step2Form.get('metricAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
             <div *ngIf="step2Form.get('metricAttachment')?.hasError('validImage')" class="text-danger">
@@ -324,10 +285,7 @@
           </div>
           <div class="col-span-4 my-2">
             <label for="fscAttachment">Upload FSC Degree Image:</label><br />
-            <input
-              type="file"
-              id="fscAttachment"
-              formControlName="fscAttachment"
+            <input type="file" id="fscAttachment" formControlName="fscAttachment"
               (change)="onImageChange($event, 'fscAttachment')" />
             <!-- <div *ngIf="step2Form.get('fscAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
             <div *ngIf="step2Form.get('fscAttachment')?.hasError('validImage')" class="text-danger">
@@ -338,10 +296,7 @@
         <div class="grid grid-cols-12 gap-5 px-5">
           <div class="col-span-4 my-2">
             <label for="experienceAttachment">Upload Experience Image:</label><br />
-            <input
-              type="file"
-              id="experienceAttachment"
-              formControlName="experienceAttachment"
+            <input type="file" id="experienceAttachment" formControlName="experienceAttachment"
               (change)="onImageChange($event, 'ExperienceImage')" />
             <!-- <div *ngIf="step2Form.get('experienceAttachment')?.hasError('required')" class="text-danger">Image is required.</div> -->
             <div *ngIf="step2Form.get('experienceAttachment')?.hasError('validImage')" class="text-danger">
@@ -362,9 +317,7 @@
             I/we hereby solemnly declare that all the particulars give above are correct.
           </h2>
         </div>
-        <div
-          class="text-sm text-red-600"
-          *ngIf="
+        <div class="text-sm text-red-600" *ngIf="
             step2Form.get('isCheckeddetialsCorrect')?.hasError('required') &&
             step2Form.get('isCheckeddetialsCorrect')?.touched
           ">
@@ -384,21 +337,18 @@
             Guides, Act 1976 and Rules made the re-under.
           </h2>
         </div>
-        <div
-          class="text-sm text-red-600"
+        <div class="text-sm text-red-600"
           *ngIf="step2Form.get('isCheckedAccpet')?.hasError('required') && step2Form.get('isCheckedAccpet')?.touched">
           Declaration is required.
         </div>
       </div>
       <div class="place-item-end mr-[10%] ml-[10%] flex items-center justify-end gap-5 px-5">
-        <button
-          (click)="prevStep()"
+        <button (click)="prevStep()"
           class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Back
         </button>
-        <button
-          class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
+        <button class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
           type="submit">
           Submit
         </button>

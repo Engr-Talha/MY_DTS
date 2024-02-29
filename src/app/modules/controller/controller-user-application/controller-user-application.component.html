@@ -1,13 +1,22 @@
 <p-toast></p-toast>
+
+
+
 <div class="px-10 py-10">
   <div class="mb-3 text-xl font-semibold text-black">Applications</div>
 
   <div class="item-end mb-3 flex flex-row justify-end">
     <div class="button-container">
+      <button
+        *ngIf="this.SelectedApplication?.application?.challans[0]?.is_paid!==1 && this.SelectedApplication?.application?.is_challan_issued==1"
+        class="button-92" role="button"> Application cannot be processed until the challan is submitted</button>
+
       <!-- <button class="addCommentButton" (click)="addComment()">Add Comment</button> -->
-      <button class="approveButton" *ngIf="this.SelectedApplication?.application?.challans[0]?.is_paid!=1"
+      <button class="approveButton"
+        *ngIf="this.SelectedApplication?.application?.challans[0]?.is_paid!==1 && this.SelectedApplication?.application?.is_challan_issued==0"
         (click)="approvedialog=true">Approve Application</button>
-      <button class="approveButton" *ngIf="this.SelectedApplication?.application?.challans[0]?.is_paid!=1"
+      <button class="approveButton"
+        *ngIf="this.SelectedApplication?.application?.challans[0]?.is_paid!==1 && this.SelectedApplication?.application?.is_challan_issued==0"
         (click)="GenerateChallan()"> Generate Challan</button>
       <button class="approveButton" *ngIf="this.SelectedApplication?.application?.challans[0]?.is_paid==1"
         (click)="GenerateLisence()"> Generate Lisence</button>
@@ -17,6 +26,8 @@
         (click)="showreject = true">Reject</button>
       <!-- <button class="approveButton" (click)=" downloadAsPDF()">Download PDF</button> -->
     </div>
+
+
   </div>
 
   <div *ngIf="SelectedApplication" class="grid grid-cols-12 gap-5">

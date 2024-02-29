@@ -70,6 +70,6 @@ export class ContApplicationListingComponent implements OnInit {
   tableHeaders = ['Code', 'Name', 'Category', 'Status', 'Date'];
 
   NavigateTo(link: any) {
-    this.route.navigate([`/controller-dashboard/userCont-application-listing/${link}`]);
+    this.route.navigate([`layout/controller-dashboard/userCont-application-listing/${link}`]);
   }
 }

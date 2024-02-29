@@ -66,6 +66,6 @@ export class AssistantContApplicationsComponent {
   tableHeaders = ['Code', 'Name', 'Category', 'Status', 'Date'];
 
   NavigateTo(link: any) {
-    this.route.navigate([`/astcontroller-dashboard/assistant-cont-app-listing/${link}`]);
+    this.route.navigate([`layout/astcontroller-dashboard/assistant-cont-app-listing/${link}`]);
   }
 }

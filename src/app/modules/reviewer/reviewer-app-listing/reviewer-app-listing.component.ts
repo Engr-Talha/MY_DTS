@@ -66,6 +66,6 @@ export class ReviewerAppListingComponent {
   tableHeaders = ['Code', 'Name', 'Category', 'Status', 'Date'];
 
   NavigateTo(link: any) {
-    this.route.navigate([`/reviewer-dashboard/reviewer-app-listing/${link}`]);
+    this.route.navigate([`layout/reviewer-dashboard/reviewer-app-listing/${link}`]);
   }
 }

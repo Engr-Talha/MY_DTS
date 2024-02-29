@@ -7,9 +7,9 @@ import { InspectorUserApplicationComponent } from './inspector-user-application/
 const routes: Routes = [
   {
     path: '',
-    component: InspectorDashboardComponent,
+    component: ApplicationListingComponent,
     children: [
-      { path: '', component: InspectorDashboardComponent },
+      { path: '', component: ApplicationListingComponent },
       { path: '**', redirectTo: 'error/404' },
     ],
   },

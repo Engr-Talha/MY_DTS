@@ -8,9 +8,9 @@ import { ControllerUserApplicationComponent } from './controller-user-applicatio
 const routes: Routes = [
   {
     path: '',
-    component: ControllerDashbaordComponent,
+    component: ContApplicationListingComponent,
     children: [
-      { path: '', component: ControllerDashbaordComponent },
+      { path: '', component: ContApplicationListingComponent },
       { path: '**', redirectTo: 'error/404' },
     ],
   },

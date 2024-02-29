@@ -38,8 +38,8 @@ export class Menu {
           children: [
             // { label: 'Sign up', route: '/auth/sign-up' },
             // { label: 'Sign in', route: '/auth/sign-in' },
-            { label: 'Change Password', route: '/auth/forgot-password' },
-            { label: 'New Password', route: '/auth/new-password' },
+            // { label: 'Change Password', route: '/auth/forgot-password' },
+            // { label: 'New Password', route: '/auth/new-password' },
             { label: 'Profile', route: '/layout/profile' },
           ],
         },

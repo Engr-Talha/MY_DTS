@@ -66,6 +66,6 @@ export class ApplicationListingComponent {
   tableHeaders = ['Code', 'Name', 'Category', 'Status', 'Date'];
 
   NavigateTo(link: any) {
-    this.route.navigate([`/inspector-dashboard/user-applications/${link}`]);
+    this.route.navigate([`layout/inspector-dashboard/user-applications/${link}`]);
   }
 }
