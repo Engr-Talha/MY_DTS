@@ -19,7 +19,7 @@
             <div>
                 <h2 class="mt-4 text-lg font-normal">Name:</h2>
                 <div class="form-group grid-cols-12 grid gap-5 px-5">
-                    <div class="col-span-6">
+                    <div class="col-span-3">
                         <label class="text-base" for="name">Name:</label>
                         <input type="text" id="name" formControlName="person_name" />
                         <div class="text-sm text-red-600"
@@ -27,12 +27,31 @@
                             Name is required.
                         </div>
                     </div>
-                    <div class="col-span-6">
-                        <label class="text-base" for="email">Email:</label>
+                    <div class="col-span-3">
+                        <label class="text-base" for="email">Email:</label><br>
                         <input type="text" id="email" formControlName="email" />
                         <div class="text-sm text-red-600"
                             *ngIf="step1Form.get('email')?.hasError('required') && step1Form.get('email')?.touched">
                             Email is required.
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <label class="text-base" for="establishment_year">Establishment Year:</label>
+                        <p-calendar class="w-full" formControlName="establishment_year"></p-calendar>
+                        <div class="text-sm text-red-600"
+                            *ngIf="step1Form.get('establishment_year')?.hasError('required') && step1Form.get('establishment_year')?.touched">
+                            Establishment Date is required.
+                        </div>
+                    </div>
+                    <div class="col-span-3 ">
+                        <label for="registration_certificate">Please attach refrence establishment year
+                            registration certificate</label>
+                        <input type="file" id="registration_certificate" formControlName="registration_certificate"
+                            (change)="onImageChange($event, 'registration_certificate')" />
+                        <!-- <div *ngIf="step2Form.get('registration_certificate')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                        <div *ngIf="step2Form.get('registration_certificate')?.hasError('validImage')"
+                            class="text-danger">
+                            Invalid image format. Supported formats: jpg, jpeg, png, gif.
                         </div>
                     </div>
                 </div>
@@ -42,10 +61,10 @@
                 <div class="form-group grid-col-12 grid px-5">
                     <div class="col-span-6">
                         <label class="text-base" for="establishment_year">Establishment Year:</label>
-                        <input type="text" id="establishment_year" formControlName="establishment_year" />
+                        <p-calendar formControlName="establishment_year"></p-calendar>
                         <div class="text-sm text-red-600"
                             *ngIf="step1Form.get('establishment_year')?.hasError('required') && step1Form.get('establishment_year')?.touched">
-                            Name is required.
+                            Establishment Date is required.
                         </div>
                     </div>
                     <div class="col-span-4 my-2">

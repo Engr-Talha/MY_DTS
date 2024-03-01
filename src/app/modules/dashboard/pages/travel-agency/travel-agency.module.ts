@@ -8,11 +8,9 @@ import { TravelAgencyRegisterComponent } from './travel-agency-register/travel-a
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from 'src/app/shared/components/loader/loader.component';
 
-
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
-  declarations: [
-    TravelAgencyRegisterComponent
-  ],
+  declarations: [TravelAgencyRegisterComponent],
   imports: [
     CommonModule,
     TravelAgencyRoutingModule,
@@ -20,7 +18,8 @@ import { LoaderComponent } from 'src/app/shared/components/loader/loader.compone
     ReactiveFormsModule,
     ChartModule,
     FormsModule,
-    ToastModule
-  ]
+    CalendarModule,
+    ToastModule,
+  ],
 })
-export class TravelAgencyModule { }
+export class TravelAgencyModule {}

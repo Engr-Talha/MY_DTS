@@ -8,6 +8,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   imports: [
     DashboardRoutingModule,
@@ -18,6 +19,7 @@ import { ButtonModule } from 'primeng/button';
     ChartModule,
     CommonModule,
     ButtonModule,
+    CalendarModule,
   ],
   declarations: [DashbaordComponent],
 })
