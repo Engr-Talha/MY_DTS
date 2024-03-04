@@ -15,11 +15,11 @@ import { TravelAgencyService } from 'src/app/core/services/travel-agency.service
 import { SharedService } from 'src/app/core/services/shared.service';
 import { log } from 'console';
 @Component({
-  selector: 'app-travel-agency-register',
-  templateUrl: './travel-agency-register.component.html',
-  styleUrls: ['./travel-agency-register.component.scss'],
+  selector: 'app-hotel-create',
+  templateUrl: './hotel-create.component.html',
+  styleUrls: ['./hotel-create.component.scss'],
 })
-export class TravelAgencyRegisterComponent {
+export class HotelCreateComponent {
   myForm!: FormGroup;
   isLoading: boolean = false;
   years: number[] = [];
@@ -32,6 +32,8 @@ export class TravelAgencyRegisterComponent {
 
   employees!: FormArray; // Declare employees as FormArray
   cities: any;
+  peakseasontypes: any;
+  ownershipnaturetypes: any;
 
   constructor(
     private router: Router,
@@ -44,12 +46,34 @@ export class TravelAgencyRegisterComponent {
   }
 
   ngOnInit() {
-    this.addAddress();
-    this.addofficeDetails();
-    this.addEmployee();
+    // this.addAddress();
+    // this.addofficeDetails();
+    // this.addEmployee();
     this.SharedService.Get_all_Cities().subscribe(
       (res) => {
         this.cities = res;
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
+    this.SharedService.peakseasontypes().subscribe(
+      (res) => {
+        this.peakseasontypes = res;
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
+      },
+      (err: any) => {
+        console.log(err);
+      },
+    );
+    this.SharedService.ownershipnaturetypes().subscribe(
+      (res) => {
+        this.ownershipnaturetypes = res;
         console.log('====================================');
         console.log(res);
         console.log('====================================');
@@ -67,52 +91,6 @@ export class TravelAgencyRegisterComponent {
       if (control instanceof FormGroup) {
         this.markFormGroupTouched(control);
       }
-    });
-  }
-
-  initStep1Form() {
-    const requiredFieldsForAddresses = ['is_pakistan', 'address', 'city_id'];
-    const requiredFieldsForOfficeDetails = [
-      'branch_name',
-      'office_area',
-      'space' /* Add more required fields as needed */,
-    ];
-    const requiredFieldsForEmployeesDetails = [
-      'employee_category_type_id',
-      'employee_full_name' /* Add more required fields as needed */,
-    ];
-
-    this.step1Form = new FormGroup({
-      person_name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      establishment_year: new FormControl('', Validators.required),
-      addresses: new FormArray([]),
-      office_details: new FormArray([]),
-      employees_details: new FormArray([]),
-      ownership_nature_type_id: new FormControl('', Validators.required),
-      no_of_lines: new FormControl('', Validators.required),
-      telegraphic_address: new FormControl('', Validators.required),
-      telephone_no: new FormControl('', Validators.required),
-      paidup_capital: new FormControl('', [Validators.required, this.numberValidator]),
-      BankerName: new FormControl('', Validators.required),
-      bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
-
-      ntn_number: new FormControl('', [Validators.required, this.numberValidator]),
-      total_offices: new FormControl('', [Validators.required, this.numberValidator]),
-      nature_business: new FormControl('', Validators.required),
-      asset_details: new FormControl('', Validators.required),
-      shipping_details: new FormControl('', Validators.required),
-      liabilities: new FormControl('', Validators.required),
-      is_deal_with_foreign_agency: new FormControl(false, Validators.required),
-      is_foreign_license: new FormControl(false, Validators.required),
-      license_number: new FormControl('', Validators.required),
-      license_date: new FormControl('', Validators.required),
-      auditor_address: new FormControl('', Validators.required),
-      auditor_name: new FormControl('', Validators.required),
-      is_abide_rules: new FormControl(true, Validators.required),
-      is_detail_correct: new FormControl(true, Validators.required),
-
-      // //////////////////////////////////////////////////////////////////////////////////////
     });
   }
 
@@ -185,27 +163,6 @@ export class TravelAgencyRegisterComponent {
     this.OfficeDetailsArray.removeAt(index);
   }
 
-  initStep2Form() {
-    this.step2Form = new FormGroup({
-      registration_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
-      capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
-      cv: new FormControl(null, [Validators.required, this.imageValidator]),
-      bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
-      licence: new FormControl(null, [Validators.required, this.imageValidator]),
-      statement_of_foreign_exchange: new FormControl(null, [Validators.required, this.imageValidator]),
-      travel_agent_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
-      bank_capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
-      balance_sheet: new FormControl(null, [Validators.required, this.imageValidator]),
-      national_tax_registration: new FormControl(null, [Validators.required, this.imageValidator]),
-      lease_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
-      partmentship_deed_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
-      memorandum: new FormControl(null, [Validators.required, this.imageValidator]),
-      counters_sketch: new FormControl(null, [Validators.required, this.imageValidator]),
-      staff_list: new FormControl(null, [Validators.required, this.imageValidator]),
-      car_registration: new FormControl(null, [Validators.required, this.imageValidator]),
-    });
-  }
-
   nextStep() {
     // Validate the current step's form before proceeding to the next step
     if (this.currentStep === 1) {
@@ -244,6 +201,93 @@ export class TravelAgencyRegisterComponent {
     return formattedDate;
   }
 
+  initStep2Form() {
+    this.step2Form = new FormGroup({
+      registration_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+      capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+      cv: new FormControl(null, [Validators.required, this.imageValidator]),
+      bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
+      licence: new FormControl(null, [Validators.required, this.imageValidator]),
+      statement_of_foreign_exchange: new FormControl(null, [Validators.required, this.imageValidator]),
+      travel_agent_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
+      bank_capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+      balance_sheet: new FormControl(null, [Validators.required, this.imageValidator]),
+      national_tax_registration: new FormControl(null, [Validators.required, this.imageValidator]),
+      lease_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
+      partmentship_deed_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
+      memorandum: new FormControl(null, [Validators.required, this.imageValidator]),
+      counters_sketch: new FormControl(null, [Validators.required, this.imageValidator]),
+      staff_list: new FormControl(null, [Validators.required, this.imageValidator]),
+      car_registration: new FormControl(null, [Validators.required, this.imageValidator]),
+    });
+  }
+
+  initStep1Form() {
+    this.step1Form = new FormGroup({
+      person_name: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      establishment_year: new FormControl('', Validators.required),
+      commission_date: new FormControl('', Validators.required),
+
+      town: new FormControl('', Validators.required),
+      complete_address: new FormControl('', Validators.required),
+      street: new FormControl('', Validators.required),
+
+      telex_number: new FormControl('', Validators.required),
+      telegraphic_address: new FormControl('', Validators.required),
+      telephone_no: new FormControl('', Validators.required),
+
+      area: new FormControl('', [Validators.required, this.numberValidator]),
+      covered_area: new FormControl('', [Validators.required, this.numberValidator]),
+      annual_lease: new FormControl('', [Validators.required, this.numberValidator]),
+      land_cost: new FormControl('', [Validators.required, this.numberValidator]),
+      bulding_cost: new FormControl('', [Validators.required, this.numberValidator]),
+      furniture_cost: new FormControl('', [Validators.required, this.numberValidator]),
+      equipment_cost: new FormControl('', [Validators.required, this.numberValidator]),
+      working_capital: new FormControl('', [Validators.required, this.numberValidator]),
+      total_investment: new FormControl('', [Validators.required, this.numberValidator]),
+      furtinure_bed_room: new FormControl('', [Validators.required]),
+      furniture_common_room: new FormControl('', [Validators.required]),
+      furniture_corridor_galleried: new FormControl(false, [Validators.required, this.numberValidator]),
+      furniture_bathroom: new FormControl(false, [Validators.required]),
+      furniture_common_bathroon: new FormControl(false, [Validators.required]),
+      is_foreigner_guest: new FormControl(false, [Validators.required]),
+      is_restaurant_attached: new FormControl(false, [Validators.required]),
+      cuisine_type: new FormControl('', [Validators.required]),
+      classification_desired: new FormControl('', [Validators.required]),
+      before_january_rate: new FormControl('', [Validators.required, this.numberValidator]),
+      present_rate: new FormControl('', [Validators.required, this.numberValidator]),
+      present_date: new FormControl('', [Validators.required]),
+      province_id: new FormControl('', [Validators.required]),
+      peakseasontypes: new FormControl('', [Validators.required]),
+
+      // //////////////////////////////////////////////////////////////////////////////////////
+
+      office_details: new FormArray([]),
+      employees_details: new FormArray([]),
+      ownership_nature_type_id: new FormControl('', Validators.required),
+
+      paidup_capital: new FormControl('', [Validators.required, this.numberValidator]),
+      BankerName: new FormControl('', Validators.required),
+      bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
+
+      ntn_number: new FormControl('', [Validators.required, this.numberValidator]),
+      total_offices: new FormControl('', [Validators.required, this.numberValidator]),
+      nature_business: new FormControl('', Validators.required),
+      asset_details: new FormControl('', Validators.required),
+      shipping_details: new FormControl('', Validators.required),
+      liabilities: new FormControl('', Validators.required),
+      is_deal_with_foreign_agency: new FormControl(false, Validators.required),
+      is_foreign_license: new FormControl(false, Validators.required),
+      license_number: new FormControl('', Validators.required),
+      license_date: new FormControl('', Validators.required),
+      auditor_address: new FormControl('', Validators.required),
+      auditor_name: new FormControl('', Validators.required),
+      is_abide_rules: new FormControl(true, Validators.required),
+      is_detail_correct: new FormControl(true, Validators.required),
+    });
+  }
+
   onSubmit() {
     this.markFormGroupTouched(this.step1Form);
 
@@ -259,17 +303,45 @@ export class TravelAgencyRegisterComponent {
 
     // this.step1Form;
     const formData = new FormData();
-    // formData.append('user_id', this.accountID);
-    formData.append('person_name', this.step1Form?.value['person_name']);
+    formData.append('application_entity_type_id', '1');
+    formData.append('name', this.step1Form?.value['name']);
     formData.append('email', this.step1Form?.value['email']);
     formData.append('establishment_year', this.convertdate(this.step1Form?.value['establishment_year']));
-    this.addressesArray.controls.forEach((control, index) => {
-      const addressGroup = control as FormGroup; // Cast control to FormGroup
-      formData.append(`address[${index}]`, addressGroup.value['address']);
-      formData.append(`is_pakistan[${index}]`, addressGroup.value['is_pakistan'] ? '1' : '0');
-      formData.append(`city_id[${index}]`, addressGroup.value['city_id']);
-    });
+    formData.append('commission_date', this.convertdate(this.step1Form?.value['commission_date']));
+    formData.append('town', this.convertdate(this.step1Form?.value['town']));
+    formData.append('street', this.convertdate(this.step1Form?.value['street']));
+    formData.append('complete_address', this.convertdate(this.step1Form?.value['complete_address']));
+    formData.append('telegraphic_address', this.step1Form?.value['telegraphic_address']);
+    formData.append('telex_number', this.step1Form?.value['telex_number']);
+    formData.append('telephone_no', this.step1Form?.value['telephone_no']);
 
+    formData.append('area', this.step1Form?.value['area']);
+    formData.append('covered_area', this.step1Form?.value['covered_area']);
+    formData.append('annual_lease', this.step1Form?.value['annual_lease']);
+    formData.append('land_cost', this.step1Form?.value['land_cost']);
+    formData.append('furniture_cost', this.step1Form?.value['furniture_cost']);
+    formData.append('equipment_cost', this.step1Form?.value['equipment_cost']);
+    formData.append('shipping_details', this.step1Form?.value['shipping_details']);
+    formData.append('working_capital', this.step1Form?.value['working_capital']);
+
+    formData.append('total_investment', this.step1Form?.value['total_investment']);
+    formData.append('furtinure_bed_room', this.step1Form?.value['furtinure_bed_room']);
+    formData.append('furniture_common_room', this.step1Form?.value['furniture_common_room']);
+    formData.append('furniture_corridor_galleried', this.step1Form?.value['furniture_corridor_galleried'] ? '1' : '0');
+    formData.append('furniture_bathroom', this.step1Form?.value['furniture_bathroom'] ? '1' : '0');
+    formData.append('furniture_common_bathroon', this.step1Form?.value['furniture_common_bathroon'] ? '1' : '0');
+    formData.append('is_foreigner_guest', this.step1Form?.value['is_foreigner_guest'] ? '1' : '0');
+    formData.append('is_restaurant_attached', this.step1Form?.value['is_restaurant_attached'] ? '1' : '0');
+
+    formData.append('cuisine_type', this.step1Form?.value['cuisine_type']);
+    formData.append('classification_desired', this.step1Form?.value['classification_desired']);
+    formData.append('before_january_rate', this.step1Form?.value['before_january_rate']);
+    formData.append('present_rate', this.step1Form?.value['present_rate']);
+    formData.append('present_date', this.convertdate(this.step1Form?.value['present_date']));
+    formData.append('province_id', this.convertdate(this.step1Form?.value['province_id']));
+    formData.append('peakseasontypes', this.convertdate(this.step1Form?.value['peakseasontypes']));
+
+    // /////////////////////////////////////////////////////////////////////////////////////////////////////
     this.OfficeDetailsArray.controls.forEach((control, index) => {
       const officeGroup = control as FormGroup; // Cast control to FormGroup
       formData.append(`branch_name[${index}]`, officeGroup.value['branch_name']);
@@ -294,14 +366,11 @@ export class TravelAgencyRegisterComponent {
     });
 
     formData.append('ownership_nature_type_id', this.step1Form?.value['ownership_nature_type_id']);
-    formData.append('telegraphic_address', this.step1Form?.value['telegraphic_address']);
-    formData.append('no_of_lines', this.step1Form?.value['no_of_lines']);
-    formData.append('telephone_no', this.step1Form?.value['telephone_no']);
+
     formData.append('paidup_capital', this.step1Form?.value['paidup_capital']);
     formData.append('banker_name', this.step1Form?.value['BankerName']);
     formData.append('banker_image', this.bank_reference);
     formData.append('ntn_number', this.step1Form?.value['ntn_number']);
-
     formData.append('nature_business', this.step1Form?.value['nature_business']);
     formData.append('asset_details', this.step1Form?.value['asset_details']);
     formData.append('shipping_details', this.step1Form?.value['shipping_details']);
@@ -318,23 +387,6 @@ export class TravelAgencyRegisterComponent {
     formData.append('is_abide_rules', this.step1Form?.value['is_abide_rules'] ? '1' : '0');
 
     ////////////////////////////////////////////////////
-
-    // registration_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
-    // capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
-    // cv: new FormControl(null, [Validators.required, this.imageValidator]),
-    // bank_reference: new FormControl(null, [Validators.required, this.imageValidator]),
-    // licence: new FormControl(null, [Validators.required, this.imageValidator]),
-    // statement_of_foreign_exchange: new FormControl(null, [Validators.required, this.imageValidator]),
-    // travel_agent_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
-    // bank_capital_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
-    // balance_sheet: new FormControl(null, [Validators.required, this.imageValidator]),
-    // national_tax_registration: new FormControl(null, [Validators.required, this.imageValidator]),
-    // lease_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
-    // partmentship_deed_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
-    // memorandum: new FormControl(null, [Validators.required, this.imageValidator]),
-    // counters_sketch: new FormControl(null, [Validators.required, this.imageValidator]),
-    // staff_list: new FormControl(null, [Validators.required, this.imageValidator]),
-    // car_registration: new FormControl(null, [Validators.required, this.imageValidator]),
 
     formData.append('registration_certificate', this.registration_certificate);
     formData.append('capital_certificate', this.capital_certificate);
@@ -498,8 +550,11 @@ export class TravelAgencyRegisterComponent {
     { id: true, name: 'Yes' },
     { id: false, name: 'No' },
   ];
-}
-interface ApiResponse {
-  message: string;
-  data: { id: number; name: string }[]; // Assuming the data is an array of objects with 'id' and 'name' properties
+  Province_types = [
+    { id: 1, name: 'Islamabad' },
+    { id: 1, name: 'Punjab' },
+    { id: 2, name: 'KPK' },
+    { id: 3, name: 'Sindh' },
+    { id: 4, name: 'Balochistan' },
+  ];
 }

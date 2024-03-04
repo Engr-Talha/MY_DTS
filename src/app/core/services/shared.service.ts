@@ -29,4 +29,10 @@ export class SharedService {
   public Get_all_Cities() {
     return this.http.get(`${BACKEND_URL}api/get-cities`);
   }
+  public peakseasontypes() {
+    return this.http.get(`${BACKEND_URL}api/peak-season-types`);
+  }
+  public ownershipnaturetypes() {
+    return this.http.get(`${BACKEND_URL}api/ownership-nature-types`);
+  }
 }

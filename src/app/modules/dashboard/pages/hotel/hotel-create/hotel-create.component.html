@@ -1,0 +1,1126 @@
+<p>hotel-create works!</p>
+<p-toast></p-toast>
+
+<div class="px-10 py-10">
+    <div class="text-xl font-semibold text-black">Hotel Registration Form</div>
+
+    <!-- Add this step indicator section to your template -->
+    <div class="step-indicator">
+        <div class="step">
+            <div class="step-circle" [class.active]="currentStep === 1">1</div>
+        </div>
+        <div class="step-line w-[20px]"></div>
+        <div class="step">
+            <div class="step-circle" [class.active]="currentStep === 2">2</div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <form *ngIf="currentStep === 1" [formGroup]="step1Form">
+            <div>
+                <h2 class="mt-4 text-lg font-normal heading-label">Name:</h2>
+                <div class="form-group grid-cols-12 grid gap-5 px-5">
+                    <div class="col-span-3">
+                        <label class="text-base" for="name">Name:</label>
+                        <input type="text" id="name" formControlName="person_name" />
+                        <div class="text-sm text-red-600"
+                            *ngIf="step1Form.get('person_name')?.hasError('required') && step1Form.get('person_name')?.touched">
+                            Name is required.
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <label class="text-base" for="email">Email:</label><br>
+                        <input type="text" id="email" formControlName="email" />
+                        <div class="text-sm text-red-600"
+                            *ngIf="step1Form.get('email')?.hasError('required') && step1Form.get('email')?.touched">
+                            Email is required.
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <label class="text-base" for="establishment_year">Establishment Year:</label>
+                        <p-calendar class="w-full" formControlName="establishment_year"></p-calendar>
+                        <div class="text-sm text-red-600"
+                            *ngIf="step1Form.get('establishment_year')?.hasError('required') && step1Form.get('establishment_year')?.touched">
+                            Establishment Date is required.
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <label class="text-base" for="commission_date">commission Date:</label>
+                        <p-calendar class="w-full" formControlName="commission_date"></p-calendar>
+                        <div class="text-sm text-red-600"
+                            *ngIf="step1Form.get('commission_date')?.hasError('required') && step1Form.get('commission_date')?.touched">
+                            Establishment Date is required.
+                        </div>
+                    </div>
+                    <div class="col-span-8 ">
+                        <label for="registration_certificate">Please attach refrence establishment year
+                            registration certificate</label>
+                        <input type="file" id="registration_certificate" formControlName="registration_certificate"
+                            (change)="onImageChange($event, 'registration_certificate')" />
+                        <!-- <div *ngIf="step2Form.get('registration_certificate')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                        <div *ngIf="step2Form.get('registration_certificate')?.hasError('required') && step2Form.get('registration_certificate')?.touched"
+                            class="text-danger text-sm text-red-600">
+                            Establishment year
+                            registration certificate is required.
+                        </div>
+                        <div *ngIf="step2Form.get('registration_certificate')?.hasError('validImage') "
+                            class="text-danger">
+                            Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div>
+                <h2 class="mt-4 text-lg font-normal heading-label">Addresses</h2>
+                <div formArrayName="addresses">
+
+                    <div class="grid grid-cols-12 gap-5 px-5 justify-center justify-items-center place-items-center   ">
+                        <div class="form-group col-span-2 items-center ">
+                            <label for="town mx-5">Town </label>
+                            <input type="text" id="town mx-5" formControlName="town" />
+                            <div class="text-sm text-red-600"
+                                *ngIf="step1Form.get('town')?.hasError('required') && step1Form.get('town')?.touched">
+                                Town is required.
+                            </div>
+                        </div>
+
+                        <div class="form-group col-span-4">
+                            <label for="street">Street </label>
+                            <input type="text" id="street" formControlName="street" />
+                            <div class="text-sm text-red-600"
+                                *ngIf="step1Form.get('street')?.hasError('required') && step1Form.get('street')?.touched">
+                                Street is required.
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-span-4">
+                            <label for="complete_address">Complete Address </label>
+                            <input type="text" id="complete_address" formControlName="complete_address" />
+                            <div class="text-sm text-red-600"
+                                *ngIf="step1Form.get('complete_address')?.hasError('required') && step1Form.get('complete_address')?.touched">
+                                Complete address is required.
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+                <h2 class="mt-4 text-lg font-normal heading-label">Add your Ownership Details</h2>
+                <div class="grid grid-cols-12 gap-5 px-5">
+                    <div class="form-group col-span-6">
+                        <div class="form-group col-span-2">
+                            <label for="ownership_nature_type_id">Ownership Type</label>
+                            <select id="ownership_nature_type_id" formControlName="ownership_nature_type_id">
+                                <option *ngFor="let ownershipTypes of ownershipTypes" [value]="ownershipTypes.id">{{
+                                    ownershipTypes.name }}
+                                </option>
+                            </select>
+                            <div class="text-sm text-red-600" *ngIf="
+                            step1Form.get('ownership_nature_type_id')?.hasError('required') &&
+                            step1Form.get('ownership_nature_type_id')?.touched
+                          ">
+                                OwnerShip Details are required.
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div>
+                <h2 class="mt-4 text-lg font-normal heading-label">Telephone number</h2>
+                <div class="form-group grid grid-cols-12 gap-5 px-5">
+                    <div class="form-group col-span-4 my-2">
+                        <label for="telegraphic_address">Telegraphic Address</label>
+                        <input type="text" id="telegraphic_address" formControlName="telegraphic_address" />
+                        <div class="text-sm text-red-600" *ngIf="
+                step1Form.get('telegraphic_address')?.hasError('required') && step1Form.get('telegraphic_address')?.touched
+              ">
+                            Telegraphic Address is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="telex_number">Telex Number </label>
+                        <input type="text" id="telex_number" formControlName="telex_number" />
+                        <div class="text-sm text-red-600" *ngIf="
+                step1Form.get('telex_number')?.hasError('required') &&
+                step1Form.get('telex_number')?.touched
+              ">
+                            Telex lines is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="telephone_no">Telephone Number</label>
+                        <input type="tel" id="telephone_no" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                            formControlName="telephone_no" />
+                        <div class="text-sm text-red-600" *ngIf="
+                step1Form.get('telephone_no')?.hasError('required') && step1Form.get('telephone_no')?.touched
+              ">
+                            Telephone number is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="mt-4 text-lg font-normal heading-label">Please give the following details</h2>
+                <div class="grid grid-cols-12 gap-5 px-5">
+                    <div class="col-span-4 my-2">
+                        <div class="form-group">
+                            <label for="area">Area</label>
+                            <input type="number" id="area" formControlName="area" />
+                            <div class="text-sm text-red-600" *ngIf="
+                  step1Form.get('area')?.hasError('required') &&
+                  step1Form.get('area')?.touched
+                ">
+                                NTN number is required.
+                            </div>
+                            <div class="text-sm text-red-600" *ngIf="
+                            step1Form.get('area')?.hasError('validNumber') &&
+                            step1Form.get('area')?.touched
+                          ">
+                                Please enter a valid number..
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="covered_area"> covered_area</label>
+                        <input type="text" id="covered_area" formControlName="covered_area" />
+                        <div class="text-sm text-red-600" *ngIf="
+                step1Form.get('covered_area')?.hasError('required') && step1Form.get('covered_area')?.touched
+              ">
+                            Please tell us covered_area is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('covered_area')?.hasError('validNumber') &&
+                        step1Form.get('covered_area')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+
+                    <div class="form-group col-span-4 my-2">
+                        <label for="annual_lease">annual_lease</label>
+                        <input type="text" id="annual_lease" placeholder="" formControlName="annual_lease" />
+                        <div class="text-sm text-red-600" *ngIf="
+                step1Form.get('annual_lease')?.hasError('required') && step1Form.get('annual_lease')?.touched
+              ">
+                            Your assests details is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('annual_lease')?.hasError('validNumber') &&
+                        step1Form.get('annual_lease')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+
+                    <div class="form-group col-span-4 my-2">
+                        <label for="land_cost">land_cost</label>
+                        <input type="text" id="land_cost" formControlName="land_cost" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('land_cost')?.hasError('required') && step1Form.get('land_cost')?.touched
+                      ">
+                            Your land_cost is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('land_cost')?.hasError('validNumber') &&
+                        step1Form.get('land_cost')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="bulding_cost">bulding_cost</label>
+                        <input type="text" id="bulding_cost" formControlName="bulding_cost" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('bulding_cost')?.hasError('required') && step1Form.get('bulding_cost')?.touched
+                      ">
+                            Your bulding_cost details is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('bulding_cost')?.hasError('validNumber') &&
+                        step1Form.get('bulding_cost')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="furniture_cost">furniture_cost</label>
+                        <input type="text" id="furniture_cost" formControlName="furniture_cost" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('furniture_cost')?.hasError('required') && step1Form.get('furniture_cost')?.touched
+                      ">
+                            Your furniture_cost details is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('furniture_cost')?.hasError('validNumber') &&
+                        step1Form.get('furniture_cost')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="equipment_cost">equipment_cost</label>
+                        <input type="text" id="equipment_cost" formControlName="equipment_cost" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('equipment_cost')?.hasError('required') && step1Form.get('equipment_cost')?.touched
+                      ">
+                            Your equipment_cost details is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('equipment_cost')?.hasError('validNumber') &&
+                        step1Form.get('equipment_cost')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="working_capital">working_capital</label>
+                        <input type="text" id="working_capital" formControlName="working_capital" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('working_capital')?.hasError('required') && step1Form.get('working_capital')?.touched
+                      ">
+                            Your working_capital details is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('working_capital')?.hasError('validNumber') &&
+                        step1Form.get('working_capital')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="total_investment">total_investment</label>
+                        <input type="text" id="total_investment" formControlName="total_investment" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('total_investment')?.hasError('required') && step1Form.get('total_investment')?.touched
+                      ">
+                            Your total_investment details is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('total_investment')?.hasError('validNumber') &&
+                        step1Form.get('total_investment')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="furtinure_bed_room">furtinure_bed_room</label>
+                        <input type="text" id="furtinure_bed_room" formControlName="furtinure_bed_room" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('furtinure_bed_room')?.hasError('required') && step1Form.get('furtinure_bed_room')?.touched
+                      ">
+                            Your furtinure_bed_room details is required.
+                        </div>
+
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="furniture_common_room">furniture_common_room</label>
+                        <input type="text" id="furniture_common_room" formControlName="furniture_common_room" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('furniture_common_room')?.hasError('required') && step1Form.get('furniture_common_room')?.touched
+                      ">
+                            Your furniture_common_room details is required.
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group col-span-4 my-2">
+
+                        <input type="checkbox" class="mx-2" id="furniture_corridor_galleried"
+                            formControlName="furniture_corridor_galleried" />
+                        <label for="furniture_corridor_galleried"> furniture_corridor_galleried
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('furniture_corridor_galleried')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            furniture_corridor_galleried is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+
+                        <input type="checkbox" class="mx-2" id="furniture_bathroom"
+                            formControlName="furniture_bathroom" />
+                        <label for="furniture_bathroom"> furniture_bathroom
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('furniture_bathroom')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            furniture_bathroom is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+
+                        <input type="checkbox" class="mx-2" id="furniture_common_bathroon"
+                            formControlName="furniture_common_bathroon" />
+                        <label for="furniture_common_bathroon"> furniture_common_bathroon
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('furniture_common_bathroon')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            furniture_common_bathroon is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_foreigner_guest"
+                            formControlName="is_foreigner_guest" />
+                        <label for="is_foreigner_guest"> is_foreigner_guest
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_foreigner_guest')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            is_foreigner_guest is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_restaurant_attached"
+                            formControlName="is_restaurant_attached" />
+                        <label for="is_restaurant_attached"> is_restaurant_attached
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_restaurant_attached')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            is_restaurant_attached is required.
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-span-4 my-2">
+                        <label for="cuisine_type"> cuisine_type
+                        </label>
+                        <input type="text" class="mx-2" id="cuisine_type" formControlName="cuisine_type" />
+
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('cuisine_type')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            cuisine_type is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="cuisine_type"> classification_desired
+                        </label>
+                        <input type="text" class="mx-2" id="classification_desired"
+                            formControlName="classification_desired" />
+
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('classification_desired')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            classification_desired is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="before_january_rate"> before_january_rate
+                        </label>
+                        <input type="text" class="mx-2" id="before_january_rate"
+                            formControlName="before_january_rate" />
+
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('before_january_rate')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            before_january_rate is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('before_january_rate')?.hasError('validNumber') &&
+                        step1Form.get('before_january_rate')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="present_rate"> present_rate
+                        </label>
+                        <input type="text" class="mx-2" id="present_rate" formControlName="present_rate" />
+
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('present_rate')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                            present_rate is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('present_rate')?.hasError('validNumber') &&
+                        step1Form.get('present_rate')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+
+                    <div class="form-group col-span-4 my-2">
+                        <label for="present_date">present_date</label><br>
+                        <p-calendar class="w-full" formControlName="present_date"></p-calendar>
+
+                        <!-- <input type="text" id="present_date" formControlName="present_date" /> -->
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('present_date')?.hasError('required') && step1Form.get('present_date')?.touched
+                      ">
+                            Your present_date details is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-span-4 my-2">
+                        <label for="province_id">province_id</label>
+                        <select id="province_id" formControlName="province_id">
+                            <option *ngFor="let Province_types of Province_types" [value]="Province_types.name">{{
+                                Province_types.name }}
+                            </option>
+                        </select>
+
+                        <!-- <input type="text" id="province_id" formControlName="province_id" /> -->
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('province_id')?.hasError('required') && step1Form.get('province_id')?.touched
+                      ">
+                            province_id are required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="cities">cities</label>
+                        <select id="cities" formControlName="cities">
+                            <option *ngFor="let cities of cities?.data" [value]="cities.name">{{
+                                cities.name }}
+                            </option>
+                        </select>
+
+                        <!-- <input type="text" id="cities" formControlName="cities" /> -->
+                        <div class="text-sm text-red-600" *ngIf="
+                                step1Form.get('cities')?.hasError('required') && step1Form.get('cities')?.touched
+                              ">
+                            cities are required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="peakseasontypes">peakseasontypes</label>
+                        <select id="peakseasontypes" formControlName="peakseasontypes">
+                            <option *ngFor="let peakseasontypes of peakseasontypes?.data"
+                                [value]="peakseasontypes.name">{{
+                                peakseasontypes.name }}
+                            </option>
+                        </select>
+
+                        <!-- <input type="text" id="peakseasontypes" formControlName="peakseasontypes" /> -->
+                        <div class="text-sm text-red-600" *ngIf="
+                                step1Form.get('peakseasontypes')?.hasError('required') && step1Form.get('peakseasontypes')?.touched
+                              ">
+                            peakseasontypes are required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="ownershipnaturetypes">ownershipnaturetypes</label>
+                        <select id="ownershipnaturetypes" formControlName="ownershipnaturetypes">
+                            <option *ngFor="let ownershipnaturetypes of ownershipnaturetypes?.data"
+                                [value]="ownershipnaturetypes.name">{{
+                                ownershipnaturetypes.name }}
+                            </option>
+                        </select>
+
+                        <!-- <input type="text" id="ownershipnaturetypes" formControlName="ownershipnaturetypes" /> -->
+                        <div class="text-sm text-red-600" *ngIf="
+                                step1Form.get('ownershipnaturetypes')?.hasError('required') && step1Form.get('ownershipnaturetypes')?.touched
+                              ">
+                            ownershipnaturetypes are required.
+                        </div>
+                    </div>
+
+                    <!-- mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm -->
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-group col-span-4 my-2">
+
+                <input type="checkbox" class="mx-2" id="is_deal_with_foreign_agency"
+                    formControlName="is_deal_with_foreign_agency" />
+                <label for="is_deal_with_foreign_agency"> Do you hold a licence to deal in foreign exchange?
+                </label>
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_deal_with_foreign_agency')?.hasError('required') && step1Form.get('is_deal_with_foreign_agency')?.touched
+                      ">
+                    Do you hold a licence to deal in foreign exchange? is required.
+                </div>
+            </div>
+            <div class="form-group col-span-4 my-2">
+                <label for="is_foreign_license">Have any foreign license</label>
+                <select id="is_foreign_license" formControlName="is_foreign_license">
+                    <option *ngFor="let Boolean_types of Boolean_types" [value]="Boolean_types.name">{{
+                        Boolean_types.name }}
+                    </option>
+                </select>
+
+                <!-- <input type="text" id="is_foreign_license" formControlName="is_foreign_license" /> -->
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_foreign_license')?.hasError('required') && step1Form.get('is_foreign_license')?.touched
+                      ">
+                    Foreign License details are required.
+                </div>
+            </div>
+            <div class="form-group col-span-4 my-2">
+                <label for="license_number">License Number</label>
+                <input type="text" id="license_number" formControlName="license_number" />
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('license_number')?.hasError('required') && step1Form.get('license_number')?.touched
+                      ">
+                    Your License Number is required.
+                </div>
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('license_number')?.hasError('validNumber') &&
+                        step1Form.get('license_number')?.touched
+                      ">
+                    Please enter a valid number..
+                </div>
+            </div>
+            <div class="col-span-4 my-2">
+                <label for="licence">Please Attach the Lisence Image here:</label><br />
+                <input type="file" id="licence" formControlName="licence" (change)="onImageChange($event, 'licence')" />
+                <div *ngIf="step2Form.get('licence')?.hasError('required') && step2Form.get('licence')?.touched"
+                    class="text-danger text-sm text-red-600">
+                    Please Attach the Lisence Image </div>
+                <div *ngIf="step1Form.get('licence')?.hasError('validImage')" class="text-danger">
+                    Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                </div>
+            </div>
+            <div class="form-group col-span-4 my-2">
+                <label for="license_date">License Date</label>
+                <p-calendar class="w-full" formControlName="license_date"></p-calendar>
+
+                <!-- <input type="text" id="license_date" formControlName="license_date" /> -->
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('license_date')?.hasError('required') && step1Form.get('license_date')?.touched
+                      ">
+                    Your license date details is required.
+                </div>
+            </div>
+            <!-- <div class="form-group col-span-4 my-2">
+                        <label for="license_date">license_date</label>
+                        <input type="text" id="license_date" formControlName="license_date" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('license_date')?.hasError('required') && step1Form.get('license_date')?.touched
+                      ">
+                            Your license_date details is required.
+                        </div>
+                    </div> -->
+            <div class="form-group col-span-4 my-2">
+                <label for="auditor_name">Auditor name</label>
+                <input type="text" id="auditor_name" formControlName="auditor_name" />
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('auditor_name')?.hasError('required') && step1Form.get('auditor_name')?.touched
+                      ">
+                    Your Auditor name is required.
+                </div>
+            </div>
+            <div class="form-group col-span-4 my-2">
+                <label for="auditor_address">Auditor Address</label>
+                <input type="text" id="auditor_address" formControlName="auditor_address" />
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('auditor_address')?.hasError('required') && step1Form.get('auditor_address')?.touched
+                      ">
+                    Your Auditor Address is required.
+                </div>
+            </div>
+            <div class="form-group col-span-4 my-2">
+                <label for="total_offices">Number of total offices</label>
+                <input type="number" id="total_offices" formControlName="total_offices" />
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('total_offices')?.hasError('validNumber') &&
+                        step1Form.get('total_offices')?.touched
+                      ">
+                    Your Number of total offices details is required in numbers.
+                </div>
+                <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('total_offices')?.hasError('required') && step1Form.get('total_offices')?.touched
+                      ">
+                    Your Number of total offices details is required.
+                </div>
+            </div>
+
+
+
+
+
+            <div>
+                <h2 class="mt-4 text-lg font-normal heading-label">Office. Employees and other Details</h2>
+                <div formArrayName="office_details">
+                    <div *ngFor="let officeGroup of OfficeDetailsArray.controls; let i = index">
+                        <div [formGroupName]="i">
+                            <div class="grid grid-cols-12 gap-5 px-5">
+
+                                <div class="form-group col-span-3 items-center ">
+                                    <label for="branch_name">Branch name {{ i + 1 }}</label>
+                                    <input type="text" id="branch_name" formControlName="branch_name" />
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('branch_name')?.hasError('required') && OfficeDetailsArray.controls[i].get('branch_name')?.touched">
+                                        Please check this field.
+                                    </div>
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="branch_city_id">Branch city {{ i + 1 }}</label>
+                                    <select id="city" formControlName="branch_city_id">
+                                        <option *ngFor="let city of cities?.data" [value]="city.id">{{ city.name }}
+                                        </option>
+                                    </select>
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('branch_city_id')?.hasError('required') && OfficeDetailsArray.controls[i].get('branch_city_id')?.touched">
+                                        Please check this field.
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="branch_address">Branch Address {{ i + 1 }}</label>
+                                    <input type="text" id="branch_address" formControlName="branch_address" />
+
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('branch_address')?.hasError('required') && OfficeDetailsArray.controls[i].get('branch_address')?.touched">
+                                        Please check this field.
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="branch_details">Branch Details {{ i + 1 }}</label>
+                                    <input type="text" id="branch_details" formControlName="branch_details" />
+
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('branch_details')?.hasError('required') && OfficeDetailsArray.controls[i].get('branch_details')?.touched">
+                                        Please check this field.
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="office_area">Office Area {{ i + 1 }}</label>
+                                    <input type="number" id="office_area" formControlName="office_area" />
+
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('office_area')?.hasError('required') && OfficeDetailsArray.controls[i].get('office_area')?.touched">
+                                        Please check this field.
+                                    </div>
+                                    <div class="text-sm text-red-600" *ngIf="
+                                        step1Form.get('office_area')?.hasError('validNumber') &&
+                                        step1Form.get('office_area')?.touched
+                                      ">
+                                        Please enter a valid number.
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="space">Office Space {{ i + 1 }}</label>
+                                    <input type="number" id="space" formControlName="space" />
+
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('space')?.hasError('required') && OfficeDetailsArray.controls[i].get('space')?.touched">
+                                        Please check this field.
+                                    </div>
+                                    <div class="text-sm text-red-600" *ngIf="
+                                        step1Form.get('space')?.hasError('validNumber') &&
+                                        step1Form.get('space')?.touched
+                                      ">
+                                        Please enter a valid number.
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="no_counter">No. of counter in Offices {{ i + 1 }}</label>
+                                    <input type="number" id="no_counter" formControlName="no_counter" />
+
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('no_counter')?.hasError('required') && OfficeDetailsArray.controls[i].get('no_counter')?.touched">
+                                        Please check this field.
+                                    </div>
+                                    <div class="text-sm text-red-600" *ngIf="
+                                        step1Form.get('no_counter')?.hasError('validNumber') &&
+                                        step1Form.get('no_counter')?.touched
+                                      ">
+                                        Please enter a valid number.
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="no_window">No of Windows Office no_window {{ i + 1 }}</label>
+                                    <input type="number" id="no_window" formControlName="no_window" />
+
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('no_window')?.hasError('required') && OfficeDetailsArray.controls[i].get('no_window')?.touched">
+                                        Please check this field.
+                                    </div>
+                                    <div class="text-sm text-red-600" *ngIf="
+                                        step1Form.get('no_window')?.hasError('validNumber') &&
+                                        step1Form.get('no_window')?.touched
+                                      ">
+                                        Please enter a valid number.
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="foreign_agent_name">Foreign Agent Name {{ i + 1 }}</label>
+                                    <input type="text" id="foreign_agent_name" formControlName="foreign_agent_name" />
+
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('foreign_agent_name')?.hasError('required') && OfficeDetailsArray.controls[i].get('foreign_agent_name')?.touched">
+                                        Please check this field.
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-span-3">
+                                    <label for="foreign_agent_detail">Foreign Agent Detail {{ i + 1 }}</label>
+                                    <input type="text" id="foreign_agent_detail"
+                                        formControlName="foreign_agent_detail" />
+
+                                    <div class="text-sm text-red-600"
+                                        *ngIf="OfficeDetailsArray.controls[i].get('foreign_agent_detail')?.hasError('required') && OfficeDetailsArray.controls[i].get('foreign_agent_detail')?.touched">
+                                        Please check this field.
+                                    </div>
+
+                                </div>
+
+
+                                <div *ngIf="i > 0" class="form-group col-span-2">
+                                    <button type="button"
+                                        class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
+                                        (click)="removeofficedetails(i)">Remove</button>
+                                </div>
+
+                                <!-- Add other address fields here -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-row justify-end items-end">
+
+                    <button class="flex justify-end"
+                        class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
+                        type="button" (click)="addofficeDetails()">Add Office Branch</button>
+                </div>
+
+
+
+                <div formArrayName="employees_details">
+                    <div *ngFor="let employee of employeeArray.controls; let i = index">
+                        <div [formGroupName]="i"
+                            class="grid grid-cols-12 gap-5 justify-center justify-items-center place-items-center">
+
+                            <div class="col-span-3 my-2">
+                                <label for="employee_full_name">Name </label>
+                                <input type="text" formControlName="employee_full_name" />
+
+                            </div>
+                            <div class="col-span-3 my-2 ">
+                                <label for="is_top_management mx-5">Employment is in top managment</label>
+                                <input type="checkbox" class="mx-5" formControlName="is_top_management" />
+
+                            </div>
+                            <div class="col-span-2 my-2">
+                                <label for="employee_category_type_id">Employee Category Type</label>
+                                <select id="employee_category_type_id" formControlName="employee_category_type_id">
+                                    <option *ngFor="let employee_category_types of employee_category_types"
+                                        [value]="employee_category_types.id">{{
+                                        employee_category_types.name }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-span-2 my-2">
+                                <label for="name">Employee any offense details</label>
+                                <input type="text" formControlName="offense_details" />
+                            </div>
+                            <div *ngIf="i > 0" class="col-span-2 my-2">
+                                <button class="rounded-sm border bg-green-400 px-5 py-3 hover:bg-white" type="button"
+                                    (click)="removeEmployee(i)">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-3 flex flex-row items-end justify-end">
+                    <button class="rounded-sm border bg-green-400 px-5 py-3 text-sm hover:bg-white" type="button"
+                        (click)="addEmployee()">
+                        Add Staff/Employee Details.
+                    </button>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- <div class="place-item-end mr-[10%] flex justify-end gap-5">
+                    <button (click)="nextStep()"
+                        class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
+                        type="submit">
+                        Next
+                    </button>
+                </div> -->
+        </form>
+
+        <!-- <form *ngIf="currentStep === 2" [formGroup]="step2Form" (ngSubmit)="onSubmit()"> -->
+        <form [formGroup]="step2Form" (ngSubmit)="onSubmit()">
+            <div>
+                <!-- <h2 class="mt-4 text-lg font-normal">Bank Details</h2> -->
+                <!-- <div class="grid grid-cols-12 gap-5 px-5">
+                    <div class="col-span-4 my-2">
+                        <label for="BankerName">Name of Banker <span class="text-sm">(Please attach refrence from
+                                Bank)</span>:</label>
+                        <input type="text" id="BankerName" formControlName="BankerName" />
+                        <div class="text-sm text-red-600"
+                            *ngIf="step2Form.get('BankerName')?.hasError('required') && step2Form.get('BankerName')?.touched">
+                            Name of Banker is required.is_detail_correct
+                        </div>
+                    </div>
+                    <div class="col-span-4 my-2">
+                        <label for="bank_reference">Upload Image:</label><br />
+                        <input type="file" id="bank_reference" formControlName="bank_reference"
+                            (change)="onImageChange($event, 'bank_reference')" />
+
+                        <div *ngIf="step2Form.get('bank_reference')?.hasError('validImage')" class="text-danger">
+                            Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+
+
+
+
+
+
+
+            <h2 class="mt-4 text-lg font-normal heading-label"> Upload Documents</h2>
+            <div class="grid grid-cols-12 gap-5 px-5">
+                <div class="col-span-4 my-2 ">
+                    <label for="licence">Do you hold a licence to deal in foreign exchange? </label><br />
+                    <input type="file" id="licence" formControlName="licence"
+                        (change)="onImageChange($event, 'licence')" />
+                    <div *ngIf="step2Form.get('licence')?.hasError('required') && step2Form.get('licence')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        licence is required.
+                    </div>
+                    <div *ngIf="step2Form.get('licence')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2 ">
+                    <label for="statement_of_foreign_exchange">If so, please
+                        give your
+                        16. statement_of_foreign_exchange number and date (enclose attested copy of the
+                        statement_of_foreign_exchange)
+                        with a statement of foreign exchange earned during the last three
+                        calendar year, duly certified by your bankers.</label><br />
+                    <input type="file" id="statement_of_foreign_exchange"
+                        formControlName="statement_of_foreign_exchange"
+                        (change)="onImageChange($event, 'statement_of_foreign_exchange')" />
+                    <!-- <div *ngIf="step2Form.get('statement_of_foreign_exchange')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                    <div *ngIf="step2Form.get('statement_of_foreign_exchange')?.hasError('required') && step2Form.get('statement_of_foreign_exchange')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        statement of foreign_exchange is required.
+                    </div>
+                    <div *ngIf="step2Form.get('statement_of_foreign_exchange')?.hasError('validImage')"
+                        class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2 ">
+                    <label for="travel_agent_agreement">Please give details of your connections with foreign travel
+                        agents
+                        and tour operator (enclose copies of agreements, if any, entered
+                        into with them.</label><br />
+                    <input type="file" id="travel_agent_agreement" formControlName="travel_agent_agreement"
+                        (change)="onImageChange($event, 'travel_agent_agreement')" />
+                    <div *ngIf="step2Form.get('travel_agent_agreement')?.hasError('required') && step2Form.get('travel_agent_agreement')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        travel agent agreement is required.
+                    </div>
+                    <div *ngIf="step2Form.get('travel_agent_agreement')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2 ">
+                    <label for="bank_capital_certificate">A Bank certificate Showing capital for not less than
+                        Rs.400,000/-.</label><br />
+                    <input type="file" id="bank_capital_certificate" formControlName="bank_capital_certificate"
+                        (change)="onImageChange($event, 'bank_capital_certificate')" />
+                    <!-- <div *ngIf="step2Form.get('bank_capital_certificate')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                    <div *ngIf="step2Form.get('bank_capital_certificate')?.hasError('required') && step2Form.get('bank_capital_certificate')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        bank capital certificate is required.
+                    </div>
+                    <div *ngIf="step2Form.get('bank_capital_certificate')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif,pdf.
+                    </div>
+                </div>
+                <div class="col-span-4  my-2">
+                    <label for="balance_sheet">Upload A balance sheet showing assets and liabilities duly
+                        verified by a
+                        Chartered Accountant.</label><br />
+                    <input type="file" id="balance_sheet" formControlName="balance_sheet"
+                        (change)="onImageChange($event, 'balance_sheet')" />
+                    <div *ngIf="step2Form.get('balance_sheet')?.hasError('required') && step2Form.get('balance_sheet')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        Balance sheet is required.
+                    </div>
+                    <div *ngIf="step2Form.get('balance_sheet')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4  my-2">
+                    <label for="national_tax_registration">Upload A copy of National Tax
+                        Registration
+                        No</label><br />
+                    <input type="file" id="national_tax_registration" formControlName="national_tax_registration"
+                        (change)="onImageChange($event, 'national_tax_registration')" />
+
+                    <div *ngIf="step2Form.get('national_tax_registration')?.hasError('required') && step2Form.get('national_tax_registration')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        national tax registration is required.
+                    </div>
+                    <div *ngIf="step2Form.get('national_tax_registration')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2">
+                    <label for="lease_agreement">Upload A copy of lease/rent agreement of office
+                        premises.</label><br />
+                    <div *ngIf="step2Form.get('lease_agreement')?.hasError('required') && step2Form.get('lease_agreement')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        lease agreement is required.
+                    </div>
+                    <input type="file" id="lease_agreement" formControlName="lease_agreement"
+                        (change)="onImageChange($event, 'lease_agreement')" />
+                    <!-- <div *ngIf="step2Form.get('lease_agreement')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                    <div *ngIf="step2Form.get('lease_agreement')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2">
+                    <label for="partmentship_deed_certificate">In case of partnership, a copy of partnership deed
+                        and a
+                        certificate of registration duly verified by the registrar of firm.</label><br />
+                    <input type="file" id="partmentship_deed_certificate"
+                        formControlName="partmentship_deed_certificate"
+                        (change)="onImageChange($event, 'partmentship_deed_certificate')" />
+                    <div *ngIf="step2Form.get('partmentship_deed_certificate')?.hasError('required') && step2Form.get('partmentship_deed_certificate')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        partmentship deed certificate is required.
+                    </div>
+                    <div *ngIf="step2Form.get('partmentship_deed_certificate')?.hasError('validImage')"
+                        class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2">
+                    <label for="memorandum">In case of private limited company , a copy of
+                        memorandum and
+                        Article of Association, Incorporation Certificate , Form-29, FormA, Form-21, etc. duly
+                        certified by the registrar of companies.</label><br />
+                    <input type="file" id="memorandum" formControlName="memorandum"
+                        (change)="onImageChange($event, 'memorandum')" />
+                    <div *ngIf="step2Form.get('memorandum')?.hasError('required') && step2Form.get('memorandum')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        Memorandum is required.
+                    </div>
+                    <div *ngIf="step2Form.get('memorandum')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2">
+                    <label for="counters_sketch">A Sketch map showing various counters, windows, etc. with
+                        measurements.</label><br />
+                    <input type="file" id="counters_sketch" formControlName="counters_sketch"
+                        (change)="onImageChange($event, 'counters_sketch')" />
+                    <!-- <div *ngIf="step2Form.get('counters_sketch')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                    <div *ngIf="step2Form.get('counters_sketch')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                    <div *ngIf="step2Form.get('counters_sketch')?.hasError('required') && step2Form.get('counters_sketch')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        counters sketch is required.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2">
+                    <label for="cv">A list of staff showing their qualification, training and
+                        experience
+                        of travel trade business also submit the attested copies of the
+                        certificates.</label><br />
+                    <input type="file" id="cv" formControlName="cv" (change)="onImageChange($event, 'cv')" />
+                    <!-- <div *ngIf="step2Form.get('cv')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                    <div *ngIf="step2Form.get('cv')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                    <div *ngIf="step2Form.get('cv')?.hasError('required') && step2Form.get('cv')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        cv is required.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2">
+                    <label for="staff_list">Attested photo-copies of National Identity Card of the owners
+                        and staff.
+                        :</label><br />
+                    <input type="file" id="staff_list" formControlName="staff_list"
+                        (change)="onImageChange($event, 'staff_list')" />
+                    <!-- <div *ngIf="step2Form.get('staff_list')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                    <div *ngIf="step2Form.get('staff_list')?.hasError('required') && step2Form.get('staff_list')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        staff list is required.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2">
+                    <label for="car_registration">Photo copy of registration of a car of 800cc or
+                        above.</label><br />
+                    <input type="file" id="car_registration" formControlName="car_registration"
+                        (change)="onImageChange($event, 'car_registration')" />
+                    <!-- <div *ngIf="step2Form.get('car_registration')?.hasError('required')" class="text-danger">Image is required.</div> -->
+                    <div *ngIf="step2Form.get('car_registration')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+
+
+                <div class="form-group col-span-12 my-2">
+                    <input type="checkbox" id="is_detail_correct" formControlName="is_detail_correct" />
+                    <label for="is_detail_correct">I/we hereby solemnly declare that all the particulars give above
+                        are correct.</label>
+                    <div class="text-sm text-red-600" *ngIf="
+                    step1Form.get('is_detail_correct')?.hasError('required') && step1Form.get('is_detail_correct')?.touched
+                  ">
+                        Your details is required.
+                    </div>
+                </div>
+                <div class="form-group col-span-12 my-2">
+                    <input type="checkbox" id="is_abide_rules" formControlName="is_abide_rules" />
+
+                    <label for="is_abide_rules">I/we hereby solemnly declare that if a licence is granted to me/us,
+                        I/We will
+                        abide by the Travel Agencies Act, 1976 and the Rules made the re-under
+                        the terms of the licence granted to me/us, and the code of conduct.</label>
+                    <div class="text-sm text-red-600" *ngIf="
+                    step1Form.get('is_abide_rules')?.hasError('required') && step1Form.get('is_abide_rules')?.touched
+                  ">
+                        Your is_abide_rules details is required.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="place-item-end mr-[10%] ml-[10%] flex items-center justify-end gap-5 px-5">
+
+                <button
+                    class="mt-5 items-end rounded-sm border-none bg-[#22c55e] px-10 py-3 text-white hover:bg-[#8ebc9f]"
+                    type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<app-loader *ngIf="isLoading"></app-loader>
