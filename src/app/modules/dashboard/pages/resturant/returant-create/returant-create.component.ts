@@ -12,13 +12,13 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { SharedService } from 'src/app/core/services/shared.service';
-import { HotelService } from 'src/app/core/services/hotel.service';
+import { resturantService } from 'src/app/core/services/resturant.service';
 @Component({
-  selector: 'app-hotel-create',
-  templateUrl: './hotel-create.component.html',
-  styleUrls: ['./hotel-create.component.scss'],
+  selector: 'app-returant-create',
+  templateUrl: './returant-create.component.html',
+  styleUrls: ['./returant-create.component.scss'],
 })
-export class HotelCreateComponent {
+export class ReturantCreateComponent {
   myForm!: FormGroup;
   isLoading: boolean = false;
   years: number[] = [];
@@ -38,7 +38,7 @@ export class HotelCreateComponent {
 
   constructor(
     private router: Router,
-    private HotelService: HotelService,
+    private resturantService: resturantService,
     private messageService: MessageService,
     private SharedService: SharedService,
   ) {
@@ -50,7 +50,6 @@ export class HotelCreateComponent {
     // this.addAddress();
     this.add_new_Ownwer();
     this.addEmployee();
-    this.addFloorDetailsArray();
     this.SharedService.Get_all_Cities().subscribe((res) => {
       this.cities = res;
     });
@@ -100,33 +99,6 @@ export class HotelCreateComponent {
   }
 
   // ///////////////////////
-
-  createFloorDetails() {
-    return new FormGroup({
-      floor_number: new FormControl(''),
-      single_wbath: new FormControl(''),
-      single_wobath: new FormControl(true),
-      double_wbath: new FormControl(''),
-      double_wobath: new FormControl(''),
-      suite_wbath: new FormControl(''),
-      suite_wobath: new FormControl(''),
-      other_wbath: new FormControl(''),
-      other_wobath: new FormControl(''),
-      total_rooms_wbath: new FormControl(''),
-      total_rooms_wobath: new FormControl(''),
-    });
-  }
-  get FloorDetailsArray(): FormArray {
-    return this.step1Form.get('floors_details') as FormArray;
-  }
-  removeFloorDetailsArray(index: number) {
-    this.FloorDetailsArray.removeAt(index);
-  }
-  addFloorDetailsArray(): void {
-    this.FloorDetailsArray.push(this.createFloorDetails());
-  }
-
-  // Function to create a new address FormGroup for addresses
 
   CreateNewOwnerFormGroup(): FormGroup {
     return new FormGroup({
@@ -189,8 +161,9 @@ export class HotelCreateComponent {
   initStep2Form() {
     this.step2Form = new FormGroup({
       medical_fitness_of_employee: new FormControl(null, [Validators.required, this.imageValidator]),
+      proof_of_ownership: new FormControl(null, [Validators.required, this.imageValidator]),
       building_plan: new FormControl(null, [Validators.required, this.imageValidator]),
-      hotel_rate_details: new FormControl(null, [Validators.required, this.imageValidator]),
+      room_rates: new FormControl(null, [Validators.required, this.imageValidator]),
       cnic_of_all_employees: new FormControl(null, [Validators.required, this.imageValidator]),
       lease_agreement: new FormControl(null, [Validators.required, this.imageValidator]),
       partmentship_deed_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
@@ -209,6 +182,8 @@ export class HotelCreateComponent {
       registration_certificate: new FormControl(null, [Validators.required, this.imageValidator]),
 
       person_name: new FormControl('', Validators.required),
+      is_hotel: new FormControl('', Validators.required),
+
       email: new FormControl('', Validators.required),
       establishment_year: new FormControl('', Validators.required),
       commission_date: new FormControl('', Validators.required),
@@ -220,70 +195,46 @@ export class HotelCreateComponent {
       telex_number: new FormControl('', Validators.required),
       telegraphic_address: new FormControl('', Validators.required),
       telephone_no: new FormControl('', Validators.required),
-      ownershipnaturetypes: new FormControl('', Validators.required),
       city_id: new FormControl('', Validators.required),
 
       area: new FormControl('', [Validators.required, this.numberValidator]),
-      covered_area: new FormControl('', [Validators.required, this.numberValidator]),
-      annual_lease: new FormControl('', [Validators.required, this.numberValidator]),
-      land_cost: new FormControl('', [Validators.required, this.numberValidator]),
+      kitchen_area: new FormControl('', [Validators.required, this.numberValidator]),
+      pantry_area: new FormControl('', [Validators.required, this.numberValidator]),
+      dining_hall_area: new FormControl('', [Validators.required, this.numberValidator]),
+      dining_hall_seating: new FormControl('', [Validators.required, this.numberValidator]),
+
+      annual_rent_cost: new FormControl('', [Validators.required, this.numberValidator]),
+      // land_cost: new FormControl('', [Validators.required, this.numberValidator]),
       bulding_cost: new FormControl('', [Validators.required, this.numberValidator]),
       furniture_cost: new FormControl('', [Validators.required, this.numberValidator]),
       equipment_cost: new FormControl('', [Validators.required, this.numberValidator]),
       working_capital: new FormControl('', [Validators.required, this.numberValidator]),
       total_investment: new FormControl('', [Validators.required, this.numberValidator]),
-      furtinure_bed_room: new FormControl('', [Validators.required]),
-      furniture_common_room: new FormControl('', [Validators.required]),
-      furniture_corridor_galleried: new FormControl(false),
-      furniture_bathroom: new FormControl(false),
-      furniture_common_bathroon: new FormControl(false),
       is_foreigner_guest: new FormControl(false),
-      is_restaurant_attached: new FormControl(false),
       cuisine_type: new FormControl('', [Validators.required]),
       classification_desired: new FormControl('', [Validators.required]),
       before_january_rate: new FormControl('', [Validators.required, this.numberValidator]),
       present_rate: new FormControl('', [Validators.required, this.numberValidator]),
       present_date: new FormControl('', [Validators.required]),
       province_id: new FormControl('', [Validators.required]),
-      peakseasontypes: new FormControl('', [Validators.required]),
       ownership_nature_type_id: new FormControl('', Validators.required),
+      common_toilets: new FormControl('', Validators.required),
+
+      is_tel_room: new FormControl(false),
+      is_reception: new FormControl(false),
+      is_heating: new FormControl(false),
+      is_ac: new FormControl(false),
+      is_locker: new FormControl(false),
+      is_entertainment: new FormControl(false),
+
+      // peakseasontypes: new FormControl('', [Validators.required]),
 
       employees_details: new FormArray([]),
 
       Owner_details: new FormArray([]),
 
-      no_of_floors: new FormControl('', [Validators.required, this.numberValidator]),
-      total_hotel_rooms: new FormControl('', [Validators.required, this.numberValidator]),
-      visitor_room: new FormControl('', [Validators.required]),
-      reception_hall: new FormControl('', [Validators.required]),
       cloak_room: new FormControl(false, [Validators.required]),
-      reading_room: new FormControl(false, [Validators.required]),
-      restaurant: new FormControl(false, [Validators.required]),
-      common_baths: new FormControl(false, [Validators.required]),
-      common_toilets: new FormControl(false, [Validators.required]),
-      number_of_stairs: new FormControl('', [Validators.required]),
-      number_of_lifts: new FormControl('', [Validators.required]),
       car_park_capacity: new FormControl('', [Validators.required, this.numberValidator]),
-      garden_area: new FormControl(false),
-      construction_date: new FormControl('', [Validators.required]),
-      renovation_date: new FormControl('', [Validators.required]),
-      is_tel_room: new FormControl(false),
-
-      is_tel_floor: new FormControl(false),
-      is_tel_lobby: new FormControl(false),
-      is_bank_counter: new FormControl(false),
-      is_reception: new FormControl(false),
-      is_postal_counter: new FormControl(false),
-      is_hotwater: new FormControl(false),
-      is_coldwater: new FormControl(false),
-      is_heating: new FormControl(false),
-      is_coffeeshop: new FormControl(false),
-      is_restaurant: new FormControl(false),
-      is_coldstorage: new FormControl(false),
-      is_locker: new FormControl(false),
-      is_entertainment: new FormControl(false),
-
-      floors_details: new FormArray([]),
 
       // //////////////////////////////////////////////////////////////////////////////////////
     });
@@ -305,6 +256,7 @@ export class HotelCreateComponent {
     const formData = new FormData();
     formData.append('application_entity_type_id', '1');
     formData.append('name', this.step1Form?.value['person_name']);
+    formData.append('is_hotel', this.step1Form?.value['is_hotel'] ? '1' : '0');
     formData.append('email', this.step1Form?.value['email']);
     formData.append('establishment_year', this.convertdate(this.step1Form?.value['establishment_year']));
     formData.append('commission_date', this.convertdate(this.step1Form?.value['commission_date']));
@@ -316,24 +268,21 @@ export class HotelCreateComponent {
     formData.append('telephone_no', this.step1Form?.value['telephone_no']);
 
     formData.append('area', this.step1Form?.value['area']);
-    formData.append('covered_area', this.step1Form?.value['covered_area']);
-    formData.append('annual_lease', this.step1Form?.value['annual_lease']);
-    formData.append('land_cost', this.step1Form?.value['land_cost']);
+    formData.append('pantry_area', this.step1Form?.value['pantry_area']);
+    formData.append('dining_hall_area', this.step1Form?.value['dining_hall_area']);
+    formData.append('annual_rent_cost', this.step1Form?.value['annual_rent_cost']);
+    formData.append('bulding_cost', this.step1Form?.value['bulding_cost']);
+
     formData.append('furniture_cost', this.step1Form?.value['furniture_cost']);
     formData.append('equipment_cost', this.step1Form?.value['equipment_cost']);
     formData.append('working_capital', this.step1Form?.value['working_capital']);
-    formData.append('ownershipnaturetypes', this.step1Form?.value['ownershipnaturetypes']);
-    formData.append('bulding_cost', this.step1Form?.value['bulding_cost']);
     formData.append('city_id', this.step1Form?.value['city_id']);
+    formData.append('kitchen_area', this.step1Form?.value['kitchen_area']);
+    formData.append('dining_hall_seating', this.step1Form?.value['dining_hall_seating']);
 
     formData.append('total_investment', this.step1Form?.value['total_investment']);
-    formData.append('furtinure_bed_room', this.step1Form?.value['furtinure_bed_room']);
-    formData.append('furniture_common_room', this.step1Form?.value['furniture_common_room']);
-    formData.append('furniture_corridor_galleried', this.step1Form?.value['furniture_corridor_galleried'] ? '1' : '0');
-    formData.append('furniture_bathroom', this.step1Form?.value['furniture_bathroom'] ? '1' : '0');
-    formData.append('furniture_common_bathroon', this.step1Form?.value['furniture_common_bathroon'] ? '1' : '0');
     formData.append('is_foreigner_guest', this.step1Form?.value['is_foreigner_guest'] ? '1' : '0');
-    formData.append('is_restaurant_attached', this.step1Form?.value['is_restaurant_attached'] ? '1' : '0');
+    formData.append('cloak_room', this.step1Form?.value['cloak_room']);
 
     formData.append('cuisine_type', this.step1Form?.value['cuisine_type']);
     formData.append('classification_desired', this.step1Form?.value['classification_desired']);
@@ -341,40 +290,15 @@ export class HotelCreateComponent {
     formData.append('present_rate', this.step1Form?.value['present_rate']);
     formData.append('present_date', this.convertdate(this.step1Form?.value['present_date']));
     formData.append('province_id', this.step1Form?.value['province_id']);
-    formData.append('peak_season_type_id', this.step1Form?.value['peakseasontypes']);
     formData.append('ownership_nature_type_id', this.step1Form?.value['ownership_nature_type_id']);
 
-    formData.append('no_of_floors', this.step1Form?.value['no_of_floors']);
-    formData.append('total_hotel_rooms', this.step1Form?.value['total_hotel_rooms']);
-    formData.append('visitor_room', this.step1Form?.value['visitor_room']);
-    formData.append('reception_hall', this.step1Form?.value['reception_hall']);
-    formData.append('reading_room', this.step1Form?.value['reading_room']);
-    formData.append('restaurant', this.step1Form?.value['restaurant']);
-    formData.append('common_baths', this.step1Form?.value['common_baths']);
     formData.append('common_toilets', this.step1Form?.value['common_toilets']);
 
-    formData.append('number_of_stairs', this.step1Form?.value['number_of_stairs']);
-    formData.append('number_of_lifts', this.step1Form?.value['number_of_lifts']);
     formData.append('car_park_capacity', this.step1Form?.value['car_park_capacity']);
-    formData.append('garden_area', this.step1Form?.value['garden_area'] ? '1' : '0');
-    formData.append('construction_date', this.convertdate(this.step1Form?.value['construction_date']));
-    formData.append('renovation_date', this.convertdate(this.step1Form?.value['renovation_date']));
-    formData.append('common_baths', this.step1Form?.value['common_baths']);
 
     formData.append('is_tel_room', this.step1Form?.value['is_tel_room'] ? '1' : '0');
-    formData.append('is_tel_lobby', this.step1Form?.value['is_tel_lobby'] ? '1' : '0');
-    formData.append('is_tel_floor', this.step1Form?.value['is_tel_floor'] ? '1' : '0');
-    formData.append('is_bank_counter', this.step1Form?.value['is_bank_counter'] ? '1' : '0');
-    formData.append('is_postal_counter', this.step1Form?.value['is_postal_counter'] ? '1' : '0');
-    formData.append('is_hotwater', this.step1Form?.value['is_hotwater'] ? '1' : '0');
-    formData.append('is_coldwater', this.step1Form?.value['is_coldwater'] ? '1' : '0');
-    formData.append('is_coffeeshop', this.step1Form?.value['is_coffeeshop'] ? '1' : '0');
-    formData.append('is_restaurant', this.step1Form?.value['is_restaurant'] ? '1' : '0');
-    formData.append('is_coldstorage', this.step1Form?.value['is_coldstorage'] ? '1' : '0');
     formData.append('is_locker', this.step1Form?.value['is_locker'] ? '1' : '0');
     formData.append('is_entertainment', this.step1Form?.value['is_entertainment'] ? '1' : '0');
-    formData.append('is_detail_correct', this.step1Form?.value['is_detail_correct'] ? '1' : '0');
-    formData.append('is_abide_rules', this.step1Form?.value['is_abide_rules'] ? '1' : '0');
 
     this.employeeArray.controls.forEach((control, index) => {
       const officeGroup = control as FormGroup; // Cast control to FormGroup
@@ -388,21 +312,6 @@ export class HotelCreateComponent {
       );
       formData.append(`total_employee_apprentices[${index}]`, officeGroup.value['total_employee_apprentices']);
       formData.append(`total_employee_english[${index}]`, officeGroup.value['total_employee_english']);
-    });
-
-    this.FloorDetailsArray.controls.forEach((control, index) => {
-      const officeGroup = control as FormGroup; // Cast control to FormGroup
-      formData.append(`floor_number[${index}]`, officeGroup.value['floor_number']);
-      formData.append(`single_wbath[${index}]`, officeGroup.value['single_wbath']);
-      formData.append(`single_wobath[${index}]`, officeGroup.value['single_wobath']);
-      formData.append(`double_wbath[${index}]`, officeGroup.value['double_wbath']);
-      formData.append(`double_wobath[${index}]`, officeGroup.value['double_wobath']);
-      formData.append(`suite_wbath[${index}]`, officeGroup.value['suite_wbath']);
-      formData.append(`suite_wobath[${index}]`, officeGroup.value['suite_wobath']);
-      formData.append(`other_wbath[${index}]`, officeGroup.value['other_wbath']);
-      formData.append(`other_wobath[${index}]`, officeGroup.value['other_wobath']);
-      formData.append(`total_rooms_wbath[${index}]`, officeGroup.value['total_rooms_wbath']);
-      formData.append(`total_rooms_wobath[${index}]`, officeGroup.value['total_rooms_wobath']);
     });
 
     //  owner_type_id: new FormControl('', Validators.required),
@@ -423,14 +332,14 @@ export class HotelCreateComponent {
     });
 
     formData.append('medical_fitness_of_employee', this.medical_fitness_of_employee);
-    formData.append('hotel_rate_details', this.hotel_rate_details);
+    formData.append('proof_of_ownership', this.proof_of_ownership);
     formData.append('building_plan', this.building_plan);
+    formData.append('room_rates', this.room_rates);
     formData.append('cnic_of_all_employees', this.cnic_of_all_employees);
     formData.append('registration_certificate', this.registration_certificate);
     formData.append('partmentship_deed_certificate', this.partmentship_deed_certificate);
     formData.append('lease_agreement', this.lease_agreement);
     formData.append('incorporation_certificate', this.incorporation_certificate);
-
     formData.append('memorandum', this.memorandum);
     formData.append('articles_of_association', this.articles_of_association);
 
@@ -441,7 +350,7 @@ export class HotelCreateComponent {
     console.log(formData);
 
     this.isLoading = true;
-    this.HotelService.registerHotel(formData).subscribe(
+    this.resturantService.registerResturant(formData).subscribe(
       (res: any) => {
         this.isLoading = false;
         this.showSuccess('Congratulations!', 'You Application has been submitted, you will be updated shortly.');
@@ -496,8 +405,9 @@ export class HotelCreateComponent {
   registration_certificate: any;
   building_plan: any;
   cv: any;
-  hotel_rate_details: any;
+  room_rates: any;
   medical_fitness_of_employee: any;
+  proof_of_ownership: any;
   statement_of_foreign_exchange: any;
   travel_agent_agreement: any;
   cnic_of_all_employees: any;
@@ -522,8 +432,9 @@ export class HotelCreateComponent {
     else if (imageType == 'registration_certificate') this.registration_certificate = event.target.files[0];
     else if (imageType == 'building_plan') this.building_plan = event.target.files[0];
     else if (imageType == 'cv') this.cv = event.target.files[0];
-    else if (imageType == 'hotel_rate_details') this.hotel_rate_details = event.target.files[0];
+    else if (imageType == 'room_rates') this.room_rates = event.target.files[0];
     else if (imageType == 'medical_fitness_of_employee') this.medical_fitness_of_employee = event.target.files[0];
+    else if (imageType == 'proof_of_ownership') this.proof_of_ownership = event.target.files[0];
     else if (imageType == 'statement_of_foreign_exchange') this.statement_of_foreign_exchange = event.target.files[0];
     else if (imageType == 'travel_agent_agreement') this.travel_agent_agreement = event.target.files[0];
     else if (imageType == 'articles_of_association') this.articles_of_association = event.target.files[0];

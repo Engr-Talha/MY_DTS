@@ -13,12 +13,15 @@ export class TravelAgencyService {
     return this.http.post(`${BACKEND_URL}api/travel-agencies`, payloadObj);
   }
 
-  public UpdateTouristguide(id: any, payloadObj: FormData) {
+  public UpdateTravelAgency(id: any, payloadObj: FormData) {
     // return this.http.post(`${BACKEND_URL}v1/apply-tourism`, payloadObj);
-    return this.http.post(`${BACKEND_URL}api/tourist-guides/${id}`, payloadObj);
+    return this.http.post(`${BACKEND_URL}api/travel-agencies/${id}`, payloadObj);
   }
 
-  public getTouristguidebyID(id: any) {
-    return this.http.get(`${BACKEND_URL}v1/apply-tourism/${id}`);
+  public getTravelAgenciesID(id: any) {
+    return this.http.get(`${BACKEND_URL}api/travel-agencies/${id}`);
+  }
+  public TravelAgenciesID() {
+    return this.http.get(`${BACKEND_URL}api/get-user-travel-agencies`);
   }
 }

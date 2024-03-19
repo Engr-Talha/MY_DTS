@@ -1,7 +1,10 @@
 <div class="px-10 py-10">
   <div class="text-xl font-semibold text-black">My Applications</div>
+  <div class="text-lg font-semibold text-black">Tourist Guide Applcations</div>
+
   <div *ngIf="showAllApplications"
     class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-12">
+
     <div *ngFor="let item of myApplication" class="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3">
       <div class="h-[350px] border-t-4 border-green-400 bg-white p-3 shadow-xl hover:shadow-2xl">
         <div class="flex justify-between">
@@ -36,7 +39,136 @@
         </div>
       </div>
     </div>
+
+
+
   </div>
+
+
+  <div class="text-lg font-semibold text-black mt-[20px]">Travel Agency Registration Application</div>
+
+  <div *ngIf="showAllApplications"
+    class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-12">
+    <div *ngFor="let item of myApplicationsTravelAgency"
+      class="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3">
+      <div class="h-[350px] border-t-4 border-green-400 bg-white p-3 shadow-xl hover:shadow-2xl">
+        <div class="flex justify-between">
+
+          <div class="flex items-center justify-center gap-2 text-red-600">
+            <div class="h-[10px] w-[10px] rounded-full border-none bg-red-600"></div>
+            <p>
+              {{item.applications[0]?.is_challan_issued==0 && item?.applications[0]?.is_license_issued===0 ?
+              'Pending/InProcess/Open' : ''}}
+              {{item.applications[0]?.is_license_issued === 0 && item?.applications[0]?.is_challan_issued==1 ? 'Challan
+              Issued'
+              : ''}}
+              {{item.applications[0]?.is_license_issued === 1 && item?.applications[0]?.is_challan_issued==1 ? 'Lisence
+              Issued'
+              : ''}}
+
+            </p>
+          </div>
+          <div *ngIf="SelectedApplication?.application[0]?.is_locked==0" (click)="navigateTo(item?.travel_agency.id)"
+            class="cursor-pointer text-gray-500 hover:text-green-400">
+            Edit<i class="pi pi-pencil ml-1"></i>
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <circle-progress [percent]="10" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#20c0a0'" [innerStrokeColor]="'#EDEEFE'" [animation]="true" [animationDuration]="300"
+            [title]="'10'" [renderOnClick]="true"></circle-progress>
+        </div>
+        <div (click)="selectShowApplication(item?.travel_agency?.id)"
+          class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
+          {{ item.travel_agency?.person_name }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-lg font-semibold text-black mt-[20px]">Hotel Registration Application</div>
+
+  <div *ngIf="showAllApplications"
+    class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-12">
+    <div *ngFor="let item of myApplicationHotel"
+      class="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3">
+      <div class="h-[350px] border-t-4 border-green-400 bg-white p-3 shadow-xl hover:shadow-2xl">
+        <div class="flex justify-between">
+
+          <div class="flex items-center justify-center gap-2 text-red-600">
+            <div class="h-[10px] w-[10px] rounded-full border-none bg-red-600"></div>
+            <p>
+              {{item.applications[0]?.is_challan_issued==0 && item?.applications[0]?.is_license_issued===0 ?
+              'Pending/InProcess/Open' : ''}}
+              {{item.applications[0]?.is_license_issued === 0 && item?.applications[0]?.is_challan_issued==1 ? 'Challan
+              Issued'
+              : ''}}
+              {{item.applications[0]?.is_license_issued === 1 && item?.applications[0]?.is_challan_issued==1 ? 'Lisence
+              Issued'
+              : ''}}
+
+            </p>
+          </div>
+          <div *ngIf="SelectedApplication?.application[0]?.is_locked==0" (click)="navigateTo(item?.hotel.id)"
+            class="cursor-pointer text-gray-500 hover:text-green-400">
+            Edit<i class="pi pi-pencil ml-1"></i>
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <circle-progress [percent]="10" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#20c0a0'" [innerStrokeColor]="'#EDEEFE'" [animation]="true" [animationDuration]="300"
+            [title]="'10'" [renderOnClick]="true"></circle-progress>
+        </div>
+        <div (click)="selectShowApplication(item?.hotel?.id)"
+          class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
+          {{ item.hotel?.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-lg font-semibold text-black mt-[20px]">Resturant Registration Application</div>
+
+  <div *ngIf="showAllApplications"
+    class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-12">
+    <div *ngFor="let item of myApplicationsResturant"
+      class="col-span-1 sm:col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3">
+      <div class="h-[350px] border-t-4 border-green-400 bg-white p-3 shadow-xl hover:shadow-2xl">
+        <div class="flex justify-between">
+
+          <div class="flex items-center justify-center gap-2 text-red-600">
+            <div class="h-[10px] w-[10px] rounded-full border-none bg-red-600"></div>
+            <p>
+              {{item.applications[0]?.is_challan_issued==0 && item?.applications[0]?.is_license_issued===0 ?
+              'Pending/InProcess/Open' : ''}}
+              {{item.applications[0]?.is_license_issued === 0 && item?.applications[0]?.is_challan_issued==1 ? 'Challan
+              Issued'
+              : ''}}
+              {{item.applications[0]?.is_license_issued === 1 && item?.applications[0]?.is_challan_issued==1 ? 'Lisence
+              Issued'
+              : ''}}
+
+            </p>
+          </div>
+          <div *ngIf="SelectedApplication?.application[0]?.is_locked==0" (click)="navigateTo(item?.hotel.id)"
+            class="cursor-pointer text-gray-500 hover:text-green-400">
+            Edit<i class="pi pi-pencil ml-1"></i>
+          </div>
+        </div>
+        <div class="flex items-center justify-center">
+          <circle-progress [percent]="10" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#20c0a0'" [innerStrokeColor]="'#EDEEFE'" [animation]="true" [animationDuration]="300"
+            [title]="'10'" [renderOnClick]="true"></circle-progress>
+        </div>
+        <div (click)="selectShowApplication(item?.hotel?.id)"
+          class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
+          {{ item.hotel?.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
 
 <div *ngIf="showSingleApplications" class="mb-5">
@@ -360,4 +492,8 @@
       <!-- Message indicating that the license is being sent -->
     </div>
   </p-dialog>
+</div>
+
+
+<div>
 </div>

@@ -35,4 +35,10 @@ export class SharedService {
   public ownershipnaturetypes() {
     return this.http.get(`${BACKEND_URL}api/ownership-nature-types`);
   }
+  public employeecategories() {
+    return this.http.get(`${BACKEND_URL}api/employee-categories`);
+  }
+  public ownertypes() {
+    return this.http.get(`${BACKEND_URL}api/owner-types`);
+  }
 }

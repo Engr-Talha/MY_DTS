@@ -21,12 +21,19 @@
                 <h2 class="mt-4 text-lg font-normal heading-label">Name:</h2>
                 <div class="form-group grid-cols-12 grid gap-5 px-5">
                     <div class="col-span-3">
-                        <label class="text-base" for="name">Name:</label>
+                        <label class="text-base" for="name">Resturant Name:</label>
                         <input type="text" id="name" formControlName="person_name" />
                         <div class="text-sm text-red-600"
                             *ngIf="step1Form.get('person_name')?.hasError('required') && step1Form.get('person_name')?.touched">
                             Name is required.
                         </div>
+                    </div>
+                    <div class="col-span-3">
+                        <input type="checkbox" id="is_hotel" formControlName="is_hotel" />
+
+                        <label class="text-base" for="is_hotel">Is Hotel Attached :</label>
+
+
                     </div>
                     <div class="col-span-3">
                         <label class="text-base" for="email">Email:</label><br>
@@ -150,7 +157,7 @@
                 <div class="grid grid-cols-12 gap-5 px-5">
                     <div class="col-span-4 my-2">
                         <div class="form-group">
-                            <label for="area">Area</label>
+                            <label for="area">Area of the Resturant</label>
                             <input type="number" id="area" formControlName="area" />
                             <div class="text-sm text-red-600" *ngIf="
                   step1Form.get('area')?.hasError('required') &&
@@ -166,53 +173,86 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-span-4 my-2">
+                        <div class="form-group">
+                            <label for="kitchen_area">Kitchen Area of Resturant</label>
+                            <input type="number" id="kitchen_area" formControlName="kitchen_area" />
+                            <div class="text-sm text-red-600" *ngIf="
+                  step1Form.get('kitchen_area')?.hasError('required') &&
+                  step1Form.get('kitchen_area')?.touched
+                ">
+                                NTN number is required.
+                            </div>
+                            <div class="text-sm text-red-600" *ngIf="
+                            step1Form.get('kitchen_area')?.hasError('validNumber') &&
+                            step1Form.get('kitchen_area')?.touched
+                          ">
+                                Please enter a valid number..
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group col-span-4 my-2">
-                        <label for="covered_area"> Covered area of hotel</label>
-                        <input type="number" id="covered_area" formControlName="covered_area" />
+                        <label for="pantry_area"> Pantry area of Resturant</label>
+                        <input type="number" id="pantry_area" formControlName="pantry_area" />
                         <div class="text-sm text-red-600" *ngIf="
-                step1Form.get('covered_area')?.hasError('required') && step1Form.get('covered_area')?.touched
+                step1Form.get('pantry_area')?.hasError('required') && step1Form.get('pantry_area')?.touched
               ">
-                            Please tell us Covered area of hotel is required.
+                            Please tell us pantry area of resturant is required.
                         </div>
                         <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('covered_area')?.hasError('validNumber') &&
-                        step1Form.get('covered_area')?.touched
+                        step1Form.get('pantry_area')?.hasError('validNumber') &&
+                        step1Form.get('pantry_area')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="dining_hall_area"> Dining Hall area of Resturant</label>
+                        <input type="number" id="dining_hall_area" formControlName="dining_hall_area" />
+                        <div class="text-sm text-red-600" *ngIf="
+                step1Form.get('dining_hall_area')?.hasError('required') && step1Form.get('dining_hall_area')?.touched
+              ">
+                            Please tell us pantry area of resturant is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('dining_hall_area')?.hasError('validNumber') &&
+                        step1Form.get('dining_hall_area')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="dining_hall_seating"> Dining Hall Seating of Hotel</label>
+                        <input type="number" id="dining_hall_seating" formControlName="dining_hall_seating" />
+                        <div class="text-sm text-red-600" *ngIf="
+                step1Form.get('dining_hall_seating')?.hasError('required') && step1Form.get('dining_hall_seating')?.touched
+              ">
+                            Please tell us pantry area of resturant is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('dining_hall_seating')?.hasError('validNumber') &&
+                        step1Form.get('dining_hall_seating')?.touched
                       ">
                             Please enter a valid number..
                         </div>
                     </div>
 
                     <div class="form-group col-span-4 my-2">
-                        <label for="annual_lease">Annual Lease of Hotel</label>
-                        <input type="number" id="annual_lease" placeholder="" formControlName="annual_lease" />
+                        <label for="annual_rent_cost"> Annual Rent cost of Resturant</label>
+                        <input type="number" id="annual_rent_cost" formControlName="annual_rent_cost" />
                         <div class="text-sm text-red-600" *ngIf="
-                step1Form.get('annual_lease')?.hasError('required') && step1Form.get('annual_lease')?.touched
+                step1Form.get('annual_rent_cost')?.hasError('required') && step1Form.get('annual_rent_cost')?.touched
               ">
-                            Your Annual Lease of Hotel is required.
+                            Please tell us dining hall seating capacity of resturant is required.
                         </div>
                         <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('annual_lease')?.hasError('validNumber') &&
-                        step1Form.get('annual_lease')?.touched
+                        step1Form.get('annual_rent_cost')?.hasError('validNumber') &&
+                        step1Form.get('annual_rent_cost')?.touched
                       ">
                             Please enter a valid number..
                         </div>
                     </div>
 
-                    <div class="form-group col-span-4 my-2">
-                        <label for="land_cost">Land Cost of Hotel</label>
-                        <input type="number" id="land_cost" formControlName="land_cost" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('land_cost')?.hasError('required') && step1Form.get('land_cost')?.touched
-                      ">
-                            Your Land Cost of Hotel is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('land_cost')?.hasError('validNumber') &&
-                        step1Form.get('land_cost')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
                     <div class="form-group col-span-4 my-2">
                         <label for="bulding_cost">Building cost of hotel</label>
                         <input type="number" id="bulding_cost" formControlName="bulding_cost" />
@@ -228,6 +268,7 @@
                             Please enter a valid number..
                         </div>
                     </div>
+
                     <div class="form-group col-span-4 my-2">
                         <label for="furniture_cost">Total Furniture cost in hotel</label>
                         <input type="number" id="furniture_cost" formControlName="furniture_cost" />
@@ -273,6 +314,8 @@
                             Please enter a valid number..
                         </div>
                     </div>
+
+
                     <div class="form-group col-span-4 my-2">
                         <label for="total_investment">Total investment</label>
                         <input type="number" id="total_investment" formControlName="total_investment" />
@@ -288,64 +331,7 @@
                             Please enter a valid number..
                         </div>
                     </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="furtinure_bed_room">Furtinure bedroom</label>
-                        <input type="text" id="furtinure_bed_room" formControlName="furtinure_bed_room" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('furtinure_bed_room')?.hasError('required') && step1Form.get('furtinure_bed_room')?.touched
-                      ">
-                            Your Furtinure bedroom details is required.
-                        </div>
 
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="furniture_common_room">No of Furniture common room</label>
-                        <input type="text" id="furniture_common_room" formControlName="furniture_common_room" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('furniture_common_room')?.hasError('required') && step1Form.get('furniture_common_room')?.touched
-                      ">
-                            Your No of Furniture common room details is required.
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group col-span-4 my-2">
-
-                        <input type="checkbox" class="mx-2" id="furniture_corridor_galleried"
-                            formControlName="furniture_corridor_galleried" />
-                        <label for="furniture_corridor_galleried">No of furniture corridor galleried
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('furniture_corridor_galleried')?.hasError('required') && step1Form.get('furniture_corridor_galleried')?.touched
-                      ">
-                            No of furniture corridor galleried is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-
-                        <input type="checkbox" class="mx-2" id="furniture_bathroom"
-                            formControlName="furniture_bathroom" />
-                        <label for="furniture_bathroom"> No of furniture bathroom
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('furniture_bathroom')?.hasError('required') && step1Form.get('furniture_bathroom')?.touched
-                      ">
-                            No of furniture bathroom is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-
-                        <input type="checkbox" class="mx-2" id="furniture_common_bathroon"
-                            formControlName="furniture_common_bathroon" />
-                        <label for="furniture_common_bathroon"> No of furniture common bathroon
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('furniture_common_bathroon')?.hasError('required') && step1Form.get('furniture_common_bathroon')?.touched
-                      ">
-                            furniture common bathroon is required.
-                        </div>
-                    </div>
                     <div class="form-group col-span-4 my-2">
 
                         <input type="checkbox" class="mx-2" id="is_foreigner_guest"
@@ -356,18 +342,6 @@
                         step1Form.get('is_foreigner_guest')?.hasError('required') && step1Form.get('is_foreigner_guest')?.touched
                       ">
                             Is Hotel for foreigner guest is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-
-                        <input type="checkbox" class="mx-2" id="is_restaurant_attached"
-                            formControlName="is_restaurant_attached" />
-                        <label for="is_restaurant_attached"> Is restaurant attached with your hotel
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_restaurant_attached')?.hasError('required') && step1Form.get('is_restaurant_attached')?.touched
-                      ">
-                            Is restaurant attached with your hotel is required.
                         </div>
                     </div>
 
@@ -381,17 +355,6 @@
                         step1Form.get('cuisine_type')?.hasError('required') && step1Form.get('cuisine_type')?.touched
                       ">
                             Cuisine type in hotel is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="cuisine_type"> No of Cloak rooms in Hotel
-                        </label>
-                        <input type="text" class="mx-2" id="cloak_room" formControlName="cloak_room" />
-
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('cloak_room')?.hasError('required') && step1Form.get('cloak_room')?.touched
-                      ">
-                            No of Cloak rooms in Hotel is required.
                         </div>
                     </div>
                     <div class="form-group col-span-4 my-2">
@@ -441,19 +404,6 @@
                             Please enter a valid number..
                         </div>
                     </div>
-
-                    <div class="form-group col-span-4 my-2">
-                        <label for="present_date">Present date</label><br>
-                        <p-calendar class="w-full" formControlName="present_date"></p-calendar>
-
-                        <!-- <input type="text" id="present_date" formControlName="present_date" /> -->
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('present_date')?.hasError('required') && step1Form.get('present_date')?.touched
-                      ">
-                            Your Present date details is required.
-                        </div>
-                    </div>
-
                     <div class="form-group col-span-4 my-2">
                         <label for="province_id">Province</label>
                         <select id="province_id" formControlName="province_id">
@@ -484,37 +434,6 @@
                             City are required.
                         </div>
                     </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="peakseasontypes">Peak season of your hotel</label>
-                        <select id="peakseasontypes" formControlName="peakseasontypes">
-                            <option *ngFor="let peakseasontypes of peakseasontypes?.data" [value]="peakseasontypes.id">
-                                {{ peakseasontypes.name }} </option>
-                        </select>
-
-                        <!-- <input type="text" id="peakseasontypes" formControlName="peakseasontypes" /> -->
-                        <div class="text-sm text-red-600" *ngIf="
-                                step1Form.get('peakseasontypes')?.hasError('required') && step1Form.get('peakseasontypes')?.touched
-                              ">
-                            Peak season of your hotel are required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="ownershipnaturetypes">Your hotel ownership nature</label>
-                        <select id="ownershipnaturetypes" formControlName="ownershipnaturetypes">
-                            <option *ngFor="let ownershipnaturetypes of ownershipnaturetypes?.data"
-                                [value]="ownershipnaturetypes.id">{{
-                                ownershipnaturetypes.name }}
-                            </option>
-                        </select>
-
-                        <!-- <input type="text" id="ownershipnaturetypes" formControlName="ownershipnaturetypes" /> -->
-                        <div class="text-sm text-red-600" *ngIf="
-                                step1Form.get('ownershipnaturetypes')?.hasError('required') && step1Form.get('ownershipnaturetypes')?.touched
-                              ">
-                            hotel ownership nature are required.
-                        </div>
-                    </div>
-
                     <div class="form-group col-span-4">
                         <label for="ownership_nature_type_id">Ownership Type</label>
                         <select id="ownership_nature_type_id" formControlName="ownership_nature_type_id">
@@ -529,6 +448,155 @@
                             OwnerShip Details are required.
                         </div>
                     </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="cuisine_type"> No of Cloak rooms in Hotel
+                        </label>
+                        <input type="text" class="mx-2" id="cloak_room" formControlName="cloak_room" />
+
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('cloak_room')?.hasError('required') && step1Form.get('cloak_room')?.touched
+                      ">
+                            No of Cloak rooms in Hotel is required.
+                        </div>
+                    </div>
+
+
+
+                    <!-- ///////////////////////// -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group col-span-4 my-2">
+                        <label for="present_date">Present date</label><br>
+                        <p-calendar class="w-full" formControlName="present_date"></p-calendar>
+
+                        <!-- <input type="text" id="present_date" formControlName="present_date" /> -->
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('present_date')?.hasError('required') && step1Form.get('present_date')?.touched
+                      ">
+                            Your Present date details is required.
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group col-span-4 my-2">
+                        <label for="car_park_capacity">Car parkING capacity</label>
+                        <input type="number" id="car_park_capacity" formControlName="car_park_capacity" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('car_park_capacity')?.hasError('required') && step1Form.get('car_park_capacity')?.touched
+                      ">
+                            Your Car parking capacity details is required.
+                        </div>
+
+                    </div>
+                    <div class="form-group col-span-4 my-2">
+                        <label for="common_toilets">No of common toilets</label>
+                        <input type="number" id="common_toilets" formControlName="common_toilets" />
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('common_toilets')?.hasError('required') && step1Form.get('common_toilets')?.touched
+                      ">
+                            No of common toilets details is required.
+                        </div>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('common_toilets')?.hasError('validNumber') &&
+                        step1Form.get('common_toilets')?.touched
+                      ">
+                            Please enter a valid number..
+                        </div>
+                    </div>
+                    <div class="form-group col-span-3 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_tel_room" formControlName="is_tel_room" />
+                        <label for="cuisine_type"> is_tel_room
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_tel_room')?.hasError('required') && step1Form.get('is_tel_room')?.touched
+                      ">
+                            is_tel_room is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-3 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_reception" formControlName="is_reception" />
+                        <label for="is_reception"> is_reception
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_reception')?.hasError('required') && step1Form.get('is_reception')?.touched
+                      ">
+                            Reception Details is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-3 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_heating" formControlName="is_heating" />
+                        <label for="is_heating"> Is any heating service
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_heating')?.hasError('required') && step1Form.get('is_heating')?.touched
+                      ">
+                            Heating Details is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-3 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_ac" formControlName="is_ac" />
+                        <label for="is_ac"> Is any AC service
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_ac')?.hasError('required') && step1Form.get('is_ac')?.touched
+                      ">
+                            Heating Details is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-3 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_locker" formControlName="is_locker" />
+                        <label for="is_locker"> Is any Locker service
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_locker')?.hasError('required') && step1Form.get('is_locker')?.touched
+                      ">
+                            Locker Details is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-3 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_ac" formControlName="is_ac" />
+                        <label for="is_ac"> is_ac
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_ac')?.hasError('required') && step1Form.get('is_ac')?.touched
+                      ">
+                            AC Service is required.
+                        </div>
+                    </div>
+                    <div class="form-group col-span-3 my-2">
+
+                        <input type="checkbox" class="mx-2" id="is_entertainment" formControlName="is_entertainment" />
+                        <label for="is_entertainment"> Is any entertainment
+                        </label>
+                        <div class="text-sm text-red-600" *ngIf="
+                        step1Form.get('is_entertainment')?.hasError('required') && step1Form.get('is_entertainment')?.touched
+                      ">
+                            is_entertainment is required.
+                        </div>
+                    </div>
+
+
 
                     <!-- mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm -->
 
@@ -691,366 +759,23 @@
             <div>
                 <h2 class="mt-4 text-lg font-normal heading-label">Please give the following details</h2>
                 <div class="grid grid-cols-12 gap-5 px-5">
-                    <div class="col-span-4 my-2">
-                        <div class="form-group">
-                            <label for="no_of_floors">No of floors in Hotel</label>
-                            <input type="number" id="no_of_floors" formControlName="no_of_floors" />
-                            <div class="text-sm text-red-600" *ngIf="
-                  step1Form.get('no_of_floors')?.hasError('required') &&
-                  step1Form.get('no_of_floors')?.touched
-                ">
-                                No of floors in Hotel number is required.
-                            </div>
-                            <div class="text-sm text-red-600" *ngIf="
-                            step1Form.get('area')?.hasError('validNumber') &&
-                            step1Form.get('area')?.touched
-                          ">
-                                Please enter a valid number..
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="total_hotel_rooms">No of Total hotel rooms</label>
-                        <input type="number" id="total_hotel_rooms" formControlName="total_hotel_rooms" />
-                        <div class="text-sm text-red-600" *ngIf="
-                step1Form.get('total_hotel_rooms')?.hasError('required') && step1Form.get('total_hotel_rooms')?.touched
-              ">
-                            Please tell us Total hotel rooms is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('total_hotel_rooms')?.hasError('validNumber') &&
-                        step1Form.get('total_hotel_rooms')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
-
-                    <div class="form-group col-span-4 my-2">
-                        <label for="visitor_room">No of visitors room</label>
-                        <input type="text" id="visitor_room" placeholder="" formControlName="visitor_room" />
-                        <div class="text-sm text-red-600" *ngIf="
-                step1Form.get('visitor_room')?.hasError('required') && step1Form.get('visitor_room')?.touched
-              ">
-                            Your No of visitors room details is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('visitor_room')?.hasError('validNumber') &&
-                        step1Form.get('visitor_room')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
-
-                    <div class="form-group col-span-4 my-2">
-                        <label for="land_cost">No of reception halls</label>
-                        <input type="text" id="reception_hall" formControlName="reception_hall" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('reception_hall')?.hasError('required') && step1Form.get('reception_hall')?.touched
-                      ">
-                            Your No of reception halls is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('reception_hall')?.hasError('validNumber') &&
-                        step1Form.get('reception_hall')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="reading_room">No of readings room</label>
-                        <input type="text" id="reading_room" formControlName="reading_room" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('reading_room')?.hasError('required') && step1Form.get('reading_room')?.touched
-                      ">
-                            Your readings details is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('reading_room')?.hasError('validNumber') &&
-                        step1Form.get('reading_room')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="restaurant">Restaurant Details</label>
-                        <input type="text" id="restaurant" formControlName="restaurant" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('restaurant')?.hasError('required') && step1Form.get('restaurant')?.touched
-                      ">
-                            Your Restaurant Details details is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('restaurant')?.hasError('validNumber') &&
-                        step1Form.get('restaurant')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="common_baths">No of common baths</label>
-                        <input type="checkbox" id="common_baths" formControlName="common_baths" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('common_baths')?.hasError('required') && step1Form.get('common_baths')?.touched
-                      ">
-                            Your No of common baths details is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('common_baths')?.hasError('validNumber') &&
-                        step1Form.get('common_baths')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="common_toilets">No of common toilets</label>
-                        <input type="number" id="common_toilets" formControlName="common_toilets" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('common_toilets')?.hasError('required') && step1Form.get('common_toilets')?.touched
-                      ">
-                            No of common toilets details is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('common_toilets')?.hasError('validNumber') &&
-                        step1Form.get('common_toilets')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="number_of_stairs"> Total Number of stairs</label>
-                        <input type="number" id="number_of_stairs" formControlName="number_of_stairs" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('number_of_stairs')?.hasError('required') && step1Form.get('number_of_stairs')?.touched
-                      ">
-                            Total Number of stairs details is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('number_of_stairs')?.hasError('validNumber') &&
-                        step1Form.get('number_of_stairs')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="number_of_lifts">Total Number of lifts</label>
-                        <input type="text" id="number_of_lifts" formControlName="number_of_lifts" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('number_of_lifts')?.hasError('required') && step1Form.get('number_of_lifts')?.touched
-                      ">
-                            Your Total Number of lifts details is required.
-                        </div>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('number_of_lifts')?.hasError('validNumber') &&
-                        step1Form.get('number_of_lifts')?.touched
-                      ">
-                            Please enter a valid number..
-                        </div>
-
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="car_park_capacity">Car parkING capacity</label>
-                        <input type="number" id="car_park_capacity" formControlName="car_park_capacity" />
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('car_park_capacity')?.hasError('required') && step1Form.get('car_park_capacity')?.touched
-                      ">
-                            Your Car parking capacity details is required.
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group col-span-4 my-2">
-
-                        <input type="checkbox" class="mx-2" id="garden_area" formControlName="garden_area" />
-                        <label for="garden_area"> Garden area
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('garden_area')?.hasError('required') && step1Form.get('garden_area')?.touched
-                      ">
-                            Garden area is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="construction_date"> Construction date of Hotel </label><br>
-                        <p-calendar formControlName="construction_date"></p-calendar>
 
 
 
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('construction_date')?.hasError('required') && step1Form.get('construction_date')?.touched
-                      ">
-                            Construction date of is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
-                        <label for="renovation_date"> Renovation Date
-                        </label><br>
-                        <p-calendar formControlName="renovation_date"></p-calendar>
 
 
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('renovation_date')?.hasError('required') && step1Form.get('renovation_date')?.touched
-                      ">
-                            Renovation Date is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-4 my-2">
 
-                        <input type="number" class="mx-2" id="common_baths" formControlName="common_baths" />
-                        <label for="common_baths">No common_baths
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('common_baths')?.hasError('required') && step1Form.get('common_baths')?.touched
-                      ">
-                            common baths is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_restaurant_attached"
-                            formControlName="is_restaurant_attached" />
-                        <label for="is_restaurant_attached"> is_restaurant_attached
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_restaurant_attached')?.hasError('required') && step1Form.get('is_restaurant_attached')?.touched
-                      ">
-                            is_restaurant_attached is required.
-                        </div>
-                    </div>
 
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_tel_room" formControlName="is_tel_room" />
-                        <label for="cuisine_type"> is_tel_room
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_tel_room')?.hasError('required') && step1Form.get('is_tel_room')?.touched
-                      ">
-                            is_tel_room is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_tel_lobby" formControlName="is_tel_floor" />
-                        <label for="is_tel_lobby"> is_tel_lobby
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_tel_lobby')?.hasError('required') && step1Form.get('is_tel_lobby')?.touched
-                      ">
-                            is_tel_floor is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_tel_floor" formControlName="is_tel_floor" />
-                        <label for="cuisine_type"> is_tel_floor
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_tel_floor')?.hasError('required') && step1Form.get('is_tel_floor')?.touched
-                      ">
-                            is_tel_floor is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_bank_counter" formControlName="is_bank_counter" />
-                        <label for="cuisine_type"> is_bank_counter
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_bank_counter')?.hasError('required') && step1Form.get('is_bank_counter')?.touched
-                      ">
-                            is_bank_counter is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_postal_counter"
-                            formControlName="is_postal_counter" />
-                        <label for="cuisine_type"> is_postal_counter
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_postal_counter')?.hasError('required') && step1Form.get('is_postal_counter')?.touched
-                      ">
-                            is_postal_counter is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_hotwater" formControlName="is_hotwater" />
-                        <label for="cuisine_type"> is_hotwater
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_hotwater')?.hasError('required') && step1Form.get('is_hotwater')?.touched
-                      ">
-                            is_hotwater is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_coldwater" formControlName="is_coldwater" />
-                        <label for="cuisine_type"> is_coldwater
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_coldwater')?.hasError('required') && step1Form.get('is_coldwater')?.touched
-                      ">
-                            is_coldwater is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_coffeeshop" formControlName="is_coffeeshop" />
-                        <label for="cuisine_type"> is_coffeeshop
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_coffeeshop')?.hasError('required') && step1Form.get('is_coffeeshop')?.touched
-                      ">
-                            is_coffeeshop is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
 
-                        <input type="checkbox" class="mx-2" id="is_restaurant" formControlName="is_restaurant" />
-                        <label for="cuisine_type"> is_restaurant
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_restaurant')?.hasError('required') && step1Form.get('is_restaurant')?.touched
-                      ">
-                            is_restaurant is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
-
-                        <input type="checkbox" class="mx-2" id="is_coldstorage" formControlName="is_coldstorage" />
-                        <label for="cuisine_type"> is_coldstorage
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_coldstorage')?.hasError('required') && step1Form.get('is_coldstorage')?.touched
-                      ">
-                            is_coldstorage is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
-
-                        <input type="checkbox" class="mx-2" id="is_locker" formControlName="is_locker" />
-                        <label for="cuisine_type"> is_locker
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_locker')?.hasError('required') && step1Form.get('is_locker')?.touched
-                      ">
-                            is_locker is required.
-                        </div>
-                    </div>
-                    <div class="form-group col-span-3 my-2">
-
-                        <input type="checkbox" class="mx-2" id="is_entertainment" formControlName="is_entertainment" />
-                        <label for="cuisine_type"> is_entertainment
-                        </label>
-                        <div class="text-sm text-red-600" *ngIf="
-                        step1Form.get('is_entertainment')?.hasError('required') && step1Form.get('is_entertainment')?.touched
-                      ">
-                            is_entertainment is required.
-                        </div>
-                    </div>
 
 
 
@@ -1061,87 +786,7 @@
                 </div>
             </div>
 
-            <h2 class="mt-4 text-lg font-normal heading-label">Hotel Floor and Rooms Details</h2>
-            <div formArrayName="floors_details">
-                <div *ngFor="let owner of FloorDetailsArray.controls; let i = index">
-                    <div [formGroupName]="i" class="grid grid-cols-12 gap-5">
 
-
-                        <div class="col-span-2 my-2 ">
-                            <label for="floor_number">floor number </label>
-
-                            <input type="number" class="mx-5" formControlName="floor_number" />
-                        </div>
-                        <div class="col-span-2 my-2 ">
-                            <label for="single_wbath">No single rooms with bath </label>
-
-                            <input type="number" class="mx-5" formControlName="single_wbath" />
-                        </div>
-                        <div class="col-span-2 my-2 ">
-                            <label for="single_wobath"> No single rooms without bath </label>
-
-                            <input type="number" class="mx-5" formControlName="single_wobath" />
-                        </div>
-                        <div class="col-span-2 my-2 ">
-                            <label for="total_rooms_wbath">No of double rooms with bath </label>
-
-                            <input type="number" class="mx-5" formControlName="double_wbath" />
-                        </div>
-
-                        <div class="col-span-2 my-2 ">
-                            <label for="double_wobath">No of double room without bath </label>
-
-                            <input type="number" class="mx-5" formControlName="double_wobath" />
-                        </div>
-                        <div class="col-span-2 my-2 ">
-                            <label for="single_wbath">No of suites with bath </label>
-
-                            <input type="number" class="mx-5" formControlName="suite_wbath" />
-                        </div>
-                        <div class="col-span-2 my-2 ">
-                            <label for="single_wobath">No of suites without bath </label>
-
-                            <input type="number" class="mx-5" formControlName="suite_wobath" />
-                        </div>
-                        <div class="col-span-2 my-2 ">
-                            <label for="double_wbath">No of other rooms with bath </label>
-
-                            <input type="number" class="mx-5" formControlName="other_wbath" />
-                        </div>
-
-                        <div class="col-span-2 my-2 ">
-                            <label for="double_wobath">No of other rooms without Bath </label>
-
-                            <input type="number" class="mx-5" formControlName="other_wobath" />
-                        </div>
-                        <div class="col-span-2 my-2 ">
-                            <label for="total_rooms_wbath">No Total rooms with bath on this floor </label>
-
-                            <input type="number" class="mx-5" formControlName="total_rooms_wbath" />
-                        </div>
-
-                        <div class="col-span-2 my-2 ">
-                            <label for="total_rooms_wobath">No Total rooms without bath on this floor </label>
-
-                            <input type="number" class="mx-5" formControlName="total_rooms_wobath" />
-                        </div>
-
-
-                        <div *ngIf="i > 0" class="col-span-1 my-2">
-                            <button class="rounded-sm border bg-green-400 px-5 py-3 hover:bg-white" type="button"
-                                (click)="removeFloorDetailsArray(i)">
-                                Remove
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="my-3 flex flex-row items-end justify-end">
-                <button class="rounded-sm border bg-green-400 px-5 py-3 text-sm hover:bg-white" type="button"
-                    (click)="addFloorDetailsArray()">
-                    Add New Floor
-                </button>
-            </div>
 
 
 
@@ -1186,6 +831,18 @@
                     </div>
                 </div>
                 <div class="col-span-4 my-2 ">
+                    <label for="proof_of_ownership">Proof of Ownership </label><br />
+                    <input type="file" id="proof_of_ownership" formControlName="proof_of_ownership"
+                        (change)="onImageChange($event, 'proof_of_ownership')" />
+                    <div *ngIf="step2Form.get('proof_of_ownership')?.hasError('required') && step2Form.get('proof_of_ownership')?.touched"
+                        class="text-danger text-sm text-red-600">
+                        proof_of_ownership is required.
+                    </div>
+                    <div *ngIf="step2Form.get('proof_of_ownership')?.hasError('validImage')" class="text-danger">
+                        Invalid image format. Supported formats: jpg, jpeg, png, gif.
+                    </div>
+                </div>
+                <div class="col-span-4 my-2 ">
                     <label for="building_plan">Building Plan of Hotel or Restaurant </label><br />
                     <input type="file" id="building_plan" formControlName="building_plan"
                         (change)="onImageChange($event, 'building_plan')" />
@@ -1198,14 +855,14 @@
                     </div>
                 </div>
                 <div class="col-span-4 my-2 ">
-                    <label for="hotel_rate_details">Room rates /copy of Menu Card or rate list. </label><br />
-                    <input type="file" id="hotel_rate_details" formControlName="hotel_rate_details"
-                        (change)="onImageChange($event, 'hotel_rate_details')" />
-                    <div *ngIf="step2Form.get('hotel_rate_details')?.hasError('required') && step2Form.get('hotel_rate_details')?.touched"
+                    <label for="room_rates">Room rates /copy of Menu Card or rate list. </label><br />
+                    <input type="file" id="room_rates" formControlName="room_rates"
+                        (change)="onImageChange($event, 'room_rates')" />
+                    <div *ngIf="step2Form.get('room_rates')?.hasError('required') && step2Form.get('room_rates')?.touched"
                         class="text-danger text-sm text-red-600">
-                        hotel_rate_details is required.
+                        room_rates is required.
                     </div>
-                    <div *ngIf="step2Form.get('hotel_rate_details')?.hasError('validImage')" class="text-danger">
+                    <div *ngIf="step2Form.get('room_rates')?.hasError('validImage')" class="text-danger">
                         Invalid image format. Supported formats: jpg, jpeg, png, gif.
                     </div>
                 </div>

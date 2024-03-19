@@ -14,6 +14,9 @@ export class UserApplicationService {
   public getUserAllApplications(userID?: any) {
     return this.http.get(`${BACKEND_URL}api/get-user-tourist-guides`);
   }
+  public getUserApplicationHotel(userID?: any) {
+    return this.http.get(`${BACKEND_URL}api/hotels`);
+  }
 
   public getUserApplicationsByID(userID?: any) {
     return this.http.get(`${BACKEND_URL}api/tourist-guides/${userID}`);

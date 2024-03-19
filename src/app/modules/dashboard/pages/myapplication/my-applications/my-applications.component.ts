@@ -8,6 +8,9 @@ import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { BACKEND_URL } from 'src/app/core/constants/constants';
 import { SharedService } from 'src/app/core/services/shared.service';
+import { HotelService } from 'src/app/core/services/hotel.service';
+import { TravelAgencyService } from 'src/app/core/services/travel-agency.service';
+import { resturantService } from 'src/app/core/services/resturant.service';
 @Component({
   selector: 'app-my-applications',
   templateUrl: './my-applications.component.html',
@@ -22,29 +25,39 @@ export class MyApplicationsComponent implements OnInit {
     private UserApplicationService: UserApplicationService,
     private Router: Router,
     private SharedService: SharedService,
+    private HotelService: HotelService,
+    private TravelAgencyService: TravelAgencyService,
+    private resturantService: resturantService,
   ) {}
   myApplication: any;
+  myApplicationHotel: any;
+  myApplicationsTravelAgency: any;
+  myApplicationsResturant: any;
   showAllApplications: boolean = true;
   showSingleApplications: boolean = false;
   SelectedApplication: any;
 
   userID: any;
   ngOnInit() {
-    let Usertype = localStorage.getItem('userDetails');
+    let Usertype = localStorage.getItem('u  serDetails');
     this.userID = JSON.parse(Usertype ? Usertype : '{}').id;
     this.GetAllNewApplications();
   }
 
   GetAllNewApplications() {
-    this.UserApplicationService.getUserAllApplications().subscribe(
-      (res: any) => {
-        this.myApplication = res.tourist_guides;
-        console.log('new applidS', this.myApplication);
-      },
-      (err: any) => {
-        console.log('Error in gettting my applications', err);
-      },
-    );
+    this.UserApplicationService.getUserAllApplications().subscribe((res: any) => {
+      this.myApplication = res.tourist_guides;
+    });
+    this.HotelService.getAllHotels().subscribe((res: any) => {
+      this.myApplicationHotel = res.hotels;
+    });
+    this.TravelAgencyService.TravelAgenciesID().subscribe((res: any) => {
+      this.myApplicationsTravelAgency = res.travel_agencies;
+    });
+    this.resturantService.getAllResturants().subscribe((res: any) => {
+      console.log('resturrants', res);
+      this.myApplicationsResturant = res.hotels;
+    });
   }
   docnam: any;
   docpath: any;
