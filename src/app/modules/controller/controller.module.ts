@@ -20,6 +20,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CertificateComponent } from 'src/app/shared/components/certificate/certificate.component';
+import { ControllerResturnatComponent } from './controller-resturnat/controller-resturnat.component';
+import { ControllerTravelAgencyComponent } from './controller-travel-agency/controller-travel-agency.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { CertificateComponent } from 'src/app/shared/components/certificate/cert
     DocumentCheckControllerComponent,
     ContApplicationListingComponent,
     ControllerUserApplicationComponent,
+    ControllerResturnatComponent,
+    ControllerTravelAgencyComponent,
   ],
   imports: [
     InputTextModule,
