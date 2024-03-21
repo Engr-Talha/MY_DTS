@@ -1,0 +1,310 @@
+<p-toast></p-toast>
+<div class="px-10 py-10">
+    <div class="mb-3 text-xl font-semibold text-black">Applications</div>
+
+    <div class="item-end mb-3 flex flex-row justify-end">
+        <div class="button-container">
+            <!-- <button class="addCommentButton" (click)="addComment()">Add Comment</button> -->
+            <button class="approveButton" (click)="approvedialogbox = true">Apprvove and Sent to Assistant
+                Controller</button>
+
+            <!-- <button class="approveButton" (click)="approvedialogbox = true">Approve</button> -->
+            <button class="approveButton" (click)="showreject = true">Reject</button>
+        </div>
+    </div>
+
+    <div *ngIf="SelectedApplication" class="grid grid-cols-12 gap-5">
+        <div class="col-span-6">
+            <div class="flex flex-col gap-5">
+                <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+                    <div class="flex flex-col">
+                        <h2 class="mt-4 font-bold">{{ SelectedApplication?.data.person_name }}</h2>
+                        <p>
+                            <i class="pi-map-marker pi" style="color: slateblue"></i>
+                            {{ SelectedApplication?.data.residential_address }}
+                        </p>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Email address</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.email }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Home address</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.business_address }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Telegraphic</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.telegraphic_address }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Telephone Number</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.telephone_no }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Mobile Number</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.no_of_lines }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Bank Name</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.banker_name }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">NTN Numbers</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.ntn_number }} years</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Nature of Business</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.nature_business }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Assets details</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.asset_details }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Shipping details</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.shipping_details }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Auditor Address</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.auditors_address }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Liabilities</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.liabilities }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Auditors name</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.auditors_name }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Auditors Address</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.auditors_address }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-12 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Total offices</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.total_offices }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-12 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Partner Details</p>
+                                <p class="text-sm">{{ SelectedApplication?.data.partner_details }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-span-6">
+            <div class="flex flex-col gap-5">
+                <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+
+                    <div class="font-bold mb-5">Addresses Details</div>
+                    <table class="border-collapse border border-gray-300">
+                        <thead>
+                            <tr>
+                                <th class="border border-gray-300 px-4 py-2">In Pakistan</th>
+                                <th class="border border-gray-300 px-4 py-2">Address</th>
+                                <th class="border border-gray-300 px-4 py-2">City</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let employee of SelectedApplication?.data?.addresses">
+
+                                <td class="border border-gray-300 px-4 py-2">{{ employee.is_pakistan === 1 ? 'Yes' :
+                                    'No' }}</td>
+                                <td class="border border-gray-300 px-4 py-2">{{ employee.address }}</td>
+                                <td class="border border-gray-300 px-4 py-2">{{ employee.city.name }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-12 gap-5 mt-5 rounded-xl border-gray-200 bg-white p-[2rem]">
+        <div class="col-span-12">
+            <div class="font-bold mb-5">Branches Details</div>
+            <table class="">
+                <thead>
+                    <tr>
+                        <th class=" px-4 py-2">ID</th>
+                        <th class=" px-4 py-2">Branch Name</th>
+                        <th class=" px-4 py-2">Office Area</th>
+                        <th class=" px-4 py-2">Space</th>
+                        <th class=" px-4 py-2">No. of Counters</th>
+                        <th class=" px-4 py-2">No. of Windows</th>
+                        <th class=" px-4 py-2">Details</th>
+                        <th class=" px-4 py-2">Address</th>
+                        <th class=" px-4 py-2">City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let branches of SelectedApplication?.data?.branches">
+                        <td class=" px-4 py-2">{{ branches.id }}</td>
+                        <td class=" px-4 py-2">{{ branches.branch_name }}</td>
+                        <td class=" px-4 py-2">{{ branches.office_area }}</td>
+                        <td class=" px-4 py-2">{{ branches.space }}</td>
+                        <td class=" px-4 py-2">{{ branches.no_counters }}</td>
+                        <td class=" px-4 py-2">{{ branches.no_windows }}</td>
+                        <td class=" px-4 py-2">{{ branches.details }}</td>
+                        <td class=" px-4 py-2">{{ branches.address }}</td>
+                        <td class=" px-4 py-2">{{ branches.city.name }}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="grid grid-cols-12 gap-5 mt-5">
+        <div class="col-span-12">
+            <div class="flex flex-col gap-5">
+                <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+                    <div class="font-bold mb-5">Employees Details</div>
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Top Management</th>
+                                <th>Trained</th>
+                                <th>Apprentice</th>
+                                <th>Basic English</th>
+                                <th>Offense Details</th>
+                                <th>Employee Category Type</th>
+                                <th>Entity Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let employee of SelectedApplication?.data?.employees">
+                                <td class="text-center"> {{ employee.id }}</td>
+                                <td class="text-center">{{ employee.full_name }}</td>
+                                <td class="text-center">{{ employee.is_top_management === 1 ? 'Yes' : 'No'
+                                    }}</td>
+                                <td class="text-center">{{ employee.is_trained === 1 ? 'Yes' : 'No' }}</td>
+                                <td class="text-center">{{ employee.is_apprentice === 1 ? 'Yes' : 'No' }}
+                                </td>
+                                <td class="text-center">{{ employee.is_basic_english === 1 ? 'Yes' : 'No' }}
+                                </td>
+                                <td class="text-center">{{ employee.offense_details }}</td>
+                                <td class="text-center">{{ employee.employee_category_type.name }}</td>
+                                <td class="text-center">{{ employee.entity_type.name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="mt-5">
+        <div class="my-5 text-xl font-semibold text-black">Submitted Documents by User:</div>
+
+        <div class="my-3 text-xs text-red-500">Click on each document to View.</div>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+
+            <div *ngFor="let item of SelectedApplication?.data.application_attachments"
+                class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+                <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">
+                    {{item?.attachment_type?.name}}
+                </div>
+                <div class="flex flex-row justify-center">
+                    <img (click)="OpenDialog(item?.attachment_type?.name, item?.attachment_path)"
+                        [src]="item?.attachment_path" alt="Image 1" class="h-[300px] w-[300px] cursor-pointer" />
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <div class="my-5 text-xl font-semibold text-black">Submitted Documents by Inspector:</div>
+        <div>
+            <p>No Documents Submitted by Inspector yet.</p>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="DocumentDialog" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false">
+    <div>
+        <div class="mb-2 text-center text-xl font-medium text-[#9095a0]">CNIC</div>
+        <div class="flex flex-row justify-center">
+            <img class="h-1/2 w-1/2" src="{{ docpath }}" />
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="addCommentDialog" header="Add Comment to Application" [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div>
+        <div class="card justify-content-center flex">
+            <textarea pKeyFilter="int" rows="5" cols="30" pInputTextarea></textarea>
+        </div>
+        <div class="item-end mb-3 flex flex-row justify-end">
+            <div class="button-container">
+                <button class="addCommentButton" (click)="addComment()">Forward to User</button>
+                <button class="approveButton">Forward to Inspector</button>
+                <button class="approveButton">Forward to Controller</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="approvedialogbox" header="Approve Applications" [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div>
+        <div class="card justify-content-center flex flex-col">
+            <p>Do you want to approve this applications.</p>
+            <br />
+            <div class="card justify-content-center flex">
+                <textarea pKeyFilter="int" rows="5" [(ngModel)]="addcommentt" cols="30" pInputTextarea></textarea>
+            </div>
+        </div>
+        <div class="item-end mb-3 flex flex-row justify-end">
+            <div class="button-container">
+                <button class="approveButton" (click)="ChangeStatus(1)">Approve</button>
+                <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="showreject" header="Reject Applications" [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div>
+        <div class="card justify-content-center flex flex-col">
+            <p>Do you want to reject this applications. Please add comment.</p>
+            <br />
+            <div class="card justify-content-center flex">
+                <textarea pKeyFilter="int" rows="5" [(ngModel)]="addcommentt" cols="30" pInputTextarea></textarea>
+            </div>
+        </div>
+        <div class="item-end mb-3 flex flex-row justify-end">
+            <div class="button-container">
+                <button class="approveButton" (click)="ChangeStatus(3)">Reject</button>
+                <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>

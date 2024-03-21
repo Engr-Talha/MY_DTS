@@ -84,7 +84,7 @@ export class Menu {
           label: 'Dashboard',
           route: '/layout/dashboard',
           children: [
-            { label: 'Dashboard', route: '/dptcontroller-dashboard' },
+            { label: 'Dashboard', route: '/layout/dptcontroller-dashboard' },
             // { label: ' User Application', route: '/dashboard/tourist-guide/register' },
             // { label: 'Inspector Check', route: '/dashboard/hotel/register' },
 
@@ -103,9 +103,9 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'Dashboard',
-          route: '/controller-dashboard',
+          route: '/layout/controller-dashboard',
           children: [
-            { label: 'Dashboard', route: '/controller-dashboard' },
+            { label: 'Dashboard', route: '/layout/controller-dashboard' },
 
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
@@ -115,9 +115,9 @@ export class Menu {
           label: 'Applications',
           route: '',
           children: [
-            { label: 'New Application', route: '/controller-dashboard/application-listing' },
-            { label: 'Pending Applications', route: '/controller-dashboard/application-listing' },
-            { label: 'Submitted Applications', route: '/controller-dashboard/application-listing' },
+            { label: 'New Application', route: '/layout/controller-dashboard/application-listing' },
+            // { label: 'Pending Applications', route: '/layout/controller-dashboard/application-listing' },
+            // { label: 'Submitted Applications', route: '/layout/controller-dashboard/application-listing' },
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
         },
@@ -132,9 +132,9 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'Dashboard',
-          route: '/inspector-dashboard',
+          route: '/layout/inspector-dashboard',
           children: [
-            { label: 'Dashboard', route: '/inspector-dashboard' },
+            { label: 'Dashboard', route: '/layout/inspector-dashboard' },
 
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
@@ -142,19 +142,9 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'User Application',
-          route: '/inspector-dashboard',
+          route: '/layout/inspector-dashboard',
           children: [
-            { label: 'User Application', route: '/inspector-dashboard/all-applications' },
-
-            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
-          ],
-        },
-        {
-          icon: 'assets/icons/heroicons/outline/chart-pie.svg',
-          label: 'Application Submitted',
-          route: '/inspector-dashboard',
-          children: [
-            { label: 'Application Submitted', route: '/inspector-dashboard/all-applications' },
+            { label: 'User Application', route: '/layout/inspector-dashboard/all-applications' },
 
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
@@ -171,9 +161,9 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'User Dashboard',
-          route: '/reviewer-dashboard',
+          route: '/layout/reviewer-dashboard',
           children: [
-            { label: 'Dashboard', route: '/reviewer-dashboard' },
+            { label: 'Dashboard', route: '/layout/reviewer-dashboard' },
 
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
@@ -183,7 +173,7 @@ export class Menu {
           label: 'Applications',
           route: '',
           children: [
-            { label: 'Application', route: '/reviewer-dashboard' },
+            { label: 'Application', route: '/layout/reviewer-dashboard' },
             // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
           ],
         },
@@ -198,21 +188,14 @@ export class Menu {
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'A. Controller Dashboard',
-          route: '/astcontroller-dashboard',
-          children: [
-            { label: 'Dashboard', route: '/astcontroller-dashboard' },
-
-            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
-          ],
+          route: '/layout/astcontroller-dashboard',
+          children: [{ label: 'Dashboard', route: '/layout/astcontroller-dashboard' }],
         },
         {
           icon: 'assets/icons/heroicons/outline/chart-pie.svg',
           label: 'Applications',
           route: '',
-          children: [
-            { label: 'Application', route: '/astcontroller-dashboard' },
-            // { label: 'Apply for Travel Agenct', route: '/dashboard/nfts' },
-          ],
+          children: [{ label: 'Application', route: '/layout/astcontroller-dashboard' }],
         },
       ],
     },

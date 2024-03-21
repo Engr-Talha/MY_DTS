@@ -50,13 +50,14 @@ export class MyApplicationsComponent implements OnInit {
     });
     this.HotelService.getAllHotels().subscribe((res: any) => {
       this.myApplicationHotel = res.hotels;
+      console.log('hotels', this.myApplicationHotel);
     });
     this.TravelAgencyService.TravelAgenciesID().subscribe((res: any) => {
       this.myApplicationsTravelAgency = res.travel_agencies;
     });
     this.resturantService.getAllResturants().subscribe((res: any) => {
       console.log('resturrants', res);
-      this.myApplicationsResturant = res.hotels;
+      this.myApplicationsResturant = res.restaurants;
     });
   }
   docnam: any;
@@ -158,6 +159,16 @@ export class MyApplicationsComponent implements OnInit {
 
   navigateTo(path: any) {
     this.Router.navigate([`/layout/tourist-guide/edit/${path}`]);
+  }
+  navigateToTravelAgency(path: any) {
+    this.Router.navigate([`/layout/my-registrations/travel-agency-application/${path}`]);
+  }
+  navigateToTouristGuide(path: any) {
+    this.Router.navigate([`/layout/my-registrations/tourist-guide-application/${path}`]);
+  }
+  navigateToResturantApplication(path: any) {
+    console.log('id', path);
+    this.Router.navigate([`/layout/my-registrations/resturant-application/${path}`]);
   }
   downloadAs(format: string) {
     html2canvas(document.body).then((canvas: any) => {

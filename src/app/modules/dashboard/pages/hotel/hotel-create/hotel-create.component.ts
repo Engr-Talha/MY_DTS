@@ -350,8 +350,8 @@ export class HotelCreateComponent {
     formData.append('reception_hall', this.step1Form?.value['reception_hall']);
     formData.append('reading_room', this.step1Form?.value['reading_room']);
     formData.append('restaurant', this.step1Form?.value['restaurant']);
-    formData.append('common_baths', this.step1Form?.value['common_baths']);
-    formData.append('common_toilets', this.step1Form?.value['common_toilets']);
+    // formData.append('common_baths', this.step1Form?.value['common_baths'] ? '1' : '0');
+    formData.append('common_toilets', this.step1Form?.value['common_toilets'] ? '1' : '0');
 
     formData.append('number_of_stairs', this.step1Form?.value['number_of_stairs']);
     formData.append('number_of_lifts', this.step1Form?.value['number_of_lifts']);

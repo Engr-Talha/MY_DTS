@@ -254,7 +254,7 @@ export class ReturantCreateComponent {
     this.accountID = JSON.parse(Usertype ? Usertype : '{}').id;
 
     const formData = new FormData();
-    formData.append('application_entity_type_id', '1');
+    formData.append('application_entity_type_id', '2');
     formData.append('name', this.step1Form?.value['person_name']);
     formData.append('is_hotel', this.step1Form?.value['is_hotel'] ? '1' : '0');
     formData.append('email', this.step1Form?.value['email']);

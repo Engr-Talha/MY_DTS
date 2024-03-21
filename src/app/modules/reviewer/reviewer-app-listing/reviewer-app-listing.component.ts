@@ -25,6 +25,9 @@ export class ReviewerAppListingComponent {
   selecteddropdown: dropdownPending | undefined;
   ApplicationTypeDropdown: any[] | undefined;
   selectedApplicationTypeDropdown: any[] | undefined;
+  ResturantApplications: any;
+  TravelAgencyApplication: any;
+  HotelApplications: any;
 
   SearchByName: any;
   SearchbyID: any;
@@ -39,15 +42,18 @@ export class ReviewerAppListingComponent {
   }
 
   ngOnInit() {
-    this.UserApplicationService.getApplicationByRole().subscribe(
-      (res: any) => {
-        this.myApplication = res;
-        console.log(this.myApplication);
-      },
-      (err: any) => {
-        console.log('Error in gettting my applications', err);
-      },
-    );
+    this.UserApplicationService.getApplicationByRole().subscribe((res: any) => {
+      this.myApplication = res;
+      console.log(this.myApplication);
+    });
+    this.UserApplicationService.getApplicationByResturant().subscribe((res: any) => {
+      this.ResturantApplications = res;
+      console.log(this.ResturantApplications);
+    });
+    this.UserApplicationService.getApplicationByTravelAgency().subscribe((res: any) => {
+      this.TravelAgencyApplication = res;
+      console.log(this.TravelAgencyApplication);
+    });
 
     this.dropdown = [
       { name: 'Submitted Application', code: 'NY' },
@@ -65,7 +71,31 @@ export class ReviewerAppListingComponent {
 
   tableHeaders = ['Code', 'Name', 'Category', 'Status', 'Date'];
 
+  // NavigateTo(linkParam1: any, linkParam2?: any) {
+  //   this.route.navigate([`layout/reviewer-dashboard/reviewer-app-listing/${linkParam1}/${linkParam2}`]);
+  // }
   NavigateTo(link: any) {
     this.route.navigate([`layout/reviewer-dashboard/reviewer-app-listing/${link}`]);
+  }
+  NavigateToResturant(link: any) {
+    this.route.navigate([`layout/reviewer-dashboard/reviewer-app-resturant/${link}`]);
+  }
+  NavigateToTravelAgency(link: any) {
+    this.route.navigate([`layout/reviewer-dashboard/reviewer-app-travelagency/${link}`]);
+  }
+  formatDate(dateString: any) {
+    if (!dateString) return ''; // handle case when dateString is undefined or null
+
+    const dateObject = new Date(dateString);
+
+    // Format the date as desired (e.g., DD-MM-YYYY HH:MM:SS)
+    const formattedDate = `${dateObject.getDate().toString().padStart(2, '0')}-${(dateObject.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${dateObject.getFullYear()} ${dateObject.getHours().toString().padStart(2, '0')}:${dateObject
+      .getMinutes()
+      .toString()
+      .padStart(2, '0')}:${dateObject.getSeconds().toString().padStart(2, '0')}`;
+
+    return formattedDate;
   }
 }

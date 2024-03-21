@@ -21,10 +21,29 @@ export class UserApplicationService {
   public getUserApplicationsByID(userID?: any) {
     return this.http.get(`${BACKEND_URL}api/tourist-guides/${userID}`);
   }
+  public getResturantApplicationsByID(userID?: any) {
+    return this.http.get(`${BACKEND_URL}api/restaurants/${userID}`);
+  }
 
   public getApplicationByRole() {
     return this.http.get(`${BACKEND_URL}api/get-role-tourist-guides`);
   }
+  public getApplicationByResturant() {
+    return this.http.get(`${BACKEND_URL}api/get-role-restaurants`);
+  }
+
+  public getTravelAgencyByID(id: any) {
+    return this.http.get(`${BACKEND_URL}api/travel-agencies/${id}`);
+  }
+  public getApplicationByTravelAgency() {
+    return this.http.get(`${BACKEND_URL}api/get-role-travel-agencies`);
+  }
+  // public getApplicationByRole() {
+  //   return this.http.get(`${BACKEND_URL}api/get-role-tourist-guides`);
+  // }
+  // public getApplicationByRole() {
+  //   return this.http.get(`${BACKEND_URL}api/get-role-tourist-guides`);
+  // }
 
   // http://dts-api.test/api/tourist-guides/change-status/39
   public changeStatus(application_id?: any, data?: FormData) {

@@ -17,8 +17,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TagModule } from 'primeng/tag';
 import { ApplicationDptComponent } from './application-dpt/application-dpt.component';
+import { DeputyControllerComponent } from './deputy-controller/deputy-controller.component';
+import { DeputyContTravelAgencyComponent } from './deputy-cont-travel-agency/deputy-cont-travel-agency.component';
 @NgModule({
-  declarations: [ApplicationsComponent, ApplicationDptComponent],
+  declarations: [ApplicationsComponent, ApplicationDptComponent, DeputyControllerComponent, DeputyContTravelAgencyComponent],
   imports: [
     CommonModule,
     MultiSelectModule,

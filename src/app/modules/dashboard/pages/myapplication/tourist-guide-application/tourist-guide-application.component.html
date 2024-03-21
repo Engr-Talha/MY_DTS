@@ -1,0 +1,333 @@
+<div class="px-10 py-10">
+
+
+    <div class="mb-5">
+        <div class="px-20">
+            <div class="my-5 flex justify-end gap-4">
+                <button
+                    *ngIf='this.SelectedApplication?.application?.challans[0]?.is_paid==1 && this.SelectedApplication?.application?.license.length<=0'
+                    class="button-92" role="button">
+                    Challan Uploaded waiting for the Lisence</button>
+                <button (click)="showCertificate=true"
+                    *ngIf='this.SelectedApplication?.application?.is_license_issued==1' class="button-92" role="button">
+                    Congrats! Your Lisence is Generated. Click to View and Download</button>
+
+                <div class="generate-challan-button" (click)="generatechallan()"
+                    *ngIf='SelectedApplication?.application?.is_challan_issued==1'>Generate Challan</div>
+            </div>
+            <!-- <div class="flex flex-row justify-between">
+                <div (click)="showAllApplications = true; showSingleApplications = false"
+                    class="cursor-pointer text-base text-gray-500 hover:text-green-500">
+                    Go Back
+                </div>
+                <div *ngIf="SelectedApplication?.application?.is_locked==0"
+                    (click)="showAllApplications = true; showSingleApplications = false"
+                    class="cursor-pointer px-10 text-base text-gray-500 hover:text-green-500">
+                    Edit Application
+                </div>
+            </div> -->
+
+            <div *ngIf="SelectedApplication" class="grid grid-cols-12 gap-5">
+                <div class="col-span-6">
+                    <div class="flex flex-col gap-5">
+                        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+                            <div class="flex flex-col">
+                                <h2 class="mt-4 font-bold">{{ SelectedApplication?.data.name }}</h2>
+                                <p>
+                                    <i class="pi-map-marker pi" style="color: slateblue"></i>
+                                    {{ SelectedApplication?.data.residential_address }}
+                                </p>
+                                <div class="grid grid-cols-12 gap-4">
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Email address</p>
+                                        <p class="text-sm"></p>
+                                    </div>
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Home address</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.business_address }}</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-12 gap-4">
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Telegraphic</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.telegraphic_number }}</p>
+                                    </div>
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Telephone Number</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.telephone_number }}</p>
+                                    </div>
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Mobile Number</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.telephone_number_lines }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-12 gap-4">
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Qualification</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.educational_qualifications }}
+                                        </p>
+                                    </div>
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Experience in Years</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.exp_as_tourist_guide }} years
+                                        </p>
+                                    </div>
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Languages</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.foreign_language }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-12 gap-4">
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Traning</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.trainings }}</p>
+                                    </div>
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Auditor Name</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.auditors_name }}</p>
+                                    </div>
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Auditor Address</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.auditors_address }}</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-12 gap-4">
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Banker name</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.banker_name }}</p>
+                                    </div>
+
+                                    <div class="col-span-4 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Capital Invested</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.capital_invested }}</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-12 gap-4">
+                                    <div class="col-span-12 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Other activities undertaken</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.other_activities_undertaken }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-12 gap-4">
+                                    <div class="col-span-12 gap-2">
+                                        <p class="mt-2 text-[#6b7280]">Partner Details</p>
+                                        <p class="text-sm">{{ SelectedApplication?.data.partner_details }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-6">
+                    <div class="flex flex-col gap-5">
+                        <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+                            <div class="font-bold">Submitted Documents</div>
+                            <div class="flex flex-row gap-2">
+                                <p-tag [style]="{
+                    background:
+                      'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+                  }">
+                                    <div class="align-items-center flex gap-2">
+                                        <span class="text-base">CNIC</span>
+                                    </div>
+                                </p-tag>
+                                <p-tag [style]="{
+                    background:
+                      'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+                  }">
+                                    <div class="align-items-center flex gap-2">
+                                        <span class="text-base">Matric Degree</span>
+                                    </div>
+                                </p-tag>
+                                <p-tag [style]="{
+                    background:
+                      'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+                  }">
+                                    <div class="align-items-center flex gap-2">
+                                        <span class="text-base">FSc Degree</span>
+                                    </div>
+                                </p-tag>
+                                <p-tag [style]="{
+                    background:
+                      'linear-gradient(117deg, rgba(9,121,54,1) 14%, rgba(151,185,165,1) 36%, rgba(43,161,91,1) 65%)'
+                  }">
+                                    <div class="align-items-center flex gap-2">
+                                        <span class="text-base">Experience Certificate</span>
+                                    </div>
+                                </p-tag>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 flex flex-col gap-5">
+                        <div class="h-[300px] overflow-y-scroll rounded-xl border-gray-200 bg-white p-[2rem]">
+                            <div class="font-bold">Comments <span class="text-sm"> (Sorted by latest)</span></div>
+                            <!-- let comment of comments.reverse() -->
+                            {{ SelectedApplication?.approvals }}
+                            <div class="" *ngFor="let comment of SelectedApplication?.application?.approvals.reverse()">
+                                <div class="my-2 px-4 text-sm dark:text-gray-500">
+                                    <p>
+                                        {{ comment.from_role?.name }} {{ comment.from_user?.name }} has Processes
+                                        application to
+                                        {{ comment.to_role?.name }} {{ comment.to_user?.name }}<br />
+                                        <span class="text-bold text-green-500"> Remarks: </span>
+                                        <span>{{ comment.remarks }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="mt-2">
+            <div
+              class="notification_container h-[365px] items-start rounded-lg border border-gray-200 bg-white py-[20px] px-[20px] shadow dark:border-none dark:bg-night-600 dark:hover:bg-night-500">
+              <div class="font-bold">Application Status</div>
+  
+              <div class="mt-5 flex flex-row justify-between px-5">
+                <div class="text-sm font-bold dark:text-gray-500">Application Type</div>
+                <div class="text-sm dark:text-gray-500">
+                  {{ SelectedApplication.application_status.verification_type.Name }}
+                </div>
+              </div>
+              <div class="card mt-7 flex flex-col gap-5 px-5">
+                <div class="">
+                  <div class="flex flex-row justify-between">
+                    <div class="text-sm dark:text-gray-500">Current Status</div>
+                    <div class="text-sm dark:text-gray-500">
+                      {{ SelectedApplication.application_status.current_status }}
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="">
+                  <div class="flex flex-row justify-between">
+                    <div class="text-sm dark:text-gray-500">Application Submission</div>
+                    <div class="text-sm dark:text-gray-500">100%</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex flex-row justify-between">
+                    <div class="text-sm dark:text-gray-500">Controller Verification</div>
+                    <div class="text-sm dark:text-gray-500">
+                      {{ SelectedApplication.application_status.controller_status }}
+                    </div>
+                  </div>
+              
+                </div>
+                <div>
+                  <div class="flex flex-row justify-between">
+                    <div class="text-sm dark:text-gray-500">On-Site/Inspector Verification</div>
+                    <div class="text-sm dark:text-gray-500">
+                      {{ SelectedApplication.application_status.inspector_status }}
+                    </div>
+              
+                </div>
+                <div>
+                  <div class="flex flex-row justify-between">
+                    <div class="text-sm dark:text-gray-500">Deputy Controller Verification</div>
+                    <div class="text-sm dark:text-gray-500">
+                      {{ SelectedApplication.application_status.inspector_status }}
+                    </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cols-span-1"></div>
+        </div> -->
+                </div>
+
+
+            </div>
+
+            <div class="mt-5">
+                <div class="my-5 text-xl font-semibold text-black">Submitted Documents by User:</div>
+
+                <div class="my-3 text-xs text-red-500">Click on each document to View.</div>
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+                    <div *ngIf="SelectedApplication?.data?.cnic_front_attachment"
+                        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+                        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">CNIC</div>
+                        <div class="flex flex-row justify-center">
+                            <img (click)="OpenDialog('CNIC', SelectedApplication?.data?.cnic_front_attachment)"
+                                [src]="SelectedApplication?.data?.cnic_front_attachment" alt="Image 1"
+                                class="h-[300px] w-[300px] cursor-pointer" />
+                        </div>
+                    </div>
+
+                    <div *ngIf="SelectedApplication?.data?.cnic_back_attachment"
+                        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+                        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">CNIC Back Attachment</div>
+                        <div class="flex flex-row justify-center">
+                            <img (click)="OpenDialog('CNIC', SelectedApplication?.data?.cnic_back_attachment)"
+                                [src]="SelectedApplication?.data?.cnic_back_attachment" alt="Image 1"
+                                class="h-[300px] w-[300px] cursor-pointer" />
+                        </div>
+                    </div>
+
+                    <div *ngIf="SelectedApplication?.data.metric_attachment"
+                        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+                        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">Matric Degree Attachment</div>
+                        <div class="flex flex-row justify-center">
+                            <img (click)="OpenDialog('CNIC', SelectedApplication?.data?.metric_attachment)"
+                                [src]="SelectedApplication?.data?.metric_attachment" alt="Image 1"
+                                class="h-[300px] w-[300px] cursor-pointer" />
+                        </div>
+                    </div>
+
+                    <div *ngIf="SelectedApplication?.data?.fsc_attachment"
+                        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+                        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">FSC Degree Attachment</div>
+                        <div class="flex flex-row justify-center">
+                            <img (click)="OpenDialog('CNIC', SelectedApplication?.data.fsc_attachment)"
+                                [src]="SelectedApplication?.data.fsc_attachment" alt="Image 1"
+                                class="h-[300px] w-[300px] cursor-pointer" />
+                        </div>
+                    </div>
+
+                    <div *ngIf="SelectedApplication?.data.experience_attachment"
+                        class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+                        <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">Experience Attachment</div>
+                        <div class="flex flex-row justify-center">
+                            <img (click)="OpenDialog('CNIC', SelectedApplication?.data.experience_attachment)"
+                                [src]="SelectedApplication?.data.experience_attachment" alt="Image 1"
+                                class="h-[300px] w-[300px] cursor-pointer" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                *ngIf="SelectedApplication?.application?.is_challan_issued==1 && this.SelectedApplication?.application?.challans[0]?.is_paid!=1">
+
+
+                <label class="image-upload-container btn btn-bwm">
+                    <span class="upload-challan my-5 ">Upload Challan Image</span><br>
+                    <input #imageInput type="file" accept="image/*" (change)="UploadChallan(imageInput)">
+                </label>
+
+                <!-- Display uploaded image -->
+                <img *ngIf="uploadedImageUrl" [src]="uploadedImageUrl" alt="Uploaded Image"
+                    class="uploaded-image h-[300px] w-[300px] ">
+
+                <!-- Submit button -->
+                <button type="button" class="upload-challan mt-5" (click)="submitForm()">Submit</button>
+            </div>
+
+
+        </div>
+
+        <p-dialog header="License" [(visible)]="showCertificate" [style]="{width: '50vw'}">
+            <div *ngIf="SelectedApplication?.application?.license.length > 0" class="license-container">
+
+                <img src="{{ SelectedApplication?.application?.license[0].license_attachments[0]?.attachment_path }}">
+                <!-- Message indicating that the license is being sent -->
+            </div>
+        </p-dialog>
+    </div>
+
+
+    <div>
+    </div>

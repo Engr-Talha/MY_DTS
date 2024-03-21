@@ -13,9 +13,11 @@ import { ApplicationListingComponent } from './application-listing/application-l
 import { InspectorUserApplicationComponent } from './inspector-user-application/inspector-user-application.component';
 import { TagModule } from 'primeng/tag';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InspectorResturantComponent } from './inspector-resturant/inspector-resturant.component';
+import { InspectorTravelAgencyComponent } from './inspector-travel-agency/inspector-travel-agency.component';
 
 @NgModule({
-  declarations: [InspectorDashboardComponent, ApplicationListingComponent, InspectorUserApplicationComponent],
+  declarations: [InspectorDashboardComponent, ApplicationListingComponent, InspectorUserApplicationComponent, InspectorResturantComponent, InspectorTravelAgencyComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,

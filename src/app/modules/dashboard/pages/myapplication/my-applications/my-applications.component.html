@@ -33,7 +33,7 @@
             [outerStrokeColor]="'#20c0a0'" [innerStrokeColor]="'#EDEEFE'" [animation]="true" [animationDuration]="300"
             [title]="'10'" [renderOnClick]="true"></circle-progress>
         </div>
-        <div (click)="selectShowApplication(item?.tourist_guide?.id)"
+        <div (click)="navigateToTouristGuide(item?.tourist_guide?.id)"
           class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
           {{ item.tourist_guide?.name }}
         </div>
@@ -78,7 +78,7 @@
             [outerStrokeColor]="'#20c0a0'" [innerStrokeColor]="'#EDEEFE'" [animation]="true" [animationDuration]="300"
             [title]="'10'" [renderOnClick]="true"></circle-progress>
         </div>
-        <div (click)="selectShowApplication(item?.travel_agency?.id)"
+        <div (click)="navigateToTravelAgency(item?.travel_agency?.id)"
           class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
           {{ item.travel_agency?.person_name }}
         </div>
@@ -119,8 +119,8 @@
             [outerStrokeColor]="'#20c0a0'" [innerStrokeColor]="'#EDEEFE'" [animation]="true" [animationDuration]="300"
             [title]="'10'" [renderOnClick]="true"></circle-progress>
         </div>
-        <div (click)="selectShowApplication(item?.hotel?.id)"
-          class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
+
+        <div class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
           {{ item.hotel?.name }}
         </div>
       </div>
@@ -160,9 +160,9 @@
             [outerStrokeColor]="'#20c0a0'" [innerStrokeColor]="'#EDEEFE'" [animation]="true" [animationDuration]="300"
             [title]="'10'" [renderOnClick]="true"></circle-progress>
         </div>
-        <div (click)="selectShowApplication(item?.hotel?.id)"
+        <div (click)="navigateToResturantApplication(item.restaurant.id)"
           class="mt-2 cursor-pointer text-center text-base font-semibold hover:text-green-400 hover:underline">
-          {{ item.hotel?.name }}
+          {{ item?.restaurant?.name }}
         </div>
       </div>
     </div>

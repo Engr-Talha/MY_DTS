@@ -19,9 +19,11 @@ import { ButtonModule } from 'primeng/button';
 import { DatePipe } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReviewerResturantComponent } from './reviewer-resturant/reviewer-resturant.component';
+import { ReviewerTravelagencyComponent } from './reviewer-travelagency/reviewer-travelagency.component';
 
 @NgModule({
-  declarations: [ReviewerAppListingComponent, ReviewerUserApplicationComponent],
+  declarations: [ReviewerAppListingComponent, ReviewerUserApplicationComponent, ReviewerResturantComponent, ReviewerTravelagencyComponent],
   imports: [
     CommonModule,
     ReviewerRoutingModule,

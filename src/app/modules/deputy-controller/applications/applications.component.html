@@ -4,18 +4,12 @@
   <div class="my-3 flex flex-row flex-wrap items-center justify-start gap-5 lg:flex-nowrap lg:justify-evenly">
     <div class="card justify-content-center flex flex-col">
       <p>Select Application Status:</p>
-      <p-dropdown
-        [options]="dropdown"
-        [(ngModel)]="selecteddropdown"
-        optionLabel="name"
+      <p-dropdown [options]="dropdown" [(ngModel)]="selecteddropdown" optionLabel="name"
         placeholder="Application Status"></p-dropdown>
     </div>
     <div class="card justify-content-center flex flex-col">
       <p>Select Application Type:</p>
-      <p-dropdown
-        [options]="ApplicationTypeDropdown"
-        [(ngModel)]="selectedApplicationTypeDropdown"
-        optionLabel="name"
+      <p-dropdown [options]="ApplicationTypeDropdown" [(ngModel)]="selectedApplicationTypeDropdown" optionLabel="name"
         placeholder="Application Type"></p-dropdown>
     </div>
     <div class="card justify-content-center flex flex-col">
@@ -61,10 +55,43 @@
 
           <td>{{ item?.applications[0]?.entity_type?.name }}</td>
           <td>{{ item?.applications[0]?.status?.name }}</td>
-          <td>{{ item?.tourist_guide.created_at }}</td>
+          <td>{{ formatDate(item?.tourist_guide.created_at) }}</td>
           <td>
-            <button
-              (click)="NavigateTo(item?.tourist_guide.id)"
+            <button (click)="NavigateTo(item?.tourist_guide.id)"
+              class="cursor-pointer rounded-lg bg-green-500 py-2 px-4 text-white hover:bg-green-800">
+              View
+            </button>
+          </td>
+        </tr>
+        <tr *ngFor="let item of ResturantApplications?.restaurants">
+          <!-- {{item}} -->
+          <td>{{ item?.restaurant?.id }}</td>
+
+          <td>{{ item?.restaurant?.name }}</td>
+
+          <td>{{ item?.applications[0]?.entity_type?.name }}</td>
+          <td>{{ item?.applications[0]?.status?.name }}</td>
+
+          <td>{{ formatDate(item?.applications[0]?.created_at) }}</td>
+          <td>
+            <button (click)="NavigateToResturant(item?.restaurant?.id  )"
+              class="cursor-pointer rounded-lg bg-green-500 py-2 px-4 text-white hover:bg-green-800">
+              View
+            </button>
+          </td>
+        </tr>
+        <tr *ngFor="let item of TravelAgencyApplication?.travel_agencies">
+          <!-- {{item}} -->
+          <td>{{ item?.travel_agency?.id }}</td>
+
+          <td>{{ item?.travel_agency?.person_name }}</td>
+
+          <td>{{ item?.applications[0]?.entity_type?.name }}</td>
+          <td>{{ item?.applications[0]?.status?.name }}</td>
+
+          <td>{{ formatDate(item?.applications[0]?.created_at) }}</td>
+          <td>
+            <button (click)="NavigateToTravelAgency(item?.travel_agency?.id  )"
               class="cursor-pointer rounded-lg bg-green-500 py-2 px-4 text-white hover:bg-green-800">
               View
             </button>

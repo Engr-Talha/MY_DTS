@@ -35,6 +35,8 @@ export class ApplicationsComponent {
 
   selectedDate: string = ''; // To store the selected date
   dateOptions: { label: string; value: string }[] = [];
+  ResturantApplications: any;
+  TravelAgencyApplication: any;
 
   filterByDate() {
     // Use this.selectedDate to filter data or perform any desired action
@@ -52,6 +54,14 @@ export class ApplicationsComponent {
         console.log('Error in gettting my applications', err);
       },
     );
+    this.UserApplicationService.getApplicationByResturant().subscribe((res: any) => {
+      this.ResturantApplications = res;
+      console.log(this.ResturantApplications);
+    });
+    this.UserApplicationService.getApplicationByTravelAgency().subscribe((res: any) => {
+      this.TravelAgencyApplication = res;
+      console.log(this.TravelAgencyApplication);
+    });
 
     this.dropdown = [
       { name: 'Submitted Application', code: 'NY' },
@@ -71,5 +81,27 @@ export class ApplicationsComponent {
 
   NavigateTo(link: any) {
     this.route.navigate([`layout/dptcontroller-dashboard/app-dpt/${link}`]);
+  }
+
+  formatDate(dateString: any) {
+    if (!dateString) return ''; // handle case when dateString is undefined or null
+
+    const dateObject = new Date(dateString);
+
+    // Format the date as desired (e.g., DD-MM-YYYY HH:MM:SS)
+    const formattedDate = `${dateObject.getDate().toString().padStart(2, '0')}-${(dateObject.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${dateObject.getFullYear()} ${dateObject.getHours().toString().padStart(2, '0')}:${dateObject
+      .getMinutes()
+      .toString()
+      .padStart(2, '0')}:${dateObject.getSeconds().toString().padStart(2, '0')}`;
+
+    return formattedDate;
+  }
+  NavigateToResturant(link: any) {
+    this.route.navigate([`layout/dptcontroller-dashboard/dptcontroller-resturant-applications/${link}`]);
+  }
+  NavigateToTravelAgency(link: any) {
+    this.route.navigate([`layout/dptcontroller-dashboard/dptcontroller-app-travelagency/${link}`]);
   }
 }

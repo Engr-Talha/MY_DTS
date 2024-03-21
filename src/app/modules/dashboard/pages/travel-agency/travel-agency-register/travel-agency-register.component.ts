@@ -250,10 +250,7 @@ export class TravelAgencyRegisterComponent {
     this.markFormGroupTouched(this.step2Form);
 
     console.log('this.step2form', this.step2Form);
-    // if (this.step2Form.invalid) {
-    //   // Handle form validation errors
-    //   return;
-    // }
+
     let Usertype = localStorage.getItem('userDetails');
     this.accountID = JSON.parse(Usertype ? Usertype : '{}').id;
 

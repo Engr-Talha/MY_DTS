@@ -15,9 +15,11 @@ import { DatePipe } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagModule } from 'primeng/tag';
+import { AssistantControllerResturantComponent } from './assistant-controller-resturant/assistant-controller-resturant.component';
+import { AssistantControllerTravelAgenctComponent } from './assistant-controller-travel-agenct/assistant-controller-travel-agenct.component';
 
 @NgModule({
-  declarations: [AssistantContApplicationsComponent, AssitantControllerUserApplicationComponent],
+  declarations: [AssistantContApplicationsComponent, AssitantControllerUserApplicationComponent, AssistantControllerResturantComponent, AssistantControllerTravelAgenctComponent],
   imports: [
     CommonModule,
     AssistantControllerRoutingModule,

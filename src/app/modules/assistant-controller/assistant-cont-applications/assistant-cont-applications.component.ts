@@ -25,6 +25,8 @@ export class AssistantContApplicationsComponent {
   selecteddropdown: dropdownPending | undefined;
   ApplicationTypeDropdown: any[] | undefined;
   selectedApplicationTypeDropdown: any[] | undefined;
+  ResturantApplications: any;
+  TravelAgencyApplication: any;
 
   SearchByName: any;
   SearchbyID: any;
@@ -39,15 +41,18 @@ export class AssistantContApplicationsComponent {
   }
 
   ngOnInit() {
-    this.UserApplicationService.getApplicationByRole().subscribe(
-      (res: any) => {
-        this.myApplication = res;
-        console.log(this.myApplication);
-      },
-      (err: any) => {
-        console.log('Error in gettting my applications', err);
-      },
-    );
+    this.UserApplicationService.getApplicationByRole().subscribe((res: any) => {
+      this.myApplication = res;
+      console.log(this.myApplication);
+    });
+    this.UserApplicationService.getApplicationByResturant().subscribe((res: any) => {
+      this.ResturantApplications = res;
+      console.log(this.ResturantApplications);
+    });
+    this.UserApplicationService.getApplicationByTravelAgency().subscribe((res: any) => {
+      this.TravelAgencyApplication = res;
+      console.log(this.TravelAgencyApplication);
+    });
 
     this.dropdown = [
       { name: 'Submitted Application', code: 'NY' },
@@ -67,5 +72,26 @@ export class AssistantContApplicationsComponent {
 
   NavigateTo(link: any) {
     this.route.navigate([`layout/astcontroller-dashboard/assistant-cont-app-listing/${link}`]);
+  }
+  NavigateToResturant(link: any) {
+    this.route.navigate([`layout/astcontroller-dashboard/asstcontroller-app-resturant/${link}`]);
+  }
+  NavigateToTravelAgency(link: any) {
+    this.route.navigate([`layout/astcontroller-dashboard/astcontroller-app-travelagency/${link}`]);
+  }
+  formatDate(dateString: any) {
+    if (!dateString) return ''; // handle case when dateString is undefined or null
+
+    const dateObject = new Date(dateString);
+
+    // Format the date as desired (e.g., DD-MM-YYYY HH:MM:SS)
+    const formattedDate = `${dateObject.getDate().toString().padStart(2, '0')}-${(dateObject.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${dateObject.getFullYear()} ${dateObject.getHours().toString().padStart(2, '0')}:${dateObject
+      .getMinutes()
+      .toString()
+      .padStart(2, '0')}:${dateObject.getSeconds().toString().padStart(2, '0')}`;
+
+    return formattedDate;
   }
 }
