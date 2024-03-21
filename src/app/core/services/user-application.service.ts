@@ -38,6 +38,10 @@ export class UserApplicationService {
   public getApplicationByTravelAgency() {
     return this.http.get(`${BACKEND_URL}api/get-role-travel-agencies`);
   }
+  public getHotelByID(id: any) {
+    return this.http.get(`${BACKEND_URL}api/hotels/${id}`);
+  }
+
   // public getApplicationByRole() {
   //   return this.http.get(`${BACKEND_URL}api/get-role-tourist-guides`);
   // }

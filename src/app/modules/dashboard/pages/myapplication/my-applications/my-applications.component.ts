@@ -170,6 +170,10 @@ export class MyApplicationsComponent implements OnInit {
     console.log('id', path);
     this.Router.navigate([`/layout/my-registrations/resturant-application/${path}`]);
   }
+  navigateToHotelApplication(path: any) {
+    console.log('id', path);
+    this.Router.navigate([`/layout/my-registrations/hotel-application/${path}`]);
+  }
   downloadAs(format: string) {
     html2canvas(document.body).then((canvas: any) => {
       if (format === 'png') {
