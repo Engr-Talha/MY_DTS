@@ -22,6 +22,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { CertificateComponent } from 'src/app/shared/components/certificate/certificate.component';
 import { ControllerResturnatComponent } from './controller-resturnat/controller-resturnat.component';
 import { ControllerTravelAgencyComponent } from './controller-travel-agency/controller-travel-agency.component';
+import { ControllerHotelComponent } from './controller-hotel/controller-hotel.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ControllerTravelAgencyComponent } from './controller-travel-agency/cont
     ControllerUserApplicationComponent,
     ControllerResturnatComponent,
     ControllerTravelAgencyComponent,
+    ControllerHotelComponent,
   ],
   imports: [
     InputTextModule,

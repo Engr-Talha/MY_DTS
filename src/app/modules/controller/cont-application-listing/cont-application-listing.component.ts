@@ -33,7 +33,7 @@ export class ContApplicationListingComponent implements OnInit {
   SearchByName: any;
   SearchbyID: any;
   TravelAgencyApplication: any;
-
+  hotel: any;
   selectedDate: string = ''; // To store the selected date
   dateOptions: { label: string; value: string }[] = [];
 
@@ -60,6 +60,10 @@ export class ContApplicationListingComponent implements OnInit {
     this.UserApplicationService.getApplicationByTravelAgency().subscribe((res: any) => {
       this.TravelAgencyApplication = res;
       console.log(this.TravelAgencyApplication);
+    });
+    this.UserApplicationService.getApplicationByHotel().subscribe((res: any) => {
+      this.hotel = res;
+      console.log(this.hotel);
     });
 
     this.dropdown = [
@@ -101,5 +105,8 @@ export class ContApplicationListingComponent implements OnInit {
   }
   NavigateToTravelAgency(link: any) {
     this.route.navigate([`layout/controller-dashboard/controller-app-travelagency/${link}`]);
+  }
+  NavigateToHotel(link: any) {
+    this.route.navigate([`layout/controller-dashboard/controller-app-hotel/${link}`]);
   }
 }
