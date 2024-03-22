@@ -17,9 +17,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TagModule } from 'primeng/tag';
 import { AssistantControllerResturantComponent } from './assistant-controller-resturant/assistant-controller-resturant.component';
 import { AssistantControllerTravelAgenctComponent } from './assistant-controller-travel-agenct/assistant-controller-travel-agenct.component';
+import { AssitantControllerHotelComponent } from './assitant-controller-hotel/assitant-controller-hotel.component';
 
 @NgModule({
-  declarations: [AssistantContApplicationsComponent, AssitantControllerUserApplicationComponent, AssistantControllerResturantComponent, AssistantControllerTravelAgenctComponent],
+  declarations: [AssistantContApplicationsComponent, AssitantControllerUserApplicationComponent, AssistantControllerResturantComponent, AssistantControllerTravelAgenctComponent, AssitantControllerHotelComponent],
   imports: [
     CommonModule,
     AssistantControllerRoutingModule,

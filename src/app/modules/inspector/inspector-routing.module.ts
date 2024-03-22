@@ -5,7 +5,7 @@ import { ApplicationListingComponent } from './application-listing/application-l
 import { InspectorUserApplicationComponent } from './inspector-user-application/inspector-user-application.component';
 import { InspectorResturantComponent } from './inspector-resturant/inspector-resturant.component';
 import { InspectorTravelAgencyComponent } from './inspector-travel-agency/inspector-travel-agency.component';
-
+import { InpectorHotelComponent } from './inpector-hotel/inpector-hotel.component';
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'user-applications/:id', component: InspectorUserApplicationComponent },
   { path: 'inspector-resturant-applications/:id', component: InspectorResturantComponent },
   { path: 'inspector-app-travelagency/:id', component: InspectorTravelAgencyComponent },
+  { path: 'inspector-app-hotel/:id', component: InpectorHotelComponent },
 ];
 
 @NgModule({

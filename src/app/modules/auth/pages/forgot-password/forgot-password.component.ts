@@ -7,6 +7,7 @@ import { LoginSignUpService } from 'src/app/core/services/login-sign-up.service'
 import { MenuService } from 'src/app/modules/layout/services/menu.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { Console, error } from 'console';
 
 @Component({
   selector: 'app-forgot-password',
@@ -27,7 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
     private menuService: MenuService,
     private messageService: MessageService,
   ) {}
-
+  ShowOTPScreen: boolean = false;
   ngOnInit(): void {
     localStorage.clear();
     sessionStorage.clear();
@@ -48,6 +49,27 @@ export class ForgotPasswordComponent implements OnInit {
       email: email,
     };
 
-    this.LoginSignUpServicegin.signin(formData).subscribe((res: any) => {});
+    this.LoginSignUpServicegin.forgotPassword(formData).subscribe(
+      (res: any) => {
+        console.log(res);
+        alert('OTP has been sent to your email.\n' + res.meta.message);
+        this.ShowOTPScreen = true;
+      },
+      (err: any) => {
+        console.log(err);
+        this.ShowOTPScreen = false;
+
+        if (err.error && err.error.errors && err.error.errors.email) {
+          // Get the error message
+          const errorMessage = err.error.errors.email[0];
+          // Display the error message using a prompt or alert
+          alert(errorMessage);
+        } else {
+          // Handle other types of errors or display a generic error message
+          console.log('An error occurred:', err.error.meta.errors.email[0]);
+          alert(err.error.meta.errors.email[0]);
+        }
+      },
+    );
   }
 }

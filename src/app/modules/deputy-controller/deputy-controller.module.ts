@@ -19,8 +19,9 @@ import { TagModule } from 'primeng/tag';
 import { ApplicationDptComponent } from './application-dpt/application-dpt.component';
 import { DeputyControllerComponent } from './deputy-controller/deputy-controller.component';
 import { DeputyContTravelAgencyComponent } from './deputy-cont-travel-agency/deputy-cont-travel-agency.component';
+import { DeputyControllerHotelComponent } from './deputy-controller-hotel/deputy-controller-hotel.component';
 @NgModule({
-  declarations: [ApplicationsComponent, ApplicationDptComponent, DeputyControllerComponent, DeputyContTravelAgencyComponent],
+  declarations: [ApplicationsComponent, ApplicationDptComponent, DeputyControllerComponent, DeputyContTravelAgencyComponent, DeputyControllerHotelComponent],
   imports: [
     CommonModule,
     MultiSelectModule,

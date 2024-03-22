@@ -41,6 +41,9 @@ export class UserApplicationService {
   public getHotelByID(id: any) {
     return this.http.get(`${BACKEND_URL}api/hotels/${id}`);
   }
+  public getApplicationByHotel() {
+    return this.http.get(`${BACKEND_URL}api/get-role-hotels`);
+  }
 
   // public getApplicationByRole() {
   //   return this.http.get(`${BACKEND_URL}api/get-role-tourist-guides`);

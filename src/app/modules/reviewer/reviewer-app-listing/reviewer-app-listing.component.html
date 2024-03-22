@@ -61,6 +61,23 @@
             </button>
           </td>
         </tr>
+        <tr *ngFor="let item of HotelApplications?.hotels">
+          <!-- {{item}} -->
+          <td>{{ item?.hotel?.id }}</td>
+
+          <td>{{ item?.hotel?.name }}</td>
+
+          <td>{{ item?.applications[0]?.entity_type?.name }}</td>
+          <td>{{ item?.applications[0]?.status?.name }}</td>
+
+          <td>{{ formatDate(item?.applications[0]?.created_at) }}</td>
+          <td>
+            <button (click)="NavigateToHotel(item?.hotel?.id  )"
+              class="cursor-pointer rounded-lg bg-green-500 py-2 px-4 text-white hover:bg-green-800">
+              View
+            </button>
+          </td>
+        </tr>
       </tbody>
     </table>
     <div class="mt-2 mr-16 flex cursor-pointer flex-row justify-end">

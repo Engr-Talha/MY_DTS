@@ -54,6 +54,10 @@ export class ReviewerAppListingComponent {
       this.TravelAgencyApplication = res;
       console.log(this.TravelAgencyApplication);
     });
+    this.UserApplicationService.getApplicationByHotel().subscribe((res: any) => {
+      this.HotelApplications = res;
+      console.log('Hotels', this.HotelApplications);
+    });
 
     this.dropdown = [
       { name: 'Submitted Application', code: 'NY' },
@@ -82,6 +86,9 @@ export class ReviewerAppListingComponent {
   }
   NavigateToTravelAgency(link: any) {
     this.route.navigate([`layout/reviewer-dashboard/reviewer-app-travelagency/${link}`]);
+  }
+  NavigateToHotel(link: any) {
+    this.route.navigate([`layout/reviewer-dashboard/reviewer-app-hotel/${link}`]);
   }
   formatDate(dateString: any) {
     if (!dateString) return ''; // handle case when dateString is undefined or null

@@ -46,4 +46,8 @@ export class LoginSignUpService {
     localStorage.removeItem('user');
     return this.http.get(`${BACKEND_URL}v1/auth/user/logout?userId=${userId}&access_token=${access_token}`);
   }
+
+  public forgotPassword(data: FormData) {
+    return this.http.post(`${BACKEND_URL}api/forgetPassword`, data);
+  }
 }

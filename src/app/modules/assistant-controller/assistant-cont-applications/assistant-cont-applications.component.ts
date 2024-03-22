@@ -27,7 +27,7 @@ export class AssistantContApplicationsComponent {
   selectedApplicationTypeDropdown: any[] | undefined;
   ResturantApplications: any;
   TravelAgencyApplication: any;
-
+  hotel: any;
   SearchByName: any;
   SearchbyID: any;
 
@@ -52,6 +52,10 @@ export class AssistantContApplicationsComponent {
     this.UserApplicationService.getApplicationByTravelAgency().subscribe((res: any) => {
       this.TravelAgencyApplication = res;
       console.log(this.TravelAgencyApplication);
+    });
+    this.UserApplicationService.getApplicationByHotel().subscribe((res: any) => {
+      this.hotel = res;
+      console.log(this.hotel);
     });
 
     this.dropdown = [
@@ -78,6 +82,9 @@ export class AssistantContApplicationsComponent {
   }
   NavigateToTravelAgency(link: any) {
     this.route.navigate([`layout/astcontroller-dashboard/astcontroller-app-travelagency/${link}`]);
+  }
+  NavigateToHotel(link: any) {
+    this.route.navigate([`layout/astcontroller-dashboard/astcontroller-app-hotel/${link}`]);
   }
   formatDate(dateString: any) {
     if (!dateString) return ''; // handle case when dateString is undefined or null

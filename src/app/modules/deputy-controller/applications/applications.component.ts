@@ -37,7 +37,7 @@ export class ApplicationsComponent {
   dateOptions: { label: string; value: string }[] = [];
   ResturantApplications: any;
   TravelAgencyApplication: any;
-
+  hotel: any;
   filterByDate() {
     // Use this.selectedDate to filter data or perform any desired action
     // For demonstration, log the selected date to the console
@@ -61,6 +61,10 @@ export class ApplicationsComponent {
     this.UserApplicationService.getApplicationByTravelAgency().subscribe((res: any) => {
       this.TravelAgencyApplication = res;
       console.log(this.TravelAgencyApplication);
+    });
+    this.UserApplicationService.getApplicationByHotel().subscribe((res: any) => {
+      this.hotel = res;
+      console.log(this.hotel);
     });
 
     this.dropdown = [
@@ -103,5 +107,8 @@ export class ApplicationsComponent {
   }
   NavigateToTravelAgency(link: any) {
     this.route.navigate([`layout/dptcontroller-dashboard/dptcontroller-app-travelagency/${link}`]);
+  }
+  NavigateToHotel(link: any) {
+    this.route.navigate([`layout/dptcontroller-dashboard/dptcontroller-app-hotel/${link}`]);
   }
 }

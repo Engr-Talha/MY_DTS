@@ -15,9 +15,10 @@ import { TagModule } from 'primeng/tag';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InspectorResturantComponent } from './inspector-resturant/inspector-resturant.component';
 import { InspectorTravelAgencyComponent } from './inspector-travel-agency/inspector-travel-agency.component';
+import { InpectorHotelComponent } from './inpector-hotel/inpector-hotel.component';
 
 @NgModule({
-  declarations: [InspectorDashboardComponent, ApplicationListingComponent, InspectorUserApplicationComponent, InspectorResturantComponent, InspectorTravelAgencyComponent],
+  declarations: [InspectorDashboardComponent, ApplicationListingComponent, InspectorUserApplicationComponent, InspectorResturantComponent, InspectorTravelAgencyComponent, InpectorHotelComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,

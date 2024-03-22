@@ -1,0 +1,480 @@
+<p-toast></p-toast>
+<div class="px-10 py-10">
+    <div class="mb-3 text-xl font-semibold text-black">Applications</div>
+
+    <div class="item-end mb-3 flex flex-row justify-end">
+        <div class="button-container">
+            <!-- <button class="addCommentButton" (click)="addComment()">Add Comment</button> -->
+            <button class="approveButton" (click)="approvedialogbox = true">Apprvove and Sent to Assistant
+                Controller</button>
+
+            <!-- <button class="approveButton" (click)="approvedialogbox = true">Approve</button> -->
+            <button class="approveButton" (click)="showreject = true">Reject</button>
+        </div>
+    </div>
+
+    <div *ngIf="SelectedApplication" class="grid grid-cols-12 gap-5">
+        <!-- <div class="cols-span-1"></div> -->
+        <div class="col-span-6">
+            <div class="flex flex-col gap-5">
+                <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+                    <div class="flex flex-col">
+                        <h2 class="mt-4 font-bold">{{ SelectedApplication?.data.name }}</h2>
+                        <p>
+                            <i class="pi-map-marker pi" style="color: slateblue"></i>
+                            {{ SelectedApplication?.data.complete_address }}
+                        </p>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Established Year</p>
+                                <p class="text-sm">{{SelectedApplication?.data.establishment_year}}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Home address</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.business_address }}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Telegraphic</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.telegraphic_address }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Telephone Number</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.telephone_number }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Area </p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.area }}</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Kitchen Area</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.kitchen_area }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Pantry Area</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.pantry_area }} years</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Dining hall area</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.dining_hall_area }}</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">Dining hall seating</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.dining_hall_seating }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">furniture_cost</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.furniture_cost }}</p>
+                            </div>
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">working_capital</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.working_capital }}</p>
+                            </div>
+
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">total_investment</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.total_investment }}</p>
+                            </div>
+
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">is_foreigner_guest</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.is_foreigner_guest }}</p>
+                            </div>
+
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">cuisine_type</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.cuisine_type }}</p>
+                            </div>
+
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">classification_desired</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.classification_desired }}</p>
+                            </div>
+
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">before_january_rate</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.before_january_rate }}</p>
+                            </div>
+
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">present_rate</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.present_rate }}</p>
+                            </div>
+
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">present_date</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.present_date }}</p>
+                            </div>
+
+                            <div class="col-span-4 gap-2">
+                                <p class="mt-2 text-[#6b7280]">ownership_nature_type</p>
+                                <p class="text-sm">{{ SelectedApplication?.data?.ownership_nature_type?.name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-6">
+
+            <div class="mt-5 flex flex-col gap-5">
+                <div class="h-[300px] overflow-y-scroll rounded-xl border-gray-200 bg-white p-[2rem]">
+                    <div class="font-bold">Comments <span class="text-sm"> (Sorted by latest)</span></div>
+                    <!-- let comment of comments.reverse() -->
+                    {{ SelectedApplication?.approvals }}
+                    <div class="" *ngFor="let comment of SelectedApplication?.application?.approvals">
+                        <div class="my-2 px-4 text-sm dark:text-gray-500">
+                            <p>
+                                {{ comment.from_role?.name }} {{ comment.from_user?.name }} has Processes application to
+                                {{ comment.to_role?.name }} {{ comment.to_user?.name }}<br />
+                                <span class="text-bold text-green-500"> Remarks: </span>
+                                <span>{{ comment.remarks }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+        <div class="font-bold mb-3">Building Details</div>
+        <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 1 -->
+                <div class="mt-2 text-[#6b7280]">ID:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.id }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 2 -->
+                <div class="mt-2 text-[#6b7280]">No. of Floors:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.no_of_floors }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 3 -->
+                <div class="mt-2 text-[#6b7280]">Total Hotel Rooms:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.total_hotel_rooms }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 4 -->
+                <div class="mt-2 text-[#6b7280]">Visitor Room:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.visitor_room }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 5 -->
+                <div class="mt-2 text-[#6b7280]">Reception Hall:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.reception_hall }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 5 -->
+                <div class="mt-2 text-[#6b7280]">Cloak Room:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.reception_hall }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 5 -->
+                <div class="mt-2 text-[#6b7280]">Reading Room:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.reading_room }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 5 -->
+                <div class="mt-2 text-[#6b7280]">Restaurant:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.restaurant }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+                <!-- Label and value pair 5 -->
+                <div class="mt-2 text-[#6b7280]">Restaurant:</div>
+                <div class="mt-2 text-black">{{ SelectedApplication?.data?.building?.restaurant }}</div>
+            </div>
+
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Common Baths:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.common_baths }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Common Toilets:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.common_toilets }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Number of Stairs:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.number_of_stairs }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Number of Lifts:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.number_of_lifts }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Car Park Capacity:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.car_park_capacity }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Garden Area:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.garden_area }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Construction Date:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.construction_date }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Renovation Date:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.renovation_date }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Is Tel Room:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.is_tel_room === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Is Tel Floor:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.is_tel_floor === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Is Tel Lobby:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.is_tel_lobby === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Is Bank Counter:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.is_bank_counter === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Is Reception:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.is_reception === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280]">Is Postal Counter:</div>
+                <div class="mt-2 text-[#6b7280]">{{ SelectedApplication?.data?.building?.is_postal_counter === 1 ? 'Yes'
+                    : 'No' }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+                <div class="mt-2 text-[#6b7280] ">Is Hotwater:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_hotwater === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Is Coldwater:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_coldwater === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+            <div class="mt-2 text-[#6b7280] ">Is Heating:</div>
+            <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_heating === 1 ? 'Yes' :
+                'No' }}</div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Is AC:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_ac === 1 ? 'Yes' : 'No'
+                    }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Is Coffeeshop:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_coffeeshop === 1 ? 'Yes'
+                    : 'No' }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Is Restaurant:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_restaurant === 1 ? 'Yes'
+                    : 'No' }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Is Coldstorage:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_coldstorage === 1 ? 'Yes'
+                    : 'No' }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Is Locker:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_locker === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Is Entertainment:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_entertainment === 1 ?
+                    'Yes' : 'No' }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Is Active:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.is_active === 1 ? 'Yes' :
+                    'No' }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Created At:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.created_at }}</div>
+            </div>
+            <div class="col-span-2 gap-2">
+
+                <div class="mt-2 text-[#6b7280] ">Updated At:</div>
+                <div class="mt-2 text-black ">{{ SelectedApplication?.data?.building?.updated_at }}</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="grid grid-cols-12 gap-5 mt-5">
+        <div class="col-span-12">
+            <div class="flex flex-col gap-5">
+                <div class="rounded-xl border-gray-200 bg-white p-[2rem]">
+                    <div class="font-bold mb-5">Employees Details</div>
+                    <table class="w-full">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Top Management</th>
+                                <th>Trained</th>
+                                <th>Apprentice</th>
+                                <th>Basic English</th>
+                                <th>Offense Details</th>
+                                <th>Employee Category Type</th>
+                                <th>Entity Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let employee of SelectedApplication?.data?.employees">
+                                <td class="text-center"> {{ employee.id }}</td>
+                                <td class="text-center">{{ employee.full_name }}</td>
+                                <td class="text-center">{{ employee.is_top_management === 1 ? 'Yes' : 'No' }}</td>
+                                <td class="text-center">{{ employee.is_trained === 1 ? 'Yes' : 'No' }}</td>
+                                <td class="text-center">{{ employee.is_apprentice === 1 ? 'Yes' : 'No' }}</td>
+                                <td class="text-center">{{ employee.is_basic_english === 1 ? 'Yes' : 'No' }}</td>
+                                <td class="text-center">{{ employee.offense_details }}</td>
+                                <td class="text-center">{{ employee.employee_category_type.name }}</td>
+                                <td class="text-center">{{ employee.entity_type.name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="mt-5">
+        <div class="my-5 text-xl font-semibold text-black">Submitted Documents by User:</div>
+
+        <div class="my-3 text-xs text-red-500">Click on each document to View.</div>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+
+            <div *ngFor="let item of SelectedApplication?.data.application_attachments"
+                class="relative rounded bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+                <div class="mb-2 text-center text-lg font-medium text-[#9095a0]">{{item?.attachment_type?.name}}</div>
+                <div class="flex flex-row justify-center">
+                    <img (click)="OpenDialog(item?.attachment_type?.name, item?.attachment_path)"
+                        [src]="convertImageUrl(item?.attachment_path)" alt="Image 1"
+                        class="h-[300px] w-[300px] cursor-pointer" />
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <div class="my-5 text-xl font-semibold text-black">Submitted Documents by Inspector:</div>
+        <div>
+            <p>No Documents Submitted by Inspector yet.</p>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="DocumentDialog" [breakpoints]="{ '960px': '75vw' }" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false">
+    <div>
+        <div class="mb-2 text-center text-xl font-medium text-[#9095a0]">CNIC</div>
+        <div class="flex flex-row justify-center">
+            <img class="h-1/2 w-1/2" src="{{ docpath }}" />
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="addCommentDialog" header="Add Comment to Application" [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div>
+        <div class="card justify-content-center flex">
+            <textarea pKeyFilter="int" rows="5" cols="30" pInputTextarea></textarea>
+        </div>
+        <div class="item-end mb-3 flex flex-row justify-end">
+            <div class="button-container">
+                <button class="addCommentButton" (click)="addComment()">Forward to User</button>
+                <button class="approveButton">Forward to Inspector</button>
+                <button class="approveButton">Forward to Controller</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="approvedialogbox" header="Approve Applications" [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div>
+        <div class="card justify-content-center flex flex-col">
+            <p>Do you want to approve this applications.</p>
+            <br />
+            <div class="card justify-content-center flex">
+                <textarea pKeyFilter="int" rows="5" [(ngModel)]="addcommentt" cols="30" pInputTextarea></textarea>
+            </div>
+        </div>
+        <div class="item-end mb-3 flex flex-row justify-end">
+            <div class="button-container">
+                <button class="approveButton" (click)="ChangeStatus(1)">Approve</button>
+                <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="showreject" header="Reject Applications" [breakpoints]="{ '960px': '75vw' }"
+    [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div>
+        <div class="card justify-content-center flex flex-col">
+            <p>Do you want to reject this applications. Please add comment.</p>
+            <br />
+            <div class="card justify-content-center flex">
+                <textarea pKeyFilter="int" rows="5" [(ngModel)]="addcommentt" cols="30" pInputTextarea></textarea>
+            </div>
+        </div>
+        <div class="item-end mb-3 flex flex-row justify-end">
+            <div class="button-container">
+                <button class="approveButton" (click)="ChangeStatus(3)">Reject</button>
+                <button class="approveButton" (click)="approvedialogbox = false">Cancel</button>
+            </div>
+        </div>
+    </div>
+</p-dialog>

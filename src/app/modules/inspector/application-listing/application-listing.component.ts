@@ -27,6 +27,7 @@ export class ApplicationListingComponent {
   selectedApplicationTypeDropdown: any[] | undefined;
   ResturantApplications: any;
   TravelAgencyApplication: any;
+  hotel: any;
 
   SearchByName: any;
   SearchbyID: any;
@@ -57,6 +58,10 @@ export class ApplicationListingComponent {
     this.UserApplicationService.getApplicationByTravelAgency().subscribe((res: any) => {
       this.TravelAgencyApplication = res;
       console.log(this.TravelAgencyApplication);
+    });
+    this.UserApplicationService.getApplicationByHotel().subscribe((res: any) => {
+      this.hotel = res;
+      console.log(this.hotel);
     });
 
     this.dropdown = [
@@ -98,5 +103,8 @@ export class ApplicationListingComponent {
   }
   NavigateToTravelAgency(link: any) {
     this.route.navigate([`layout/inspector-dashboard/inspector-app-travelagency/${link}`]);
+  }
+  NavigateToHotel(link: any) {
+    this.route.navigate([`layout/inspector-dashboard/inspector-app-hotel/${link}`]);
   }
 }
